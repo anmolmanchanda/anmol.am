@@ -1,0 +1,2 @@
+Place your resume.pdf file in the public directory.
+The resume will be accessible at /resume.pdf
