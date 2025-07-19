@@ -15,17 +15,30 @@ export function ViewTracker({ slug, initialViews = 0, showIcon = true, className
   const [isTracking, setIsTracking] = useState(false)
   const [hasTracked, setHasTracked] = useState(false)
   const [justUpdated, setJustUpdated] = useState(false)
+  const [previousViews, setPreviousViews] = useState(initialViews)
 
   useEffect(() => {
     let mounted = true
     
-    const trackView = async () => {
+    const fetchAndTrackView = async () => {
       if (hasTracked || isTracking) return
       
       setIsTracking(true)
       
       try {
-        const response = await fetch('/api/views/track', {
+        // First fetch current views to establish baseline
+        const getResponse = await fetch(`/api/views/${slug}`)
+        if (getResponse.ok) {
+          const getCurrentData = await getResponse.json()
+          if (mounted && getCurrentData.success) {
+            const currentViews = getCurrentData.views
+            setViews(currentViews)
+            setPreviousViews(currentViews)
+          }
+        }
+
+        // Then track the new view
+        const trackResponse = await fetch('/api/views/track', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -33,15 +46,15 @@ export function ViewTracker({ slug, initialViews = 0, showIcon = true, className
           body: JSON.stringify({ slug }),
         })
         
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
+        if (!trackResponse.ok) {
+          throw new Error(`HTTP error! status: ${trackResponse.status}`)
         }
         
-        const data = await response.json()
+        const trackData = await trackResponse.json()
         
-        if (mounted && data.success) {
-          const newViews = data.views
-          if (newViews > views) {
+        if (mounted && trackData.success) {
+          const newViews = trackData.views
+          if (newViews > previousViews) {
             setJustUpdated(true)
             setTimeout(() => setJustUpdated(false), 2000)
           }
@@ -62,13 +75,13 @@ export function ViewTracker({ slug, initialViews = 0, showIcon = true, className
     }
 
     // Track view after a short delay to ensure page is loaded
-    const timer = setTimeout(trackView, 1000)
+    const timer = setTimeout(fetchAndTrackView, 1000)
     
     return () => {
       mounted = false
       clearTimeout(timer)
     }
-  }, [slug, initialViews, hasTracked, isTracking])
+  }, [slug, initialViews, hasTracked, isTracking, previousViews])
 
   return (
     <div className={`flex items-center gap-1 ${className} ${justUpdated ? 'animate-pulse' : ''}`}>
