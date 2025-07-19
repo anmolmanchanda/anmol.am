@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail, Star } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 import { VisitorCounter } from "@/components/Phase4Features"
+import { FiverrIcon } from "@/components/icons/FiverrIcon"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -84,7 +85,7 @@ export function Footer() {
                   className="text-muted-foreground hover:text-foreground transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
                   aria-label="Fiverr"
                 >
-                  <Star className="h-5 w-5" />
+                  <FiverrIcon className="h-5 w-5" />
                 </a>
                 <a
                   href={siteConfig.links.email}

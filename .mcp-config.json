@@ -7,6 +7,14 @@
         "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_token_here"
       }
     },
+    "git": {
+      "command": "uvx",
+      "args": ["mcp-server-git", "--repository", "/Users/Shared/anmol.am"]
+    },
+    "sqlite": {
+      "command": "uvx",
+      "args": ["mcp-server-sqlite", "--db-path", "/Users/Shared/anmol.am/data.db"]
+    },
     "filesystem": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/Shared/anmol.am"]
@@ -29,6 +37,56 @@
       "env": {
         "POSTGRES_CONNECTION_STRING": "postgresql://user:password@localhost:5432/dbname"
       }
+    },
+    "time": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-time"]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "your_brave_api_key_here"
+      }
+    },
+    "everart": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everart"],
+      "env": {
+        "EVERART_API_KEY": "your_everart_api_key_here"
+      }
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "astrotask": {
+      "command": "npx",
+      "args": ["@astrotask/mcp"]
+    },
+    "browser": {
+      "command": "npx",
+      "args": ["@browsermcp/mcp"]
+    },
+    "tools-memory": {
+      "command": "npx",
+      "args": ["@sylphlab/tools-memory-mcp"]
+    },
+    "upstash-context": {
+      "command": "npx",
+      "args": ["@upstash/context7-mcp"]
+    },
+    "apidog": {
+      "command": "npx",
+      "args": ["apidog-mcp-server"]
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["firecrawl-mcp"]
     }
   }
 }
