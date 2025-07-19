@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowUpRight, Github } from "lucide-react"
 import { Project } from "@/types"
 import { cn } from "@/lib/utils"
+import { GitHubActivityFeed } from "@/components/Phase4Features"
 
 const allProjects: Project[] = [
   {
@@ -360,6 +361,23 @@ export default function ProjectsPage() {
             <p className="text-muted-foreground">No projects found in this category.</p>
           </div>
         )}
+
+        {/* Recent GitHub Activity Section */}
+        <div className="mt-16 sm:mt-20 lg:mt-24">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              <span className="bg-gradient-to-r from-primary via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+                Recent Activity
+              </span>
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+              Latest commits and development activity from my GitHub repositories
+            </p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <GitHubActivityFeed />
+          </div>
+        </div>
       </div>
     </div>
   )

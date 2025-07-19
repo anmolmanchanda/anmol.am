@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Github, Linkedin, Mail, Star } from "lucide-react"
 import { siteConfig } from "@/lib/config"
-import { GitHubActivityFeed, VisitorCounter } from "@/components/Phase4Features"
+import { VisitorCounter } from "@/components/Phase4Features"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -10,12 +10,10 @@ export function Footer() {
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8">
-          {/* Phase 4 Dashboard Section */}
-          <div className="mb-8 sm:mb-12">
-            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-center">Live Dashboard</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          {/* Website Analytics Section */}
+          <div className="mb-6 text-center">
+            <div className="inline-block">
               <VisitorCounter />
-              <GitHubActivityFeed />
             </div>
           </div>
           
