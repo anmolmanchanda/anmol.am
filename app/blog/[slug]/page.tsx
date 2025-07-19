@@ -16,7 +16,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     id: "1",
     title: "Building Scalable Web Applications with Next.js",
     excerpt: "Learn how to build performant and scalable web applications using Next.js 15 and modern best practices. Explore advanced patterns for enterprise-grade applications.",
-    date: "2025-01-19",
+    date: "2025-07-19",
     tags: ["Next.js", "React", "Web Development", "Scalability", "Enterprise"],
     readingTime: 12,
     slug: "building-scalable-web-apps-nextjs",
@@ -29,7 +29,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     id: "2",
     title: "The Power of TypeScript in Modern Development",
     excerpt: "Discover how TypeScript can improve your development workflow and help you write more maintainable code. Deep dive into advanced type patterns and best practices.",
-    date: "2025-01-19",
+    date: "2025-07-19",
     tags: ["TypeScript", "JavaScript", "Best Practices", "Developer Experience", "Type Safety"],
     readingTime: 15,
     slug: "power-of-typescript",
@@ -42,7 +42,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     id: "3",
     title: "Mastering State Management in React Applications",
     excerpt: "A comprehensive guide to managing state in React applications, from local state to global state solutions. Compare Redux, Zustand, and modern patterns with real examples.",
-    date: "2025-01-19",
+    date: "2025-07-19",
     tags: ["React", "State Management", "Frontend", "Redux", "Zustand", "React Query"],
     readingTime: 18,
     slug: "mastering-state-management-react",
@@ -50,6 +50,45 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     gradient: "from-purple-600 via-pink-600 to-red-600",
     views: 0,
     featured: true
+  },
+  "building-realtime-apps-websockets": {
+    id: "4",
+    title: "Building Real-time Applications with WebSockets",
+    excerpt: "Learn how to implement real-time features in your applications using WebSockets and Socket.io. Build collaborative tools and live data dashboards for enterprise use.",
+    date: "2025-07-19",
+    tags: ["WebSockets", "Real-time", "Node.js", "Socket.io", "Enterprise"],
+    readingTime: 18,
+    slug: "building-realtime-apps-websockets",
+    image: "/images/blog/websockets-realtime.svg",
+    gradient: "from-green-500 via-emerald-500 to-teal-600",
+    views: 0,
+    featured: false
+  },
+  "performance-optimization-techniques": {
+    id: "5",
+    title: "Performance Optimization Techniques for Web Apps",
+    excerpt: "Essential techniques and strategies to optimize the performance of your web applications. Core Web Vitals, bundle optimization, and real-world performance wins.",
+    date: "2025-07-19",
+    tags: ["Performance", "Optimization", "Web Development", "Core Web Vitals", "Enterprise"],
+    readingTime: 22,
+    slug: "performance-optimization-techniques",
+    image: "/images/blog/performance-optimization.svg",
+    gradient: "from-orange-500 via-red-500 to-pink-600",
+    views: 0,
+    featured: true
+  },
+  "getting-started-docker": {
+    id: "6",
+    title: "Getting Started with Docker for Web Developers",
+    excerpt: "A comprehensive guide to containerizing your web applications with Docker. Development workflows, production deployment, and enterprise best practices.",
+    date: "2025-07-19",
+    tags: ["Docker", "DevOps", "Containers", "Deployment", "Infrastructure"],
+    readingTime: 12,
+    slug: "getting-started-docker",
+    image: "/images/blog/docker-containers.svg",
+    gradient: "from-indigo-500 via-purple-500 to-pink-500",
+    views: 0,
+    featured: false
   }
 }
 
