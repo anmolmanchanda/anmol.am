@@ -258,13 +258,13 @@ export default function AboutPage() {
                     <GraduationCap className="w-5 h-5 text-primary icon-pulse" />
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center">
                       <Image
                         src="/images/Conestoga_College.png"
                         alt="Conestoga College"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover bg-white p-1"
                       />
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
@@ -296,13 +296,13 @@ export default function AboutPage() {
                     <Database className="w-5 h-5 text-blue-500 icon-float" />
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-blue-500/20 to-blue-400/10 border border-blue-500/20 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-blue-500/20 to-blue-400/10 border border-blue-500/20 flex items-center justify-center">
                       <Image
                         src="/images/GGSIPU.png"
                         alt="GGSIPU"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover bg-white p-1"
                       />
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
@@ -334,13 +334,13 @@ export default function AboutPage() {
                     <Smartphone className="w-5 h-5 text-green-500 icon-pulse" />
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20 flex items-center justify-center">
                       <Image
                         src="/images/Google_1.png"
                         alt="Google"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover bg-white p-1"
                       />
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
@@ -377,8 +377,8 @@ export default function AboutPage() {
                     <Zap className="w-5 h-5 text-purple-500 icon-float" />
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-purple-500/20 to-purple-400/10 border border-purple-500/20 flex items-center justify-center">
-                      <span className="text-xs font-bold text-purple-500">CF</span>
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-purple-500/20 to-purple-400/10 border border-purple-500/20 flex items-center justify-center">
+                      <span className="text-sm font-bold text-purple-500">CF</span>
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
@@ -411,8 +411,8 @@ export default function AboutPage() {
                     <Code2 className="w-5 h-5 text-cyan-500 icon-pulse" />
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-cyan-500/20 to-cyan-400/10 border border-cyan-500/20 flex items-center justify-center">
-                      <span className="text-xs font-bold text-cyan-500">CS</span>
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-cyan-500/20 to-cyan-400/10 border border-cyan-500/20 flex items-center justify-center">
+                      <span className="text-sm font-bold text-cyan-500">CS</span>
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
