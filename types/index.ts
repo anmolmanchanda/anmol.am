@@ -22,6 +22,11 @@ export interface BlogPost {
   tags: string[]
   readingTime: number
   slug: string
+  image?: string
+  gradient?: string
+  icon?: React.ReactNode
+  views?: number
+  featured?: boolean
 }
 
 export interface Skill {

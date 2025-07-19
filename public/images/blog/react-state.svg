@@ -1,0 +1,40 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="react-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="50%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <filter id="react-glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="200" fill="url(#react-gradient)" opacity="0.9"/>
+  
+  <!-- Central state hub -->
+  <circle cx="200" cy="100" r="30" fill="rgba(255,255,255,0.2)" filter="url(#react-glow)"/>
+  <text x="200" y="105" text-anchor="middle" fill="white" font-family="monospace" font-size="12" font-weight="bold">STATE</text>
+  
+  <!-- Connected components -->
+  <circle cx="100" cy="60" r="20" fill="rgba(255,255,255,0.15)" filter="url(#react-glow)"/>
+  <circle cx="300" cy="60" r="20" fill="rgba(255,255,255,0.15)" filter="url(#react-glow)"/>
+  <circle cx="100" cy="140" r="20" fill="rgba(255,255,255,0.15)" filter="url(#react-glow)"/>
+  <circle cx="300" cy="140" r="20" fill="rgba(255,255,255,0.15)" filter="url(#react-glow)"/>
+  
+  <!-- Connection lines -->
+  <line x1="120" y1="60" x2="170" y2="85" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <line x1="280" y1="60" x2="230" y2="85" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <line x1="120" y1="140" x2="170" y2="115" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <line x1="280" y1="140" x2="230" y2="115" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  
+  <!-- Data flow arrows -->
+  <polygon points="150,90 160,85 160,95" fill="rgba(255,255,255,0.6)"/>
+  <polygon points="250,90 240,85 240,95" fill="rgba(255,255,255,0.6)"/>
+  
+  <text x="200" y="185" text-anchor="middle" fill="white" font-family="sans-serif" font-size="14" font-weight="600" opacity="0.9">React State Management</text>
+</svg>

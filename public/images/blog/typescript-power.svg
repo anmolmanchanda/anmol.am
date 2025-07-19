@@ -1,0 +1,36 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ts-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="50%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <filter id="ts-glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="200" fill="url(#ts-gradient)" opacity="0.9"/>
+  
+  <!-- TypeScript logo inspired design -->
+  <rect x="50" y="50" width="100" height="100" fill="rgba(255,255,255,0.1)" rx="12" filter="url(#ts-glow)"/>
+  <text x="100" y="110" text-anchor="middle" fill="white" font-family="monospace" font-size="36" font-weight="bold">TS</text>
+  
+  <!-- Code blocks -->
+  <rect x="200" y="40" width="150" height="20" fill="rgba(255,255,255,0.15)" rx="4"/>
+  <rect x="200" y="70" width="120" height="20" fill="rgba(255,255,255,0.1)" rx="4"/>
+  <rect x="200" y="100" width="180" height="20" fill="rgba(255,255,255,0.12)" rx="4"/>
+  <rect x="200" y="130" width="140" height="20" fill="rgba(255,255,255,0.08)" rx="4"/>
+  <rect x="200" y="160" width="160" height="20" fill="rgba(255,255,255,0.1)" rx="4"/>
+  
+  <!-- Type annotations -->
+  <circle cx="370" cy="60" r="3" fill="rgba(255,255,255,0.6)"/>
+  <circle cx="370" cy="90" r="3" fill="rgba(255,255,255,0.6)"/>
+  <circle cx="370" cy="120" r="3" fill="rgba(255,255,255,0.6)"/>
+  
+  <text x="200" y="195" text-anchor="middle" fill="white" font-family="sans-serif" font-size="14" font-weight="600" opacity="0.9">TypeScript Development Excellence</text>
+</svg>
