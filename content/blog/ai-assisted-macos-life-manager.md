@@ -4,19 +4,22 @@
 
 Building a native macOS life management application using Claude AI as a development partner, this project demonstrates how AI can accelerate development while maintaining high code quality and native user experience.
 
-![AI-Assisted macOS Development Workflow](https://via.placeholder.com/800x400/6366f1/ffffff?text=AI+%2B+Swift+%3D+Native+macOS+Apps)
+![AI-Assisted macOS Development Workflow](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop&crop=center)
 
 ## The Challenge
 
-Existing productivity apps suffer from platform fragmentation, feature bloat, and poor offline experiences. 
+Existing productivity apps suffer from platform fragmentation, feature bloat, and poor offline experiences.
 
 Most productivity solutions fall into common traps:
+
 - Web-based interfaces that feel foreign on macOS
-- One-size-fits-all approaches lacking customization
+- One-size-fits-all approaches lacking customization  
 - Poor offline functionality requiring constant connectivity
 - Bloated feature sets that compromise core functionality
 
 I wanted to build something different: a truly native macOS application with deep system integration and intelligent automation.
+
+The goal was creating an app that feels like an integral part of macOS, not a web wrapper or cross-platform compromise.
 
 ## AI-Assisted Development Approach
 

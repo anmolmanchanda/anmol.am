@@ -4,7 +4,7 @@
 
 Performance directly impacts user experience and business success. At UN-Habitat's data dashboard serving 12 global cities, every millisecond mattered for real-time urban planning decisions.
 
-![Web Performance Optimization Metrics](https://via.placeholder.com/800x400/10b981/ffffff?text=Core+Web+Vitals+Optimization)
+![Web Performance Optimization Metrics](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop&crop=center)
 
 ## Why Performance Matters
 

@@ -266,22 +266,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Article Content */}
             <div className="liquid-glass rounded-2xl border backdrop-blur-md p-8">
               <div 
-                className="prose prose-base max-w-none dark:prose-invert
-                          prose-headings:bg-gradient-to-r prose-headings:from-primary prose-headings:via-purple-500 prose-headings:to-cyan-500 prose-headings:bg-clip-text prose-headings:text-transparent prose-headings:font-bold prose-headings:mb-6 prose-headings:mt-8
+                className="prose prose-sm max-w-none dark:prose-invert
+                          prose-headings:bg-gradient-to-r prose-headings:from-primary prose-headings:via-purple-500 prose-headings:to-cyan-500 prose-headings:bg-clip-text prose-headings:text-transparent prose-headings:font-bold prose-headings:mb-8 prose-headings:mt-10
                           prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg
-                          prose-p:text-sm prose-p:leading-relaxed prose-p:mb-4 prose-p:text-muted-foreground
-                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium
-                          prose-code:bg-secondary/80 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-xs prose-code:font-mono prose-code:border
-                          prose-pre:bg-secondary/50 prose-pre:border prose-pre:border-border prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:shadow-lg prose-pre:backdrop-blur-sm
-                          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:my-6
-                          prose-strong:text-primary prose-strong:font-semibold
-                          prose-ul:list-none prose-ul:space-y-3 prose-ul:my-6
-                          prose-ol:space-y-3 prose-ol:my-6
-                          prose-li:relative prose-li:pl-6 prose-li:text-sm prose-li:leading-relaxed
-                          prose-li:before:content-['▶'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:text-primary prose-li:before:text-xs
-                          prose-table:border prose-table:border-border prose-table:rounded-lg prose-table:overflow-hidden
-                          prose-th:bg-secondary prose-th:px-4 prose-th:py-2 prose-th:text-left prose-th:font-semibold
-                          prose-td:px-4 prose-td:py-2 prose-td:border-t prose-td:border-border"
+                          prose-p:text-xs prose-p:leading-relaxed prose-p:mb-6 prose-p:text-muted-foreground prose-p:break-words
+                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium prose-a:text-xs
+                          prose-code:bg-gradient-to-r prose-code:from-slate-900 prose-code:to-slate-800 prose-code:text-green-400 prose-code:px-3 prose-code:py-1.5 prose-code:rounded-md prose-code:text-xs prose-code:font-mono prose-code:border prose-code:border-slate-700 prose-code:shadow-lg prose-code:font-semibold
+                          prose-pre:bg-gradient-to-br prose-pre:from-slate-900 prose-pre:via-slate-800 prose-pre:to-slate-900 prose-pre:border-2 prose-pre:border-slate-600 prose-pre:rounded-xl prose-pre:p-6 prose-pre:overflow-x-auto prose-pre:shadow-2xl prose-pre:backdrop-blur-sm prose-pre:relative prose-pre:before:absolute prose-pre:before:top-0 prose-pre:before:left-0 prose-pre:before:right-0 prose-pre:before:h-8 prose-pre:before:bg-slate-700 prose-pre:before:rounded-t-xl prose-pre:before:border-b prose-pre:before:border-slate-600
+                          prose-pre>code:text-green-400 prose-pre>code:text-sm prose-pre>code:leading-relaxed prose-pre>code:font-mono prose-pre>code:block prose-pre>code:whitespace-pre prose-pre>code:pt-8
+                          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-lg prose-blockquote:my-8 prose-blockquote:text-xs prose-blockquote:italic
+                          prose-strong:text-primary prose-strong:font-semibold prose-strong:text-xs
+                          prose-ul:list-none prose-ul:space-y-4 prose-ul:my-8 prose-ul:text-xs
+                          prose-ol:space-y-4 prose-ol:my-8 prose-ol:text-xs
+                          prose-li:relative prose-li:pl-6 prose-li:text-xs prose-li:leading-relaxed prose-li:mb-2
+                          prose-li:before:content-['▶'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:text-primary prose-li:before:text-xs prose-li:before:font-bold
+                          prose-table:border-2 prose-table:border-border prose-table:rounded-lg prose-table:overflow-hidden prose-table:shadow-lg prose-table:text-xs
+                          prose-th:bg-secondary prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-xs prose-th:border-b-2 prose-th:border-border
+                          prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-border prose-td:text-xs
+                          prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8 prose-img:mx-auto prose-img:border prose-img:border-border"
                 dangerouslySetInnerHTML={{ __html: content }} 
               />
             </div>

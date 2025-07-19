@@ -2,7 +2,7 @@
 
 When UN-Habitat needed to process terabytes of urban data from 12 global cities, we built a scalable AWS infrastructure that handles 10+ TB monthly with real-time processing capabilities.
 
-![AWS Data Infrastructure Architecture](https://via.placeholder.com/800x400/f59e0b/ffffff?text=TB-Scale+AWS+Data+Pipeline)
+![AWS Data Infrastructure Architecture](https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop&crop=center)
 
 ## The Challenge
 
