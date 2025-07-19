@@ -4,9 +4,23 @@
 
 At UN-Habitat, I led the development of a comprehensive automation ecosystem using N8N, creating over 50 interconnected workflows that transformed how our organization handled data processing, communication, and operational tasks across 12 global cities.
 
+![N8N Workflow Automation Dashboard](https://via.placeholder.com/800x400/10b981/ffffff?text=50%2B+N8N+Automation+Workflows)
+
 ## The Challenge
 
-UN-Habitat's global operations involved managing vast amounts of data from multiple cities, coordinating between different departments, and ensuring consistent communication across international teams. Manual processes were creating bottlenecks and inconsistencies.
+UN-Habitat's global operations involved managing vast amounts of data from multiple cities, coordinating between different departments, and ensuring consistent communication across international teams. 
+
+### Operational Complexity
+
+Our organization faced several automation challenges:
+
+- **Data silos**: Information scattered across multiple systems
+- **Manual bottlenecks**: Time-consuming repetitive processes
+- **Communication gaps**: Inconsistent updates between teams
+- **Scale requirements**: Operations across 12 global cities
+- **Integration needs**: Connecting diverse tools and platforms
+
+Manual processes were creating bottlenecks and inconsistencies that impacted our mission-critical work.
 
 ## Solution Architecture
 

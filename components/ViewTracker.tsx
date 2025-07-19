@@ -54,9 +54,15 @@ export function ViewTracker({ slug, initialViews = 0, showIcon = true, className
         
         if (mounted && trackData.success) {
           const newViews = trackData.views
+          console.log(`ViewTracker: Previous: ${previousViews}, New: ${newViews}, Will animate: ${newViews > previousViews}`)
+          
           if (newViews > previousViews) {
             setJustUpdated(true)
-            setTimeout(() => setJustUpdated(false), 2000)
+            console.log('ViewTracker: Animation triggered!')
+            setTimeout(() => {
+              setJustUpdated(false)
+              console.log('ViewTracker: Animation ended')
+            }, 2000)
           }
           setViews(newViews)
           setHasTracked(true)

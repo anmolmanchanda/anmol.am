@@ -2,13 +2,29 @@
 
 When UN-Habitat needed to process terabytes of urban data from 12 global cities, we built a scalable AWS infrastructure that handles 10+ TB monthly with real-time processing capabilities.
 
+![AWS Data Infrastructure Architecture](https://via.placeholder.com/800x400/f59e0b/ffffff?text=TB-Scale+AWS+Data+Pipeline)
+
 ## The Challenge
 
-UN-Habitat monitors sustainable urban development globally, requiring:
+UN-Habitat monitors sustainable urban development globally, requiring massive-scale data processing capabilities.
+
+### Scale Requirements
+
+The scope of this project was unprecedented:
+
 - **12 cities**: Nairobi, São Paulo, Cairo, Manila, Johannesburg, Mexico City, Mumbai, Lagos, Dhaka, Jakarta, Kinshasa, Lima
 - **10+ TB monthly**: Satellite imagery, census data, infrastructure metrics
 - **Real-time processing**: Sub-5-minute latency for emergency response
 - **Global access**: 24/7 availability across time zones
+
+### Technical Challenges
+
+Building at this scale required solving complex problems:
+
+- **Data volume**: Processing terabytes efficiently
+- **Geographic distribution**: Serving global users with low latency
+- **Data variety**: Handling satellite imagery, structured data, and real-time streams
+- **Reliability**: Mission-critical uptime requirements
 
 ## Architecture Solution
 

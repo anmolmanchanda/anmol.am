@@ -4,19 +4,29 @@
 
 Containerization has revolutionized web development deployment. At UN-Habitat, Docker transformed our deployment pipeline from hours to minutes, serving 12 global cities reliably.
 
+![Docker Container Workflow](https://via.placeholder.com/800x400/2496ed/ffffff?text=Docker+Development+Workflow)
+
 ## Why Docker Matters
 
+Docker solves fundamental problems that plague modern development teams.
+
 ### Before Docker
+
+Development teams struggled with multiple pain points:
+
 - **Environment inconsistencies** between dev/staging/production
-- **Dependency conflicts** across applications
+- **Dependency conflicts** across applications  
 - **Complex setup** for new team members
 - **Scaling challenges** across different servers
 
 ### After Docker
-- **"It works on my machine"** eliminated
-- **Deployment time**: Hours → Minutes
-- **Developer onboarding**: Days → Hours
-- **Infrastructure scaling**: Predictable and automated
+
+Docker eliminated these issues entirely:
+
+- **"It works on my machine"** eliminated through consistent environments
+- **Deployment time**: Hours → Minutes with automated pipelines
+- **Developer onboarding**: Days → Hours with simple container setup
+- **Infrastructure scaling**: Predictable and automated across platforms
 
 ## Docker Fundamentals
 
