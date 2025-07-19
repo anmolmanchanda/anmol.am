@@ -67,12 +67,12 @@ export function Hero() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+          <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16 xl:gap-20">
             
             {/* Avatar Section - Enhanced with 3D effect */}
             <div className="flex-shrink-0 order-2 lg:order-1">
               <Card3D className="relative group" glowColor="primary">
-                <div className="w-64 h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)] neural-glow">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
                     src="/images/professional_headshot_avatar.JPG"
                     alt="Anmol Manchanda - Technical Solutions Architect"
@@ -98,7 +98,7 @@ export function Hero() {
               {/* Typography hierarchy - Jony Ive style */}
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-none">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-none">
                     <AnimatedText text="Hi, I'm" className="block text-foreground" delay={0} />
                     <span className="block">
                       <AnimatedText text="Anmol" className="text-foreground" delay={0.3} />
@@ -115,7 +115,7 @@ export function Hero() {
               </div>
 
               {/* Essential description */}
-              <p className="text-xl lg:text-2xl font-light leading-relaxed text-muted-foreground max-w-2xl">
+              <p className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed text-muted-foreground max-w-2xl">
                 I solve complex technical problems in days, not weeks, using AI-assisted development.
               </p>
 
@@ -127,14 +127,14 @@ export function Hero() {
 
               {/* Enhanced CTAs with magnetic effect */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                <MagneticButton className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group min-w-[200px] cyber-border futuristic-gradient">
+                <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group w-full sm:w-auto sm:min-w-[200px] min-h-[44px] cyber-border futuristic-gradient">
                   <Link href="/projects" className="flex items-center">
                     View Portfolio
                     <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </MagneticButton>
                 
-                <MagneticButton className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-border bg-background/50 backdrop-blur-sm font-medium transition-all duration-300 hover:bg-background hover:shadow-md min-w-[200px]">
+                <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full border border-border bg-background/50 backdrop-blur-sm font-medium transition-all duration-300 hover:bg-background hover:shadow-md w-full sm:w-auto sm:min-w-[200px] min-h-[44px]">
                   <Link href="/Anmol's Resume.pdf" className="flex items-center">
                     <Download className="mr-2 w-4 h-4" />
                     Resume
@@ -145,12 +145,12 @@ export function Hero() {
           </div>
 
           {/* Enhanced social links */}
-          <div className="flex items-center justify-center gap-8 mt-20 pt-8 border-t border-border/30">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mt-12 sm:mt-16 lg:mt-20 pt-6 sm:pt-8 border-t border-border/30">
             <a
               href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
+              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
             >
               GitHub
             </a>
@@ -158,7 +158,7 @@ export function Hero() {
               href={siteConfig.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
+              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
             >
               LinkedIn
             </a>
@@ -166,19 +166,19 @@ export function Hero() {
               href={siteConfig.links.fiverr}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
+              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
             >
               Fiverr
             </a>
             <a
               href={siteConfig.links.email}
-              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
+              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
             >
               Email
             </a>
             <a
               href="/contact"
-              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
+              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
             >
               Get in Touch
             </a>

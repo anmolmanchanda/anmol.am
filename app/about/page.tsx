@@ -80,7 +80,7 @@ export default function AboutPage() {
           <div className="text-center relative z-10">
             <div className="flex flex-col items-center mb-8">
               <div className="relative group mb-6">
-                <div className="w-32 h-32 rounded-full overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_60px_rgba(0,0,0,0.15)] neural-glow">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_60px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
                     src="/images/professional_headshot_avatar.JPG"
                     alt="Anmol Manchanda - Technical Solutions Architect"
@@ -104,7 +104,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="mt-16 space-y-16">
+          <div className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
             <section className="relative z-10">
               <h2 className="text-2xl font-bold tracking-tight">Who I Am</h2>
               <div className="mt-6 space-y-4 text-foreground">
@@ -127,8 +127,8 @@ export default function AboutPage() {
             </section>
 
             <section className="relative z-10">
-              <h2 className="text-2xl font-bold tracking-tight">Experience</h2>
-              <div className="mt-8 space-y-8">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Experience</h2>
+              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
                 {experiences.map((exp) => {
                   const getIcon = () => {
                     if (exp.id === "1") return <Building2 className="w-5 h-5 text-blue-500 icon-float" />
@@ -207,11 +207,11 @@ export default function AboutPage() {
                       <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         {getIcon()}
                       </div>
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-start gap-3 sm:gap-4">
                         <div className={`w-20 h-20 rounded-lg overflow-hidden shadow-md flex items-center justify-center ${getLogoStyle()}`}>
                           {getLogo()}
                         </div>
-                        <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                        <div className="liquid-glass p-4 sm:p-5 lg:p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                           <div className="space-y-3">
                             <div>
                               <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{exp.position}</h3>
@@ -248,8 +248,8 @@ export default function AboutPage() {
             </section>
 
             <section className="relative z-10">
-              <h2 className="text-2xl font-bold tracking-tight">Education</h2>
-              <div className="mt-8 space-y-8">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Education</h2>
+              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
                 <TimelineItem
                   details="Comprehensive mobile development program covering iOS, Android, and cross-platform frameworks with hands-on industry projects."
                   className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
@@ -367,8 +367,8 @@ export default function AboutPage() {
             </section>
 
             <section className="relative z-10">
-              <h2 className="text-2xl font-bold tracking-tight">Career Goals & Services</h2>
-              <div className="mt-8 space-y-8">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Career Goals & Services</h2>
+              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
                 <TimelineItem
                   details="Seeking challenging Technical/AI Solutions Architect roles that leverage AI-assisted development methodologies and diverse technical skills."
                   className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"

@@ -194,10 +194,10 @@ export function CommandPalette() {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-12 sm:pt-16 lg:pt-20">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
       
-      <div className="relative w-full max-w-lg mx-4">
+      <div className="relative w-full max-w-lg mx-3 sm:mx-4">
         <div className="liquid-glass rounded-2xl border shadow-2xl overflow-hidden">
           {/* Search Input */}
           <div className="flex items-center gap-3 p-4 border-b border-border/50">
@@ -217,7 +217,7 @@ export function CommandPalette() {
           </div>
 
           {/* Command List */}
-          <div className="max-h-80 overflow-y-auto" id="command-list">
+          <div className="max-h-60 sm:max-h-80 overflow-y-auto" id="command-list">
             {filteredCommands.length === 0 ? (
               <div className="p-4 text-center text-muted-foreground">
                 No results found for &quot;{query}&quot;
@@ -234,7 +234,7 @@ export function CommandPalette() {
                       setQuery('')
                       setSelectedIndex(0)
                     }}
-                    className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all ${
+                    className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all min-h-[44px] ${
                       index === selectedIndex 
                         ? 'bg-accent text-accent-foreground' 
                         : 'hover:bg-accent/50'
@@ -244,8 +244,8 @@ export function CommandPalette() {
                       {command.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-medium truncate">{command.title}</div>
-                      <div className="text-sm text-muted-foreground truncate">{command.description}</div>
+                      <div className="font-medium truncate text-sm sm:text-base">{command.title}</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground truncate">{command.description}</div>
                     </div>
                     <ArrowRight className="w-4 h-4 text-muted-foreground" />
                   </button>
@@ -255,7 +255,7 @@ export function CommandPalette() {
           </div>
 
           {/* Footer */}
-          <div className="border-t border-border/50 px-4 py-2 text-xs text-muted-foreground">
+          <div className="border-t border-border/50 px-4 py-2 text-xs text-muted-foreground hidden sm:block">
             Use ↑↓ to navigate, Enter to select, Esc to close
           </div>
         </div>

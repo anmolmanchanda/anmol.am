@@ -113,20 +113,20 @@ export default function ProjectsPage() {
       <div className="absolute inset-0 ai-grid" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Projects</h1>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Projects</h1>
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-muted-foreground">
             Real portfolio projects demonstrating AI-assisted development, enterprise solutions, and technical innovation
           </p>
         </div>
 
-        <div className="mt-12 flex justify-center">
-          <div className="inline-flex rounded-lg border p-1">
+        <div className="mt-8 sm:mt-12 flex justify-center">
+          <div className="inline-flex rounded-lg border p-1 overflow-x-auto max-w-full">
             {categories.map((category) => (
               <button
                 key={category.value}
                 onClick={() => setSelectedCategory(category.value)}
                 className={cn(
-                  "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                  "rounded-md px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium transition-colors min-h-[44px] flex items-center whitespace-nowrap",
                   selectedCategory === category.value
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -138,13 +138,13 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-2 xl:grid-cols-3">
+        <div className="mx-auto mt-8 sm:mt-12 lg:mt-16 grid max-w-2xl grid-cols-1 gap-4 sm:gap-6 lg:gap-8 lg:max-w-none lg:grid-cols-2 xl:grid-cols-3">
           {filteredProjects.map((project) => (
             <article
               key={project.id}
               className="group relative flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm transition-all hover:shadow-lg"
             >
-              <div className="aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-muted relative">
+              <div className="aspect-[4/3] sm:aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-muted relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 
                 {/* Animated project visualizations matching FeaturedProjects */}
@@ -289,7 +289,7 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-1 flex-col p-6">
+              <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">
@@ -301,12 +301,12 @@ export default function ProjectsPage() {
                       </span>
                     )}
                   </div>
-                  <h3 className="mt-3 text-xl font-semibold">
+                  <h3 className="mt-3 text-lg sm:text-xl font-semibold">
                     <Link href={`/projects/${project.id}`} className="hover:text-primary transition-colors">
                       {project.title}
                     </Link>
                   </h3>
-                  <p className="mt-3 text-sm text-muted-foreground line-clamp-2">{project.description}</p>
+                  <p className="mt-3 text-sm sm:text-base text-muted-foreground line-clamp-2">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.technologies.slice(0, 4).map((tech) => (
                       <span
@@ -323,13 +323,13 @@ export default function ProjectsPage() {
                     )}
                   </div>
                 </div>
-                <div className="mt-6 flex items-center gap-4">
+                <div className="mt-4 sm:mt-6 flex items-center gap-3 sm:gap-4">
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px] py-2"
                     >
                       <Github className="mr-1.5 h-4 w-4" />
                       Code
@@ -340,7 +340,7 @@ export default function ProjectsPage() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors min-h-[44px] py-2"
                     >
                       Live Demo
                       <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
@@ -353,7 +353,7 @@ export default function ProjectsPage() {
         </div>
 
         {filteredProjects.length === 0 && (
-          <div className="mt-16 text-center">
+          <div className="mt-8 sm:mt-12 lg:mt-16 text-center">
             <p className="text-muted-foreground">No projects found in this category.</p>
           </div>
         )}
