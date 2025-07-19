@@ -117,11 +117,55 @@ export function CommandPalette() {
       if (isOpen) {
         if (e.key === 'ArrowDown') {
           e.preventDefault()
-          setSelectedIndex(prev => (prev + 1) % filteredCommands.length)
+          setSelectedIndex(prev => {
+            const newIndex = (prev + 1) % filteredCommands.length
+            // Scroll the selected item into view with better logic
+            setTimeout(() => {
+              const selectedElement = document.querySelector(`[data-command-index="${newIndex}"]`)
+              const commandList = document.getElementById('command-list')
+              
+              if (selectedElement && commandList) {
+                const elementRect = selectedElement.getBoundingClientRect()
+                const containerRect = commandList.getBoundingClientRect()
+                
+                // Check if element is below visible area
+                if (elementRect.bottom > containerRect.bottom) {
+                  selectedElement.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                }
+                // Check if element is above visible area
+                else if (elementRect.top < containerRect.top) {
+                  selectedElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              }
+            }, 0)
+            return newIndex
+          })
         }
         if (e.key === 'ArrowUp') {
           e.preventDefault()
-          setSelectedIndex(prev => (prev - 1 + filteredCommands.length) % filteredCommands.length)
+          setSelectedIndex(prev => {
+            const newIndex = (prev - 1 + filteredCommands.length) % filteredCommands.length
+            // Scroll the selected item into view with better logic
+            setTimeout(() => {
+              const selectedElement = document.querySelector(`[data-command-index="${newIndex}"]`)
+              const commandList = document.getElementById('command-list')
+              
+              if (selectedElement && commandList) {
+                const elementRect = selectedElement.getBoundingClientRect()
+                const containerRect = commandList.getBoundingClientRect()
+                
+                // Check if element is above visible area
+                if (elementRect.top < containerRect.top) {
+                  selectedElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+                // Check if element is below visible area
+                else if (elementRect.bottom > containerRect.bottom) {
+                  selectedElement.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                }
+              }
+            }, 0)
+            return newIndex
+          })
         }
         if (e.key === 'Enter' && filteredCommands[selectedIndex]) {
           e.preventDefault()
@@ -173,7 +217,7 @@ export function CommandPalette() {
           </div>
 
           {/* Command List */}
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-80 overflow-y-auto" id="command-list">
             {filteredCommands.length === 0 ? (
               <div className="p-4 text-center text-muted-foreground">
                 No results found for &quot;{query}&quot;
@@ -183,6 +227,7 @@ export function CommandPalette() {
                 {filteredCommands.map((command, index) => (
                   <button
                     key={command.id}
+                    data-command-index={index}
                     onClick={() => {
                       command.action()
                       setIsOpen(false)

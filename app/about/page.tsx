@@ -82,7 +82,7 @@ export default function AboutPage() {
               <div className="relative group mb-6">
                 <div className="w-32 h-32 rounded-full overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_60px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
-                    src="/professional_headshot_avatar.JPG"
+                    src="/images/professional_headshot_avatar.JPG"
                     alt="Anmol Manchanda - Technical Solutions Architect"
                     width={128}
                     height={128}
@@ -151,40 +151,40 @@ export default function AboutPage() {
                       <Image
                         src="/images/UN_1.jpg"
                         alt="United Nations"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 rounded-md object-cover"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover"
                       />
                     )
                     if (exp.id === "2") return (
                       <Image
                         src="/images/SWRIL.png"
                         alt="Smart Waterloo Region Innovation Lab"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover bg-white p-1"
                       />
                     )
                     if (exp.id === "3") return (
                       <Image
                         src="/images/WFC.jpg"
                         alt="Williams Fresh Cafe"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 rounded-md object-cover"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover"
                       />
                     )
                     if (exp.id === "4") return (
                       <Image
                         src="/images/AIESEC.png"
                         alt="AIESEC"
-                        width={32}
-                        height={32}
-                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover bg-white p-1"
                       />
                     )
                     return (
-                      <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xs">
+                      <div className="w-16 h-16 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xs">
                         ORG
                       </div>
                     )
@@ -208,7 +208,7 @@ export default function AboutPage() {
                         {getIcon()}
                       </div>
                       <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 rounded-lg overflow-hidden shadow-md flex items-center justify-center ${getLogoStyle()}`}>
+                        <div className={`w-20 h-20 rounded-lg overflow-hidden shadow-md flex items-center justify-center ${getLogoStyle()}`}>
                           {getLogo()}
                         </div>
                         <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
