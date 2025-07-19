@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Download, MapPin, Globe2 } from "lucide-react"
 import { siteConfig } from "@/lib/config"
-import { ParallaxElement, SoundEffectButton } from "@/components/InteractiveEffects"
+import { ParallaxElement } from "@/components/InteractiveEffects"
 
 export function Hero() {
   return (
