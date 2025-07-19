@@ -27,13 +27,12 @@ export const siteConfig = {
   links: {
     github: "https://github.com/anmolmanchanda",
     linkedin: "https://linkedin.com/in/anmolmanchanda",
-    twitter: "https://twitter.com/anmolmanchanda",
+    stackoverflow: "https://stackoverflow.com/users/anmolmanchanda",
     email: "mailto:anmol.manchanda@icloud.com"
   },
   emailAliases: {
     work: "hi@anmol.am",
     personal: "anmol.manchanda@icloud.com"
   },
-  location: "Kitchener, Ontario, Canada",
-  phone: "+1 (519) 729-3419"
+  location: "Kitchener, Ontario, Canada"
 }

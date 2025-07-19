@@ -5,35 +5,60 @@ import { siteConfig } from "@/lib/config"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Jony Ive inspired minimal background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden aurora-bg">
+      {/* Enhanced futuristic gradient background with animated mesh */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-violet-500/10 via-transparent to-cyan-500/10 animate-pulse" />
+      <div className="absolute inset-0 ai-grid" />
       
-      {/* Refined floating elements - 5 total */}
+      {/* Floating geometric elements for depth */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[10%] left-[5%] w-2 h-2 bg-blue-500 rounded-full animate-pulse opacity-60" />
+        <div className="absolute top-[20%] right-[15%] w-1 h-1 bg-purple-500 rounded-full animate-pulse opacity-40" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-[15%] left-[10%] w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse opacity-50" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-[60%] right-[5%] w-1 h-1 bg-violet-500 rounded-full animate-pulse opacity-30" style={{ animationDelay: '0.5s' }} />
+      </div>
+      
+      {/* Enhanced floating tech bubbles - spread across entire viewport */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[15%] left-[8%] animate-float-faster">
-          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
-            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">AWS Expert</span>
+        <div className="absolute top-[8%] left-[3%] animate-float-faster">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent font-semibold">AWS Expert</span>
           </div>
         </div>
-        <div className="absolute top-[25%] right-[12%] animate-float-faster-delay">
-          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
-            <span className="bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">Claude AI</span>
+        <div className="absolute top-[12%] right-[8%] animate-float-faster-delay">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 bg-clip-text text-transparent font-semibold">Claude AI</span>
           </div>
         </div>
-        <div className="absolute top-[45%] left-[5%] animate-float-faster-delay-2">
-          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
-            <span className="bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">UN-Habitat</span>
+        <div className="absolute top-[25%] left-[2%] animate-float-faster-delay-2">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-500 bg-clip-text text-transparent font-semibold">UN-Habitat</span>
           </div>
         </div>
-        <div className="absolute bottom-[30%] right-[8%] animate-float-faster-delay-3">
-          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
-            <span className="bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">AI-Assisted</span>
+        <div className="absolute top-[35%] right-[5%] animate-float-faster-delay-3">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-purple-500 bg-clip-text text-transparent font-semibold">AI-Assisted</span>
           </div>
         </div>
-        <div className="absolute bottom-[45%] left-[15%] animate-float-faster-delay-4">
-          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
-            <span className="bg-gradient-to-r from-cyan-600 to-cyan-500 bg-clip-text text-transparent">Data Pipeline</span>
+        <div className="absolute top-[45%] left-[8%] animate-float-faster-delay-4">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-cyan-600 via-sky-500 to-blue-500 bg-clip-text text-transparent font-semibold">Data Pipeline</span>
+          </div>
+        </div>
+        <div className="absolute top-[55%] right-[12%] animate-float-faster-delay-5">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-orange-600 via-red-500 to-pink-500 bg-clip-text text-transparent font-semibold">10+ TB Data</span>
+          </div>
+        </div>
+        <div className="absolute top-[18%] left-[25%] animate-float-faster-delay-6">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent font-semibold">Automation</span>
+          </div>
+        </div>
+        <div className="absolute top-[40%] right-[25%] animate-float-faster-delay-7">
+          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+            <span className="bg-gradient-to-r from-teal-600 via-cyan-500 to-blue-500 bg-clip-text text-transparent font-semibold">Enterprise</span>
           </div>
         </div>
       </div>
@@ -45,7 +70,7 @@ export function Hero() {
             {/* Avatar Section - Jony Ive minimalism */}
             <div className="flex-shrink-0 order-2 lg:order-1">
               <div className="relative group">
-                <div className="w-64 h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)]">
+                <div className="w-64 h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
                     src="/professional_headshot_avatar.JPG"
                     alt="Anmol Manchanda - Technical Solutions Architect"
@@ -104,7 +129,7 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
                 <Link
                   href="/projects"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group min-w-[200px]"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group min-w-[200px] cyber-border futuristic-gradient"
                 >
                   View Portfolio
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -127,7 +152,7 @@ export function Hero() {
               href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
             >
               GitHub
             </a>
@@ -135,25 +160,27 @@ export function Hero() {
               href={siteConfig.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
             >
               LinkedIn
             </a>
             <a
-              href={siteConfig.links.email}
-              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+              href={siteConfig.links.stackoverflow}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
             >
-              Contact
+              Stack Overflow
             </a>
             <a
-              href={`tel:${siteConfig.phone}`}
-              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+              href={siteConfig.links.email}
+              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
             >
-              Phone
+              Email
             </a>
             <a
               href="/contact"
-              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+              className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
             >
               Get in Touch
             </a>

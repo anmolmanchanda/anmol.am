@@ -74,9 +74,6 @@ export default function ContactPage() {
                     <p className="text-muted-foreground">
                       Professional: <a href={`mailto:${siteConfig.emailAliases.work}`} className="text-primary hover:underline">{siteConfig.emailAliases.work}</a>
                     </p>
-                    <p className="text-muted-foreground">
-                      Phone: <a href={`tel:${siteConfig.phone}`} className="text-primary hover:underline">{siteConfig.phone}</a>
-                    </p>
                   </div>
                 </div>
 
@@ -114,12 +111,12 @@ export default function ContactPage() {
                     LinkedIn
                   </a>
                   <a
-                    href={siteConfig.links.twitter}
+                    href={siteConfig.links.stackoverflow}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Twitter
+                    Stack Overflow
                   </a>
                 </div>
               </div>
