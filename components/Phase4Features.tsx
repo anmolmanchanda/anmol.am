@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Activity, Download, Users, Clock, GitBranch, Music } from 'lucide-react'
+import { Activity, Download, Clock, GitBranch, Music } from 'lucide-react'
 
 // PWA Install Prompt
 export function PWAInstallPrompt() {
@@ -70,36 +70,60 @@ export function PWAInstallPrompt() {
   )
 }
 
-// Real-time Visitor Counter
+// Real-time Website Analytics
 export function VisitorCounter() {
-  const [visitors, setVisitors] = useState(1247) // Mock initial count
-  const [isOnline, setIsOnline] = useState(12) // Mock online users
+  const [analytics, setAnalytics] = useState({
+    totalVisits: 3247,
+    uniqueVisitors: 2156, 
+    onlineNow: 8,
+    bounceRate: 28.5,
+    avgSession: '4:32'
+  })
 
   useEffect(() => {
-    // Simulate real-time updates
+    // Simulate real-time analytics updates
     const interval = setInterval(() => {
-      if (Math.random() > 0.7) {
-        setVisitors(prev => prev + Math.floor(Math.random() * 3) + 1)
-      }
-      if (Math.random() > 0.8) {
-        setIsOnline(prev => Math.max(1, prev + (Math.random() > 0.5 ? 1 : -1)))
-      }
-    }, 15000)
+      setAnalytics(prev => ({
+        ...prev,
+        totalVisits: prev.totalVisits + Math.floor(Math.random() * 2),
+        uniqueVisitors: Math.random() > 0.8 ? prev.uniqueVisitors + 1 : prev.uniqueVisitors,
+        onlineNow: Math.max(1, prev.onlineNow + (Math.random() > 0.6 ? 0 : Math.random() > 0.5 ? 1 : -1)),
+        bounceRate: Math.max(20, Math.min(40, prev.bounceRate + (Math.random() - 0.5) * 0.5))
+      }))
+    }, 20000)
 
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="liquid-glass p-3 rounded-lg border backdrop-blur-md">
-      <div className="flex items-center gap-2 text-sm">
-        <div className="flex items-center gap-1">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <span className="text-muted-foreground">{isOnline} online</span>
+    <div className="liquid-glass p-4 rounded-lg border backdrop-blur-md">
+      <h3 className="font-semibold text-sm mb-3 flex items-center gap-2">
+        <Activity className="w-4 h-4" />
+        Website Analytics
+      </h3>
+      <div className="space-y-3">
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-muted-foreground">Total Visits</span>
+          <span className="text-sm font-medium">{analytics.totalVisits.toLocaleString()}</span>
         </div>
-        <span className="text-muted-foreground">•</span>
-        <div className="flex items-center gap-1">
-          <Users className="w-3 h-3 text-muted-foreground" />
-          <span className="text-muted-foreground">{visitors.toLocaleString()} visits</span>
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-muted-foreground">Unique Visitors</span>
+          <span className="text-sm font-medium text-blue-500">{analytics.uniqueVisitors.toLocaleString()}</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-muted-foreground">Online Now</span>
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-green-500">{analytics.onlineNow}</span>
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-muted-foreground">Bounce Rate</span>
+          <span className="text-sm font-medium text-orange-500">{analytics.bounceRate.toFixed(1)}%</span>
+        </div>
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-muted-foreground">Avg. Session</span>
+          <span className="text-sm font-medium text-purple-500">{analytics.avgSession}</span>
         </div>
       </div>
     </div>
@@ -108,29 +132,51 @@ export function VisitorCounter() {
 
 // GitHub Activity Feed
 export function GitHubActivityFeed() {
-  const [activities] = useState([
+  const [activities, setActivities] = useState([
     {
       id: 1,
       type: 'push',
       repo: 'anmol.am',
-      message: 'Implement Phase 4 features and Dribbble inspiration',
-      time: '2 hours ago'
+      message: 'CRITICAL: Implement comprehensive git safety measures',
+      time: '10 minutes ago',
+      url: 'https://github.com/anmolmanchanda/anmol.am'
     },
     {
       id: 2,
-      type: 'pull_request',
-      repo: 'LifeManager',
-      message: 'Add AI-powered task scheduling',
-      time: '1 day ago'
+      type: 'push',
+      repo: 'anmol.am',
+      message: 'Implement comprehensive Phase 4 features and Dribbble inspiration',
+      time: '3 hours ago',
+      url: 'https://github.com/anmolmanchanda/anmol.am'
     },
     {
       id: 3,
-      type: 'issue',
-      repo: 'automation-suite',
-      message: 'Optimize N8N workflow performance',
-      time: '2 days ago'
+      type: 'push',
+      repo: 'anmol.am',
+      message: 'Complete comprehensive enhancements and fixes',
+      time: '1 day ago',
+      url: 'https://github.com/anmolmanchanda/anmol.am'
     }
   ])
+
+  useEffect(() => {
+    // Simulate real-time updates from GitHub
+    const interval = setInterval(() => {
+      if (Math.random() > 0.9) { // 10% chance every 30 seconds
+        const newActivity = {
+          id: Date.now(),
+          type: Math.random() > 0.5 ? 'push' : 'issue',
+          repo: 'anmol.am',
+          message: Math.random() > 0.5 ? 'Update portfolio content' : 'Fix responsive design issue',
+          time: 'Just now',
+          url: 'https://github.com/anmolmanchanda/anmol.am'
+        }
+        setActivities(prev => [newActivity, ...prev.slice(0, 2)])
+      }
+    }, 30000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -153,7 +199,14 @@ export function GitHubActivityFeed() {
             {getIcon(activity.type)}
             <div className="flex-1 min-w-0">
               <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">{activity.repo}</span>
+                <a 
+                  href={activity.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground hover:text-primary transition-colors"
+                >
+                  {activity.repo}
+                </a>
               </p>
               <p className="text-xs text-muted-foreground truncate">
                 {activity.message}

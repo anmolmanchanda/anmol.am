@@ -147,11 +147,31 @@ export default function AboutPage() {
                   }
 
                   const getLogo = () => {
-                    if (exp.id === "1") return <span className="text-xs font-bold text-blue-500">UN</span>
-                    if (exp.id === "2") return <span className="text-xs font-bold text-purple-500">WR</span>
-                    if (exp.id === "3") return <span className="text-xs font-bold text-orange-500">WFC</span>
-                    if (exp.id === "4") return <span className="text-xs font-bold text-green-500">AI</span>
-                    return <span className="text-xs font-bold text-primary">ORG</span>
+                    if (exp.id === "1") return (
+                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                        UN
+                      </div>
+                    )
+                    if (exp.id === "2") return (
+                      <div className="w-8 h-8 rounded-md bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
+                        WR
+                      </div>
+                    )
+                    if (exp.id === "3") return (
+                      <div className="w-8 h-8 rounded-md bg-orange-600 flex items-center justify-center text-white font-bold text-xs">
+                        WFC
+                      </div>
+                    )
+                    if (exp.id === "4") return (
+                      <div className="w-8 h-8 rounded-md bg-green-600 flex items-center justify-center text-white font-bold text-xs">
+                        AI
+                      </div>
+                    )
+                    return (
+                      <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xs">
+                        ORG
+                      </div>
+                    )
                   }
 
                   const getLogoStyle = () => {
@@ -223,7 +243,9 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center">
-                      <span className="text-xs font-bold text-primary">CC</span>
+                      <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xs">
+                        CC
+                      </div>
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
@@ -255,7 +277,9 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-blue-500/20 to-blue-400/10 border border-blue-500/20 flex items-center justify-center">
-                      <span className="text-xs font-bold text-blue-500">IPU</span>
+                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
+                        IPU
+                      </div>
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
@@ -287,7 +311,9 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20 flex items-center justify-center">
-                      <span className="text-xs font-bold text-green-500">G</span>
+                      <div className="w-8 h-8 rounded-md bg-green-600 flex items-center justify-center text-white font-bold text-xs">
+                        G
+                      </div>
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
