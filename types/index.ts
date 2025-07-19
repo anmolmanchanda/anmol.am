@@ -11,6 +11,7 @@ export interface Project {
   category: 'web' | 'mobile' | 'api' | 'enterprise' | 'ai' | 'automation' | 'blockchain' | 'other'
   date: string
   type?: 'work' | 'personal' | 'mixed'
+  blogArticle?: string
 }
 
 export interface BlogPost {

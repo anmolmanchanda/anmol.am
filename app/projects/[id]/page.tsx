@@ -16,7 +16,8 @@ const projects: Record<string, Project> = {
     liveUrl: "https://qolimpact.com",
     featured: true,
     category: "enterprise",
-    startDate: "2024-06",
+    date: "June 2024 - Present",
+    type: "work",
     blogArticle: "/blog/building-tb-scale-data-infrastructure-un"
   },
   "2": {
@@ -29,7 +30,8 @@ const projects: Record<string, Project> = {
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
     category: "ai",
-    startDate: "2024-05",
+    date: "May 2024 - Present",
+    type: "personal",
     blogArticle: "/blog/ai-assisted-macos-life-manager"
   },
   "3": {
@@ -43,8 +45,9 @@ const projects: Record<string, Project> = {
     liveUrl: "https://n8n.io",
     featured: true,
     category: "automation",
-    startDate: "2024-01",
-    endDate: "2024-06"
+    date: "January 2024 - June 2024",
+    type: "work",
+    blogArticle: "/blog/enterprise-automation-n8n-workflows"
   },
   "4": {
     id: "4",
@@ -56,8 +59,8 @@ const projects: Record<string, Project> = {
     githubUrl: "https://github.com/anmolmanchanda/blockchain-solutions",
     featured: false,
     category: "blockchain",
-    startDate: "2024-02",
-    endDate: "2024-06"
+    date: "February 2024 - June 2024",
+    type: "work"
   },
   "5": {
     id: "5",
@@ -69,7 +72,8 @@ const projects: Record<string, Project> = {
     githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
     featured: false,
     category: "ai",
-    startDate: "2024-04"
+    date: "April 2024 - Present",
+    type: "personal"
   },
   "6": {
     id: "6",
@@ -81,7 +85,8 @@ const projects: Record<string, Project> = {
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
-    startDate: "2024-01"
+    date: "January 2024 - Present",
+    type: "personal"
   }
 }
 
@@ -126,9 +131,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               <h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
               <p className="mt-4 text-lg text-muted-foreground">{project.description}</p>
               <div className="mt-6 flex items-center gap-4">
-                {(project as any).blogArticle && (
+                {project.blogArticle && (
                   <Link
-                    href={(project as any).blogArticle}
+                    href={project.blogArticle}
                     className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                   >
                     <BookOpen className="mr-1.5 h-4 w-4" />

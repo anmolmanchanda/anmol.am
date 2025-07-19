@@ -18,8 +18,9 @@ const allProjects: Project[] = [
     liveUrl: "https://qolimpact.com",
     featured: true,
     category: "enterprise",
-    startDate: "2024-06",
-    type: "work"
+    date: "June 2024 - Present",
+    type: "work",
+    blogArticle: "/blog/building-tb-scale-data-infrastructure-un"
   },
   {
     id: "2",
@@ -31,8 +32,9 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
     category: "ai",
-    startDate: "2024-05",
-    type: "personal"
+    date: "May 2024 - Present",
+    type: "personal",
+    blogArticle: "/blog/ai-assisted-macos-life-manager"
   },
   {
     id: "3",
@@ -45,9 +47,9 @@ const allProjects: Project[] = [
     liveUrl: "https://n8n.io",
     featured: true,
     category: "automation",
-    startDate: "2024-01",
-    endDate: "2024-06",
-    type: "work"
+    date: "January 2024 - June 2024",
+    type: "work",
+    blogArticle: "/blog/enterprise-automation-n8n-workflows"
   },
   {
     id: "6",
@@ -59,7 +61,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
-    startDate: "2024-01",
+    date: "January 2024 - Present",
     type: "personal"
   },
   {
@@ -72,8 +74,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/blockchain-solutions",
     featured: false,
     category: "blockchain",
-    startDate: "2024-02",
-    endDate: "2024-06",
+    date: "February 2024 - June 2024",
     type: "work"
   },
   {
@@ -86,7 +87,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
     featured: false,
     category: "ai",
-    startDate: "2024-04",
+    date: "April 2024 - Present",
     type: "personal"
   }
 ]
@@ -295,9 +296,7 @@ export default function ProjectsPage() {
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">
-                      {new Date(project.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                      {project.endDate && ` - ${new Date(project.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`}
-                      {!project.endDate && ' - Present'}
+                      {project.date}
                     </span>
                     {project.featured && (
                       <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
