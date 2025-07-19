@@ -1,6 +1,10 @@
 # Mastering State Management in React Applications
 
+*A comprehensive guide to managing state in React applications, from local state to global state solutions*
+
 State management in React applications can make or break your user experience. After building complex enterprise applications at UN-Habitat and developing the AI-powered Life Manager, I've learned that choosing the right state management strategy isn't just about personal preference—it's about matching the solution to your specific use case.
+
+![React State Management Architecture](https://images.unsplash.com/photo-1518841024803-143c51852c8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODA0NTh8MHwxfHNlYXJjaHwxfHxyZWFjdCUyMHN0YXRlJTIwbWFuYWdlbWVudCUyMHJlZHV4JTIwY29tcG9uZW50fGVufDB8fHx8MTc1Mjk1MDM2NHww&ixlib=rb-4.1.0&q=80&w=1080)
 
 ## The State Management Landscape
 

@@ -1,6 +1,10 @@
 # Building Real-time Applications with WebSockets
 
+*Learn how to implement real-time features in your applications using WebSockets and Socket.io*
+
 Real-time functionality has become essential for modern web applications. Whether you're building collaborative tools, live dashboards, or instant messaging systems, WebSockets provide the foundation for seamless real-time communication. During my work at UN-Habitat building live data monitoring systems for 12 global cities, I discovered the power and complexity of implementing robust real-time architectures.
+
+![Real-time WebSocket Communication](https://images.unsplash.com/photo-1746292506315-e346cba2af48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODA0NTh8MHwxfHNlYXJjaHwxfHxyZWFsLXRpbWUlMjB3ZWJzb2NrZXQlMjBjb21tdW5pY2F0aW9uJTIwZGF0YSUyMHN0cmVhbXxlbnwwfHx8fDE3NTI5NTAzNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080)
 
 ## Why WebSockets Matter for Enterprise Applications
 

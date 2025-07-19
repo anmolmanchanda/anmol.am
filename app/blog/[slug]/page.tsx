@@ -115,6 +115,19 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     gradient: "from-orange-500 via-red-500 to-pink-600",
     views: 0,
     featured: true
+  },
+  "enterprise-automation-n8n-workflows": {
+    id: "9",
+    title: "Enterprise Automation with N8N: 50+ Workflows at Scale",
+    excerpt: "Building a comprehensive automation ecosystem using N8N, creating over 50 interconnected workflows that transformed how UN-Habitat handled data processing, communication, and operational tasks across 12 global cities.",
+    date: "2025-01-15",
+    tags: ["N8N", "Automation", "Workflows", "UN-Habitat", "Enterprise", "DevOps"],
+    readingTime: 25,
+    slug: "enterprise-automation-n8n-workflows",
+    image: "/images/blog/n8n-automation.svg",
+    gradient: "from-cyan-500 via-teal-500 to-emerald-600",
+    views: 0,
+    featured: true
   }
 }
 
@@ -266,24 +279,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Article Content */}
             <div className="liquid-glass rounded-2xl border backdrop-blur-md p-8">
               <div 
-                className="prose prose-sm max-w-none dark:prose-invert
-                          prose-headings:bg-gradient-to-r prose-headings:from-primary prose-headings:via-purple-500 prose-headings:to-cyan-500 prose-headings:bg-clip-text prose-headings:text-transparent prose-headings:font-bold prose-headings:mb-8 prose-headings:mt-10
-                          prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg
-                          prose-p:text-xs prose-p:leading-relaxed prose-p:mb-6 prose-p:text-muted-foreground prose-p:break-words
-                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium prose-a:text-xs
-                          prose-code:bg-gradient-to-r prose-code:from-slate-900 prose-code:to-slate-800 prose-code:text-green-400 prose-code:px-3 prose-code:py-1.5 prose-code:rounded-md prose-code:text-xs prose-code:font-mono prose-code:border prose-code:border-slate-700 prose-code:shadow-lg prose-code:font-semibold
-                          prose-pre:bg-gradient-to-br prose-pre:from-slate-900 prose-pre:via-slate-800 prose-pre:to-slate-900 prose-pre:border-2 prose-pre:border-slate-600 prose-pre:rounded-xl prose-pre:p-6 prose-pre:overflow-x-auto prose-pre:shadow-2xl prose-pre:backdrop-blur-sm prose-pre:relative prose-pre:before:absolute prose-pre:before:top-0 prose-pre:before:left-0 prose-pre:before:right-0 prose-pre:before:h-8 prose-pre:before:bg-slate-700 prose-pre:before:rounded-t-xl prose-pre:before:border-b prose-pre:before:border-slate-600
-                          prose-pre>code:text-green-400 prose-pre>code:text-sm prose-pre>code:leading-relaxed prose-pre>code:font-mono prose-pre>code:block prose-pre>code:whitespace-pre prose-pre>code:pt-8
-                          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-lg prose-blockquote:my-8 prose-blockquote:text-xs prose-blockquote:italic
-                          prose-strong:text-primary prose-strong:font-semibold prose-strong:text-xs
-                          prose-ul:list-none prose-ul:space-y-4 prose-ul:my-8 prose-ul:text-xs
-                          prose-ol:space-y-4 prose-ol:my-8 prose-ol:text-xs
-                          prose-li:relative prose-li:pl-6 prose-li:text-xs prose-li:leading-relaxed prose-li:mb-2
-                          prose-li:before:content-['▶'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:text-primary prose-li:before:text-xs prose-li:before:font-bold
-                          prose-table:border-2 prose-table:border-border prose-table:rounded-lg prose-table:overflow-hidden prose-table:shadow-lg prose-table:text-xs
-                          prose-th:bg-secondary prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-xs prose-th:border-b-2 prose-th:border-border
-                          prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-border prose-td:text-xs
-                          prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8 prose-img:mx-auto prose-img:border prose-img:border-border"
+                className="prose prose-xs max-w-none dark:prose-invert [&>*]:text-[0.7rem]
+                          prose-headings:bg-gradient-to-r prose-headings:from-primary prose-headings:via-purple-500 prose-headings:to-cyan-500 prose-headings:bg-clip-text prose-headings:text-transparent prose-headings:font-bold prose-headings:mb-12 prose-headings:mt-16
+                          prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base
+                          prose-p:text-[0.7rem] prose-p:leading-[1.9] prose-p:mb-8 prose-p:text-muted-foreground prose-p:break-words
+                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-medium prose-a:text-[0.7rem]
+                          prose-code:bg-black prose-code:text-emerald-400 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-[0.65rem] prose-code:font-mono prose-code:border prose-code:border-emerald-900/50 prose-code:shadow-[inset_0_1px_2px_rgba(0,0,0,0.7)] prose-code:font-bold
+                          prose-pre:bg-black prose-pre:border-4 prose-pre:border-gray-800 prose-pre:rounded-xl prose-pre:p-0 prose-pre:overflow-x-auto prose-pre:shadow-[0_8px_32px_rgba(0,0,0,0.8)] prose-pre:relative prose-pre:before:absolute prose-pre:before:top-0 prose-pre:before:left-0 prose-pre:before:right-0 prose-pre:before:h-10 prose-pre:before:bg-gray-800 prose-pre:before:rounded-t-lg prose-pre:before:flex prose-pre:before:items-center prose-pre:before:px-4 prose-pre:before:content-['Terminal'] prose-pre:before:text-gray-400 prose-pre:before:font-mono prose-pre:before:text-xs prose-pre:after:absolute prose-pre:after:top-3 prose-pre:after:right-4 prose-pre:after:flex prose-pre:after:gap-2 prose-pre:after:content-[''] prose-pre:my-10
+                          prose-pre>code:text-emerald-400 prose-pre>code:text-[0.7rem] prose-pre>code:leading-[1.8] prose-pre>code:font-mono prose-pre>code:block prose-pre>code:whitespace-pre prose-pre>code:pt-14 prose-pre>code:pb-6 prose-pre>code:px-6
+                          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-lg prose-blockquote:my-10 prose-blockquote:text-[0.7rem] prose-blockquote:italic
+                          prose-strong:text-primary prose-strong:font-semibold prose-strong:text-[0.7rem]
+                          prose-ul:list-none prose-ul:space-y-3 prose-ul:my-10 prose-ul:text-[0.7rem]
+                          prose-ol:space-y-3 prose-ol:my-10 prose-ol:text-[0.7rem]
+                          prose-li:relative prose-li:pl-6 prose-li:text-[0.7rem] prose-li:leading-[1.9] prose-li:mb-3
+                          prose-li:before:content-['▶'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:text-primary prose-li:before:text-[0.6rem] prose-li:before:font-bold
+                          prose-table:border-2 prose-table:border-border prose-table:rounded-lg prose-table:overflow-hidden prose-table:shadow-lg prose-table:text-[0.7rem]
+                          prose-th:bg-secondary prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-[0.7rem] prose-th:border-b-2 prose-th:border-border
+                          prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-border prose-td:text-[0.7rem]
+                          prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-12 prose-img:mx-auto prose-img:border-2 prose-img:border-border prose-img:max-w-full"
                 dangerouslySetInnerHTML={{ __html: content }} 
               />
             </div>

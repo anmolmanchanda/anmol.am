@@ -1,6 +1,10 @@
 # Building Scalable Web Applications with Next.js
 
+*Learn how to build performant and scalable web applications using Next.js 15 and modern best practices*
+
 When I started building enterprise-grade applications at UN-Habitat, I quickly realized that traditional React setups weren't going to cut it for the TB-scale data processing infrastructure we needed. This journey led me to Next.js 15, and I want to share the architectural patterns and optimization strategies that helped us serve 12 global cities with seamless performance.
+
+![Next.js React Web Development](https://images.unsplash.com/photo-1647514422086-18cde746fa26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODA0NTh8MHwxfHNlYXJjaHwxfHxuZXh0anMlMjByZWFjdCUyMHdlYiUyMGRldmVsb3BtZW50JTIwZnJhbWV3b3JrfGVufDB8fHx8MTc1Mjk1MDM2M3ww&ixlib=rb-4.1.0&q=80&w=1080)
 
 ## The Challenge: Enterprise Scale Requirements
 
