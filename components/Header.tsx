@@ -7,6 +7,7 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { siteConfig } from "@/lib/config"
 import { ThemeToggle } from "./ThemeToggle"
+import { CommandPaletteTrigger } from "./CommandPalette"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -44,6 +45,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            <CommandPaletteTrigger />
             <ThemeToggle />
           </div>
 

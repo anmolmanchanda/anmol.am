@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Download, MapPin, Globe2 } from "lucide-react"
 import { siteConfig } from "@/lib/config"
+import { ParallaxElement, SoundEffectButton } from "@/components/InteractiveEffects"
 
 export function Hero() {
   return (
@@ -20,7 +21,7 @@ export function Hero() {
       </div>
       
       {/* Enhanced floating tech bubbles - spread across entire viewport */}
-      <div className="absolute inset-0 pointer-events-none">
+      <ParallaxElement speed="slow" className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[8%] left-[3%] animate-float-faster">
           <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
             <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent font-semibold">AWS Expert</span>
@@ -61,7 +62,7 @@ export function Hero() {
             <span className="bg-gradient-to-r from-teal-600 via-cyan-500 to-blue-500 bg-clip-text text-transparent font-semibold">Enterprise</span>
           </div>
         </div>
-      </div>
+      </ParallaxElement>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">

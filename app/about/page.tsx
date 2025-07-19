@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Image from "next/image"
 import { Building2, Smartphone, ChefHat, Users, GraduationCap, Code2, Database, Zap } from "lucide-react"
 import { Experience } from "@/types"
+import { ParallaxElement, TimelineItem } from "@/components/InteractiveEffects"
 
 export const metadata: Metadata = {
   title: "About",
@@ -137,12 +138,24 @@ export default function AboutPage() {
                     return <Building2 className="w-5 h-5 text-primary icon-float" />
                   }
                   
+                  const getDetails = () => {
+                    if (exp.id === "1") return "Leading technical innovation at UN-Habitat, building scalable data infrastructure for global urban development initiatives."
+                    if (exp.id === "2") return "Pioneered blockchain solutions for regional innovation, collaborating with government stakeholders and tech startups."
+                    if (exp.id === "3") return "Developed strong work ethic and customer service skills while transitioning to technical career."
+                    if (exp.id === "4") return "International leadership experience managing cross-cultural teams and exchange programs."
+                    return ""
+                  }
+
                   return (
-                    <div key={exp.id} className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent">
+                    <TimelineItem
+                      key={exp.id}
+                      details={getDetails()}
+                      className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                    >
                       <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         {getIcon()}
                       </div>
-                      <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group">
+                      <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element">
                         <div className="space-y-3">
                           <div>
                             <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{exp.position}</h3>
@@ -171,7 +184,7 @@ export default function AboutPage() {
                           </ul>
                         </div>
                       </div>
-                    </div>
+                    </TimelineItem>
                   )
                 })}
               </div>
@@ -265,6 +278,59 @@ export default function AboutPage() {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Affiliations Section with Logos */}
+            <section className="relative z-10">
+              <h2 className="text-2xl font-bold tracking-tight mb-8">Affiliations & Partnerships</h2>
+              <div className="liquid-glass p-8 rounded-2xl border backdrop-blur-md shadow-lg card-3d">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                  <ParallaxElement speed="slow" className="text-center">
+                    <div className="flex flex-col items-center space-y-4 interactive-element p-6 rounded-xl">
+                      <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        UN
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">UN-Habitat</h3>
+                        <p className="text-sm text-muted-foreground">Technical Solutions Architect</p>
+                        <p className="text-xs text-muted-foreground mt-1">2024 - Present</p>
+                      </div>
+                    </div>
+                  </ParallaxElement>
+
+                  <ParallaxElement speed="medium" className="text-center">
+                    <div className="flex flex-col items-center space-y-4 interactive-element p-6 rounded-xl">
+                      <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-green-400 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        QL
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">Quality of Life Initiative</h3>
+                        <p className="text-sm text-muted-foreground">Data Engineering Contributor</p>
+                        <p className="text-xs text-muted-foreground mt-1">Global Cities Program</p>
+                      </div>
+                    </div>
+                  </ParallaxElement>
+
+                  <ParallaxElement speed="fast" className="text-center">
+                    <div className="flex flex-col items-center space-y-4 interactive-element p-6 rounded-xl">
+                      <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-400 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        CC
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">Conestoga College</h3>
+                        <p className="text-sm text-muted-foreground">Mobile Solutions Graduate</p>
+                        <p className="text-xs text-muted-foreground mt-1">2023 • Waterloo, ON</p>
+                      </div>
+                    </div>
+                  </ParallaxElement>
+                </div>
+                
+                <div className="mt-8 text-center">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Proud to contribute to global urban development through technical innovation and education excellence.
+                  </p>
                 </div>
               </div>
             </section>

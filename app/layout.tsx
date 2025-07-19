@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { CursorTrail, ScrollProgress } from "@/components/InteractiveEffects";
+import { CommandPalette } from "@/components/CommandPalette";
 import { siteConfig } from "@/lib/config";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -80,6 +82,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollProgress />
+          <CursorTrail />
+          <CommandPalette />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
