@@ -10,7 +10,7 @@ const featuredProjects: Project[] = [
     technologies: ["AWS Glue", "Lambda", "EventBridge", "Step Functions", "PySpark"],
     image: "/images/projects/un-pipeline.jpg",
     githubUrl: "",
-    liveUrl: "",
+    liveUrl: "https://qolimpact.com",
     featured: true,
     category: "enterprise",
     date: "2024-06",
@@ -22,7 +22,7 @@ const featuredProjects: Project[] = [
     description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
     technologies: ["Swift", "AI Integration", "macOS Frameworks"],
     image: "/images/projects/life-manager.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/ai-life-manager",
+    githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
     category: "ai",
     date: "2024-05",
@@ -30,15 +30,27 @@ const featuredProjects: Project[] = [
   },
   {
     id: "3",
-    title: "Automation Solutions Suite",
-    description: "100+ Apple Shortcuts and N8N workflows for process optimization and efficiency",
-    technologies: ["Apple Shortcuts", "N8N.io", "APIs", "Automation"],
+    title: "N8N Workflow Automation",
+    description: "50+ N8N workflows for process optimization and enterprise automation",
+    technologies: ["N8N.io", "APIs", "Workflow Design", "Automation"],
+    image: "/images/projects/automation.jpg",
+    githubUrl: "",
+    featured: true,
+    category: "automation",
+    date: "2024-01",
+    type: "work" // N8N: work (UN)
+  },
+  {
+    id: "4",
+    title: "Apple Shortcuts Collection",
+    description: "50+ Apple Shortcuts for iOS/macOS process optimization and personal efficiency",
+    technologies: ["Apple Shortcuts", "iOS", "macOS", "Personal Automation"],
     image: "/images/projects/automation.jpg",
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
     date: "2024-01",
-    type: "mixed" // Apple Shortcuts: personal, N8N: work (UN)
+    type: "personal" // Apple Shortcuts: personal
   }
 ]
 
@@ -63,6 +75,8 @@ export function FeaturedProjects() {
             const getProjectMetrics = () => {
               if (project.id === "1") return { metric: "10+ TB", label: "Data Processed Monthly" }
               if (project.id === "2") return { metric: "AI-Powered", label: "Native macOS App" }
+              if (project.id === "3") return { metric: "50+", label: "N8N Workflows" }
+              if (project.id === "4") return { metric: "50+", label: "Apple Shortcuts" }
               return { metric: "100+", label: "Automations Created" }
             }
 
@@ -115,7 +129,7 @@ export function FeaturedProjects() {
                         </div>
                       </div>
                     )}
-                    {project.id === "3" && (
+                    {(project.id === "3" || project.id === "4") && (
                       <div className="w-full h-full bg-gradient-to-br from-green-600/60 via-emerald-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
                         <div className="grid grid-cols-8 gap-3 opacity-70 -rotate-6">
                           {[...Array(32)].map((_, i) => (

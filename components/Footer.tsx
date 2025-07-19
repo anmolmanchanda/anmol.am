@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Github, Linkedin, Mail, Star } from "lucide-react"
 import { siteConfig } from "@/lib/config"
+import { SpotifyNowPlaying, GitHubActivityFeed, VisitorCounter } from "@/components/Phase4Features"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -9,6 +10,16 @@ export function Footer() {
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8">
+          {/* Phase 4 Dashboard Section */}
+          <div className="mb-12">
+            <h3 className="text-lg font-semibold mb-6 text-center">Live Dashboard</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <VisitorCounter />
+              <SpotifyNowPlaying />
+              <GitHubActivityFeed />
+            </div>
+          </div>
+          
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <div>
               <h3 className="text-lg font-semibold">{siteConfig.name}</h3>
@@ -33,6 +44,11 @@ export function Footer() {
                 <li>
                   <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
                     Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/personal" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Life
                   </Link>
                 </li>
                 <li>

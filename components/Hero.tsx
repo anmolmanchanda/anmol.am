@@ -3,6 +3,7 @@ import Image from "next/image"
 import { ArrowRight, Download, MapPin, Globe2 } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 import { ParallaxElement } from "@/components/InteractiveEffects"
+import { Card3D, MagneticButton, AnimatedText } from "@/components/DrribbleInspiredFeatures"
 
 export function Hero() {
   return (
@@ -68,9 +69,9 @@ export function Hero() {
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
             
-            {/* Avatar Section - Jony Ive minimalism */}
+            {/* Avatar Section - Enhanced with 3D effect */}
             <div className="flex-shrink-0 order-2 lg:order-1">
-              <div className="relative group">
+              <Card3D className="relative group" glowColor="primary">
                 <div className="w-64 h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
                     src="/professional_headshot_avatar.JPG"
@@ -88,7 +89,7 @@ export function Hero() {
                     <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                   </div>
                 </div>
-              </div>
+              </Card3D>
             </div>
 
             {/* Content Section - Pure minimalism */}
@@ -98,13 +99,11 @@ export function Hero() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-none">
-                    <span className="block text-foreground">Hi, I&apos;m</span>
+                    <AnimatedText text="Hi, I'm" className="block text-foreground" delay={0} />
                     <span className="block">
-                      <span className="text-foreground">Anmol</span>
+                      <AnimatedText text="Anmol" className="text-foreground" delay={0.3} />
                     </span>
-                    <span className="block text-foreground/70 font-extralight">
-                      Manchanda
-                    </span>
+                    <AnimatedText text="Manchanda" className="block text-foreground/70 font-extralight" delay={0.6} />
                   </h1>
                 </div>
 
@@ -126,23 +125,21 @@ export function Hero() {
                 <span className="text-sm font-medium">{siteConfig.location}</span>
               </div>
 
-              {/* Simplified CTAs */}
+              {/* Enhanced CTAs with magnetic effect */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group min-w-[200px] cyber-border futuristic-gradient"
-                >
-                  View Portfolio
-                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                <MagneticButton className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group min-w-[200px] cyber-border futuristic-gradient">
+                  <Link href="/projects" className="flex items-center">
+                    View Portfolio
+                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </MagneticButton>
                 
-                <Link
-                  href="/Anmol's Resume.pdf"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-border bg-background/50 backdrop-blur-sm font-medium transition-all duration-300 hover:bg-background hover:shadow-md min-w-[200px]"
-                >
-                  <Download className="mr-2 w-4 h-4" />
-                  Resume
-                </Link>
+                <MagneticButton className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-border bg-background/50 backdrop-blur-sm font-medium transition-all duration-300 hover:bg-background hover:shadow-md min-w-[200px]">
+                  <Link href="/Anmol's Resume.pdf" className="flex items-center">
+                    <Download className="mr-2 w-4 h-4" />
+                    Resume
+                  </Link>
+                </MagneticButton>
               </div>
             </div>
           </div>

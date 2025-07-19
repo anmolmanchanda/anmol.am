@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { CursorTrail, ScrollProgress } from "@/components/InteractiveEffects";
 import { CommandPalette } from "@/components/CommandPalette";
+import { PWAInstallPrompt } from "@/components/Phase4Features";
 import { siteConfig } from "@/lib/config";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -63,6 +64,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  manifest: "/manifest.json",
   verification: {
     google: "your-google-verification-code",
   },
@@ -85,6 +87,7 @@ export default function RootLayout({
           <ScrollProgress />
           <CursorTrail />
           <CommandPalette />
+          <PWAInstallPrompt />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

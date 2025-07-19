@@ -31,7 +31,7 @@ export const siteConfig = {
     email: "mailto:anmol.manchanda@icloud.com"
   },
   emailAliases: {
-    work: "hi@anmol.am",
+    work: "work@anmol.am",
     personal: "anmol.manchanda@icloud.com"
   },
   location: "Kitchener, Ontario, Canada"

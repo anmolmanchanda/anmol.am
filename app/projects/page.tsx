@@ -15,7 +15,7 @@ const allProjects: Project[] = [
     technologies: ["AWS Glue", "Lambda", "EventBridge", "Step Functions", "PySpark", "Python"],
     image: "/images/projects/un-pipeline.jpg",
     githubUrl: "",
-    liveUrl: "",
+    liveUrl: "https://qolimpact.com",
     featured: true,
     category: "enterprise",
     date: "2024-06",
@@ -28,7 +28,7 @@ const allProjects: Project[] = [
     longDescription: "Developed comprehensive productivity solution as native macOS application using AI-assisted development methodologies. Demonstrates cutting-edge AI-assisted development practices for personal productivity optimization and life management.",
     technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
     image: "/images/projects/life-manager.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/ai-life-manager",
+    githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
     category: "ai",
     date: "2024-05",
@@ -36,16 +36,29 @@ const allProjects: Project[] = [
   },
   {
     id: "3",
-    title: "Automation Solutions Suite",
-    description: "100+ Apple Shortcuts and N8N workflows for process optimization and efficiency",
-    longDescription: "Created 100+ Apple Shortcuts and N8N workflows for process automation, providing significant efficiency improvements across daily workflows. Covers both personal and professional process automation with various API integrations.",
-    technologies: ["Apple Shortcuts", "N8N.io", "APIs", "Automation", "Workflow Design"],
+    title: "N8N Workflow Automation",
+    description: "50+ N8N workflows for process optimization and enterprise automation",
+    longDescription: "Created 50+ N8N workflows for enterprise process automation at UN-Habitat, providing significant efficiency improvements across organizational workflows. Covers complex multi-step processes with various API integrations for data processing and notifications.",
+    technologies: ["N8N.io", "APIs", "Workflow Design", "Automation"],
+    image: "/images/projects/automation.jpg",
+    githubUrl: "",
+    featured: true,
+    category: "automation",
+    date: "2024-01",
+    type: "work"
+  },
+  {
+    id: "6",
+    title: "Apple Shortcuts Collection",
+    description: "50+ Apple Shortcuts for iOS/macOS process optimization and personal efficiency",
+    longDescription: "Developed 50+ Apple Shortcuts for iOS and macOS to automate personal productivity workflows. Includes shortcuts for file management, calendar scheduling, note-taking, and cross-device synchronization to streamline daily tasks.",
+    technologies: ["Apple Shortcuts", "iOS", "macOS", "Personal Automation"],
     image: "/images/projects/automation.jpg",
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
     date: "2024-01",
-    type: "mixed"
+    type: "personal"
   },
   {
     id: "4",
@@ -169,7 +182,7 @@ export default function ProjectsPage() {
                       </div>
                     </div>
                   )}
-                  {(project.id === "3" || project.category === "automation") && (
+                  {(project.id === "3" || project.id === "6" || project.category === "automation") && (
                     <div className="w-full h-full bg-gradient-to-br from-green-600/60 via-emerald-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
                       <div className="grid grid-cols-8 gap-3 opacity-70 -rotate-6">
                         {[...Array(32)].map((_, i) => (

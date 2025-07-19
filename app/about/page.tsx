@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Image from "next/image"
 import { Building2, Smartphone, ChefHat, Users, GraduationCap, Code2, Database, Zap } from "lucide-react"
 import { Experience } from "@/types"
-import { ParallaxElement, TimelineItem } from "@/components/InteractiveEffects"
+import { TimelineItem } from "@/components/InteractiveEffects"
 
 export const metadata: Metadata = {
   title: "About",
@@ -146,6 +146,22 @@ export default function AboutPage() {
                     return ""
                   }
 
+                  const getLogo = () => {
+                    if (exp.id === "1") return <span className="text-xs font-bold text-blue-500">UN</span>
+                    if (exp.id === "2") return <span className="text-xs font-bold text-purple-500">WR</span>
+                    if (exp.id === "3") return <span className="text-xs font-bold text-orange-500">WFC</span>
+                    if (exp.id === "4") return <span className="text-xs font-bold text-green-500">AI</span>
+                    return <span className="text-xs font-bold text-primary">ORG</span>
+                  }
+
+                  const getLogoStyle = () => {
+                    if (exp.id === "1") return "bg-gradient-to-br from-blue-500/20 to-blue-400/10 border border-blue-500/20"
+                    if (exp.id === "2") return "bg-gradient-to-br from-purple-500/20 to-purple-400/10 border border-purple-500/20"
+                    if (exp.id === "3") return "bg-gradient-to-br from-orange-500/20 to-orange-400/10 border border-orange-500/20"
+                    if (exp.id === "4") return "bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20"
+                    return "bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20"
+                  }
+
                   return (
                     <TimelineItem
                       key={exp.id}
@@ -155,33 +171,38 @@ export default function AboutPage() {
                       <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         {getIcon()}
                       </div>
-                      <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element">
-                        <div className="space-y-3">
-                          <div>
-                            <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{exp.position}</h3>
-                            <p className="text-sm text-muted-foreground">
-                              {exp.company} • {new Date(exp.startDate).getFullYear()} - {exp.endDate ? new Date(exp.endDate).getFullYear() : 'Present'}
-                            </p>
+                      <div className="flex items-start gap-4">
+                        <div className={`w-12 h-12 rounded-lg overflow-hidden shadow-md flex items-center justify-center ${getLogoStyle()}`}>
+                          {getLogo()}
+                        </div>
+                        <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                          <div className="space-y-3">
+                            <div>
+                              <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{exp.position}</h3>
+                              <p className="text-sm text-muted-foreground">
+                                {exp.company} • {new Date(exp.startDate).getFullYear()} - {exp.endDate ? new Date(exp.endDate).getFullYear() : 'Present'}
+                              </p>
+                            </div>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                            <div className="flex flex-wrap gap-2 pt-2">
+                              {exp.technologies.map((tech) => (
+                                <span
+                                  key={tech}
+                                  className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                              {exp.achievements.map((achievement, idx) => (
+                                <li key={idx} className="flex items-start">
+                                  <span className="mr-2 text-primary font-bold">•</span>
+                                  <span>{achievement}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
-                          <div className="flex flex-wrap gap-2 pt-2">
-                            {exp.technologies.map((tech) => (
-                              <span
-                                key={tech}
-                                className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                            {exp.achievements.map((achievement, idx) => (
-                              <li key={idx} className="flex items-start">
-                                <span className="mr-2 text-primary font-bold">•</span>
-                                <span>{achievement}</span>
-                              </li>
-                            ))}
-                          </ul>
                         </div>
                       </div>
                     </TimelineItem>
@@ -192,148 +213,200 @@ export default function AboutPage() {
 
             <section className="relative z-10">
               <h2 className="text-2xl font-bold tracking-tight">Education</h2>
-              <div className="mt-6 space-y-6">
-                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <div className="mt-8 space-y-8">
+                <TimelineItem
+                  details="Comprehensive mobile development program covering iOS, Android, and cross-platform frameworks with hands-on industry projects."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <GraduationCap className="w-5 h-5 text-primary icon-pulse" />
+                  </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 p-2 rounded-lg bg-primary/10">
-                      <GraduationCap className="w-6 h-6 text-primary icon-pulse" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center">
+                      <span className="text-xs font-bold text-primary">CC</span>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Post Graduate Diploma in Mobile Solutions Development</h3>
-                      <p className="text-sm text-muted-foreground font-medium">Conestoga College, Waterloo • 2023</p>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                        Specialized in mobile application development, focusing on iOS and Android platforms with modern frameworks and technologies.
-                      </p>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Post Graduate Diploma in Mobile Solutions Development</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Conestoga College, Waterloo • 2023
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Specialized in mobile application development, focusing on iOS and Android platforms with modern frameworks and technologies.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">iOS Development</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Android Development</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Cross-Platform</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
+                </TimelineItem>
+
+                <TimelineItem
+                  details="Computer science foundation with strong emphasis on algorithms, data structures, and software engineering principles."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Database className="w-5 h-5 text-blue-500 icon-float" />
+                  </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 p-2 rounded-lg bg-blue-500/10">
-                      <Database className="w-6 h-6 text-blue-500 icon-float" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-blue-500/20 to-blue-400/10 border border-blue-500/20 flex items-center justify-center">
+                      <span className="text-xs font-bold text-blue-500">IPU</span>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Bachelor of Computer Applications</h3>
-                      <p className="text-sm text-muted-foreground font-medium">GGSIPU, India • 2017</p>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                        Comprehensive computer science education covering programming fundamentals, algorithms, and software development principles.
-                      </p>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Bachelor of Computer Applications</h3>
+                          <p className="text-sm text-muted-foreground">
+                            GGSIPU, India • 2017
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Comprehensive computer science education covering programming fundamentals, algorithms, and software development principles.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Programming</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Algorithms</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Software Engineering</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
+                </TimelineItem>
+
+                <TimelineItem
+                  details="Google-certified Android development program focusing on modern development practices and Material Design principles."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Smartphone className="w-5 h-5 text-green-500 icon-pulse" />
+                  </div>
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 p-2 rounded-lg bg-green-500/10">
-                      <Smartphone className="w-6 h-6 text-green-500 icon-pulse" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20 flex items-center justify-center">
+                      <span className="text-xs font-bold text-green-500">G</span>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Android Basics Nanodegree</h3>
-                      <p className="text-sm text-muted-foreground font-medium">Udacity (by Google) • 2017</p>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                        Google-certified program focusing on Android development fundamentals and best practices.
-                      </p>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Android Basics Nanodegree</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Udacity (by Google) • 2017
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Google-certified program focusing on Android development fundamentals and best practices.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Android SDK</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Material Design</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Google Certified</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </TimelineItem>
               </div>
             </section>
 
             <section className="relative z-10">
               <h2 className="text-2xl font-bold tracking-tight">Career Goals & Services</h2>
-              <div className="mt-6 liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg">
-                <div className="space-y-4 text-muted-foreground">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 p-2 rounded-lg bg-purple-500/10">
-                      <Zap className="w-6 h-6 text-purple-500 icon-float" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Career Focus</h3>
-                      <p className="leading-relaxed">
-                        Targeting Technical/AI Solutions Architect roles (125-150k+ CAD) focusing on challenging projects 
-                        that utilize diverse technical skills and AI-assisted development methodologies. Open to both full-time 
-                        opportunities and consulting arrangements.
-                      </p>
-                    </div>
+              <div className="mt-8 space-y-8">
+                <TimelineItem
+                  details="Seeking challenging Technical/AI Solutions Architect roles that leverage AI-assisted development methodologies and diverse technical skills."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Zap className="w-5 h-5 text-purple-500 icon-float" />
                   </div>
-                  
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 p-2 rounded-lg bg-cyan-500/10">
-                      <Code2 className="w-6 h-6 text-cyan-500 icon-pulse" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-purple-500/20 to-purple-400/10 border border-purple-500/20 flex items-center justify-center">
+                      <span className="text-xs font-bold text-purple-500">CF</span>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Consulting Services</h3>
-                      <p className="leading-relaxed mb-3">
-                        Available for consulting and contracting opportunities alongside current UN work, specializing in:
-                      </p>
-                      <ul className="space-y-1 text-sm">
-                        <li className="flex items-center gap-2"><span className="text-primary">•</span> Technical problem-solving consultation</li>
-                        <li className="flex items-center gap-2"><span className="text-primary">•</span> AI implementation assessment and strategy</li>
-                        <li className="flex items-center gap-2"><span className="text-primary">•</span> Rapid prototype development</li>
-                        <li className="flex items-center gap-2"><span className="text-primary">•</span> Data pipeline architecture and development</li>
-                        <li className="flex items-center gap-2"><span className="text-primary">•</span> AI-assisted automation solutions</li>
-                      </ul>
-                      <div className="mt-4 p-3 bg-primary/10 rounded-lg">
-                        <p className="font-semibold text-foreground">Consulting Rate: $90-150/hour</p>
-                        <p className="text-sm">For specialized technical projects and AI implementation consulting</p>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Career Focus</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Technical/AI Solutions Architect • 125-150k+ CAD
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Targeting Technical/AI Solutions Architect roles focusing on challenging projects 
+                          that utilize diverse technical skills and AI-assisted development methodologies. Open to both full-time 
+                          opportunities and consulting arrangements.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">AI-Assisted Development</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Solutions Architecture</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Technical Leadership</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </TimelineItem>
+
+                <TimelineItem
+                  details="Available for consulting and contracting opportunities alongside current UN work, specializing in AI implementation and rapid prototyping."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Code2 className="w-5 h-5 text-cyan-500 icon-pulse" />
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-cyan-500/20 to-cyan-400/10 border border-cyan-500/20 flex items-center justify-center">
+                      <span className="text-xs font-bold text-cyan-500">CS</span>
+                    </div>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Consulting Services</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Available for technical consulting • $90-150/hour
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Available for consulting and contracting opportunities alongside current UN work, specializing in technical problem-solving and AI implementation.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Technical Consulting</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">AI Strategy</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Rapid Prototyping</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Data Pipelines</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Automation</span>
+                        </div>
+                        <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                          <li className="flex items-start">
+                            <span className="mr-2 text-primary font-bold">•</span>
+                            <span>Technical problem-solving consultation</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="mr-2 text-primary font-bold">•</span>
+                            <span>AI implementation assessment and strategy</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="mr-2 text-primary font-bold">•</span>
+                            <span>Rapid prototype development</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="mr-2 text-primary font-bold">•</span>
+                            <span>Data pipeline architecture and development</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="mr-2 text-primary font-bold">•</span>
+                            <span>AI-assisted automation solutions</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </TimelineItem>
               </div>
             </section>
 
-            {/* Affiliations Section with Logos */}
-            <section className="relative z-10">
-              <h2 className="text-2xl font-bold tracking-tight mb-8">Affiliations & Partnerships</h2>
-              <div className="liquid-glass p-8 rounded-2xl border backdrop-blur-md shadow-lg card-3d">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                  <ParallaxElement speed="slow" className="text-center">
-                    <div className="flex flex-col items-center space-y-4 interactive-element p-6 rounded-xl">
-                      <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-400 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        UN
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg">UN-Habitat</h3>
-                        <p className="text-sm text-muted-foreground">Technical Solutions Architect</p>
-                        <p className="text-xs text-muted-foreground mt-1">2024 - Present</p>
-                      </div>
-                    </div>
-                  </ParallaxElement>
-
-                  <ParallaxElement speed="medium" className="text-center">
-                    <div className="flex flex-col items-center space-y-4 interactive-element p-6 rounded-xl">
-                      <div className="w-20 h-20 bg-gradient-to-br from-green-600 to-green-400 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        QL
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg">Quality of Life Initiative</h3>
-                        <p className="text-sm text-muted-foreground">Data Engineering Contributor</p>
-                        <p className="text-xs text-muted-foreground mt-1">Global Cities Program</p>
-                      </div>
-                    </div>
-                  </ParallaxElement>
-
-                  <ParallaxElement speed="fast" className="text-center">
-                    <div className="flex flex-col items-center space-y-4 interactive-element p-6 rounded-xl">
-                      <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-400 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        CC
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-lg">Conestoga College</h3>
-                        <p className="text-sm text-muted-foreground">Mobile Solutions Graduate</p>
-                        <p className="text-xs text-muted-foreground mt-1">2023 • Waterloo, ON</p>
-                      </div>
-                    </div>
-                  </ParallaxElement>
-                </div>
-                
-                <div className="mt-8 text-center">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Proud to contribute to global urban development through technical innovation and education excellence.
-                  </p>
-                </div>
-              </div>
-            </section>
           </div>
         </div>
       </div>
