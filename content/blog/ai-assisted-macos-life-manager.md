@@ -4,7 +4,7 @@
 
 Building a native macOS life management application using Claude AI as a development partner, this project demonstrates how AI can accelerate development while maintaining high code quality and native user experience.
 
-![AI-Assisted macOS Development Workflow](https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop&crop=center)
+![AI-Assisted Development Code Screen](https://images.unsplash.com/photo-1650600538903-ec09f670c391?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODA0NTh8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwcHJvZ3JhbW1pbmclMjBjb2RlJTIwc2NyZWVufGVufDB8MHx8fDE3NTI5NDg5MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080)
 
 ## The Challenge
 

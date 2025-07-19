@@ -4,7 +4,7 @@
 
 Containerization has revolutionized web development deployment. At UN-Habitat, Docker transformed our deployment pipeline from hours to minutes, serving 12 global cities reliably.
 
-![Docker Container Workflow](https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&h=400&fit=crop&crop=center)
+![Docker Containers Development](https://images.unsplash.com/photo-1646627927863-19874c27316b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODA0NTh8MHwxfHNlYXJjaHwxfHxkb2NrZXIlMjBjb250YWluZXJzJTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwwfDB8fHwxNzUyOTQ4OTMzfDA&ixlib=rb-4.1.0&q=80&w=1080)
 
 ## Why Docker Matters
 

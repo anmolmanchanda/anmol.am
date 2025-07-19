@@ -4,7 +4,7 @@
 
 At UN-Habitat, I led the development of a comprehensive automation ecosystem using N8N, creating over 50 interconnected workflows that transformed how our organization handled data processing, communication, and operational tasks across 12 global cities.
 
-![N8N Workflow Automation Dashboard](https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=400&fit=crop&crop=center)
+![Workflow Automation Architecture](https://images.unsplash.com/photo-1590038667005-7d82ac6f864b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODA0NTh8MHwxfHNlYXJjaHwxfHx3b3JrZmxvdyUyMGF1dG9tYXRpb24lMjByb2JvdHMlMjBtYWNoaW5lcnl8ZW58MHwwfHx8MTc1Mjk0ODkzNHww&ixlib=rb-4.1.0&q=80&w=1080)
 
 ## The Challenge
 
