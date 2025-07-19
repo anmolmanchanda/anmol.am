@@ -104,7 +104,7 @@ export default function PersonalPage() {
                   rel="noopener noreferrer"
                   className="group"
                 >
-                  <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border h-full">
+                  <div className="liquid-glass p-6 rounded-2xl border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border h-full card-3d">
                     <div className="flex flex-col h-full">
                       {/* Icon and Category */}
                       <div className="flex items-center justify-between mb-4">
@@ -140,7 +140,7 @@ export default function PersonalPage() {
 
           {/* Personal Philosophy */}
           <div className="mt-16">
-            <div className="liquid-glass p-8 rounded-lg border backdrop-blur-md shadow-lg">
+            <div className="liquid-glass p-8 rounded-2xl border backdrop-blur-md shadow-lg card-3d">
               <div className="text-center">
                 <div className="flex justify-center mb-6">
                   <div className="p-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 bg-opacity-10">
@@ -160,19 +160,19 @@ export default function PersonalPage() {
 
           {/* Fun Stats */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center liquid-glass p-4 rounded-lg">
+            <div className="text-center liquid-glass p-4 rounded-xl card-3d">
               <div className="text-2xl font-bold text-primary">📚</div>
               <div className="text-sm text-muted-foreground mt-1">Bookworm</div>
             </div>
-            <div className="text-center liquid-glass p-4 rounded-lg">
+            <div className="text-center liquid-glass p-4 rounded-xl card-3d">
               <div className="text-2xl font-bold text-primary">🎵</div>
               <div className="text-sm text-muted-foreground mt-1">Music Lover</div>
             </div>
-            <div className="text-center liquid-glass p-4 rounded-lg">
+            <div className="text-center liquid-glass p-4 rounded-xl card-3d">
               <div className="text-2xl font-bold text-primary">🎬</div>
               <div className="text-sm text-muted-foreground mt-1">Film Enthusiast</div>
             </div>
-            <div className="text-center liquid-glass p-4 rounded-lg">
+            <div className="text-center liquid-glass p-4 rounded-xl card-3d">
               <div className="text-2xl font-bold text-primary">💪</div>
               <div className="text-sm text-muted-foreground mt-1">Fitness Focused</div>
             </div>

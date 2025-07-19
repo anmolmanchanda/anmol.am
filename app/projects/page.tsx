@@ -192,19 +192,82 @@ export default function ProjectsPage() {
                       </div>
                     </div>
                   )}
-                  {(project.category === "blockchain" || project.category === "ai") && project.id !== "2" && (
-                    <div className="w-full h-full bg-gradient-to-br from-indigo-600/60 via-purple-500/50 to-pink-400/40 flex items-center justify-center">
-                      <div className="relative">
-                        <div className="w-24 h-24 border-3 border-indigo-300 rounded-lg opacity-70 rotate-45 animate-pulse" />
-                        <div className="absolute top-2 left-2 w-6 h-6 bg-gradient-to-r from-indigo-400 to-purple-400 rounded opacity-90 animate-bounce" />
-                        <div className="absolute bottom-2 right-2 w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-90 animate-bounce" style={{animationDelay: '0.3s'}} />
+                  {project.category === "blockchain" && (
+                    <div className="w-full h-full bg-gradient-to-br from-indigo-600/60 via-purple-500/50 to-blue-400/40 flex items-center justify-center overflow-hidden">
+                      {/* Blockchain network visualization */}
+                      <div className="relative w-full h-full">
+                        {/* Network nodes */}
+                        {[...Array(12)].map((_, i) => (
+                          <div key={i} className="absolute w-3 h-3 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-pulse"
+                               style={{
+                                 top: `${Math.random() * 80 + 10}%`,
+                                 left: `${Math.random() * 80 + 10}%`,
+                                 animationDelay: `${i * 0.2}s`,
+                                 animationDuration: `${2 + Math.random()}s`
+                               }} />
+                        ))}
+                        {/* Connecting lines */}
+                        {[...Array(8)].map((_, i) => (
+                          <div key={i} className="absolute h-0.5 bg-gradient-to-r from-transparent via-purple-400/60 to-transparent animate-pulse"
+                               style={{
+                                 top: `${20 + i * 8}%`,
+                                 left: `${10 + (i % 3) * 25}%`,
+                                 width: `${30 + Math.random() * 20}%`,
+                                 transform: `rotate(${Math.random() * 60 - 30}deg)`,
+                                 animationDelay: `${i * 0.3}s`
+                               }} />
+                        ))}
+                        {/* Central blockchain icon */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <div className="w-8 h-8 border-2 border-indigo-300 rounded opacity-80 animate-bounce">
+                            <div className="w-full h-full bg-gradient-to-br from-indigo-400 to-purple-400 rounded animate-pulse" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {project.category === "ai" && project.id !== "2" && (
+                    <div className="w-full h-full bg-gradient-to-br from-violet-600/60 via-fuchsia-500/50 to-purple-400/40 flex items-center justify-center overflow-hidden">
+                      {/* AI neural network pattern */}
+                      <div className="relative w-full h-full">
+                        {/* Neural connections */}
+                        <div className="absolute inset-0 opacity-60">
+                          {[...Array(20)].map((_, i) => (
+                            <div key={i} className="absolute w-1 h-1 bg-violet-400 rounded-full animate-ping"
+                                 style={{
+                                   top: `${Math.random() * 100}%`,
+                                   left: `${Math.random() * 100}%`,
+                                   animationDelay: `${i * 0.1}s`,
+                                   animationDuration: `${1 + Math.random()}s`
+                                 }} />
+                          ))}
+                        </div>
+                        {/* Brain-like structure */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <div className="relative">
+                            <div className="w-16 h-12 border-2 border-violet-300 rounded-full opacity-70 animate-pulse" />
+                            <div className="absolute top-1 left-2 w-3 h-3 bg-violet-400 rounded-full animate-bounce" />
+                            <div className="absolute top-2 right-3 w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce" style={{animationDelay: '0.3s'}} />
+                            <div className="absolute bottom-1 left-4 w-2.5 h-2.5 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '0.6s'}} />
+                          </div>
+                        </div>
+                        {/* Flowing data streams */}
+                        {[...Array(4)].map((_, i) => (
+                          <div key={i} className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-violet-400/50 to-transparent"
+                               style={{
+                                 top: `${25 + i * 15}%`,
+                                 animation: `data-stream ${2.5 + i * 0.3}s ease-in-out infinite`,
+                                 animationDelay: `${i * 0.4}s`
+                               }} />
+                        ))}
                       </div>
                     </div>
                   )}
                 </div>
                 
-                <div className="relative z-10 flex h-full items-center justify-center">
-                  <div className="text-white/80 text-sm font-medium px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm">
+                {/* Category badge moved to corner */}
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="text-white/90 text-xs font-medium px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm border border-white/20">
                     {project.category === 'enterprise' ? 'Enterprise' : 
                      project.category === 'ai' ? 'AI-Powered' : 
                      project.category === 'automation' ? 'Automation' :

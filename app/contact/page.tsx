@@ -73,24 +73,40 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold">Email</h3>
                     <p className="mt-1 text-muted-foreground">
-                      Primary: <a href={`mailto:${siteConfig.email}`} className="text-primary hover:underline">{siteConfig.email}</a>
-                    </p>
-                    <p className="text-muted-foreground">
-                      Professional: <a href={`mailto:${siteConfig.emailAliases.work}`} className="text-primary hover:underline">{siteConfig.emailAliases.work}</a>
+                      Work: <a href={`mailto:${siteConfig.emailAliases.work}`} className="text-primary hover:underline font-medium">{siteConfig.emailAliases.work}</a>
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <MapPin className="h-6 w-6 text-primary mt-1" />
-                  <div>
+                  <div className="flex-1">
                     <h3 className="font-semibold">Location</h3>
-                    <p className="mt-1 text-muted-foreground">
-                      {siteConfig.location}
-                    </p>
-                    <p className="text-muted-foreground">
-                      Available for remote work worldwide
-                    </p>
+                    <div className="mt-2 flex items-start gap-4">
+                      <div className="flex-1">
+                        <p className="text-muted-foreground font-medium">
+                          {siteConfig.location}
+                        </p>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          Available for remote work worldwide
+                        </p>
+                      </div>
+                      {/* Embedded map */}
+                      <div className="flex-shrink-0">
+                        <div className="w-32 h-24 rounded-lg overflow-hidden border border-border shadow-sm">
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92566.89442206342!2d-80.55484!3d43.42643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882bf48c03ee5105%3A0x9525f8e6df5f9d9e!2sKitchener%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                            width="128"
+                            height="96"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            className="w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

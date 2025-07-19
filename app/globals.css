@@ -443,29 +443,61 @@ html {
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Animated Icon Effects */
+/* Animated Icon Effects - Enhanced */
 .icon-float {
-  animation: icon-float 3s ease-in-out infinite;
+  animation: icon-float 2.5s ease-in-out infinite;
 }
 
 .icon-pulse {
-  animation: icon-pulse 2s ease-in-out infinite;
+  animation: icon-pulse 1.8s ease-in-out infinite;
 }
 
 @keyframes icon-float {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-5px) scale(1.05); }
+  0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+  50% { transform: translateY(-8px) scale(1.08) rotate(2deg); }
 }
 
 @keyframes icon-pulse {
   0%, 100% { 
-    transform: scale(1);
-    filter: drop-shadow(0 0 5px currentColor);
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 8px currentColor);
   }
   50% { 
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 15px currentColor);
+    transform: scale(1.15) rotate(-2deg);
+    filter: drop-shadow(0 0 20px currentColor);
   }
+}
+
+/* 3D Card Effects */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.card-3d:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(5deg) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dark .card-3d {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.dark .card-3d:hover {
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 10px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .cyber-border {
