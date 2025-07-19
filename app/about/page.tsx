@@ -104,9 +104,9 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-16 space-y-16">
-            <section>
+            <section className="relative z-10">
               <h2 className="text-2xl font-bold tracking-tight">Who I Am</h2>
-              <div className="mt-6 space-y-4 text-muted-foreground">
+              <div className="mt-6 space-y-4 text-foreground">
                 <p>
                   Technical Solutions Architect with expertise in AI-assisted development, data engineering, and rapid prototyping. 
                   Proven ability to solve complex technical challenges across multiple domains using modern AI tools and cloud infrastructure, 
@@ -130,11 +130,11 @@ export default function AboutPage() {
               <div className="mt-8 space-y-8">
                 {experiences.map((exp) => {
                   const getIcon = () => {
-                    if (exp.id === "1") return <Building2 className="w-5 h-5 text-blue-500" />
-                    if (exp.id === "2") return <Code2 className="w-5 h-5 text-purple-500" />
-                    if (exp.id === "3") return <ChefHat className="w-5 h-5 text-orange-500" />
-                    if (exp.id === "4") return <Users className="w-5 h-5 text-green-500" />
-                    return <Building2 className="w-5 h-5 text-primary" />
+                    if (exp.id === "1") return <Building2 className="w-5 h-5 text-blue-500 icon-float" />
+                    if (exp.id === "2") return <Code2 className="w-5 h-5 text-purple-500 icon-pulse" />
+                    if (exp.id === "3") return <ChefHat className="w-5 h-5 text-orange-500 icon-float" />
+                    if (exp.id === "4") return <Users className="w-5 h-5 text-green-500 icon-pulse" />
+                    return <Building2 className="w-5 h-5 text-primary icon-float" />
                   }
                   
                   return (
@@ -142,7 +142,7 @@ export default function AboutPage() {
                       <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         {getIcon()}
                       </div>
-                      <div className="glass-morphism p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group">
+                      <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group">
                         <div className="space-y-3">
                           <div>
                             <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">{exp.position}</h3>
@@ -180,10 +180,10 @@ export default function AboutPage() {
             <section className="relative z-10">
               <h2 className="text-2xl font-bold tracking-tight">Education</h2>
               <div className="mt-6 space-y-6">
-                <div className="glass-morphism p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 p-2 rounded-lg bg-primary/10">
-                      <GraduationCap className="w-6 h-6 text-primary" />
+                      <GraduationCap className="w-6 h-6 text-primary icon-pulse" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Post Graduate Diploma in Mobile Solutions Development</h3>
@@ -194,10 +194,10 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </div>
-                <div className="glass-morphism p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 p-2 rounded-lg bg-blue-500/10">
-                      <Database className="w-6 h-6 text-blue-500" />
+                      <Database className="w-6 h-6 text-blue-500 icon-float" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Bachelor of Computer Applications</h3>
@@ -208,10 +208,10 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </div>
-                <div className="glass-morphism p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 group">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 p-2 rounded-lg bg-green-500/10">
-                      <Smartphone className="w-6 h-6 text-green-500" />
+                      <Smartphone className="w-6 h-6 text-green-500 icon-pulse" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Android Basics Nanodegree</h3>
@@ -227,11 +227,11 @@ export default function AboutPage() {
 
             <section className="relative z-10">
               <h2 className="text-2xl font-bold tracking-tight">Career Goals & Services</h2>
-              <div className="mt-6 glass-morphism p-6 rounded-lg border backdrop-blur-md shadow-lg">
+              <div className="mt-6 liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg">
                 <div className="space-y-4 text-muted-foreground">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 p-2 rounded-lg bg-purple-500/10">
-                      <Zap className="w-6 h-6 text-purple-500" />
+                      <Zap className="w-6 h-6 text-purple-500 icon-float" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Career Focus</h3>
@@ -245,7 +245,7 @@ export default function AboutPage() {
                   
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 p-2 rounded-lg bg-cyan-500/10">
-                      <Code2 className="w-6 h-6 text-cyan-500" />
+                      <Code2 className="w-6 h-6 text-cyan-500 icon-pulse" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Consulting Services</h3>

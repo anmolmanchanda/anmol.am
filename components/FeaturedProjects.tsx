@@ -77,20 +77,32 @@ export function FeaturedProjects() {
                 <div className="aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-muted relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   
-                  {/* Enhanced vibrant data visualization backgrounds */}
-                  <div className="absolute inset-0 opacity-40">
+                  {/* Enhanced animated data visualization backgrounds */}
+                  <div className="absolute inset-0 opacity-50">
                     {project.id === "1" && (
-                      <div className="w-full h-full bg-gradient-to-br from-blue-600/60 via-cyan-500/50 to-teal-400/40 flex items-center justify-center">
-                        <div className="grid grid-cols-10 gap-1 opacity-80 rotate-3">
-                          {[...Array(50)].map((_, i) => (
-                            <div key={i} className={`w-2 bg-gradient-to-t from-blue-500 to-cyan-400 rounded-sm animate-pulse`} 
+                      <div className="w-full h-full bg-gradient-to-br from-blue-600/60 via-cyan-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
+                        <div className="grid grid-cols-12 gap-1 opacity-80 rotate-3 animate-pulse">
+                          {[...Array(60)].map((_, i) => (
+                            <div key={i} className={`w-1.5 bg-gradient-to-t from-blue-500 to-cyan-400 rounded-sm animate-bounce`} 
                                  style={{
-                                   height: `${Math.floor(Math.random() * 40) + 20}px`,
-                                   animationDelay: `${i * 0.1}s`
+                                   height: `${Math.floor(Math.random() * 50) + 15}px`,
+                                   animationDelay: `${(i * 0.1) % 3}s`,
+                                   animationDuration: `${1 + (i % 3) * 0.5}s`
                                  }} />
                           ))}
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse" />
+                        {/* Moving data streams */}
+                        <div className="absolute inset-0">
+                          {[...Array(5)].map((_, i) => (
+                            <div key={i} className="absolute h-0.5 w-full bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"
+                                 style={{
+                                   top: `${20 + i * 15}%`,
+                                   animation: `data-stream ${2 + i * 0.5}s linear infinite`,
+                                   animationDelay: `${i * 0.4}s`
+                                 }} />
+                          ))}
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent animate-pulse" />
                       </div>
                     )}
                     {project.id === "2" && (
@@ -104,11 +116,25 @@ export function FeaturedProjects() {
                       </div>
                     )}
                     {project.id === "3" && (
-                      <div className="w-full h-full bg-gradient-to-br from-green-600/60 via-emerald-500/50 to-teal-400/40 flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-green-600/60 via-emerald-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
                         <div className="grid grid-cols-8 gap-3 opacity-70 -rotate-6">
                           {[...Array(32)].map((_, i) => (
-                            <div key={i} className="w-4 h-4 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full animate-pulse" 
-                                 style={{animationDelay: `${i * 0.15}s`}} />
+                            <div key={i} className="w-4 h-4 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full animate-bounce" 
+                                 style={{
+                                   animationDelay: `${i * 0.1}s`,
+                                   animationDuration: `${1.5 + (i % 4) * 0.3}s`
+                                 }} />
+                          ))}
+                        </div>
+                        {/* Flowing automation lines */}
+                        <div className="absolute inset-0">
+                          {[...Array(6)].map((_, i) => (
+                            <div key={i} className="absolute w-0.5 h-full bg-gradient-to-b from-transparent via-emerald-400/50 to-transparent"
+                                 style={{
+                                   left: `${15 + i * 12}%`,
+                                   animation: `matrix-rain ${3 + i * 0.5}s linear infinite`,
+                                   animationDelay: `${i * 0.3}s`
+                                 }} />
                           ))}
                         </div>
                         <div className="absolute inset-0">

@@ -130,9 +130,86 @@ export default function ProjectsPage() {
               key={project.id}
               className="group relative flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm transition-all hover:shadow-lg"
             >
-              <div className="aspect-[16/9] w-full overflow-hidden bg-muted">
-                <div className="flex h-full items-center justify-center text-muted-foreground">
-                  <span>Project Image</span>
+              <div className="aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-muted relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                
+                {/* Animated project visualizations matching FeaturedProjects */}
+                <div className="absolute inset-0 opacity-50">
+                  {project.id === "1" && (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-600/60 via-cyan-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
+                      <div className="grid grid-cols-12 gap-1 opacity-80 rotate-3 animate-pulse">
+                        {[...Array(60)].map((_, i) => (
+                          <div key={i} className={`w-1.5 bg-gradient-to-t from-blue-500 to-cyan-400 rounded-sm animate-bounce`} 
+                               style={{
+                                 height: `${Math.floor(Math.random() * 50) + 15}px`,
+                                 animationDelay: `${(i * 0.1) % 3}s`,
+                                 animationDuration: `${1 + (i % 3) * 0.5}s`
+                               }} />
+                        ))}
+                      </div>
+                      <div className="absolute inset-0">
+                        {[...Array(5)].map((_, i) => (
+                          <div key={i} className="absolute h-0.5 w-full bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"
+                               style={{
+                                 top: `${20 + i * 15}%`,
+                                 animation: `data-stream ${2 + i * 0.5}s linear infinite`,
+                                 animationDelay: `${i * 0.4}s`
+                               }} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {project.id === "2" && (
+                    <div className="w-full h-full bg-gradient-to-br from-purple-600/60 via-pink-500/50 to-violet-400/40 flex items-center justify-center">
+                      <div className="relative">
+                        <div className="w-32 h-32 border-4 border-purple-300 rounded-2xl opacity-70 rotate-12 animate-pulse" />
+                        <div className="absolute top-4 left-4 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg opacity-90 animate-bounce" />
+                        <div className="absolute bottom-4 right-4 w-6 h-6 bg-gradient-to-r from-pink-400 to-violet-400 rounded-full opacity-90 animate-bounce" style={{animationDelay: '0.5s'}} />
+                        <div className="absolute top-8 right-8 w-4 h-4 bg-gradient-to-r from-violet-400 to-purple-400 rounded opacity-80 animate-ping" />
+                      </div>
+                    </div>
+                  )}
+                  {(project.id === "3" || project.category === "automation") && (
+                    <div className="w-full h-full bg-gradient-to-br from-green-600/60 via-emerald-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
+                      <div className="grid grid-cols-8 gap-3 opacity-70 -rotate-6">
+                        {[...Array(32)].map((_, i) => (
+                          <div key={i} className="w-4 h-4 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full animate-bounce" 
+                               style={{
+                                 animationDelay: `${i * 0.1}s`,
+                                 animationDuration: `${1.5 + (i % 4) * 0.3}s`
+                               }} />
+                        ))}
+                      </div>
+                      <div className="absolute inset-0">
+                        {[...Array(6)].map((_, i) => (
+                          <div key={i} className="absolute w-0.5 h-full bg-gradient-to-b from-transparent via-emerald-400/50 to-transparent"
+                               style={{
+                                 left: `${15 + i * 12}%`,
+                                 animation: `matrix-rain ${3 + i * 0.5}s linear infinite`,
+                                 animationDelay: `${i * 0.3}s`
+                               }} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {(project.category === "blockchain" || project.category === "ai") && project.id !== "2" && (
+                    <div className="w-full h-full bg-gradient-to-br from-indigo-600/60 via-purple-500/50 to-pink-400/40 flex items-center justify-center">
+                      <div className="relative">
+                        <div className="w-24 h-24 border-3 border-indigo-300 rounded-lg opacity-70 rotate-45 animate-pulse" />
+                        <div className="absolute top-2 left-2 w-6 h-6 bg-gradient-to-r from-indigo-400 to-purple-400 rounded opacity-90 animate-bounce" />
+                        <div className="absolute bottom-2 right-2 w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-90 animate-bounce" style={{animationDelay: '0.3s'}} />
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="relative z-10 flex h-full items-center justify-center">
+                  <div className="text-white/80 text-sm font-medium px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm">
+                    {project.category === 'enterprise' ? 'Enterprise' : 
+                     project.category === 'ai' ? 'AI-Powered' : 
+                     project.category === 'automation' ? 'Automation' :
+                     project.category === 'blockchain' ? 'Blockchain' : 'Project'}
+                  </div>
                 </div>
               </div>
               <div className="flex flex-1 flex-col p-6">

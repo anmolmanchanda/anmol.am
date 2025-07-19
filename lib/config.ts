@@ -27,7 +27,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/anmolmanchanda",
     linkedin: "https://linkedin.com/in/anmolmanchanda",
-    stackoverflow: "https://stackoverflow.com/users/anmolmanchanda",
+    fiverr: "https://fiverr.com/anmolmanchanda",
     email: "mailto:anmol.manchanda@icloud.com"
   },
   emailAliases: {

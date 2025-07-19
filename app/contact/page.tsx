@@ -115,12 +115,12 @@ export default function ContactPage() {
                     LinkedIn
                   </a>
                   <a
-                    href={siteConfig.links.stackoverflow}
+                    href={siteConfig.links.fiverr}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Stack Overflow
+                    Fiverr
                   </a>
                 </div>
               </div>

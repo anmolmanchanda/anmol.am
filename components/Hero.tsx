@@ -165,12 +165,12 @@ export function Hero() {
               LinkedIn
             </a>
             <a
-              href={siteConfig.links.stackoverflow}
+              href={siteConfig.links.fiverr}
               target="_blank"
               rel="noopener noreferrer"
               className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300"
             >
-              Stack Overflow
+              Fiverr
             </a>
             <a
               href={siteConfig.links.email}

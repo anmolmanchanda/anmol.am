@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail, Code } from "lucide-react"
+import { Github, Linkedin, Mail, Star } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 
 export function Footer() {
@@ -65,13 +65,13 @@ export function Footer() {
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href={siteConfig.links.stackoverflow}
+                  href={siteConfig.links.fiverr}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label="Stack Overflow"
+                  aria-label="Fiverr"
                 >
-                  <Code className="h-5 w-5" />
+                  <Star className="h-5 w-5" />
                 </a>
                 <a
                   href={siteConfig.links.email}
