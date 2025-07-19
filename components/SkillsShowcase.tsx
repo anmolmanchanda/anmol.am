@@ -67,9 +67,9 @@ export function SkillsShowcase() {
 
   const getLevelWidth = (level: string) => {
     switch (level) {
-      case 'expert': return 100
-      case 'advanced': return 75
-      case 'intermediate': return 50
+      case 'expert': return 75
+      case 'advanced': return 60
+      case 'intermediate': return 45
       default: return 25
     }
   }

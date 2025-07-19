@@ -1,151 +1,163 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Download, CheckCircle, Globe } from "lucide-react"
+import { ArrowRight, Download, MapPin, Globe2 } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-primary/5 via-transparent to-accent/5" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Jony Ive inspired minimal background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90" />
       
-      {/* Floating tech badges */}
-      <div className="absolute inset-0 -z-5 pointer-events-none">
-        <div className="absolute top-20 left-10 animate-float">
-          <div className="bg-blue-100 dark:bg-blue-900/20 px-3 py-1 rounded-full text-xs font-medium text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-            AWS Expert
+      {/* Refined floating elements - 5 total */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[15%] left-[8%] animate-float-faster">
+          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
+            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">AWS Expert</span>
           </div>
         </div>
-        <div className="absolute top-32 right-16 animate-float-delay">
-          <div className="bg-purple-100 dark:bg-purple-900/20 px-3 py-1 rounded-full text-xs font-medium text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
-            Claude AI
+        <div className="absolute top-[25%] right-[12%] animate-float-faster-delay">
+          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
+            <span className="bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">Claude AI</span>
           </div>
         </div>
-        <div className="absolute bottom-40 left-20 animate-float-delay-2">
-          <div className="bg-green-100 dark:bg-green-900/20 px-3 py-1 rounded-full text-xs font-medium text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800">
-            UN Certified
+        <div className="absolute top-[45%] left-[5%] animate-float-faster-delay-2">
+          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
+            <span className="bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">UN-Habitat</span>
+          </div>
+        </div>
+        <div className="absolute bottom-[30%] right-[8%] animate-float-faster-delay-3">
+          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
+            <span className="bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent">AI-Assisted</span>
+          </div>
+        </div>
+        <div className="absolute bottom-[45%] left-[15%] animate-float-faster-delay-4">
+          <div className="glass-morphism px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md">
+            <span className="bg-gradient-to-r from-cyan-600 to-cyan-500 bg-clip-text text-transparent">Data Pipeline</span>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Avatar Section */}
-            <div className="flex-shrink-0">
-              <div className="relative">
-                <div className="w-48 h-48 rounded-full border-4 border-primary/10 shadow-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+            
+            {/* Avatar Section - Jony Ive minimalism */}
+            <div className="flex-shrink-0 order-2 lg:order-1">
+              <div className="relative group">
+                <div className="w-64 h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)]">
                   <Image
                     src="/professional_headshot_avatar.JPG"
-                    alt="Anmol Manchanda - AI-Assisted Technical Solutions Architect"
-                    width={192}
-                    height={192}
-                    className="w-full h-full object-cover"
+                    alt="Anmol Manchanda - Technical Solutions Architect"
+                    width={256}
+                    height={256}
+                    className="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-105"
                     priority
                   />
                 </div>
-                {/* Status indicator */}
-                <div className="absolute -bottom-2 -right-2 bg-green-500 rounded-full p-2 shadow-lg animate-pulse">
-                  <CheckCircle className="w-4 h-4 text-white" />
-                </div>
-                {/* Availability badge */}
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-green-100 dark:bg-green-900/20 px-4 py-1 rounded-full text-xs font-medium text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800 shadow-sm">
-                    Available for Consulting
+                
+                {/* Minimal status indicator */}
+                <div className="absolute -bottom-3 -right-3">
+                  <div className="w-8 h-8 rounded-full bg-green-500 border-4 border-background shadow-lg flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Content Section */}
-            <div className="flex-1 text-center lg:text-left">
-              <h1 className="animate-in text-4xl font-bold tracking-tight sm:text-6xl">
-                Hi, I&apos;m <span className="text-primary">Anmol Manchanda</span>
-              </h1>
+            {/* Content Section - Pure minimalism */}
+            <div className="flex-1 text-center lg:text-left space-y-8 order-1 lg:order-2">
               
-              {/* UN Credential Badge */}
-              <div className="animate-in mt-4 flex justify-center lg:justify-start" style={{ animationDelay: "0.05s" }}>
-                <div className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-lg border border-blue-200 dark:border-blue-800">
-                  <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                  <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Technical Solutions Engineer at United Nations</span>
+              {/* Typography hierarchy - Jony Ive style */}
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-none">
+                    <span className="block text-foreground">Hi, I&apos;m</span>
+                    <span className="block">
+                      <span className="text-foreground">Anmol</span>
+                    </span>
+                    <span className="block text-foreground/70 font-extralight">
+                      Manchanda
+                    </span>
+                  </h1>
+                </div>
+
+                {/* Clean credential badge */}
+                <div className="inline-flex items-center gap-3 glass-morphism px-6 py-3 rounded-full border backdrop-blur-md">
+                  <Globe2 className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium">Technical Solutions Architect at UN-Habitat</span>
                 </div>
               </div>
 
-              <p className="animate-in mt-6 text-lg leading-8 text-muted-foreground" style={{ animationDelay: "0.1s" }}>
-                {siteConfig.title}. I solve complex technical problems in days, not weeks, using AI-assisted development.
+              {/* Essential description */}
+              <p className="text-xl lg:text-2xl font-light leading-relaxed text-muted-foreground max-w-2xl">
+                I solve complex technical problems in days, not weeks, using AI-assisted development.
               </p>
-              
-              {/* Key metrics */}
-              <div className="animate-in mt-6 flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-muted-foreground" style={{ animationDelay: "0.12s" }}>
-                <div className="flex items-center gap-1">
-                  <span className="font-semibold text-primary">10+ TB</span>
-                  <span>data processed monthly</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="font-semibold text-primary">12</span>
-                  <span>global cities served</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <span className="font-semibold text-primary">100+</span>
-                  <span>automations created</span>
-                </div>
+
+              {/* Location - minimal */}
+              <div className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground">
+                <MapPin className="w-4 h-4" />
+                <span className="text-sm font-medium">{siteConfig.location}</span>
               </div>
 
-              <p className="animate-in mt-4 text-sm text-muted-foreground flex items-center justify-center lg:justify-start gap-1" style={{ animationDelay: "0.15s" }}>
-                📍 Waterloo, Ontario, Canada
-              </p>
-              {/* Enhanced CTAs */}
-              <div className="animate-in mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" style={{ animationDelay: "0.2s" }}>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 group"
-                >
-                  Schedule Consultation
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
+              {/* Simplified CTAs */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
                 <Link
                   href="/projects"
-                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-4 text-base font-medium text-foreground shadow-sm transition-all hover:bg-secondary hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group min-w-[200px]"
                 >
-                  View Case Studies
+                  View Portfolio
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
+                
                 <Link
-                  href="/resume.pdf"
-                  className="inline-flex items-center justify-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  href="/Anmol's Resume.pdf"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-border bg-background/50 backdrop-blur-sm font-medium transition-all duration-300 hover:bg-background hover:shadow-md min-w-[200px]"
                 >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Resume
+                  <Download className="mr-2 w-4 h-4" />
+                  Resume
                 </Link>
               </div>
             </div>
           </div>
-        
-        {/* Social Links */}
-        <div className="animate-in mt-16 flex items-center justify-center gap-x-6" style={{ animationDelay: "0.3s" }}>
-          <a
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            GitHub
-          </a>
-          <span className="text-muted-foreground">•</span>
-          <a
-            href={siteConfig.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            LinkedIn
-          </a>
-          <span className="text-muted-foreground">•</span>
-          <a
-            href={siteConfig.links.email}
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Contact
-          </a>
-        </div>
+
+          {/* Enhanced social links */}
+          <div className="flex items-center justify-center gap-8 mt-20 pt-8 border-t border-border/30">
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+            >
+              GitHub
+            </a>
+            <a
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={siteConfig.links.email}
+              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+            >
+              Contact
+            </a>
+            <a
+              href={`tel:${siteConfig.phone}`}
+              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+            >
+              Phone
+            </a>
+            <a
+              href="/contact"
+              className="text-base font-medium text-foreground/70 hover:text-foreground transition-colors duration-300"
+            >
+              Get in Touch
+            </a>
+          </div>
         </div>
       </div>
     </section>

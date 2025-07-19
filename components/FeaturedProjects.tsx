@@ -73,7 +73,39 @@ export function FeaturedProjects() {
                 {/* Enhanced project visual */}
                 <div className="aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-muted relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="flex h-full items-center justify-center">
+                  
+                  {/* Data visualization background for visual appeal */}
+                  <div className="absolute inset-0 opacity-20">
+                    {project.id === "1" && (
+                      <div className="w-full h-full bg-gradient-to-r from-blue-500/30 to-cyan-500/30 flex items-center justify-center">
+                        <div className="grid grid-cols-8 gap-1 opacity-50">
+                          {[...Array(32)].map((_, i) => (
+                            <div key={i} className={`w-2 h-${Math.floor(Math.random() * 8) + 4} bg-blue-400 rounded-sm`} />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {project.id === "2" && (
+                      <div className="w-full h-full bg-gradient-to-r from-purple-500/30 to-pink-500/30 flex items-center justify-center">
+                        <div className="relative">
+                          <div className="w-24 h-24 border-2 border-purple-400 rounded-lg opacity-60" />
+                          <div className="absolute top-2 left-2 w-6 h-6 bg-purple-400 rounded opacity-80" />
+                          <div className="absolute bottom-2 right-2 w-4 h-4 bg-pink-400 rounded opacity-80" />
+                        </div>
+                      </div>
+                    )}
+                    {project.id === "3" && (
+                      <div className="w-full h-full bg-gradient-to-r from-green-500/30 to-emerald-500/30 flex items-center justify-center">
+                        <div className="grid grid-cols-6 gap-2 opacity-50">
+                          {[...Array(18)].map((_, i) => (
+                            <div key={i} className="w-3 h-3 bg-green-400 rounded-full animate-pulse" style={{animationDelay: `${i * 0.1}s`}} />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="relative z-10 flex h-full items-center justify-center">
                     {getProjectIcon()}
                   </div>
                   
@@ -137,7 +169,7 @@ export function FeaturedProjects() {
                       href={`/projects/${project.id}`}
                       className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link"
                     >
-                      View Case Study
+                      View Project
                       <ArrowUpRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                     </Link>
                     

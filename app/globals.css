@@ -125,12 +125,52 @@ html {
   animation-delay: 4s;
 }
 
+/* Faster floating animations */
+.animate-float-faster {
+  animation: float-fast 4s ease-in-out infinite;
+}
+
+.animate-float-faster-delay {
+  animation: float-fast 4s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.animate-float-faster-delay-2 {
+  animation: float-fast 4s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+.animate-float-faster-delay-3 {
+  animation: float-fast 4s ease-in-out infinite;
+  animation-delay: 2.4s;
+}
+
+.animate-float-faster-delay-4 {
+  animation: float-fast 4s ease-in-out infinite;
+  animation-delay: 3.2s;
+}
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-8px) translateX(2px);
+  }
+  50% {
+    transform: translateY(-12px) translateX(0px);
+  }
+  75% {
+    transform: translateY(-8px) translateX(-2px);
   }
 }
 

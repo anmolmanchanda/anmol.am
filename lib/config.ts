@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://anmol.am",
   email: "anmol.manchanda@icloud.com",
   title: "AI-Assisted Technical Solutions Architect",
-  description: "Technical Solutions Architect with expertise in AI-assisted development, data engineering, and rapid prototyping. Currently Technical Solutions Engineer at United Nations.",
+  description: "Technical Solutions Architect with expertise in AI-assisted development, data engineering, and rapid prototyping. Currently Technical Solutions Architect at UN-Habitat.",
   keywords: [
     "Anmol Manchanda",
     "AI-Assisted Development",
@@ -34,6 +34,6 @@ export const siteConfig = {
     work: "hi@anmol.am",
     personal: "anmol.manchanda@icloud.com"
   },
-  location: "Waterloo, Ontario, Canada",
+  location: "Kitchener, Ontario, Canada",
   phone: "+1 (519) 729-3419"
 }
