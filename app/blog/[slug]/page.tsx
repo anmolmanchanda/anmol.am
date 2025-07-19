@@ -1,7 +1,8 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, Calendar, Clock, Eye, Share2, BookOpen } from "lucide-react"
+import { ArrowLeft, Calendar, Clock, Share2, BookOpen } from "lucide-react"
+import { ViewTracker } from "@/components/ViewTracker"
 import { BlogPost } from "@/types"
 import { formatDate } from "@/lib/utils"
 import fs from 'fs'
@@ -15,39 +16,39 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     id: "1",
     title: "Building Scalable Web Applications with Next.js",
     excerpt: "Learn how to build performant and scalable web applications using Next.js 15 and modern best practices. Explore advanced patterns for enterprise-grade applications.",
-    date: "2024-06-15",
+    date: "2025-01-19",
     tags: ["Next.js", "React", "Web Development", "Scalability", "Enterprise"],
     readingTime: 12,
     slug: "building-scalable-web-apps-nextjs",
     image: "/images/blog/nextjs-scalable.svg",
     gradient: "from-blue-600 via-purple-600 to-blue-800",
-    views: 3247,
+    views: 0,
     featured: true
   },
   "power-of-typescript": {
     id: "2",
     title: "The Power of TypeScript in Modern Development",
     excerpt: "Discover how TypeScript can improve your development workflow and help you write more maintainable code. Deep dive into advanced type patterns and best practices.",
-    date: "2024-05-20",
+    date: "2025-01-19",
     tags: ["TypeScript", "JavaScript", "Best Practices", "Developer Experience", "Type Safety"],
     readingTime: 15,
     slug: "power-of-typescript",
     image: "/images/blog/typescript-power.svg",
     gradient: "from-blue-500 via-cyan-500 to-teal-600",
-    views: 2891,
+    views: 0,
     featured: true
   },
   "mastering-state-management-react": {
     id: "3",
     title: "Mastering State Management in React Applications",
     excerpt: "A comprehensive guide to managing state in React applications, from local state to global state solutions. Compare Redux, Zustand, and modern patterns with real examples.",
-    date: "2024-04-10",
+    date: "2025-01-19",
     tags: ["React", "State Management", "Frontend", "Redux", "Zustand", "React Query"],
     readingTime: 18,
     slug: "mastering-state-management-react",
     image: "/images/blog/react-state.svg",
     gradient: "from-purple-600 via-pink-600 to-red-600",
-    views: 4156,
+    views: 0,
     featured: true
   }
 }
@@ -173,10 +174,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <Clock className="h-4 w-4 text-primary" />
                   <span>{actualReadingTime} min read</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Eye className="h-4 w-4 text-primary" />
-                  <span>{postMeta.views?.toLocaleString()} views</span>
-                </div>
+                <ViewTracker 
+                  slug={postMeta.slug} 
+                  initialViews={postMeta.views || 0}
+                  className="text-primary"
+                />
                 <button className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Share2 className="h-4 w-4" />
                   <span>Share</span>

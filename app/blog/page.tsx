@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Calendar, Clock, Search, Filter, Eye, BookOpen, Zap, Code, Database, Globe, Container, Gauge } from "lucide-react"
+import { useBatchViewCounts } from "@/components/ViewTracker"
 import { motion, AnimatePresence } from "framer-motion"
 import { BlogPost } from "@/types"
 import { formatDate, cn } from "@/lib/utils"
@@ -15,14 +16,14 @@ const blogPosts: BlogPost[] = [
     title: "Building Scalable Web Applications with Next.js",
     excerpt: "Learn how to build performant and scalable web applications using Next.js 15 and modern best practices. Real-world experience from building TB-scale enterprise infrastructure.",
     content: "",
-    date: "2024-06-15",
+    date: "2025-01-19",
     tags: ["Next.js", "React", "Web Development", "Scalability", "Enterprise"],
     readingTime: 12,
     slug: "building-scalable-web-apps-nextjs",
     image: "/images/blog/nextjs-scalable.svg",
     gradient: "from-blue-600 via-purple-600 to-blue-800",
     icon: <Globe className="w-6 h-6" />,
-    views: 3247,
+    views: 0,
     featured: true
   },
   {
@@ -30,14 +31,14 @@ const blogPosts: BlogPost[] = [
     title: "The Power of TypeScript in Modern Development",
     excerpt: "Discover how TypeScript can improve your development workflow and help you write more maintainable code. Advanced patterns from real enterprise applications.",
     content: "",
-    date: "2024-05-20",
+    date: "2025-01-19",
     tags: ["TypeScript", "JavaScript", "Best Practices", "Developer Experience", "Type Safety"],
     readingTime: 15,
     slug: "power-of-typescript",
     image: "/images/blog/typescript-power.svg",
     gradient: "from-blue-500 via-cyan-500 to-teal-600",
     icon: <Code className="w-6 h-6" />,
-    views: 2891,
+    views: 0,
     featured: true
   },
   {
@@ -45,14 +46,14 @@ const blogPosts: BlogPost[] = [
     title: "Mastering State Management in React Applications",
     excerpt: "A comprehensive guide to managing state in React applications, from local state to global state solutions. Compare Redux, Zustand, and modern patterns with real examples.",
     content: "",
-    date: "2024-04-10",
+    date: "2025-01-19",
     tags: ["React", "State Management", "Frontend", "Redux", "Zustand", "React Query"],
     readingTime: 18,
     slug: "mastering-state-management-react",
     image: "/images/blog/react-state.svg",
     gradient: "from-purple-600 via-pink-600 to-red-600",
     icon: <Database className="w-6 h-6" />,
-    views: 4156,
+    views: 0,
     featured: true
   },
   {
@@ -60,14 +61,14 @@ const blogPosts: BlogPost[] = [
     title: "Building Real-time Applications with WebSockets",
     excerpt: "Learn how to implement real-time features in your applications using WebSockets and Socket.io. Build collaborative tools and live data dashboards for enterprise use.",
     content: "",
-    date: "2024-03-25",
+    date: "2025-01-19",
     tags: ["WebSockets", "Real-time", "Node.js", "Socket.io", "Enterprise"],
     readingTime: 10,
     slug: "building-realtime-apps-websockets",
     image: "/images/blog/websockets-realtime.svg",
     gradient: "from-green-500 via-emerald-500 to-teal-600",
     icon: <Zap className="w-6 h-6" />,
-    views: 2154,
+    views: 0,
     featured: false
   },
   {
@@ -75,14 +76,14 @@ const blogPosts: BlogPost[] = [
     title: "Performance Optimization Techniques for Web Apps",
     excerpt: "Essential techniques and strategies to optimize the performance of your web applications. Core Web Vitals, bundle optimization, and real-world performance wins.",
     content: "",
-    date: "2024-02-28",
+    date: "2025-01-19",
     tags: ["Performance", "Optimization", "Web Development", "Core Web Vitals", "Enterprise"],
     readingTime: 14,
     slug: "performance-optimization-techniques",
     image: "/images/blog/performance-optimization.svg",
     gradient: "from-orange-500 via-red-500 to-pink-600",
     icon: <Gauge className="w-6 h-6" />,
-    views: 3234,
+    views: 0,
     featured: true
   },
   {
@@ -90,14 +91,14 @@ const blogPosts: BlogPost[] = [
     title: "Getting Started with Docker for Web Developers",
     excerpt: "A comprehensive guide to containerizing your web applications with Docker. Development workflows, production deployment, and enterprise best practices.",
     content: "",
-    date: "2024-01-15",
+    date: "2025-01-19",
     tags: ["Docker", "DevOps", "Containers", "Deployment", "Infrastructure"],
     readingTime: 8,
     slug: "getting-started-docker",
     image: "/images/blog/docker-containers.svg",
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     icon: <Container className="w-6 h-6" />,
-    views: 1856,
+    views: 0,
     featured: false
   },
   {
@@ -105,14 +106,14 @@ const blogPosts: BlogPost[] = [
     title: "Building TB-Scale Data Infrastructure at UN-Habitat",
     excerpt: "How we built a TB-scale data processing infrastructure for 12 global cities using AWS Glue, Lambda, and real-time monitoring. Enterprise architecture lessons learned.",
     content: "",
-    date: "2024-07-10",
+    date: "2025-01-19",
     tags: ["AWS", "Data Engineering", "Enterprise", "Python", "Infrastructure", "UN"],
     readingTime: 16,
     slug: "building-tb-scale-data-infrastructure-un",
     image: "/images/blog/nextjs-scalable.svg",
     gradient: "from-emerald-600 via-blue-600 to-purple-800",
     icon: <Database className="w-6 h-6" />,
-    views: 2847,
+    views: 0,
     featured: true
   },
   {
@@ -120,14 +121,14 @@ const blogPosts: BlogPost[] = [
     title: "AI-Assisted Development: Building a Native macOS Life Manager",
     excerpt: "How I built a comprehensive productivity solution as a native macOS application using AI-assisted development methodologies with Claude AI and Swift.",
     content: "",
-    date: "2024-05-15",
+    date: "2025-01-19",
     tags: ["AI-Assisted", "macOS", "Swift", "Productivity", "Claude AI", "Native Apps"],
     readingTime: 12,
     slug: "ai-assisted-macos-life-manager",
     image: "/images/blog/typescript-power.svg",
     gradient: "from-purple-600 via-pink-600 to-orange-600",
     icon: <Zap className="w-6 h-6" />,
-    views: 1923,
+    views: 0,
     featured: true
   },
   {
@@ -135,14 +136,14 @@ const blogPosts: BlogPost[] = [
     title: "Enterprise Automation with N8N: 50+ Workflows at Scale",
     excerpt: "How we created 50+ N8N workflows for enterprise process automation at UN-Habitat, achieving significant efficiency improvements across organizational workflows.",
     content: "",
-    date: "2024-01-20",
+    date: "2025-01-19",
     tags: ["N8N", "Automation", "Enterprise", "Workflows", "APIs", "Process Optimization"],
     readingTime: 10,
     slug: "enterprise-automation-n8n-workflows",
     image: "/images/blog/websockets-realtime.svg",
     gradient: "from-green-600 via-teal-600 to-blue-600",
     icon: <Gauge className="w-6 h-6" />,
-    views: 1654,
+    views: 0,
     featured: false
   }
 ]
@@ -151,6 +152,11 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  
+  // Get real-time view counts for all blog posts
+  const { viewCounts, loading: viewsLoading } = useBatchViewCounts(
+    blogPosts.map(post => post.slug)
+  )
 
   useEffect(() => {
     setIsLoaded(true)
@@ -340,7 +346,9 @@ export default function BlogPage() {
                             </div>
                             <div className="flex items-center gap-1 text-primary">
                               <Eye className="h-4 w-4" />
-                              <span className="font-medium">{post.views?.toLocaleString()}</span>
+                              <span className="font-medium">
+                                {viewsLoading ? '...' : (viewCounts[post.slug] || 0).toLocaleString()}
+                              </span>
                             </div>
                           </div>
                           
@@ -434,7 +442,7 @@ export default function BlogPage() {
                               <span>{post.readingTime}m</span>
                               <div className="w-1 h-1 bg-muted-foreground rounded-full" />
                               <Eye className="h-3 w-3" />
-                              <span>{post.views?.toLocaleString()}</span>
+                              <span>{viewsLoading ? '...' : (viewCounts[post.slug] || 0).toLocaleString()}</span>
                             </div>
                           </div>
                           
