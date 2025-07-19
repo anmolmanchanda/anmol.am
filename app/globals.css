@@ -1,40 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
+  --background: #fafafa;
+  --foreground: #0f0f0f;
   --card: #ffffff;
-  --card-foreground: #0a0a0a;
-  --primary: #2563eb;
+  --card-foreground: #0f0f0f;
+  --primary: #0066ff;
   --primary-foreground: #ffffff;
-  --secondary: #f3f4f6;
-  --secondary-foreground: #0a0a0a;
-  --accent: #10b981;
-  --accent-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #0f0f0f;
+  --accent: #00d9ff;
+  --accent-foreground: #0f0f0f;
   --muted: #f9fafb;
-  --muted-foreground: #6b7280;
-  --border: #e5e7eb;
-  --input: #e5e7eb;
-  --ring: #2563eb;
-  --radius: 0.5rem;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #0066ff;
+  --radius: 0.75rem;
+  
+  /* AI-themed colors */
+  --ai-primary: #6366f1;
+  --ai-secondary: #8b5cf6;
+  --ai-accent: #06b6d4;
+  --neural-blue: #0ea5e9;
+  --quantum-purple: #a855f7;
+  --tech-green: #10b981;
+  
+  /* Gradients */
+  --gradient-ai: linear-gradient(135deg, var(--ai-primary) 0%, var(--ai-secondary) 100%);
+  --gradient-neural: linear-gradient(135deg, var(--neural-blue) 0%, var(--ai-accent) 100%);
+  --gradient-quantum: linear-gradient(135deg, var(--quantum-purple) 0%, var(--ai-primary) 100%);
 }
 
 .dark {
   --background: #0a0a0a;
-  --foreground: #f9fafb;
-  --card: #141414;
-  --card-foreground: #f9fafb;
+  --foreground: #fafafa;
+  --card: #111111;
+  --card-foreground: #fafafa;
   --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #1f2937;
-  --secondary-foreground: #f9fafb;
-  --accent: #34d399;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #fafafa;
+  --accent: #06b6d4;
   --accent-foreground: #0a0a0a;
-  --muted: #1f2937;
-  --muted-foreground: #9ca3af;
-  --border: #374151;
-  --input: #374151;
+  --muted: #1a1a1a;
+  --muted-foreground: #a1a1aa;
+  --border: #27272a;
+  --input: #27272a;
   --ring: #3b82f6;
+  
+  /* Enhanced dark mode AI colors */
+  --ai-primary: #818cf8;
+  --ai-secondary: #a78bfa;
+  --ai-accent: #22d3ee;
+  --neural-blue: #38bdf8;
+  --quantum-purple: #c084fc;
+  --tech-green: #34d399;
 }
 
 @theme inline {
@@ -129,4 +150,132 @@ html {
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Modern 2025 AI Design Patterns */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-morphism {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neural-glow {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.neural-glow:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+}
+
+.quantum-border {
+  background: linear-gradient(45deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+  background-size: 300% 300%;
+  animation: quantumFlow 4s ease-in-out infinite;
+}
+
+@keyframes quantumFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* AI Grid Pattern */
+.ai-grid {
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Holographic Effect */
+.holographic {
+  background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+  background-size: 400% 400%;
+  animation: holographic 6s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes holographic {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+}
+
+/* Advanced Micro-interactions */
+.micro-bounce {
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.micro-bounce:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Neural Network Animation */
+.neural-network::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 20% 80%, rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: neuralPulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes neuralPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* Modern Card Hover Effects */
+.modern-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.modern-card:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 
+    0 20px 40px rgba(99, 102, 241, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Typing Animation for Text */
+.typing-animation {
+  overflow: hidden;
+  border-right: 2px solid;
+  white-space: nowrap;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
 }

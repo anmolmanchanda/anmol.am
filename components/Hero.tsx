@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Download, CheckCircle, Globe } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 
@@ -32,10 +33,15 @@ export function Hero() {
             {/* Avatar Section */}
             <div className="flex-shrink-0">
               <div className="relative">
-                <div className="w-48 h-48 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-4 border-primary/10 shadow-2xl flex items-center justify-center">
-                  <div className="w-40 h-40 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
-                    <span className="text-4xl font-bold text-primary">AM</span>
-                  </div>
+                <div className="w-48 h-48 rounded-full border-4 border-primary/10 shadow-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
+                  <Image
+                    src="/professional_headshot_avatar.JPG"
+                    alt="Anmol Manchanda - AI-Assisted Technical Solutions Architect"
+                    width={192}
+                    height={192}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
                 </div>
                 {/* Status indicator */}
                 <div className="absolute -bottom-2 -right-2 bg-green-500 rounded-full p-2 shadow-lg animate-pulse">
