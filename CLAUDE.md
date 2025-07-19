@@ -15,5 +15,8 @@
 
 ### Project Workflow
 - Follow proper git branching workflow
+- **ALWAYS create new branches from main ONLY**
+- **NEVER create new branch until previous branch is merged to main**
 - Commit changes before switching branches
 - Use meaningful commit messages without AI signatures
+- **ALWAYS immediately push commits after creating them**
