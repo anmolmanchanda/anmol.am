@@ -32,7 +32,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
     category: "ai",
-    date: "May 2024 - Present",
+    date: "May 2025 - Present",
     type: "personal",
     blogArticle: "/blog/ai-assisted-macos-life-manager"
   },
@@ -47,21 +47,21 @@ const allProjects: Project[] = [
     liveUrl: "https://n8n.io",
     featured: true,
     category: "automation",
-    date: "January 2024 - June 2024",
+    date: "January 2025",
     type: "work",
     blogArticle: "/blog/enterprise-automation-n8n-workflows"
   },
   {
     id: "6",
     title: "Apple Shortcuts Collection",
-    description: "50+ Apple Shortcuts for iOS/macOS process optimization and personal efficiency",
-    longDescription: "Developed 50+ Apple Shortcuts for iOS and macOS to automate personal productivity workflows. Includes shortcuts for file management, calendar scheduling, note-taking, and cross-device synchronization to streamline daily tasks.",
+    description: "716+ Apple Shortcuts for iOS/macOS process optimization and personal efficiency",
+    longDescription: "Developed 716+ Apple Shortcuts for iOS and macOS to automate personal productivity workflows. Started with iOS 13 public beta release in July 2019. Includes shortcuts for file management, calendar scheduling, note-taking, and cross-device synchronization to streamline daily tasks.",
     technologies: ["Apple Shortcuts", "iOS", "macOS", "Personal Automation"],
     image: "/images/projects/automation.jpg",
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
-    date: "January 2024 - Present",
+    date: "July 2019 - Present",
     type: "personal"
   },
   {
@@ -87,7 +87,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
     featured: false,
     category: "ai",
-    date: "April 2024 - Present",
+    date: "July 18, 2025 - Present",
     type: "personal"
   }
 ]
@@ -305,7 +305,7 @@ export default function ProjectsPage() {
                     )}
                   </div>
                   <h3 className="mt-3 text-lg sm:text-xl font-semibold">
-                    <Link href={`/projects/${project.id}`} className="hover:text-primary transition-colors">
+                    <Link href={project.blogArticle || `/projects/${project.id}`} className="hover:text-primary transition-colors">
                       {project.title}
                     </Link>
                   </h3>
