@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check-branch": "git branch",
+    "new-feature": "echo '🚨 Use: git checkout -b feature/your-feature-name'",
+    "safe-branch": "echo '✅ Current branch:' && git branch | grep '*' && echo '⚠️  NEVER work on main!'",
+    "protect-main": "echo '🚨 REMINDER: Always use feature branches! Never work on main!'"
   },
   "dependencies": {
     "@next/mdx": "^15.4.1",

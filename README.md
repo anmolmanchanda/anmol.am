@@ -1,5 +1,18 @@
 # anmol.am - Personal Portfolio Website
 
+## 🚨 CRITICAL GIT WORKFLOW WARNING 🚨
+
+**NEVER WORK DIRECTLY ON MAIN BRANCH!**
+
+Always create a feature branch:
+```bash
+git checkout -b feature/your-feature-name
+```
+
+See `CRITICAL_GIT_WORKFLOW.md` for complete workflow rules.
+
+---
+
 A modern, professional portfolio and personal website built with Next.js 14, TypeScript, and Tailwind CSS. Features a clean design, dark mode support, and optimized performance.
 
 ## 🚀 Features

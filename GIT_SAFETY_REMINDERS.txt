@@ -1,0 +1,33 @@
+🚨🚨🚨 CRITICAL SAFETY REMINDER 🚨🚨🚨
+
+NEVER WORK DIRECTLY ON MAIN BRANCH!
+
+ALWAYS:
+1. git checkout -b feature/description
+2. Do your work
+3. git push origin feature/description  
+4. Create PR for review
+
+NEVER:
+❌ git checkout main && start coding
+❌ git commit directly to main
+❌ git push origin main without PR
+
+MISTAKE MADE: 2025-01-19
+Working directly on main instead of feature branch
+
+CURRENT SAFEGUARDS:
+✅ Pre-commit hook installed
+✅ Documentation created
+✅ Multiple reminder files
+✅ Feature branch workflow enforced
+
+CHECK BRANCH BEFORE WORK:
+git branch
+(Look for * next to current branch)
+
+IF ON MAIN BY MISTAKE:
+git checkout -b feature/emergency-branch
+(Continue work on feature branch)
+
+🚨🚨🚨 PROTECT MAIN AT ALL COSTS 🚨🚨🚨

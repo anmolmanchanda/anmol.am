@@ -35,6 +35,7 @@ const featuredProjects: Project[] = [
     technologies: ["N8N.io", "APIs", "Workflow Design", "Automation"],
     image: "/images/projects/automation.jpg",
     githubUrl: "",
+    liveUrl: "https://n8n.io",
     featured: true,
     category: "automation",
     date: "2024-01",
@@ -244,6 +245,17 @@ export function FeaturedProjects() {
                         className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                       >
                         Code
+                      </a>
+                    )}
+                    
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                      >
+                        Live Demo
                       </a>
                     )}
                   </div>

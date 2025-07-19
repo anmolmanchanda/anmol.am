@@ -42,6 +42,7 @@ const allProjects: Project[] = [
     technologies: ["N8N.io", "APIs", "Workflow Design", "Automation"],
     image: "/images/projects/automation.jpg",
     githubUrl: "",
+    liveUrl: "https://n8n.io",
     featured: true,
     category: "automation",
     date: "2024-01",
