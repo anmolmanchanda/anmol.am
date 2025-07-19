@@ -1,111 +1,85 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, Calendar, Clock } from "lucide-react"
+import { ArrowLeft, Calendar, Clock, Eye, Share2, BookOpen } from "lucide-react"
 import { BlogPost } from "@/types"
 import { formatDate } from "@/lib/utils"
+import fs from 'fs'
+import path from 'path'
+import { remark } from 'remark'
+import html from 'remark-html'
 
-const blogPosts: Record<string, BlogPost> = {
+// Blog post metadata and reading time calculation
+const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
   "building-scalable-web-apps-nextjs": {
     id: "1",
     title: "Building Scalable Web Applications with Next.js",
-    excerpt: "Learn how to build performant and scalable web applications using Next.js 14 and modern best practices.",
-    content: `
-## Introduction
-
-Next.js has become one of the most popular React frameworks for building production-ready web applications. In this post, we'll explore how to leverage Next.js 14's features to build scalable applications.
-
-## Key Features
-
-### Server Components
-
-Server Components allow you to render components on the server, reducing the amount of JavaScript sent to the client. This results in faster page loads and better performance.
-
-### App Router
-
-The new App Router in Next.js 14 provides a more intuitive way to handle routing with support for layouts, error handling, and loading states.
-
-### Performance Optimizations
-
-Next.js includes built-in optimizations like:
-- Automatic code splitting
-- Image optimization
-- Font optimization
-- Script optimization
-
-## Best Practices
-
-1. **Use Server Components by default** - Only use Client Components when necessary
-2. **Implement proper caching strategies** - Leverage Next.js caching capabilities
-3. **Optimize images** - Use the Next.js Image component
-4. **Monitor performance** - Use tools like Vercel Analytics
-
-## Conclusion
-
-Next.js 14 provides all the tools needed to build fast, scalable web applications. By following best practices and leveraging its features, you can create exceptional user experiences.
-    `,
-    date: "2024-03-15",
-    tags: ["Next.js", "React", "Web Development"],
-    readingTime: 5,
-    slug: "building-scalable-web-apps-nextjs"
+    excerpt: "Learn how to build performant and scalable web applications using Next.js 15 and modern best practices. Explore advanced patterns for enterprise-grade applications.",
+    date: "2024-06-15",
+    tags: ["Next.js", "React", "Web Development", "Scalability", "Enterprise"],
+    readingTime: 12,
+    slug: "building-scalable-web-apps-nextjs",
+    image: "/images/blog/nextjs-scalable.svg",
+    gradient: "from-blue-600 via-purple-600 to-blue-800",
+    views: 3247,
+    featured: true
   },
   "power-of-typescript": {
     id: "2",
     title: "The Power of TypeScript in Modern Development",
-    excerpt: "Discover how TypeScript can improve your development workflow and help you write more maintainable code.",
-    content: `
-## Why TypeScript?
-
-TypeScript has revolutionized the way we write JavaScript applications. By adding static types to JavaScript, it helps catch errors early and improves code maintainability.
-
-## Key Benefits
-
-### Type Safety
-
-TypeScript's type system helps prevent common errors like:
-- Accessing properties that don't exist
-- Passing wrong arguments to functions
-- Typos in property names
-
-### Better IDE Support
-
-With TypeScript, you get:
-- Intelligent code completion
-- Accurate refactoring
-- Real-time error detection
-
-### Self-Documenting Code
-
-Types serve as inline documentation, making it easier for other developers (including future you) to understand the code.
-
-## Getting Started
-
-\`\`\`typescript
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-function greetUser(user: User): string {
-  return \`Hello, \${user.name}!\`;
-}
-\`\`\`
-
-## Conclusion
-
-TypeScript is an invaluable tool for modern web development. While it adds a small learning curve, the benefits far outweigh the initial investment.
-    `,
-    date: "2024-03-01",
-    tags: ["TypeScript", "JavaScript", "Best Practices"],
-    readingTime: 8,
-    slug: "power-of-typescript"
+    excerpt: "Discover how TypeScript can improve your development workflow and help you write more maintainable code. Deep dive into advanced type patterns and best practices.",
+    date: "2024-05-20",
+    tags: ["TypeScript", "JavaScript", "Best Practices", "Developer Experience", "Type Safety"],
+    readingTime: 15,
+    slug: "power-of-typescript",
+    image: "/images/blog/typescript-power.svg",
+    gradient: "from-blue-500 via-cyan-500 to-teal-600",
+    views: 2891,
+    featured: true
+  },
+  "mastering-state-management-react": {
+    id: "3",
+    title: "Mastering State Management in React Applications",
+    excerpt: "A comprehensive guide to managing state in React applications, from local state to global state solutions. Compare Redux, Zustand, and modern patterns with real examples.",
+    date: "2024-04-10",
+    tags: ["React", "State Management", "Frontend", "Redux", "Zustand", "React Query"],
+    readingTime: 18,
+    slug: "mastering-state-management-react",
+    image: "/images/blog/react-state.svg",
+    gradient: "from-purple-600 via-pink-600 to-red-600",
+    views: 4156,
+    featured: true
   }
+}
+
+// Function to load markdown content
+async function getPostContent(slug: string): Promise<string> {
+  try {
+    const filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.md`)
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+    
+    // Process markdown to HTML
+    const processedContent = await remark()
+      .use(html)
+      .process(fileContents)
+    
+    return processedContent.toString()
+  } catch (error) {
+    console.error(`Error loading post content for ${slug}:`, error)
+    return '<p>Content not available</p>'
+  }
+}
+
+// Function to calculate reading time from content
+function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200
+  const wordCount = content.split(/\s+/).length
+  return Math.ceil(wordCount / wordsPerMinute)
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const post = blogPosts[slug]
+  const post = blogPostsMetadata[slug]
   
   if (!post) {
     return {
@@ -114,60 +88,155 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: post.title,
+    title: `${post.title} | Anmol Manchanda`,
     description: post.excerpt,
+    keywords: post.tags,
+    authors: [{ name: "Anmol Manchanda" }],
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      tags: post.tags,
+      images: [{
+        url: post.image || '/images/blog-default.svg',
+        width: 1200,
+        height: 630,
+        alt: post.title
+      }]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image || '/images/blog-default.svg']
+    }
   }
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = blogPosts[slug]
+  const postMeta = blogPostsMetadata[slug]
 
-  if (!post) {
+  if (!postMeta) {
     notFound()
   }
 
+  const content = await getPostContent(slug)
+  const actualReadingTime = calculateReadingTime(content)
+
   return (
-    <article className="py-24 sm:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <Link
-            href="/blog"
-            className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-8"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Blog
-          </Link>
+    <div className="min-h-screen aurora-bg relative overflow-hidden">
+      {/* Enhanced Aurora background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-violet-500/10 via-transparent to-cyan-500/10 animate-pulse" />
+      <div className="absolute inset-0 ai-grid" />
+      
+      <article className="py-24 sm:py-32 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            {/* Navigation */}
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-8 glass-morphism p-3 rounded-lg border backdrop-blur-md"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Knowledge Hub
+            </Link>
 
-          <header>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{post.title}</h1>
-            <div className="mt-6 flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
-                <time dateTime={post.date}>{formatDate(post.date)}</time>
+            {/* Article Header */}
+            <header className="liquid-glass rounded-2xl border backdrop-blur-md p-8 mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="glass-morphism cyber-border p-3 rounded-full border backdrop-blur-md quantum-glow">
+                  <BookOpen className="w-6 h-6 text-primary icon-pulse" />
+                </div>
+                <span className="text-sm font-medium text-muted-foreground">Technical Article</span>
               </div>
-              <div className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                <span>{post.readingTime} min read</span>
-              </div>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground"
-                >
-                  {tag}
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+                <span className="bg-gradient-to-r from-primary via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+                  {postMeta.title}
                 </span>
-              ))}
-            </div>
-          </header>
+              </h1>
+              
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                {postMeta.excerpt}
+              </p>
+              
+              {/* Article Meta */}
+              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6">
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-primary" />
+                  <time dateTime={postMeta.date}>{formatDate(postMeta.date)}</time>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-primary" />
+                  <span>{actualReadingTime} min read</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Eye className="h-4 w-4 text-primary" />
+                  <span>{postMeta.views?.toLocaleString()} views</span>
+                </div>
+                <button className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Share2 className="h-4 w-4" />
+                  <span>Share</span>
+                </button>
+              </div>
+              
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2">
+                {postMeta.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded-full bg-primary/10 text-primary px-3 py-1.5 text-sm font-medium border border-primary/20"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </header>
 
-          <div className="prose prose-lg mt-12 max-w-none dark:prose-invert">
-            <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br />') }} />
+            {/* Article Content */}
+            <div className="liquid-glass rounded-2xl border backdrop-blur-md p-8">
+              <div 
+                className="prose prose-lg max-w-none dark:prose-invert
+                          prose-headings:bg-gradient-to-r prose-headings:from-primary prose-headings:via-purple-500 prose-headings:to-cyan-500 prose-headings:bg-clip-text prose-headings:text-transparent
+                          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                          prose-code:bg-secondary prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
+                          prose-pre:bg-secondary prose-pre:border prose-pre:border-border
+                          prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg
+                          prose-strong:text-primary prose-strong:font-semibold
+                          prose-ul:list-none prose-ul:space-y-2
+                          prose-li:relative prose-li:pl-6
+                          prose-li:before:content-['▶'] prose-li:before:absolute prose-li:before:left-0 prose-li:before:text-primary prose-li:before:text-sm"
+                dangerouslySetInnerHTML={{ __html: content }} 
+              />
+            </div>
+
+            {/* Article Footer */}
+            <div className="mt-12 liquid-glass rounded-2xl border backdrop-blur-md p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-purple-500 flex items-center justify-center text-white font-bold text-lg">
+                    A
+                  </div>
+                  <div>
+                    <p className="font-semibold">Anmol Manchanda</p>
+                    <p className="text-sm text-muted-foreground">AI-Assisted Developer & Technical Architect</p>
+                  </div>
+                </div>
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  More Articles
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   )
 }
