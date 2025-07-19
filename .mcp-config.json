@@ -87,6 +87,42 @@
     "firecrawl": {
       "command": "npx",
       "args": ["firecrawl-mcp"]
+    },
+    "everything": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"]
+    },
+    "buildable": {
+      "command": "npx",
+      "args": ["-y", "@chunkydotdev/bldbl-mcp"]
+    },
+    "archbee": {
+      "command": "npx",
+      "args": ["-y", "@archbee/mcp"]
+    },
+    "builtwith": {
+      "command": "npx",
+      "args": ["-y", "@builtwith/mcp"]
+    },
+    "browserbase": {
+      "command": "npx",
+      "args": ["-y", "@browserbase/mcp-server"]
+    },
+    "apollo": {
+      "command": "npx",
+      "args": ["-y", "@apollographql/apollo-mcp-server"]
+    },
+    "chroma": {
+      "command": "npx",
+      "args": ["-y", "@chroma-core/chroma-mcp"]
+    },
+    "circleci": {
+      "command": "npx",
+      "args": ["-y", "@circleci/mcp-server-circleci"]
+    },
+    "astra-db": {
+      "command": "npx",
+      "args": ["-y", "@datastax/astra-db-mcp"]
     }
   }
 }
