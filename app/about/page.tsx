@@ -148,24 +148,40 @@ export default function AboutPage() {
 
                   const getLogo = () => {
                     if (exp.id === "1") return (
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
-                        UN
-                      </div>
+                      <Image
+                        src="/images/UN_1.jpg"
+                        alt="United Nations"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-md object-cover"
+                      />
                     )
                     if (exp.id === "2") return (
-                      <div className="w-8 h-8 rounded-md bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
-                        WR
-                      </div>
+                      <Image
+                        src="/images/SWRIL.png"
+                        alt="Smart Waterloo Region Innovation Lab"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                      />
                     )
                     if (exp.id === "3") return (
-                      <div className="w-8 h-8 rounded-md bg-orange-600 flex items-center justify-center text-white font-bold text-xs">
-                        WFC
-                      </div>
+                      <Image
+                        src="/images/WFC.jpg"
+                        alt="Williams Fresh Cafe"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-md object-cover"
+                      />
                     )
                     if (exp.id === "4") return (
-                      <div className="w-8 h-8 rounded-md bg-green-600 flex items-center justify-center text-white font-bold text-xs">
-                        AI
-                      </div>
+                      <Image
+                        src="/images/AIESEC.png"
+                        alt="AIESEC"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                      />
                     )
                     return (
                       <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xs">
@@ -243,9 +259,13 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xs">
-                        CC
-                      </div>
+                      <Image
+                        src="/images/Conestoga_College.png"
+                        alt="Conestoga College"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                      />
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
@@ -277,9 +297,13 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-blue-500/20 to-blue-400/10 border border-blue-500/20 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
-                        IPU
-                      </div>
+                      <Image
+                        src="/images/GGSIPU.png"
+                        alt="GGSIPU"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                      />
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
@@ -311,9 +335,13 @@ export default function AboutPage() {
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20 flex items-center justify-center">
-                      <div className="w-8 h-8 rounded-md bg-green-600 flex items-center justify-center text-white font-bold text-xs">
-                        G
-                      </div>
+                      <Image
+                        src="/images/Google_1.png"
+                        alt="Google"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 rounded-md object-cover bg-white p-1"
+                      />
                     </div>
                     <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                       <div className="space-y-3">
