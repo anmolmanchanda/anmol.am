@@ -14,6 +14,7 @@ export function ViewTracker({ slug, initialViews = 0, showIcon = true, className
   const [views, setViews] = useState(initialViews)
   const [isTracking, setIsTracking] = useState(false)
   const [hasTracked, setHasTracked] = useState(false)
+  const [justUpdated, setJustUpdated] = useState(false)
 
   useEffect(() => {
     let mounted = true
@@ -39,7 +40,12 @@ export function ViewTracker({ slug, initialViews = 0, showIcon = true, className
         const data = await response.json()
         
         if (mounted && data.success) {
-          setViews(data.views)
+          const newViews = data.views
+          if (newViews > views) {
+            setJustUpdated(true)
+            setTimeout(() => setJustUpdated(false), 2000)
+          }
+          setViews(newViews)
           setHasTracked(true)
         }
       } catch (error) {
@@ -65,9 +71,14 @@ export function ViewTracker({ slug, initialViews = 0, showIcon = true, className
   }, [slug, initialViews, hasTracked, isTracking])
 
   return (
-    <div className={`flex items-center gap-1 ${className}`}>
-      {showIcon && <Eye className="h-4 w-4" />}
-      <span>{views.toLocaleString()}</span>
+    <div className={`flex items-center gap-1 ${className} ${justUpdated ? 'animate-pulse' : ''}`}>
+      {showIcon && (
+        <Eye className={`h-4 w-4 ${justUpdated ? 'text-green-500 animate-bounce' : ''}`} />
+      )}
+      <span className={`${justUpdated ? 'text-green-500 font-semibold scale-110 transition-all duration-500' : 'transition-all duration-500'}`}>
+        {views.toLocaleString()}
+        {justUpdated && <span className="ml-1 text-green-500 animate-ping">+1</span>}
+      </span>
     </div>
   )
 }
