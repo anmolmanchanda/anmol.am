@@ -83,12 +83,6 @@ export function Hero() {
                   />
                 </div>
                 
-                {/* Minimal status indicator */}
-                <div className="absolute -bottom-3 -right-3">
-                  <div className="w-8 h-8 rounded-full bg-green-500 border-4 border-background shadow-lg flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                  </div>
-                </div>
               </Card3D>
             </div>
 
@@ -108,7 +102,7 @@ export function Hero() {
                 </div>
 
                 {/* Clean credential badge */}
-                <div className="inline-flex items-center gap-3 glass-morphism px-6 py-3 rounded-full border backdrop-blur-md">
+                <div className="inline-flex items-center gap-3 glass-morphism px-6 py-3 rounded-full border-2 border-primary/20 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300">
                   <Globe2 className="w-5 h-5 text-primary" />
                   <span className="text-sm font-medium">Technical Solutions Architect at UN-Habitat</span>
                 </div>
@@ -116,14 +110,9 @@ export function Hero() {
 
               {/* Essential description */}
               <p className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed text-muted-foreground max-w-2xl">
-                I solve complex technical problems in days, not weeks, using AI-assisted development.
+                Building enterprise-scale solutions with AI acceleration. From TB-scale data pipelines to native applications.
               </p>
 
-              {/* Location - minimal */}
-              <div className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm font-medium">{siteConfig.location}</span>
-              </div>
 
               {/* Enhanced CTAs with magnetic effect */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
@@ -144,44 +133,50 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Enhanced social links */}
-          <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mt-12 sm:mt-16 lg:mt-20 pt-6 sm:pt-8 border-t border-border/30">
-            <a
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
-            >
-              GitHub
-            </a>
-            <a
-              href={siteConfig.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={siteConfig.links.fiverr}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
-            >
-              Fiverr
-            </a>
-            <a
-              href={siteConfig.links.email}
-              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
-            >
-              Email
-            </a>
-            <a
-              href="/contact"
-              className="text-sm sm:text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 min-h-[44px] flex items-center"
-            >
-              Get in Touch
-            </a>
+          {/* Enhanced social links with magnetic buttons */}
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-12 sm:mt-16 lg:mt-20 pt-6 sm:pt-8 border-t border-border/30">
+            <MagneticButton className="group">
+              <a
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium text-foreground/80 hover:text-foreground transition-all duration-300 hover:shadow-lg hover:border-primary/30 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
+              >
+                <span className="text-sm sm:text-base">GitHub</span>
+                <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
+              </a>
+            </MagneticButton>
+            <MagneticButton className="group">
+              <a
+                href={siteConfig.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium text-foreground/80 hover:text-foreground transition-all duration-300 hover:shadow-lg hover:border-primary/30 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
+              >
+                <span className="text-sm sm:text-base">LinkedIn</span>
+                <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
+              </a>
+            </MagneticButton>
+            <MagneticButton className="group">
+              <a
+                href={siteConfig.links.fiverr}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium text-foreground/80 hover:text-foreground transition-all duration-300 hover:shadow-lg hover:border-primary/30 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
+              >
+                <span className="text-sm sm:text-base">Fiverr</span>
+                <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
+              </a>
+            </MagneticButton>
+            <MagneticButton className="group">
+              <a
+                href="/contact"
+                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-300 hover:shadow-lg hover:border-primary/50 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
+              >
+                <span className="text-sm sm:text-base font-semibold">Get in Touch</span>
+                <ArrowRight className="w-3 h-3 transition-all duration-300 transform group-hover:translate-x-1" />
+              </a>
+            </MagneticButton>
           </div>
         </div>
       </div>

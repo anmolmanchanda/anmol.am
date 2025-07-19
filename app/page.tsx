@@ -12,7 +12,7 @@ export default function Home() {
       <FeaturedProjects />
       <SkillsShowcase />
       <InteractiveTimeline />
-      <TestimonialsCarousel />
+      {/* <TestimonialsCarousel /> */}
       <ServicesSection />
     </>
   );

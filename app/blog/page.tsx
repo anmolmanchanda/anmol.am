@@ -230,23 +230,26 @@ export default function BlogPage() {
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="glass-morphism cyber-border p-6 rounded-2xl border backdrop-blur-md">
-            <div className="flex flex-col lg:flex-row gap-4 items-center">
-              {/* Search Bar */}
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-background/50 border border-border/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                />
-              </div>
-              
-              {/* Tag Filter */}
-              <div className="flex items-center gap-2 flex-wrap">
+          <div className="glass-morphism cyber-border p-6 rounded-2xl border backdrop-blur-md space-y-6">
+            {/* Search Bar - Full Width */}
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 bg-background/50 border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-base"
+              />
+            </div>
+            
+            {/* Tag Filter - Full Width */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
                 <Filter className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm font-medium text-muted-foreground">Filter by topic:</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setSelectedTag(null)}
                   className={cn(

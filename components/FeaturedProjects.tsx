@@ -66,7 +66,7 @@ export function FeaturedProjects() {
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
-          {featuredProjects.map((project) => {
+          {featuredProjects.slice(0, 3).map((project) => {
             const getProjectIcon = () => {
               if (project.id === "1") return <Database className="w-8 h-8 text-blue-500" />
               if (project.id === "2") return <Zap className="w-8 h-8 text-purple-500" />

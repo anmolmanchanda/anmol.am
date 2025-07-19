@@ -82,32 +82,27 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6 text-primary mt-1" />
                   <div className="flex-1">
                     <h3 className="font-semibold">Location</h3>
-                    <div className="mt-2 flex items-start gap-4">
-                      <div className="flex-1">
-                        <p className="text-muted-foreground font-medium">
-                          {siteConfig.location}
-                        </p>
-                        <p className="text-muted-foreground text-sm mt-1">
-                          Available for remote work worldwide
-                        </p>
-                      </div>
-                      {/* Embedded map */}
-                      <div className="flex-shrink-0">
-                        <div className="w-32 h-24 rounded-lg overflow-hidden border border-border shadow-sm">
-                          <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92566.89442206342!2d-80.55484!3d43.42643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882bf48c03ee5105%3A0x9525f8e6df5f9d9e!2sKitchener%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                            width="128"
-                            height="96"
-                            style={{ border: 0 }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            className="w-full h-full"
-                          />
-                        </div>
-                      </div>
-                    </div>
+                    <p className="text-muted-foreground font-medium mt-2">
+                      {siteConfig.location}
+                    </p>
+                    <p className="text-muted-foreground text-sm mt-1">
+                      Available for remote work worldwide
+                    </p>
                   </div>
+                </div>
+                
+                {/* Embedded map */}
+                <div className="mt-6 rounded-xl overflow-hidden border-2 border-border shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92566.89442206342!2d-80.55484!3d43.42643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882bf48c03ee5105%3A0x9525f8e6df5f9d9e!2sKitchener%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                    width="100%"
+                    height="200"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full"
+                  />
                 </div>
               </div>
 
@@ -154,7 +149,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-lg border bg-card p-8">
+            <div className="liquid-glass rounded-2xl border backdrop-blur-md p-8 shadow-xl">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium">
@@ -165,8 +160,8 @@ export default function ContactPage() {
                     type="text"
                     id="name"
                     className={cn(
-                      "mt-2 block w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
-                      errors.name && "border-red-500"
+                      "mt-2 block w-full rounded-lg border bg-background/50 backdrop-blur px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 hover:bg-background/70",
+                      errors.name && "border-red-500 focus:border-red-500 focus:ring-red-500/50"
                     )}
                   />
                   {errors.name && (
@@ -189,8 +184,8 @@ export default function ContactPage() {
                     type="email"
                     id="email"
                     className={cn(
-                      "mt-2 block w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
-                      errors.email && "border-red-500"
+                      "mt-2 block w-full rounded-lg border bg-background/50 backdrop-blur px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 hover:bg-background/70",
+                      errors.email && "border-red-500 focus:border-red-500 focus:ring-red-500/50"
                     )}
                   />
                   {errors.email && (
@@ -207,8 +202,8 @@ export default function ContactPage() {
                     type="text"
                     id="subject"
                     className={cn(
-                      "mt-2 block w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
-                      errors.subject && "border-red-500"
+                      "mt-2 block w-full rounded-lg border bg-background/50 backdrop-blur px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 hover:bg-background/70",
+                      errors.subject && "border-red-500 focus:border-red-500 focus:ring-red-500/50"
                     )}
                   />
                   {errors.subject && (
@@ -225,8 +220,8 @@ export default function ContactPage() {
                     id="message"
                     rows={6}
                     className={cn(
-                      "mt-2 block w-full rounded-md border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
-                      errors.message && "border-red-500"
+                      "mt-2 block w-full rounded-lg border bg-background/50 backdrop-blur px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200 hover:bg-background/70 resize-none",
+                      errors.message && "border-red-500 focus:border-red-500 focus:ring-red-500/50"
                     )}
                   />
                   {errors.message && (
@@ -237,14 +232,14 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-primary to-purple-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 group"
                 >
                   {isSubmitting ? (
                     "Sending..."
                   ) : (
                     <>
                       Send Message
-                      <Send className="ml-2 h-4 w-4" />
+                      <Send className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </>
                   )}
                 </button>

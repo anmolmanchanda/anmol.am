@@ -20,55 +20,55 @@ interface ServicePackage {
 const servicePackages: ServicePackage[] = [
   {
     id: "assessment",
-    name: "AI Implementation Assessment",
+    name: "Strategic AI Assessment",
     price: "$90/hour",
     duration: "1-2 weeks",
-    description: "Comprehensive evaluation of your current systems and AI implementation strategy",
+    description: "Unlock hidden opportunities in your business with enterprise-grade AI strategy. Based on real UN-Habitat implementations.",
     icon: <Brain className="w-6 h-6" />,
     gradient: "from-blue-500 to-cyan-500",
     features: [
-      "Current system analysis",
-      "AI readiness assessment", 
-      "Technology stack evaluation",
-      "Implementation roadmap",
-      "ROI projections",
-      "Risk assessment"
+      "Enterprise system audit & bottleneck identification",
+      "AI opportunity mapping with ROI projections", 
+      "Technology modernization roadmap",
+      "Implementation timeline with quick wins",
+      "Cost-benefit analysis with real metrics",
+      "Risk mitigation strategies"
     ]
   },
   {
     id: "rapid-prototype",
-    name: "Rapid Prototype Development", 
+    name: "AI-Accelerated MVP", 
     price: "$120/hour",
     duration: "1-3 weeks",
-    description: "Fast-track development using AI-assisted methodologies for proof-of-concept solutions",
+    description: "Transform your ideas into working prototypes 70% faster using proven AI development methods. See results in days, not months.",
     icon: <Zap className="w-6 h-6" />,
     gradient: "from-purple-500 to-pink-500",
     popular: true,
     highlighted: true,
     features: [
-      "AI-assisted development",
-      "Rapid prototyping",
-      "Cloud infrastructure setup",
-      "Data pipeline creation",
-      "Performance optimization",
-      "Documentation included"
+      "AI-assisted development (70% faster delivery)",
+      "Production-ready prototypes, not demos",
+      "AWS/cloud infrastructure included",
+      "Real-time data processing pipelines",
+      "Performance optimization from day 1",
+      "Complete documentation & handover"
     ]
   },
   {
     id: "full-implementation",
-    name: "Full Implementation & Architecture",
+    name: "Enterprise Transformation",
     price: "$150/hour", 
     duration: "1-3 months",
-    description: "Complete enterprise-grade solution development with ongoing support and optimization",
+    description: "Scale your business with battle-tested enterprise architecture. Built for 10+ TB data processing and millions of users.",
     icon: <Rocket className="w-6 h-6" />,
     gradient: "from-green-500 to-emerald-500",
     features: [
-      "Enterprise architecture design",
-      "Full-scale implementation",
-      "TB-scale data processing",
-      "Team training & handover",
-      "6-month support included",
-      "Performance guarantees"
+      "TB-scale architecture (proven at UN-Habitat)",
+      "Zero-downtime deployment strategies",
+      "Auto-scaling infrastructure (handles traffic spikes)",
+      "Team upskilling & knowledge transfer",
+      "6-month support with SLA guarantees",
+      "Performance metrics & monitoring included"
     ]
   }
 ]
@@ -87,7 +87,7 @@ export function ServicesSection() {
             <span className="holographic">Consulting Services</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Expert AI-assisted technical solutions for your most complex challenges
+            Proven enterprise solutions that deliver results 70% faster. From TB-scale data pipelines to AI-powered applications.
           </p>
           <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Calendar className="w-4 h-4" />
