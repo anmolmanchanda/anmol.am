@@ -50,7 +50,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Get in Touch</h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Interested in Technical Solutions Architecture roles or AI consulting projects? Let's connect.
+            Interested in Technical Solutions Architecture roles or AI consulting projects? Let&apos;s connect.
           </p>
         </div>
 

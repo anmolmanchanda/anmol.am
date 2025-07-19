@@ -8,7 +8,7 @@ export interface Project {
   githubUrl?: string
   liveUrl?: string
   featured: boolean
-  category: 'web' | 'mobile' | 'api' | 'other'
+  category: 'web' | 'mobile' | 'api' | 'enterprise' | 'ai' | 'automation' | 'blockchain' | 'other'
   date: string
 }
 
@@ -27,7 +27,7 @@ export interface Skill {
   name: string
   icon?: string
   level: 'beginner' | 'intermediate' | 'advanced' | 'expert'
-  category: 'frontend' | 'backend' | 'database' | 'devops' | 'other'
+  category: 'frontend' | 'backend' | 'database' | 'devops' | 'programming' | 'cloud' | 'ai' | 'design' | 'automation' | 'other'
 }
 
 export interface Experience {
