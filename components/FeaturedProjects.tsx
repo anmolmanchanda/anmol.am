@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Database, Zap, TrendingUp } from "lucide-react"
 import { Project } from "@/types"
 
 const featuredProjects: Project[] = [
@@ -50,61 +50,112 @@ export function FeaturedProjects() {
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <article
-              key={project.id}
-              className="group relative flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm transition-all hover:shadow-lg"
-            >
-              <div className="aspect-[16/9] w-full overflow-hidden bg-muted">
-                <div className="flex h-full items-center justify-center text-muted-foreground">
-                  <span>Project Image</span>
-                </div>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold">
-                    <Link href={`/projects/${project.id}`} className="hover:text-primary transition-colors">
-                      {project.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-3 text-sm text-muted-foreground">{project.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+          {featuredProjects.map((project) => {
+            const getProjectIcon = () => {
+              if (project.id === "1") return <Database className="w-8 h-8 text-blue-500" />
+              if (project.id === "2") return <Zap className="w-8 h-8 text-purple-500" />
+              return <TrendingUp className="w-8 h-8 text-green-500" />
+            }
+
+            const getProjectMetrics = () => {
+              if (project.id === "1") return { metric: "10+ TB", label: "Data Processed Monthly" }
+              if (project.id === "2") return { metric: "AI-Powered", label: "Native macOS App" }
+              return { metric: "100+", label: "Automations Created" }
+            }
+
+            const metrics = getProjectMetrics()
+
+            return (
+              <article
+                key={project.id}
+                className="group relative flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-all hover:shadow-xl hover:scale-[1.02] duration-300"
+              >
+                {/* Enhanced project visual */}
+                <div className="aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-muted relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  <div className="flex h-full items-center justify-center">
+                    {getProjectIcon()}
+                  </div>
+                  
+                  {/* Impact metric overlay */}
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-white/90 dark:bg-black/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <div className="text-xs font-semibold text-center">
+                        <div className="text-primary font-bold">{metrics.metric}</div>
+                        <div className="text-muted-foreground text-[10px]">{metrics.label}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Category badge */}
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/90 text-primary-foreground backdrop-blur-sm">
+                      {project.category === 'enterprise' ? 'Enterprise' : 
+                       project.category === 'ai' ? 'AI-Powered' : 'Automation'}
+                    </span>
                   </div>
                 </div>
-                <div className="mt-6 flex items-center gap-4">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                        <Link href={`/projects/${project.id}`} className="hover:text-primary transition-colors">
+                          {project.title}
+                        </Link>
+                      </h3>
+                      {project.featured && (
+                        <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
+                          Featured
+                        </span>
+                      )}
+                    </div>
+                    
+                    <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+                    
+                    {/* Enhanced technology tags */}
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.technologies.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-1 text-xs font-medium text-secondary-foreground transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <span className="inline-flex items-center text-xs text-muted-foreground">
+                          +{project.technologies.length - 4} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Enhanced action buttons */}
+                  <div className="mt-6 flex items-center gap-4">
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link"
                     >
-                      GitHub
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                    >
-                      Live Demo
-                      <ArrowUpRight className="ml-1 h-3 w-3" />
-                    </a>
-                  )}
+                      View Case Study
+                      <ArrowUpRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                    </Link>
+                    
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        Code
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            )
+          })}
         </div>
         <div className="mt-12 text-center">
           <Link
