@@ -82,7 +82,7 @@ export default function AboutPage() {
               <div className="relative group mb-6">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_60px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
-                    src="/images/professional_headshot_avatar.JPG"
+                    src="/images/about_avatar.JPG"
                     alt="Anmol Manchanda - Technical Solutions Architect"
                     width={128}
                     height={128}

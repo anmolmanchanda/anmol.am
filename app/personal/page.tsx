@@ -71,7 +71,7 @@ export default function PersonalPage() {
               <div className="relative group mb-6">
                 <div className="w-32 h-32 rounded-full overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_60px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
-                    src="/professional_headshot_avatar.JPG"
+                    src="/images/life_avatar.jpeg"
                     alt="Anmol Manchanda - Personal Side"
                     width={128}
                     height={128}
