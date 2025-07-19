@@ -1,22 +1,25 @@
 export const siteConfig = {
   name: "Anmol Manchanda",
   url: "https://anmol.am",
-  email: "hi@anmol.am",
-  title: "Full Stack Developer & Software Engineer",
-  description: "Professional portfolio and personal website of Anmol Manchanda - Full Stack Developer specializing in modern web technologies",
+  email: "anmol.manchanda@icloud.com",
+  title: "AI-Assisted Technical Solutions Architect",
+  description: "Technical Solutions Architect with expertise in AI-assisted development, data engineering, and rapid prototyping. Currently Technical Solutions Engineer at United Nations.",
   keywords: [
     "Anmol Manchanda",
-    "Full Stack Developer",
+    "AI-Assisted Development",
+    "Technical Solutions Architect",
+    "United Nations",
+    "AWS",
+    "Data Engineering",
+    "PySpark",
+    "Claude AI",
+    "Python",
     "Software Engineer",
-    "Web Developer",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js"
+    "Waterloo Ontario"
   ],
   author: {
     name: "Anmol Manchanda",
-    email: "hi@anmol.am",
+    email: "anmol.manchanda@icloud.com",
     twitter: "@anmolmanchanda",
     linkedin: "anmolmanchanda",
     github: "anmolmanchanda"
@@ -25,10 +28,12 @@ export const siteConfig = {
     github: "https://github.com/anmolmanchanda",
     linkedin: "https://linkedin.com/in/anmolmanchanda",
     twitter: "https://twitter.com/anmolmanchanda",
-    email: "mailto:hi@anmol.am"
+    email: "mailto:anmol.manchanda@icloud.com"
   },
   emailAliases: {
-    work: "work@anmol.am",
-    resume: "resume@anmol.am"
-  }
+    work: "hi@anmol.am",
+    personal: "anmol.manchanda@icloud.com"
+  },
+  location: "Waterloo, Ontario, Canada",
+  phone: "+1 (519) 729-3419"
 }

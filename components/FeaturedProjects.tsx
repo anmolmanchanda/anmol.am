@@ -5,37 +5,37 @@ import { Project } from "@/types"
 const featuredProjects: Project[] = [
   {
     id: "1",
-    title: "E-Commerce Platform",
-    description: "A modern full-stack e-commerce solution with real-time inventory management",
-    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-    image: "/images/projects/ecommerce.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/ecommerce-platform",
-    liveUrl: "https://demo.example.com",
+    title: "Enterprise Data Pipeline (UN)",
+    description: "TB-scale data processing infrastructure for 12 global cities with real-time monitoring",
+    technologies: ["AWS Glue", "Lambda", "EventBridge", "Step Functions", "PySpark"],
+    image: "/images/projects/un-pipeline.jpg",
+    githubUrl: "",
+    liveUrl: "",
     featured: true,
-    category: "web",
-    date: "2024-01"
+    category: "enterprise",
+    date: "2024-06"
   },
   {
     id: "2",
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates and team features",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-    image: "/images/projects/taskmanager.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/task-manager",
+    title: "AI-Powered Life Manager",
+    description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
+    technologies: ["Swift", "AI Integration", "macOS Frameworks"],
+    image: "/images/projects/life-manager.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/ai-life-manager",
     featured: true,
-    category: "web",
-    date: "2024-02"
+    category: "ai",
+    date: "2024-05"
   },
   {
     id: "3",
-    title: "Analytics Dashboard",
-    description: "Data visualization dashboard with interactive charts and real-time metrics",
-    technologies: ["React", "D3.js", "Python", "FastAPI"],
-    image: "/images/projects/analytics.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/analytics-dashboard",
+    title: "Automation Solutions Suite",
+    description: "100+ Apple Shortcuts and N8N workflows for process optimization and efficiency",
+    technologies: ["Apple Shortcuts", "N8N.io", "APIs", "Automation"],
+    image: "/images/projects/automation.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
-    category: "web",
-    date: "2024-03"
+    category: "automation",
+    date: "2024-01"
   }
 ]
 
@@ -46,7 +46,7 @@ export function FeaturedProjects() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Projects</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Here are some of my recent projects that showcase my skills and experience
+            Real projects demonstrating AI-assisted development and enterprise-scale solutions
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">

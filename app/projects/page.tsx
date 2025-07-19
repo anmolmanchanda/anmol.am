@@ -9,85 +9,73 @@ import { cn } from "@/lib/utils"
 const allProjects: Project[] = [
   {
     id: "1",
-    title: "E-Commerce Platform",
-    description: "A modern full-stack e-commerce solution with real-time inventory management",
-    longDescription: "Built a comprehensive e-commerce platform featuring user authentication, product catalog, shopping cart, payment integration, and admin dashboard. The platform handles real-time inventory updates and supports multiple payment methods.",
-    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Redis"],
-    image: "/images/projects/ecommerce.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/ecommerce-platform",
-    liveUrl: "https://demo-ecommerce.example.com",
+    title: "Enterprise Data Pipeline (UN)",
+    description: "TB-scale data processing infrastructure for 12 global cities with real-time monitoring",
+    longDescription: "Built TB-scale data processing pipeline for 12 global cities serving UN global initiatives. Architected enterprise-grade AWS infrastructure handling 10+ TB monthly data volume with real-time monitoring and processing capabilities. Lead architect and developer for production system.",
+    technologies: ["AWS Glue", "Lambda", "EventBridge", "Step Functions", "PySpark", "Python"],
+    image: "/images/projects/un-pipeline.jpg",
+    githubUrl: "",
+    liveUrl: "",
     featured: true,
-    category: "web",
-    date: "2024-01"
+    category: "enterprise",
+    date: "2024-06"
   },
   {
     id: "2",
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates and team features",
-    longDescription: "Developed a real-time collaborative task management application that allows teams to create, assign, and track tasks. Features include drag-and-drop functionality, real-time notifications, and team collaboration tools.",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "JWT"],
-    image: "/images/projects/taskmanager.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/task-manager",
+    title: "AI-Powered Life Manager",
+    description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
+    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-assisted development methodologies. Demonstrates cutting-edge AI-assisted development practices for personal productivity optimization and life management.",
+    technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
+    image: "/images/projects/life-manager.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/ai-life-manager",
     featured: true,
-    category: "web",
-    date: "2024-02"
+    category: "ai",
+    date: "2024-05"
   },
   {
     id: "3",
-    title: "Analytics Dashboard",
-    description: "Data visualization dashboard with interactive charts and real-time metrics",
-    longDescription: "Created an analytics dashboard that visualizes complex data sets with interactive charts and graphs. The dashboard provides real-time insights and supports custom report generation.",
-    technologies: ["React", "D3.js", "Python", "FastAPI", "PostgreSQL", "Docker"],
-    image: "/images/projects/analytics.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/analytics-dashboard",
+    title: "Automation Solutions Suite",
+    description: "100+ Apple Shortcuts and N8N workflows for process optimization and efficiency",
+    longDescription: "Created 100+ Apple Shortcuts and N8N workflows for process automation, providing significant efficiency improvements across daily workflows. Covers both personal and professional process automation with various API integrations.",
+    technologies: ["Apple Shortcuts", "N8N.io", "APIs", "Automation", "Workflow Design"],
+    image: "/images/projects/automation.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
-    category: "web",
-    date: "2024-03"
+    category: "automation",
+    date: "2024-01"
   },
   {
     id: "4",
-    title: "Mobile Weather App",
-    description: "Cross-platform weather application with location-based forecasts",
-    longDescription: "Built a cross-platform mobile weather application that provides accurate weather forecasts based on user location. Features include hourly and weekly forecasts, weather alerts, and interactive maps.",
-    technologies: ["React Native", "TypeScript", "Expo", "Weather API"],
-    image: "/images/projects/weather.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/weather-app",
+    title: "Blockchain Solutions (Smart Waterloo)",
+    description: "Blockchain solutions and mobile applications for regional innovation initiatives",
+    longDescription: "Developed blockchain solutions and mobile applications for Smart Waterloo Region Innovation Lab. Implemented secure data management systems and collaborated with regional stakeholders on technology initiatives.",
+    technologies: ["Blockchain", "Swift", "Kotlin", "JavaScript", "Mobile Development"],
+    image: "/images/projects/blockchain.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/blockchain-solutions",
     featured: false,
-    category: "mobile",
-    date: "2023-11"
+    category: "blockchain",
+    date: "2024-02"
   },
   {
     id: "5",
-    title: "REST API Service",
-    description: "Scalable RESTful API service with authentication and rate limiting",
-    longDescription: "Designed and implemented a scalable REST API service with JWT authentication, rate limiting, and comprehensive documentation. The API serves as a backend for multiple client applications.",
-    technologies: ["Node.js", "Express", "MongoDB", "Redis", "Swagger"],
-    image: "/images/projects/api.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/api-service",
+    title: "AI-Assisted Development Portfolio",
+    description: "Collection of projects demonstrating AI-assisted development methodologies",
+    longDescription: "Portfolio showcasing various AI-assisted development approaches and techniques. Demonstrates proficiency with Claude AI, ChatGPT, Cursor AI, and other AI development tools for rapid prototyping and solution development.",
+    technologies: ["Claude AI", "ChatGPT", "Cursor AI", "Python", "Swift", "JavaScript"],
+    image: "/images/projects/ai-portfolio.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
     featured: false,
-    category: "api",
-    date: "2023-09"
-  },
-  {
-    id: "6",
-    title: "Blog Platform",
-    description: "Modern blog platform with markdown support and SEO optimization",
-    longDescription: "Created a blog platform with markdown editing, SEO optimization, and social media integration. Features include comment system, search functionality, and content management.",
-    technologies: ["Next.js", "MDX", "Tailwind CSS", "PostgreSQL"],
-    image: "/images/projects/blog.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/blog-platform",
-    liveUrl: "https://blog.example.com",
-    featured: false,
-    category: "web",
-    date: "2023-07"
+    category: "ai",
+    date: "2024-04"
   }
 ]
 
 const categories = [
   { value: "all", label: "All Projects" },
-  { value: "web", label: "Web Apps" },
-  { value: "mobile", label: "Mobile Apps" },
-  { value: "api", label: "APIs" },
+  { value: "enterprise", label: "Enterprise" },
+  { value: "ai", label: "AI-Assisted" },
+  { value: "automation", label: "Automation" },
+  { value: "blockchain", label: "Blockchain" },
   { value: "other", label: "Other" }
 ]
 
@@ -104,7 +92,7 @@ export default function ProjectsPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Projects</h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            A collection of projects that showcase my skills and experience in building modern applications
+            Real portfolio projects demonstrating AI-assisted development, enterprise solutions, and technical innovation
           </p>
         </div>
 

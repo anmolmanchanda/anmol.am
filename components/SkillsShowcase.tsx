@@ -1,26 +1,36 @@
 import { Skill } from "@/types"
 
 const skills: Skill[] = [
-  { name: "TypeScript", level: "expert", category: "frontend" },
-  { name: "React", level: "expert", category: "frontend" },
-  { name: "Next.js", level: "expert", category: "frontend" },
-  { name: "Tailwind CSS", level: "advanced", category: "frontend" },
-  { name: "Node.js", level: "advanced", category: "backend" },
-  { name: "Python", level: "advanced", category: "backend" },
-  { name: "PostgreSQL", level: "advanced", category: "database" },
-  { name: "MongoDB", level: "intermediate", category: "database" },
-  { name: "Docker", level: "intermediate", category: "devops" },
-  { name: "AWS", level: "intermediate", category: "devops" },
-  { name: "GraphQL", level: "intermediate", category: "backend" },
-  { name: "Git", level: "expert", category: "other" }
+  { name: "Python", level: "expert", category: "programming" },
+  { name: "JavaScript", level: "advanced", category: "programming" },
+  { name: "Java", level: "intermediate", category: "programming" },
+  { name: "Swift", level: "advanced", category: "programming" },
+  { name: "Kotlin", level: "advanced", category: "programming" },
+  { name: "Go", level: "intermediate", category: "programming" },
+  { name: "HTML/CSS", level: "advanced", category: "programming" },
+  { name: "Node.js", level: "advanced", category: "programming" },
+  { name: "AWS Glue", level: "expert", category: "cloud" },
+  { name: "AWS Lambda", level: "expert", category: "cloud" },
+  { name: "AWS EventBridge", level: "advanced", category: "cloud" },
+  { name: "AWS Step Functions", level: "advanced", category: "cloud" },
+  { name: "PySpark", level: "expert", category: "cloud" },
+  { name: "GitHub Actions", level: "advanced", category: "cloud" },
+  { name: "Claude AI", level: "expert", category: "ai" },
+  { name: "ChatGPT", level: "expert", category: "ai" },
+  { name: "Cursor AI", level: "expert", category: "ai" },
+  { name: "Claude Code CLI", level: "expert", category: "ai" },
+  { name: "Prompt Engineering", level: "expert", category: "ai" },
+  { name: "Figma", level: "advanced", category: "design" },
+  { name: "Apple Shortcuts", level: "expert", category: "automation" },
+  { name: "N8N.io", level: "advanced", category: "automation" }
 ]
 
 const categories = {
-  frontend: "Frontend",
-  backend: "Backend",
-  database: "Database",
-  devops: "DevOps",
-  other: "Other"
+  programming: "Programming Languages",
+  cloud: "Cloud & Infrastructure", 
+  ai: "AI & Development Tools",
+  design: "Design & Automation",
+  automation: "Workflow Automation"
 }
 
 export function SkillsShowcase() {
@@ -38,7 +48,7 @@ export function SkillsShowcase() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Technical Skills</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Technologies and tools I work with to build modern applications
+            Real technologies I use for AI-assisted development and enterprise solutions
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-5xl">

@@ -50,7 +50,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Get in Touch</h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Have a project in mind or want to collaborate? I&apos;d love to hear from you.
+            Interested in Technical Solutions Architecture roles or AI consulting projects? Let's connect.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function ContactPage() {
             <div>
               <h2 className="text-2xl font-bold">Contact Information</h2>
               <p className="mt-4 text-muted-foreground">
-                Feel free to reach out through the form or directly via email. 
+                Open to Technical/AI Solutions Architect roles (125-150k+ CAD) and consulting opportunities. 
                 I typically respond within 24-48 hours.
               </p>
 
@@ -69,10 +69,13 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold">Email</h3>
                     <p className="mt-1 text-muted-foreground">
-                      General inquiries: <a href={`mailto:${siteConfig.email}`} className="text-primary hover:underline">{siteConfig.email}</a>
+                      Primary: <a href={`mailto:${siteConfig.email}`} className="text-primary hover:underline">{siteConfig.email}</a>
                     </p>
                     <p className="text-muted-foreground">
-                      Work opportunities: <a href={`mailto:${siteConfig.emailAliases.work}`} className="text-primary hover:underline">{siteConfig.emailAliases.work}</a>
+                      Professional: <a href={`mailto:${siteConfig.emailAliases.work}`} className="text-primary hover:underline">{siteConfig.emailAliases.work}</a>
+                    </p>
+                    <p className="text-muted-foreground">
+                      Phone: <a href={`tel:${siteConfig.phone}`} className="text-primary hover:underline">{siteConfig.phone}</a>
                     </p>
                   </div>
                 </div>
@@ -82,6 +85,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold">Location</h3>
                     <p className="mt-1 text-muted-foreground">
+                      {siteConfig.location}
+                    </p>
+                    <p className="text-muted-foreground">
                       Available for remote work worldwide
                     </p>
                   </div>
@@ -115,6 +121,18 @@ export default function ContactPage() {
                   >
                     Twitter
                   </a>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h3 className="font-semibold">Services & Consulting</h3>
+                <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  <p>• Technical problem-solving consultation</p>
+                  <p>• AI implementation assessment and strategy</p>
+                  <p>• Rapid prototype development</p>
+                  <p>• Data pipeline architecture and development</p>
+                  <p>• AI-assisted automation solutions</p>
+                  <p className="font-medium text-foreground">Rate: $90-150/hour</p>
                 </div>
               </div>
             </div>

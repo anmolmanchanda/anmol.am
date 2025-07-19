@@ -12,8 +12,10 @@ export function Hero() {
             Hi, I&apos;m <span className="text-primary">Anmol Manchanda</span>
           </h1>
           <p className="animate-in mt-6 text-lg leading-8 text-muted-foreground" style={{ animationDelay: "0.1s" }}>
-            {siteConfig.title}. I build modern web applications with a focus on 
-            user experience, performance, and clean code.
+            {siteConfig.title} at United Nations. I solve complex technical problems in days, not weeks, using AI-assisted development.
+          </p>
+          <p className="animate-in mt-4 text-sm text-muted-foreground" style={{ animationDelay: "0.15s" }}>
+            📍 Waterloo, Ontario, Canada
           </p>
           <div className="animate-in mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animationDelay: "0.2s" }}>
             <Link

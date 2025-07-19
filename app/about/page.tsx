@@ -3,49 +3,63 @@ import { Experience } from "@/types"
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn more about Anmol Manchanda - Full Stack Developer and Software Engineer",
+  description: "Learn more about Anmol Manchanda - AI-Assisted Technical Solutions Architect at United Nations",
 }
 
 const experiences: Experience[] = [
   {
     id: "1",
-    company: "Tech Solutions Inc.",
-    position: "Senior Full Stack Developer",
-    startDate: "2022-01",
-    description: "Lead developer for multiple client projects, focusing on modern web applications using React and Node.js",
-    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "AWS"],
+    company: "United Nations (UN-Habitat/UNOPS)",
+    position: "Software Engineer (Integration)",
+    startDate: "2024-06",
+    description: "Building TB-scale data processing pipeline for 12 global cities, pioneering AI-assisted development approach within UN technical teams",
+    technologies: ["AWS", "Glue", "Lambda", "EventBridge", "Step Functions", "PySpark", "Python"],
     achievements: [
-      "Led a team of 5 developers to deliver 3 major projects on time",
-      "Implemented CI/CD pipelines reducing deployment time by 60%",
-      "Mentored junior developers and conducted code reviews"
+      "Built TB-scale data processing pipeline for 12 global cities",
+      "Pioneered AI-assisted development approach within UN technical teams",
+      "Architected enterprise-grade AWS infrastructure handling 10+ TB monthly data volume"
     ]
   },
   {
     id: "2",
-    company: "Digital Agency Co.",
-    position: "Full Stack Developer",
-    startDate: "2020-06",
-    endDate: "2021-12",
-    description: "Developed and maintained web applications for various clients in e-commerce and SaaS industries",
-    technologies: ["Vue.js", "Python", "Django", "MySQL", "Docker"],
+    company: "Smart Waterloo Region Innovation Lab",
+    position: "Blockchain Engineer & Mobile App Developer",
+    startDate: "2024-02",
+    endDate: "2024-06",
+    description: "Developed blockchain solutions and mobile applications for regional innovation initiatives",
+    technologies: ["Blockchain", "Swift", "Kotlin", "JavaScript", "Mobile Development"],
     achievements: [
-      "Built a scalable e-commerce platform handling 100k+ daily users",
-      "Optimized database queries improving performance by 40%",
-      "Integrated third-party APIs for payment processing"
+      "Built mobile applications for regional innovation projects",
+      "Implemented blockchain solutions for secure data management",
+      "Collaborated with regional stakeholders on technology initiatives"
     ]
   },
   {
     id: "3",
-    company: "StartUp Labs",
-    position: "Junior Developer",
-    startDate: "2019-01",
-    endDate: "2020-05",
-    description: "Worked on frontend and backend development for early-stage startup products",
-    technologies: ["JavaScript", "React", "Express.js", "MongoDB"],
+    company: "Williams Fresh Cafe",
+    position: "Line Cook",
+    startDate: "2022-01",
+    endDate: "2024-01",
+    description: "Gained diverse experience in hospitality while transitioning into technical roles",
+    technologies: ["Operations", "Team Collaboration", "Customer Service"],
     achievements: [
-      "Developed responsive user interfaces for web applications",
-      "Participated in agile development processes",
-      "Contributed to open-source projects"
+      "Developed strong work ethic and team collaboration skills",
+      "Maintained high-quality standards in fast-paced environment",
+      "Balanced hospitality work with technical skill development"
+    ]
+  },
+  {
+    id: "4",
+    company: "AIESEC Delhi IIT",
+    position: "Manager",
+    startDate: "2016-01",
+    endDate: "2017-01",
+    description: "Volunteer leadership role managing international exchange programs and team coordination",
+    technologies: ["Leadership", "Project Management", "International Coordination"],
+    achievements: [
+      "Led international exchange programs",
+      "Managed cross-cultural teams and initiatives",
+      "Developed leadership and organizational skills"
     ]
   }
 ]
@@ -58,7 +72,7 @@ export default function AboutPage() {
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">About Me</h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Passionate about building exceptional digital experiences
+              AI-Assisted Technical Solutions Architect solving complex problems in days, not weeks
             </p>
           </div>
 
@@ -67,19 +81,19 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold tracking-tight">Who I Am</h2>
               <div className="mt-6 space-y-4 text-muted-foreground">
                 <p>
-                  I&apos;m a Full Stack Developer with a passion for creating elegant solutions to complex problems. 
-                  With over 5 years of experience in web development, I specialize in building modern, 
-                  scalable applications using cutting-edge technologies.
+                  Technical Solutions Architect with expertise in AI-assisted development, data engineering, and rapid prototyping. 
+                  Proven ability to solve complex technical challenges across multiple domains using modern AI tools and cloud infrastructure, 
+                  with experience managing TB-scale data pipelines for global initiatives.
                 </p>
                 <p>
-                  My journey in tech began with a curiosity about how things work on the internet. 
-                  This curiosity evolved into a career where I get to build the very experiences that 
-                  sparked my interest. I believe in writing clean, maintainable code and creating 
-                  user interfaces that are both beautiful and functional.
+                  Started with mobile development education, gained diverse experience through hospitality work and volunteer leadership, 
+                  then transitioned into technical roles combining data engineering, AI-assisted development, and solutions architecture. 
+                  Known for pioneering AI-assisted development approaches and creating efficient automation solutions.
                 </p>
                 <p>
-                  When I&apos;m not coding, you can find me exploring new technologies, contributing to 
-                  open-source projects, or sharing my knowledge through blog posts and mentoring.
+                  Core values include continuous learning and adaptation, creative problem-solving with AI assistance, 
+                  efficiency through intelligent automation, and maintaining work-life balance. Possess unique abilities 
+                  including hyperphantasia and eidetic memory for rapid problem-solving.
                 </p>
               </div>
             </section>
@@ -126,27 +140,44 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold tracking-tight">Education</h2>
               <div className="mt-6 space-y-4">
                 <div>
-                  <h3 className="text-lg font-semibold">Bachelor of Science in Computer Science</h3>
-                  <p className="text-sm text-muted-foreground">University Name • 2015 - 2019</p>
+                  <h3 className="text-lg font-semibold">Post Graduate Diploma in Mobile Solutions Development</h3>
+                  <p className="text-sm text-muted-foreground">Conestoga College, Waterloo • 2023</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Focused on software engineering, algorithms, and web technologies. 
-                    Graduated with honors and participated in various hackathons and coding competitions.
+                    Specialized in mobile application development, focusing on iOS and Android platforms with modern frameworks and technologies.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Bachelor of Computer Applications</h3>
+                  <p className="text-sm text-muted-foreground">GGSIPU, India • 2017</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Comprehensive computer science education covering programming fundamentals, algorithms, and software development principles.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Android Basics Nanodegree</h3>
+                  <p className="text-sm text-muted-foreground">Udacity (by Google) • 2017</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Google-certified program focusing on Android development fundamentals and best practices.
                   </p>
                 </div>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold tracking-tight">What I&apos;m Looking For</h2>
+              <h2 className="text-2xl font-bold tracking-tight">Career Goals & Services</h2>
               <div className="mt-6 space-y-4 text-muted-foreground">
                 <p>
-                  I&apos;m interested in opportunities where I can work on challenging projects that make a real impact. 
-                  I thrive in collaborative environments where innovation is encouraged and learning is continuous.
+                  Targeting Technical/AI Solutions Architect roles (125-150k+ CAD) focusing on challenging projects 
+                  that utilize diverse technical skills and AI-assisted development methodologies. Open to both full-time 
+                  opportunities and consulting arrangements.
                 </p>
                 <p>
-                  Whether it&apos;s building scalable architectures, creating intuitive user experiences, or solving 
-                  complex technical challenges, I&apos;m always eager to take on projects that push the boundaries of 
-                  what&apos;s possible with technology.
+                  Available for consulting and contracting opportunities alongside current UN work, specializing in:
+                  Technical problem-solving consultation, AI implementation assessment and strategy, rapid prototype development, 
+                  data pipeline architecture and development, and AI-assisted automation solutions.
+                </p>
+                <p>
+                  <strong>Consulting Rate:</strong> $90-150/hour for specialized technical projects and AI implementation consulting.
                 </p>
               </div>
             </section>
