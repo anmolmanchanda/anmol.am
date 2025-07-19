@@ -10,24 +10,38 @@ This guide will help you set up the real-time view tracking system with IP-based
 
 ## Step 1: Set Up Vercel KV Database
 
-### 1.1 Create Vercel KV Instance
+### 1.1 Create Vercel KV Instance (Updated for Marketplace)
+
+**Important**: Vercel KV has moved to the Vercel Marketplace. Follow these updated steps:
 
 1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
-2. Navigate to **Storage** → **Create Database**
-3. Select **KV (Redis)**
-4. Choose a name for your database (e.g., `anmol-portfolio-views`)
-5. Select a region closest to your users
-6. Click **Create**
+2. Navigate to **Marketplace** (or **Integrations**)
+3. Search for **"Upstash Redis"** or **"KV Database"**
+4. Select **Upstash for Redis** (this is the evolution of Vercel KV)
+5. Click **Add Integration**
+6. Choose your Vercel project to connect to
+7. Configure the database:
+   - Database name: `anmol-portfolio-views`
+   - Region: Select closest to your users
+   - Plan: Choose based on your usage (Free tier available)
+8. Click **Create Database**
+
+**Alternative Options:**
+- **Redis Serverless**: Another option in the marketplace
+- **Upstash Redis**: Recommended as it's the official successor to Vercel KV
 
 ### 1.2 Get KV Connection Details
 
-After creating the KV instance:
+After creating the Upstash Redis instance:
 
-1. Go to your KV dashboard
-2. Click on **Settings** tab
-3. Copy the following values:
-   - `KV_REST_API_URL`
-   - `KV_REST_API_TOKEN`
+1. Go to your **Upstash Console** (you'll be redirected after setup)
+2. Select your database from the dashboard
+3. Navigate to **Details** or **Settings** tab
+4. Copy the following values:
+   - `UPSTASH_REDIS_REST_URL` (or `KV_REST_API_URL`)
+   - `UPSTASH_REDIS_REST_TOKEN` (or `KV_REST_API_TOKEN`)
+
+**Note**: The environment variable names may be automatically set by the Vercel integration. Check your project's environment variables in Vercel Dashboard.
 
 ## Step 2: Configure Environment Variables
 
@@ -36,9 +50,14 @@ After creating the KV instance:
 Create or update your `.env.local` file:
 
 ```env
-# View Tracking Configuration
-KV_REST_API_URL=https://your-kv-instance.upstash.io
-KV_REST_API_TOKEN=your_kv_token_here
+# View Tracking Configuration (Upstash Redis)
+# Option 1: If using standard KV environment variables
+KV_REST_API_URL=https://your-redis-instance.upstash.io
+KV_REST_API_TOKEN=your_redis_token_here
+
+# Option 2: If using Upstash-specific variables (check Vercel dashboard)
+UPSTASH_REDIS_REST_URL=https://your-redis-instance.upstash.io
+UPSTASH_REDIS_REST_TOKEN=your_redis_token_here
 
 # IP Salt for Privacy (generate a random string)
 IP_SALT=your_random_salt_string_for_ip_hashing_security
@@ -49,16 +68,20 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 ### 2.2 Production Environment (Vercel)
 
+**Note**: If you used the Vercel Marketplace integration, some environment variables may already be configured automatically.
+
 1. Go to your Vercel project dashboard
 2. Navigate to **Settings** → **Environment Variables**
-3. Add the following variables:
+3. Check if the following are already set by the integration, if not, add them:
 
 | Variable Name | Value | Environment |
 |---------------|-------|-------------|
-| `KV_REST_API_URL` | Your KV REST API URL | Production, Preview |
-| `KV_REST_API_TOKEN` | Your KV REST API Token | Production, Preview |
+| `KV_REST_API_URL` or `UPSTASH_REDIS_REST_URL` | Your Redis REST API URL | Production, Preview |
+| `KV_REST_API_TOKEN` or `UPSTASH_REDIS_REST_TOKEN` | Your Redis REST API Token | Production, Preview |
 | `IP_SALT` | Random string for IP hashing | Production, Preview |
 | `NEXT_PUBLIC_SITE_URL` | https://yourdomain.com | Production |
+
+**Important**: Check which variable naming convention your setup uses (KV_* or UPSTASH_*) and ensure your code matches.
 
 ## Step 3: Generate IP Salt
 
@@ -101,7 +124,7 @@ git push origin main
 ### 5.1 Test View Tracking
 
 1. Visit any blog article on your site
-2. Check the Vercel KV dashboard for new keys:
+2. Check the Upstash Redis dashboard for new keys:
    - `views:article-slug` (view count)
    - `view_cooldown:article-slug:hashedIP` (IP cooldown)
 
@@ -109,7 +132,7 @@ git push origin main
 
 1. Refresh the same article multiple times
 2. View count should only increment once per 15-minute window
-3. Check the KV dashboard to see cooldown keys
+3. Check the Upstash Redis dashboard to see cooldown keys
 
 ### 5.3 Test Batch API
 
@@ -128,19 +151,21 @@ curl -X POST https://yourdomain.com/api/views/batch \
 2. Check logs for view tracking endpoints
 3. Look for any errors or warnings
 
-### 6.2 Monitor KV Usage
+### 6.2 Monitor Redis Usage
 
-1. Go to Vercel KV Dashboard
-2. Check **Metrics** tab for:
+1. Go to Upstash Console
+2. Select your database
+3. Check **Metrics** or **Analytics** tab for:
    - Request count
    - Storage usage
    - Response times
+   - Connection metrics
 
 ### 6.3 Debug Common Issues
 
 **Issue: Views not incrementing**
 ```bash
-# Check if KV is accessible
+# Check if Redis is accessible
 curl https://yourdomain.com/api/views/test-slug
 
 # Expected response:
@@ -150,27 +175,36 @@ curl https://yourdomain.com/api/views/test-slug
 **Issue: IP cooldown not working**
 - Verify `IP_SALT` is set in environment variables
 - Check Vercel function logs for IP detection
+- Ensure Redis connection variables are correct
 
 **Issue: High response times**
-- Monitor KV metrics in Vercel dashboard
-- Consider upgrading KV plan if needed
+- Monitor Redis metrics in Upstash console
+- Check network latency to Redis region
+- Consider upgrading Redis plan if needed
+
+**Issue: Environment variable errors**
+- Verify correct variable names (KV_* vs UPSTASH_*)
+- Check Vercel marketplace integration settings
+- Ensure variables are set for correct environments
 
 ## Step 7: Performance Optimization
 
-### 7.1 KV Configuration
+### 7.1 Redis Configuration
 
 For optimal performance:
 
-1. Choose KV region closest to your users
-2. Monitor request patterns in KV dashboard
-3. Consider upgrading KV plan for high traffic
+1. Choose Redis region closest to your users
+2. Monitor request patterns in Upstash console
+3. Consider upgrading Redis plan for high traffic
+4. Use connection pooling if needed for high-volume applications
 
 ### 7.2 Caching Strategy
 
 The system implements automatic caching:
-- View counts cached in KV with no expiration
-- IP cooldowns expire automatically after 15 minutes
+- View counts cached in Redis with no expiration
+- IP cooldowns expire automatically after 15 minutes (TTL)
 - Analytics data expires after 24 hours
+- Redis handles memory management with LRU eviction if needed
 
 ## Step 8: Security Considerations
 
@@ -189,12 +223,13 @@ The system includes built-in protection:
 
 ## Step 9: Scaling and Monitoring
 
-### 9.1 KV Scaling
+### 9.1 Redis Scaling
 
-Vercel KV automatically scales, but monitor:
-- Request volume
-- Storage usage
-- Response times
+Upstash Redis automatically scales, but monitor:
+- Request volume and throughput
+- Storage usage and memory consumption
+- Response times and latency
+- Connection count and limits
 
 ### 9.2 Analytics Integration
 
@@ -222,8 +257,9 @@ async function exportViewData() {
 
 **"Internal server error"**
 - Check environment variables are set correctly
-- Verify KV credentials in Vercel dashboard
+- Verify Redis credentials in Vercel dashboard and Upstash console
 - Check function logs for detailed error
+- Ensure correct variable naming convention (KV_* vs UPSTASH_*)
 
 **"Invalid slug"**
 - Ensure article slug matches exactly
@@ -235,9 +271,11 @@ async function exportViewData() {
 
 ### Support Resources
 
-1. **Vercel KV Documentation**: https://vercel.com/docs/storage/vercel-kv
-2. **Next.js API Routes**: https://nextjs.org/docs/api-routes/introduction
-3. **Vercel Function Logs**: Your Vercel Dashboard → Functions
+1. **Upstash Redis Documentation**: https://docs.upstash.com/redis
+2. **Vercel Marketplace Integrations**: https://vercel.com/integrations
+3. **Next.js API Routes**: https://nextjs.org/docs/api-routes/introduction
+4. **Vercel Function Logs**: Your Vercel Dashboard → Functions
+5. **Upstash Console**: https://console.upstash.com/
 
 ## Success Indicators
 
@@ -246,16 +284,18 @@ async function exportViewData() {
 - Same IP doesn't increment within 15 minutes
 - Batch API returns accurate counts
 - No errors in Vercel function logs
-- KV dashboard shows activity
+- Upstash Redis console shows activity and metrics
+- Environment variables are properly configured
 
 ## Need Help?
 
 If you encounter issues:
 
 1. Check Vercel function logs first
-2. Verify all environment variables are set
+2. Verify all environment variables are set (check both Vercel and Upstash)
 3. Test API endpoints manually
-4. Monitor KV dashboard for errors
-5. Check this document's troubleshooting section
+4. Monitor Upstash Redis console for errors and metrics
+5. Verify correct environment variable naming convention
+6. Check this document's troubleshooting section
 
 The view tracking system should now be fully operational with accurate, privacy-protected analytics for your blog articles!

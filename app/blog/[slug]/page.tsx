@@ -89,6 +89,32 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     views: 0,
     featured: false
+  },
+  "ai-assisted-macos-life-manager": {
+    id: "7",
+    title: "AI-Assisted Development: Building a Native macOS Life Manager",
+    excerpt: "The future of software development isn't replacing developers with AI—it's about augmenting human creativity. Building a comprehensive life management application for macOS using Claude AI as development partner.",
+    date: "2025-07-19",
+    tags: ["AI", "Swift", "macOS", "Native Development", "Life Management", "Claude AI"],
+    readingTime: 25,
+    slug: "ai-assisted-macos-life-manager",
+    image: "/images/blog/ai-macos-app.svg",
+    gradient: "from-violet-600 via-purple-600 to-indigo-600",
+    views: 0,
+    featured: true
+  },
+  "building-tb-scale-data-infrastructure-un": {
+    id: "8",
+    title: "Building TB-Scale Data Infrastructure at UN-Habitat",
+    excerpt: "When the United Nations Human Settlements Programme needed to process terabytes of urban data from 12 global cities, they needed comprehensive infrastructure for real-time processing, complex analytics, and reliable monitoring at enterprise scale.",
+    date: "2025-07-19",
+    tags: ["AWS", "Big Data", "Infrastructure", "UN-Habitat", "Data Pipeline", "Enterprise"],
+    readingTime: 30,
+    slug: "building-tb-scale-data-infrastructure-un",
+    image: "/images/blog/aws-infrastructure.svg",
+    gradient: "from-orange-500 via-red-500 to-pink-600",
+    views: 0,
+    featured: true
   }
 }
 

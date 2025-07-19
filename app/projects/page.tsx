@@ -18,7 +18,7 @@ const allProjects: Project[] = [
     liveUrl: "https://qolimpact.com",
     featured: true,
     category: "enterprise",
-    date: "2024-06",
+    startDate: "2024-06",
     type: "work"
   },
   {
@@ -31,7 +31,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
     category: "ai",
-    date: "2024-05",
+    startDate: "2024-05",
     type: "personal"
   },
   {
@@ -45,7 +45,8 @@ const allProjects: Project[] = [
     liveUrl: "https://n8n.io",
     featured: true,
     category: "automation",
-    date: "2024-01",
+    startDate: "2024-01",
+    endDate: "2024-06",
     type: "work"
   },
   {
@@ -58,7 +59,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
-    date: "2024-01",
+    startDate: "2024-01",
     type: "personal"
   },
   {
@@ -71,7 +72,8 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/blockchain-solutions",
     featured: false,
     category: "blockchain",
-    date: "2024-02",
+    startDate: "2024-02",
+    endDate: "2024-06",
     type: "work"
   },
   {
@@ -84,7 +86,7 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
     featured: false,
     category: "ai",
-    date: "2024-04",
+    startDate: "2024-04",
     type: "personal"
   }
 ]
@@ -293,7 +295,9 @@ export default function ProjectsPage() {
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-muted-foreground">
-                      {new Date(project.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                      {new Date(project.startDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                      {project.endDate && ` - ${new Date(project.endDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`}
+                      {!project.endDate && ' - Present'}
                     </span>
                     {project.featured && (
                       <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">

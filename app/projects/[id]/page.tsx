@@ -1,83 +1,87 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight, Github } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Github, BookOpen } from "lucide-react"
 import { Project } from "@/types"
 
 const projects: Record<string, Project> = {
   "1": {
     id: "1",
-    title: "E-Commerce Platform",
-    description: "A modern full-stack e-commerce solution with real-time inventory management",
-    longDescription: "Built a comprehensive e-commerce platform featuring user authentication, product catalog, shopping cart, payment integration, and admin dashboard. The platform handles real-time inventory updates and supports multiple payment methods.",
-    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "Redis"],
-    image: "/images/projects/ecommerce.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/ecommerce-platform",
-    liveUrl: "https://demo-ecommerce.example.com",
+    title: "Enterprise Data Pipeline (UN)",
+    description: "TB-scale data processing infrastructure for 12 global cities with real-time monitoring",
+    longDescription: "Built TB-scale data processing pipeline for 12 global cities serving UN global initiatives. Architected enterprise-grade AWS infrastructure handling 10+ TB monthly data volume with real-time monitoring and processing capabilities. Lead architect and developer for production system.",
+    technologies: ["AWS Glue", "Lambda", "EventBridge", "Step Functions", "PySpark", "Python"],
+    image: "/images/projects/un-pipeline.jpg",
+    githubUrl: "",
+    liveUrl: "https://qolimpact.com",
     featured: true,
-    category: "web",
-    date: "2024-01"
+    category: "enterprise",
+    startDate: "2024-06",
+    blogArticle: "/blog/building-tb-scale-data-infrastructure-un"
   },
   "2": {
     id: "2",
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates and team features",
-    longDescription: "Developed a real-time collaborative task management application that allows teams to create, assign, and track tasks. Features include drag-and-drop functionality, real-time notifications, and team collaboration tools.",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "JWT"],
-    image: "/images/projects/taskmanager.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/task-manager",
+    title: "AI-Powered Life Manager",
+    description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
+    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-assisted development methodologies. Demonstrates cutting-edge AI-assisted development practices for personal productivity optimization and life management.",
+    technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
+    image: "/images/projects/life-manager.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
-    category: "web",
-    date: "2024-02"
+    category: "ai",
+    startDate: "2024-05",
+    blogArticle: "/blog/ai-assisted-macos-life-manager"
   },
   "3": {
     id: "3",
-    title: "Analytics Dashboard",
-    description: "Data visualization dashboard with interactive charts and real-time metrics",
-    longDescription: "Created an analytics dashboard that visualizes complex data sets with interactive charts and graphs. The dashboard provides real-time insights and supports custom report generation.",
-    technologies: ["React", "D3.js", "Python", "FastAPI", "PostgreSQL", "Docker"],
-    image: "/images/projects/analytics.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/analytics-dashboard",
+    title: "N8N Workflow Automation",
+    description: "50+ N8N workflows for process optimization and enterprise automation",
+    longDescription: "Created 50+ N8N workflows for enterprise process automation at UN-Habitat, providing significant efficiency improvements across organizational workflows. Covers complex multi-step processes with various API integrations for data processing and notifications.",
+    technologies: ["N8N.io", "APIs", "Workflow Design", "Automation"],
+    image: "/images/projects/automation.jpg",
+    githubUrl: "",
+    liveUrl: "https://n8n.io",
     featured: true,
-    category: "web",
-    date: "2024-03"
+    category: "automation",
+    startDate: "2024-01",
+    endDate: "2024-06"
   },
   "4": {
     id: "4",
-    title: "Mobile Weather App",
-    description: "Cross-platform weather application with location-based forecasts",
-    longDescription: "Built a cross-platform mobile weather application that provides accurate weather forecasts based on user location. Features include hourly and weekly forecasts, weather alerts, and interactive maps.",
-    technologies: ["React Native", "TypeScript", "Expo", "Weather API"],
-    image: "/images/projects/weather.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/weather-app",
+    title: "Blockchain Solutions (Smart Waterloo)",
+    description: "Blockchain solutions and mobile applications for regional innovation initiatives",
+    longDescription: "Developed blockchain solutions and mobile applications for Smart Waterloo Region Innovation Lab. Implemented secure data management systems and collaborated with regional stakeholders on technology initiatives.",
+    technologies: ["Blockchain", "Swift", "Kotlin", "JavaScript", "Mobile Development"],
+    image: "/images/projects/blockchain.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/blockchain-solutions",
     featured: false,
-    category: "mobile",
-    date: "2023-11"
+    category: "blockchain",
+    startDate: "2024-02",
+    endDate: "2024-06"
   },
   "5": {
     id: "5",
-    title: "REST API Service",
-    description: "Scalable RESTful API service with authentication and rate limiting",
-    longDescription: "Designed and implemented a scalable REST API service with JWT authentication, rate limiting, and comprehensive documentation. The API serves as a backend for multiple client applications.",
-    technologies: ["Node.js", "Express", "MongoDB", "Redis", "Swagger"],
-    image: "/images/projects/api.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/api-service",
+    title: "AI-Assisted Development Portfolio",
+    description: "Collection of projects demonstrating AI-assisted development methodologies",
+    longDescription: "Portfolio showcasing various AI-assisted development approaches and techniques. Demonstrates proficiency with Claude AI, ChatGPT, Cursor AI, and other AI development tools for rapid prototyping and solution development.",
+    technologies: ["Claude AI", "ChatGPT", "Cursor AI", "Python", "Swift", "JavaScript"],
+    image: "/images/projects/ai-portfolio.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
     featured: false,
-    category: "api",
-    date: "2023-09"
+    category: "ai",
+    startDate: "2024-04"
   },
   "6": {
     id: "6",
-    title: "Blog Platform",
-    description: "Modern blog platform with markdown support and SEO optimization",
-    longDescription: "Created a blog platform with markdown editing, SEO optimization, and social media integration. Features include comment system, search functionality, and content management.",
-    technologies: ["Next.js", "MDX", "Tailwind CSS", "PostgreSQL"],
-    image: "/images/projects/blog.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/blog-platform",
-    liveUrl: "https://blog.example.com",
-    featured: false,
-    category: "web",
-    date: "2023-07"
+    title: "Apple Shortcuts Collection",
+    description: "50+ Apple Shortcuts for iOS/macOS process optimization and personal efficiency",
+    longDescription: "Developed 50+ Apple Shortcuts for iOS and macOS to automate personal productivity workflows. Includes shortcuts for file management, calendar scheduling, note-taking, and cross-device synchronization to streamline daily tasks.",
+    technologies: ["Apple Shortcuts", "iOS", "macOS", "Personal Automation"],
+    image: "/images/projects/automation.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/automation-suite",
+    featured: true,
+    category: "automation",
+    startDate: "2024-01"
   }
 }
 
@@ -122,6 +126,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               <h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
               <p className="mt-4 text-lg text-muted-foreground">{project.description}</p>
               <div className="mt-6 flex items-center gap-4">
+                {(project as any).blogArticle && (
+                  <Link
+                    href={(project as any).blogArticle}
+                    className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <BookOpen className="mr-1.5 h-4 w-4" />
+                    Read Technical Article
+                  </Link>
+                )}
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
@@ -138,7 +151,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                    className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                   >
                     Live Demo
                     <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
