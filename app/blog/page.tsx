@@ -74,8 +74,12 @@ const blogPosts: BlogPost[] = [
 
 export default function BlogPage() {
   return (
-    <div className="py-24 sm:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-24 sm:py-32 aurora-bg relative overflow-hidden">
+      {/* Aurora background layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-violet-500/10 via-transparent to-cyan-500/10 animate-pulse" />
+      <div className="absolute inset-0 ai-grid" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Blog</h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">

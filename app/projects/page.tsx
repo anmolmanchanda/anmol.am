@@ -18,7 +18,8 @@ const allProjects: Project[] = [
     liveUrl: "",
     featured: true,
     category: "enterprise",
-    date: "2024-06"
+    date: "2024-06",
+    type: "work"
   },
   {
     id: "2",
@@ -30,7 +31,8 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/ai-life-manager",
     featured: true,
     category: "ai",
-    date: "2024-05"
+    date: "2024-05",
+    type: "personal"
   },
   {
     id: "3",
@@ -42,7 +44,8 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
-    date: "2024-01"
+    date: "2024-01",
+    type: "mixed"
   },
   {
     id: "4",
@@ -54,7 +57,8 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/blockchain-solutions",
     featured: false,
     category: "blockchain",
-    date: "2024-02"
+    date: "2024-02",
+    type: "work"
   },
   {
     id: "5",
@@ -66,7 +70,8 @@ const allProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
     featured: false,
     category: "ai",
-    date: "2024-04"
+    date: "2024-04",
+    type: "personal"
   }
 ]
 
@@ -87,8 +92,12 @@ export default function ProjectsPage() {
     : allProjects.filter(project => project.category === selectedCategory)
 
   return (
-    <div className="py-24 sm:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-24 sm:py-32 aurora-bg relative overflow-hidden">
+      {/* Aurora background layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-violet-500/10 via-transparent to-cyan-500/10 animate-pulse" />
+      <div className="absolute inset-0 ai-grid" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Projects</h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">

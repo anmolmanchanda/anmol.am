@@ -10,6 +10,7 @@ export interface Project {
   featured: boolean
   category: 'web' | 'mobile' | 'api' | 'enterprise' | 'ai' | 'automation' | 'blockchain' | 'other'
   date: string
+  type?: 'work' | 'personal' | 'mixed'
 }
 
 export interface BlogPost {

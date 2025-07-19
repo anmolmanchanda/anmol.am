@@ -13,7 +13,8 @@ const featuredProjects: Project[] = [
     liveUrl: "",
     featured: true,
     category: "enterprise",
-    date: "2024-06"
+    date: "2024-06",
+    type: "work" // UN work project
   },
   {
     id: "2",
@@ -24,7 +25,8 @@ const featuredProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/ai-life-manager",
     featured: true,
     category: "ai",
-    date: "2024-05"
+    date: "2024-05",
+    type: "personal" // Personal project
   },
   {
     id: "3",
@@ -35,7 +37,8 @@ const featuredProjects: Project[] = [
     githubUrl: "https://github.com/anmolmanchanda/automation-suite",
     featured: true,
     category: "automation",
-    date: "2024-01"
+    date: "2024-01",
+    type: "mixed" // Apple Shortcuts: personal, N8N: work (UN)
   }
 ]
 
@@ -129,12 +132,22 @@ export function FeaturedProjects() {
                     </div>
                   </div>
 
-                  {/* Category badge */}
-                  <div className="absolute top-4 left-4">
+                  {/* Category and Type badges */}
+                  <div className="absolute top-4 left-4 flex flex-col gap-2">
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/90 text-primary-foreground backdrop-blur-sm">
                       {project.category === 'enterprise' ? 'Enterprise' : 
                        project.category === 'ai' ? 'AI-Powered' : 'Automation'}
                     </span>
+                    {project.type && (
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium backdrop-blur-sm ${
+                        project.type === 'work' ? 'bg-blue-500/90 text-white' :
+                        project.type === 'personal' ? 'bg-green-500/90 text-white' :
+                        'bg-orange-500/90 text-white'
+                      }`}>
+                        {project.type === 'work' ? 'Work' : 
+                         project.type === 'personal' ? 'Personal' : 'Mixed'}
+                      </span>
+                    )}
                   </div>
                 </div>
 
