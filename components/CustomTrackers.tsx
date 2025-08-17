@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useActivityStore } from "@/lib/store"
 import { 
   BookOpen, Coffee, Code, Zap, Target, Brain, 
-  TrendingUp, Calendar, Activity, Gauge 
+  TrendingUp, Activity 
 } from "lucide-react"
 import { motion } from "framer-motion"
 
