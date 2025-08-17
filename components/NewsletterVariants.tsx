@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Send, CheckCircle, X } from "lucide-react"
+import { Mail, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 type ContentStream = 'work' | 'personal' | 'all'
