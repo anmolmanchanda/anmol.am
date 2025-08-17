@@ -3,12 +3,20 @@ import { Github, Linkedin, Mail } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 import { VisitorCounter } from "@/components/Phase4Features"
 import { FiverrIcon } from "@/components/icons/FiverrIcon"
+import { Newsletter } from "@/components/Newsletter"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="border-t bg-background">
+      {/* Newsletter Section */}
+      <div className="border-b">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <Newsletter />
+        </div>
+      </div>
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8">
           {/* Website Analytics Section */}

@@ -5,6 +5,10 @@ import { ArrowLeft, Calendar, Clock, Share2, BookOpen } from "lucide-react"
 import { ViewTracker } from "@/components/ViewTracker"
 import { BlogPost } from "@/types"
 import { formatDate } from "@/lib/utils"
+import { TableOfContents } from "@/components/TableOfContents"
+import { RelatedPosts } from "@/components/RelatedPosts"
+import { Newsletter } from "@/components/Newsletter"
+import { Breadcrumb } from "@/components/Breadcrumb"
 import fs from 'fs'
 import path from 'path'
 import { remark } from 'remark'
@@ -213,6 +217,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       
       <article className="py-24 sm:py-32 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumb Navigation */}
+          <div className="mx-auto max-w-4xl mb-8">
+            <Breadcrumb 
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Blog", href: "/blog" },
+                { label: postMeta.title, href: `/blog/${slug}` }
+              ]}
+            />
+          </div>
+
           <div className="mx-auto max-w-4xl">
             {/* Navigation */}
             <Link
@@ -276,10 +291,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </header>
 
-            {/* Article Content */}
-            <div className="liquid-glass rounded-2xl border backdrop-blur-md p-8">
-              <div 
-                className="prose prose-xs max-w-none dark:prose-invert [&>*]:text-[0.7rem]
+            {/* Article Content with Table of Contents */}
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+              {/* Table of Contents - Sticky Sidebar */}
+              <aside className="lg:col-span-1">
+                <div className="sticky top-24">
+                  <TableOfContents content={content} />
+                </div>
+              </aside>
+
+              {/* Main Content */}
+              <div className="lg:col-span-3 liquid-glass rounded-2xl border backdrop-blur-md p-8">
+                <div 
+                  id="article-content"
+                  className="prose prose-xs max-w-none dark:prose-invert [&>*]:text-[0.7rem]
                           prose-headings:bg-gradient-to-r prose-headings:from-primary prose-headings:via-purple-500 prose-headings:to-cyan-500 prose-headings:bg-clip-text prose-headings:text-transparent prose-headings:font-bold prose-headings:mb-12 prose-headings:mt-16
                           prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base
                           prose-p:text-[0.7rem] prose-p:leading-[1.9] prose-p:mb-8 prose-p:text-muted-foreground prose-p:break-words
@@ -297,8 +322,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                           prose-th:bg-secondary prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-[0.7rem] prose-th:border-b-2 prose-th:border-border
                           prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-border prose-td:text-[0.7rem]
                           prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-12 prose-img:mx-auto prose-img:border-2 prose-img:border-border prose-img:max-w-full"
-                dangerouslySetInnerHTML={{ __html: content }} 
+                  dangerouslySetInnerHTML={{ __html: content }} 
+                />
+              </div>
+            </div>
+
+            {/* Related Posts Section */}
+            <div className="mt-12">
+              <RelatedPosts 
+                currentPostId={postMeta.id}
+                tags={postMeta.tags}
+                posts={Object.values(blogPostsMetadata).map(post => ({
+                  ...post,
+                  content: ""
+                }))}
               />
+            </div>
+
+            {/* Newsletter Section */}
+            <div className="mt-12">
+              <Newsletter />
             </div>
 
             {/* Article Footer */}
