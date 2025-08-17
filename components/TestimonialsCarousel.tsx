@@ -113,7 +113,7 @@ export function TestimonialsCarousel() {
                     <Star
                       key={i}
                       className={`w-5 h-5 ${
-                        i < currentTestimonial.rating
+                        i < (currentTestimonial?.rating || 0)
                           ? 'text-yellow-400 fill-current'
                           : 'text-gray-300'
                       }`}
@@ -124,7 +124,7 @@ export function TestimonialsCarousel() {
 
               {/* Testimonial Content */}
               <blockquote className="text-lg md:text-xl leading-relaxed text-center mb-8 italic">
-                &ldquo;{currentTestimonial.content}&rdquo;
+                &ldquo;{currentTestimonial?.content || ''}&rdquo;
               </blockquote>
 
               {/* Author Info */}
@@ -133,23 +133,23 @@ export function TestimonialsCarousel() {
                   <User className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold">{currentTestimonial.name}</div>
+                  <div className="font-semibold">{currentTestimonial?.name || ''}</div>
                   <div className="text-sm text-muted-foreground">
-                    {currentTestimonial.role}
+                    {currentTestimonial?.role || ''}
                   </div>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
                     <Building2 className="w-3 h-3" />
-                    {currentTestimonial.company}
+                    {currentTestimonial?.company || ''}
                   </div>
                 </div>
               </div>
 
               {/* Metrics */}
-              {currentTestimonial.metrics && (
+              {currentTestimonial?.metrics && (
                 <div className="mt-6 text-center">
                   <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
                     <span className="text-sm font-medium text-primary">
-                      {currentTestimonial.metrics}
+                      {currentTestimonial?.metrics}
                     </span>
                   </div>
                 </div>

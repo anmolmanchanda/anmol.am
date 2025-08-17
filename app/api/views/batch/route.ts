@@ -5,11 +5,12 @@ interface BatchViewRequest {
   slugs: string[]
 }
 
-interface BatchViewResponse {
-  success: boolean
-  views: Record<string, number>
-  message?: string
-}
+// Response type for batch view endpoint
+// interface BatchViewResponse {
+//   success: boolean
+//   views: Record<string, number>
+//   message?: string
+// }
 
 export async function POST(request: NextRequest) {
   try {

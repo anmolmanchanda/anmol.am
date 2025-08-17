@@ -2,7 +2,7 @@ import { Hero } from "@/components/Hero"
 import { FeaturedProjects } from "@/components/FeaturedProjects"
 import { SkillsShowcase } from "@/components/SkillsShowcase"
 import { InteractiveTimeline } from "@/components/InteractiveTimeline"
-import { TestimonialsCarousel } from "@/components/TestimonialsCarousel"
+import { Testimonials } from "@/components/Testimonials"
 import { ServicesSection } from "@/components/ServicesSection"
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
       <FeaturedProjects />
       <SkillsShowcase />
       <InteractiveTimeline />
-      {/* <TestimonialsCarousel /> */}
+      <Testimonials />
       <ServicesSection />
     </>
   );

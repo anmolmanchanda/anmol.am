@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Download, MapPin, Globe2 } from "lucide-react"
+import { ArrowRight, Download, Globe2 } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { Card3D, MagneticButton, AnimatedText } from "@/components/DrribbleInspiredFeatures"

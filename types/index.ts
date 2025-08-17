@@ -12,6 +12,9 @@ export interface Project {
   date: string
   type?: 'work' | 'personal' | 'mixed'
   blogArticle?: string
+  metrics?: {
+    [key: string]: string | number
+  }
 }
 
 export interface BlogPost {

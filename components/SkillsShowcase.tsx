@@ -44,14 +44,14 @@ export function SkillsShowcase() {
     if (!acc[skill.category]) {
       acc[skill.category] = []
     }
-    acc[skill.category].push(skill)
+    acc[skill.category]?.push(skill)
     return acc
   }, {} as Record<string, Skill[]>)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsVisible(true)
         }
       },

@@ -91,7 +91,7 @@ const timelineEvents: TimelineEvent[] = [
 ]
 
 export function InteractiveTimeline() {
-  const [selectedEvent, setSelectedEvent] = useState<string>(timelineEvents[0].id)
+  const [selectedEvent, setSelectedEvent] = useState<string>(timelineEvents[0]?.id || '')
 
   const selectedEventData = timelineEvents.find(event => event.id === selectedEvent)
 
