@@ -291,16 +291,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </header>
 
             {/* Article Content with Table of Contents */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
               {/* Table of Contents - Sticky Sidebar */}
-              <aside className="lg:col-span-1">
+              <aside className="hidden xl:block xl:col-span-3">
                 <div className="sticky top-24">
                   <TableOfContents content={content} />
                 </div>
               </aside>
 
               {/* Main Content */}
-              <div className="lg:col-span-3 liquid-glass rounded-2xl border backdrop-blur-md p-8">
+              <div className="xl:col-span-9 liquid-glass rounded-2xl border backdrop-blur-md p-8">
                 <div 
                   id="article-content"
                   className="prose prose-xs max-w-none dark:prose-invert [&>*]:text-[0.7rem]

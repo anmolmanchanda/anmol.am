@@ -19,41 +19,41 @@ interface TableOfContentsProps {
 export function TableOfContents({ content, className }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<Heading[]>([])
   const [activeId, setActiveId] = useState<string>("")
-  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Parse headings from content
+    // Parse headings from content and ensure they have IDs
     const tempDiv = document.createElement("div")
     tempDiv.innerHTML = content
     
     const elements = tempDiv.querySelectorAll("h2, h3, h4")
     const headingData: Heading[] = []
     
-    elements.forEach((element) => {
-      const id = element.id || element.textContent?.toLowerCase().replace(/\s+/g, "-") || ""
+    elements.forEach((element, index) => {
+      const text = element.textContent || ""
+      // Create a consistent ID from the text
+      const id = `heading-${index}-${text.toLowerCase().replace(/[^\w]+/g, "-")}`
       headingData.push({
         id,
-        text: element.textContent || "",
+        text,
         level: parseInt(element.tagName.charAt(1))
       })
     })
     
     setHeadings(headingData)
+
+    // Add IDs to actual headings in the article
+    setTimeout(() => {
+      const articleElement = document.getElementById("article-content")
+      if (articleElement) {
+        const articleHeadings = articleElement.querySelectorAll("h2, h3, h4")
+        articleHeadings.forEach((heading, index) => {
+          if (headingData[index]) {
+            heading.id = headingData[index].id
+          }
+        })
+      }
+    }, 100)
   }, [content])
-
-  useEffect(() => {
-    const updateProgress = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrollProgress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
-      setProgress(scrollProgress)
-    }
-
-    window.addEventListener("scroll", updateProgress)
-    updateProgress()
-
-    return () => window.removeEventListener("scroll", updateProgress)
-  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -90,7 +90,7 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
   const scrollToHeading = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      const offset = 80
+      const offset = 100 // Account for fixed header
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.scrollY - offset
       
@@ -108,7 +108,7 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       className={cn(
-        "sticky top-24 max-h-[calc(100vh-6rem)]",
+        "sticky top-24 max-h-[calc(100vh-6rem)] w-full",
         className
       )}
     >
@@ -123,26 +123,8 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
           </h3>
         </div>
 
-        {/* Reading Progress */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-            <span>Reading Progress</span>
-            <span className="font-medium text-primary">{Math.round(progress)}%</span>
-          </div>
-          <div className="h-2 bg-border/50 rounded-full overflow-hidden relative">
-            <motion.div
-              className="h-full bg-gradient-to-r from-primary via-purple-500 to-cyan-500 rounded-full shadow-glow"
-              style={{ 
-                width: `${progress}%`,
-                boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)'
-              }}
-              transition={{ duration: 0.1 }}
-            />
-          </div>
-        </div>
-
         {/* Navigation */}
-        <nav className="space-y-1 max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+        <nav className="space-y-1 max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
           {headings.map((heading) => {
             const isActive = activeId === heading.id
 
@@ -151,7 +133,7 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
                 key={heading.id}
                 onClick={() => scrollToHeading(heading.id)}
                 className={cn(
-                  "block w-full text-left py-2 px-3 rounded-lg text-sm transition-all duration-200 relative",
+                  "block w-full text-left py-2 px-3 rounded-lg text-sm transition-all duration-200 relative group",
                   isActive 
                     ? "bg-primary/10 text-primary font-medium" 
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
@@ -171,10 +153,13 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
                   <ChevronRight 
                     className={cn(
                       "h-3 w-3 transition-transform duration-200",
-                      isActive && "rotate-90 text-primary"
+                      isActive && "rotate-90 text-primary",
+                      "group-hover:text-primary"
                     )}
                   />
-                  <span className="line-clamp-2">{heading.text}</span>
+                  <span className="line-clamp-2 group-hover:text-primary transition-colors">
+                    {heading.text}
+                  </span>
                 </div>
               </motion.button>
             )
