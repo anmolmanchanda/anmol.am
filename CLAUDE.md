@@ -8,7 +8,8 @@
 This is the main configuration hub. All detailed instructions are in separate files for better organization and maintenance.
 
 ### Core Documentation
-- [🚨 Git Workflow Rules](./docs/claude/GIT_RULES.md) - **CRITICAL: Read First**
+- [🚨 Git Workflow Rules](./docs/claude/GIT_RULES.md) - **CRITICAL: Read First - NEVER work on main!**
+- [🗺️ Roadmap & Versioning](./docs/claude/ROADMAP_VERSIONING.md) - **Current: v2.0.0**
 - [🛠️ Development Standards](./docs/claude/DEVELOPMENT_STANDARDS.md)
 - [🤖 MCP Servers Guide](./docs/claude/MCP_SERVERS.md)
 - [📊 Project Context](./docs/claude/PROJECT_CONTEXT.md)
@@ -71,9 +72,9 @@ claude --list-mcps  # List available MCP servers
 
 ## 📋 Current Project Status
 
-- **Portfolio Version**: 3.0
+- **Portfolio Version**: 2.0.0 (Released Jan 19, 2025)
 - **Tech Stack**: Next.js 15.4.1, React 19, TypeScript 5, Tailwind CSS v4
-- **Performance**: 95+ Lighthouse scores
+- **Performance**: 96/100 Lighthouse score
 - **Features**: 
   - ✅ AI-Assisted Development
   - ✅ TB-scale Data Pipeline

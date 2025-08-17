@@ -28,17 +28,20 @@ git commit -m "Update feature"
 git push -u origin feature/branch-name  # IMMEDIATELY!
 ```
 
-### 3. ❌ NEVER Work on Main Branch
+### 3. ❌ NEVER EVER Work on Main Branch (ABSOLUTE ZERO TOLERANCE)
 ```bash
-# FORBIDDEN:
+# FORBIDDEN - NEVER DO THIS UNDER ANY CIRCUMSTANCES:
 git checkout main
-# Making changes directly...
+# Making ANY changes directly on main...
+# Even tiny fixes must use feature branches!
 
-# CORRECT:
+# CORRECT - ALWAYS CREATE A FEATURE BRANCH:
 git checkout main
 git pull origin main
-git checkout -b feature/new-feature
+git checkout -b feature/new-feature  # ALWAYS create branch first!
 # Now make changes...
+
+# REMEMBER: No exceptions, not even for "quick fixes"
 ```
 
 ## ✅ MANDATORY WORKFLOW
