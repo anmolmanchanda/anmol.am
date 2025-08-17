@@ -1,24 +1,17 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { BookOpen, Music, Film, Dumbbell, ExternalLink, Heart, Star } from "lucide-react"
+import { BookOpen, Music, Film, ExternalLink, Heart, Star } from "lucide-react"
 import { LifeTrackers } from "@/components/CustomTrackers"
 import { NotionCard } from "@/components/NotionCard"
+import { LifeActivityFeed } from "@/components/ActivityFeed"
 
 export const metadata: Metadata = {
   title: "Personal",
   description: "Personal interests, hobbies, and creative pursuits of Anmol Manchanda",
 }
 
+// Only show links for platforms without good API access
 const personalLinks = [
-  {
-    id: "poems",
-    title: "Poetify - Poetry Blog",
-    description: "My collection of poems and creative writing on Blogger",
-    url: "https://poetify.blogspot.com",
-    icon: <BookOpen className="w-8 h-8 text-purple-500 icon-float" />,
-    category: "Creative Writing",
-    color: "from-purple-600 to-purple-400"
-  },
   {
     id: "goodreads",
     title: "Goodreads Profile",
@@ -26,36 +19,36 @@ const personalLinks = [
     url: "https://www.goodreads.com/user/show/83373769-anmol-manchanda",
     icon: <BookOpen className="w-8 h-8 text-green-500 icon-pulse" />,
     category: "Reading",
-    color: "from-green-600 to-green-400"
-  },
-  {
-    id: "spotify",
-    title: "Spotify Profile",
-    description: "My music taste, playlists, and what I'm currently listening to",
-    url: "https://open.spotify.com/user/8yxq6bc2x81yri8o7yqi1fuup?si=3MSB-YfUQUS_nI8O3D7g2A",
-    icon: <Music className="w-8 h-8 text-green-400 icon-pulse" />,
-    category: "Music",
-    color: "from-green-500 to-emerald-400"
+    color: "from-green-600 to-green-400",
+    note: "API deprecated - manual link only"
   },
   {
     id: "letterboxd",
-    title: "Letterboxd Profile",
+    title: "Letterboxd Profile", 
     description: "Movie reviews, watchlists, and cinematic preferences",
     url: "https://letterboxd.com/anmolmanchanda/",
     icon: <Film className="w-8 h-8 text-blue-500 icon-float" />,
     category: "Movies",
-    color: "from-blue-600 to-blue-400"
+    color: "from-blue-600 to-blue-400",
+    note: "Limited RSS feed only"
   },
   {
-    id: "strava",
-    title: "Strava Profile",
-    description: "Fitness tracking, workout logs, and athletic achievements",
-    url: "https://www.strava.com/athletes/131445218",
-    icon: <Dumbbell className="w-8 h-8 text-orange-500 icon-pulse" />,
-    category: "Fitness",
-    color: "from-orange-600 to-orange-400"
+    id: "spotify",
+    title: "Spotify Profile",
+    description: "My music taste and playlists",
+    url: "https://open.spotify.com/user/8yxq6bc2x81yri8o7yqi1fuup?si=3MSB-YfUQUS_nI8O3D7g2A",
+    icon: <Music className="w-8 h-8 text-green-400 icon-pulse" />,
+    category: "Music",
+    color: "from-green-500 to-emerald-400",
+    note: "OAuth too complex for now"
   }
 ]
+
+// Note: These platforms have APIs and will be integrated into the activity feed:
+// - GitHub (already integrated in Work page)
+// - Strava (OAuth API available - future integration)
+// - Duolingo (unofficial API - basic integration done)
+// - Poetify/Blog posts (will be migrated to this site)
 
 export default function PersonalPage() {
   return (
@@ -154,6 +147,14 @@ export default function PersonalPage() {
           <div className="mt-16">
             <h2 className="text-2xl font-bold mb-8 text-center">Life Stats & Progress</h2>
             <LifeTrackers />
+          </div>
+
+          {/* Life Activity Feed */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold mb-8 text-center">Activity Timeline</h2>
+            <div className="max-w-3xl mx-auto">
+              <LifeActivityFeed />
+            </div>
           </div>
 
           {/* Personal Philosophy */}
