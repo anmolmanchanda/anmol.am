@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { motion } from "framer-motion"
 import { 
   Github, BookOpen, Code, Zap, FileText, Hash, 
-  Globe, Calendar, Clock, ExternalLink, Loader2,
-  Award, Target, Coffee, Activity
+  Globe, Clock, ExternalLink, Loader2,
+  Award, Target, Activity
 } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
 import { useActivityStore } from "@/lib/store"
@@ -81,13 +81,13 @@ function ActivityCard({ activity }: { activity: ActivityItem | LifeActivityItem 
               {formatDistanceToNow(activity.timestamp, { addSuffix: true })}
             </span>
             
-            {activity.metadata?.language && (
+            {activity.metadata && 'language' in activity.metadata && activity.metadata.language && (
               <span className="px-2 py-0.5 bg-secondary rounded-full">
                 {activity.metadata.language}
               </span>
             )}
             
-            {activity.metadata?.progress !== undefined && (
+            {activity.metadata && 'progress' in activity.metadata && activity.metadata.progress !== undefined && (
               <span className="flex items-center gap-1">
                 <Target className="w-3 h-3" />
                 {activity.metadata.progress}%
@@ -105,12 +105,7 @@ export function WorkActivityFeed() {
   const [loading, setLoading] = useState(true)
   const { trackerData, fetchTrackerData } = useActivityStore()
   
-  useEffect(() => {
-    fetchTrackerData()
-    fetchActivities()
-  }, [])
-  
-  const fetchActivities = async () => {
+  const fetchActivities = useCallback(async () => {
     try {
       setLoading(true)
       
@@ -195,7 +190,12 @@ export function WorkActivityFeed() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [trackerData])
+  
+  useEffect(() => {
+    fetchTrackerData()
+    fetchActivities()
+  }, [fetchTrackerData, fetchActivities])
   
   if (loading) {
     return (
@@ -225,12 +225,7 @@ export function LifeActivityFeed() {
   const [loading, setLoading] = useState(true)
   const { trackerData, fetchTrackerData } = useActivityStore()
   
-  useEffect(() => {
-    fetchTrackerData()
-    fetchActivities()
-  }, [])
-  
-  const fetchActivities = async () => {
+  const fetchActivities = useCallback(async () => {
     try {
       setLoading(true)
       
@@ -293,7 +288,12 @@ export function LifeActivityFeed() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [trackerData])
+  
+  useEffect(() => {
+    fetchTrackerData()
+    fetchActivities()
+  }, [fetchTrackerData, fetchActivities])
   
   if (loading) {
     return (
