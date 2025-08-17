@@ -284,7 +284,7 @@ export function CommandPaletteTrigger() {
         })
         document.dispatchEvent(event)
       }}
-      className="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md border border-border/50 hover:border-border"
+      className="hidden md:inline-flex items-center gap-2 px-3 py-2 h-10 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md border border-border/50 hover:border-border"
     >
       <Search className="w-4 h-4" />
       <span>Search...</span>

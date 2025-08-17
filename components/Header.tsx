@@ -30,13 +30,13 @@ export function Header() {
             <span className="text-xl font-bold">{siteConfig.name}</span>
           </Link>
 
-          <div className="hidden md:flex md:items-center md:gap-x-6">
+          <div className="hidden md:flex md:items-center md:gap-x-4">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
+                  "inline-flex items-center px-3 py-2 text-sm font-medium transition-colors hover:text-primary rounded-md",
                   pathname === item.href
                     ? "text-foreground"
                     : "text-muted-foreground"
