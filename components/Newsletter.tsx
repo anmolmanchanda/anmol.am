@@ -17,19 +17,20 @@ export function Newsletter() {
     setStatus("loading")
     
     try {
-      // Here you would integrate with your email service
-      // For now, we'll simulate an API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      })
       
-      // In production, replace with actual API call:
-      // const response = await fetch('/api/newsletter', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email })
-      // })
+      const data = await response.json()
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to subscribe')
+      }
       
       setStatus("success")
-      setMessage("Thanks for subscribing! Check your email for confirmation.")
+      setMessage(data.message || "Thanks for subscribing! Check your email for confirmation.")
       setEmail("")
       
       // Reset after 5 seconds
@@ -37,9 +38,9 @@ export function Newsletter() {
         setStatus("idle")
         setMessage("")
       }, 5000)
-    } catch {
+    } catch (error) {
       setStatus("error")
-      setMessage("Something went wrong. Please try again.")
+      setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.")
       
       setTimeout(() => {
         setStatus("idle")

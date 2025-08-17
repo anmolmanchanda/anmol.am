@@ -154,6 +154,8 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [filteredPosts, setFilteredPosts] = useState(blogPosts)
+  const [isSearchActive, setIsSearchActive] = useState(false)
   
   // Get real-time view counts for all blog posts
   const { viewCounts, loading: viewsLoading } = useBatchViewCounts(
@@ -166,13 +168,6 @@ export default function BlogPage() {
 
   // const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)))
   const featuredPosts = blogPosts.filter(post => post.featured)
-  
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesTag = !selectedTag || post.tags.includes(selectedTag)
-    return matchesSearch && matchesTag
-  })
 
   return (
     <div className="py-24 sm:py-32 aurora-bg relative overflow-hidden">
@@ -239,15 +234,15 @@ export default function BlogPage() {
         >
           <BlogSearch 
             posts={blogPosts}
-            onResultsChange={(_results) => {
-              // Update filtered posts based on search
-              // This maintains the existing filteredPosts logic
+            onResultsChange={(results) => {
+              setFilteredPosts(results)
+              setIsSearchActive(results.length !== blogPosts.length)
             }}
           />
         </motion.div>
 
         {/* Featured Posts Section */}
-        {!searchQuery && !selectedTag && (
+        {!isSearchActive && (
           <motion.div
             className="mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -361,7 +356,7 @@ export default function BlogPage() {
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold flex items-center gap-3">
               <div className="w-1 h-6 bg-gradient-to-b from-primary to-purple-500 rounded-full" />
-              {searchQuery || selectedTag ? 'Search Results' : 'All Articles'}
+              {isSearchActive ? 'Search Results' : 'All Articles'}
               <span className="text-sm font-normal text-muted-foreground ml-2">
                 ({filteredPosts.length} {filteredPosts.length === 1 ? 'article' : 'articles'})
               </span>

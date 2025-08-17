@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { CursorTrail, ScrollProgress } from "@/components/InteractiveEffects";
 import { CommandPalette } from "@/components/CommandPalette";
 import { PWAInstallPrompt } from "@/components/Phase4Features";
+import { ReadingProgress } from "@/components/ReadingProgress";
 import { siteConfig } from "@/lib/config";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -88,6 +89,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ScrollProgress />
+          <ReadingProgress />
           <CursorTrail />
           <CommandPalette />
           <PWAInstallPrompt />
