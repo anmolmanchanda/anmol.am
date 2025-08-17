@@ -135,13 +135,13 @@ export const useActivityStore = create<ActivityStore>()(
             const result = await response.json()
             
             if (result.success && result.data) {
-              set({ 
+              set((state) => ({ 
                 trackerData: result.data,
-                isLoading: (state) => ({ ...state.isLoading, trackers: false })
-              })
+                isLoading: { ...state.isLoading, trackers: false }
+              }))
             } else {
               // Set default data if none exists
-              set({
+              set((state) => ({
                 trackerData: {
                   daysSinceLastPoem: 0,
                   currentSideProject: "Portfolio Website v2",
@@ -173,8 +173,8 @@ export const useActivityStore = create<ActivityStore>()(
                   },
                   lastUpdated: new Date().toISOString()
                 },
-                isLoading: (state) => ({ ...state.isLoading, trackers: false })
-              })
+                isLoading: { ...state.isLoading, trackers: false }
+              }))
             }
           } catch (error) {
             set((state) => ({
@@ -196,10 +196,10 @@ export const useActivityStore = create<ActivityStore>()(
             const result = await response.json()
             
             if (result.success) {
-              set({ 
+              set((state) => ({ 
                 githubActivities: result.activities || [],
-                isLoading: (state) => ({ ...state.isLoading, github: false })
-              })
+                isLoading: { ...state.isLoading, github: false }
+              }))
             } else {
               throw new Error('Failed to fetch GitHub activity')
             }
@@ -223,10 +223,10 @@ export const useActivityStore = create<ActivityStore>()(
             const result = await response.json()
             
             if (result.success) {
-              set({ 
+              set((state) => ({ 
                 spotifyNowPlaying: result.data || null,
-                isLoading: (state) => ({ ...state.isLoading, spotify: false })
-              })
+                isLoading: { ...state.isLoading, spotify: false }
+              }))
             } else {
               throw new Error('Failed to fetch Spotify data')
             }
@@ -273,10 +273,10 @@ export const useActivityStore = create<ActivityStore>()(
             // Sort by timestamp
             feed.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
             
-            set({
+            set((state) => ({
               activityFeed: feed,
-              isLoading: (state) => ({ ...state.isLoading, feed: false })
-            })
+              isLoading: { ...state.isLoading, feed: false }
+            }))
           } catch (error) {
             set((state) => ({
               errors: { ...state.errors, feed: 'Failed to fetch activity feed' },
