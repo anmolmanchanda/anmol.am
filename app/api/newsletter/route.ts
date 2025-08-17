@@ -33,89 +33,64 @@ export async function POST(request: NextRequest) {
     }
     
     try {
-      // Check if subscriber exists
-      const checkResponse = await fetch(
-        `${BUTTONDOWN_API_URL}/subscribers?email=${encodeURIComponent(email)}`,
+      // Directly create/update subscriber (Buttondown handles duplicates)
+      const response = await fetch(
+        `${BUTTONDOWN_API_URL}/subscribers`,
         {
+          method: 'POST',
           headers: {
-            'Authorization': `Token ${BUTTONDOWN_API_KEY}`
-          }
+            'Authorization': `Token ${BUTTONDOWN_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            tags: streams,
+            referrer_url: 'https://anmol.am'
+          })
         }
       )
       
-      const subscribers = await checkResponse.json()
-      const existingSubscriber = subscribers.results?.find(
-        (s: any) => s.email === email
-      )
-      
-      if (existingSubscriber) {
-        // Update existing subscriber's tags
-        await fetch(
-          `${BUTTONDOWN_API_URL}/subscribers/${existingSubscriber.id}`,
-          {
-            method: 'PATCH',
-            headers: {
-              'Authorization': `Token ${BUTTONDOWN_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              tags: streams
-            })
-          }
-        )
-        
-        return NextResponse.json({
-          success: true,
-          message: 'Preferences updated successfully!'
-        })
-      } else {
-        // Create new subscriber
-        const response = await fetch(
-          `${BUTTONDOWN_API_URL}/subscribers`,
-          {
-            method: 'POST',
-            headers: {
-              'Authorization': `Token ${BUTTONDOWN_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              email,
-              tags: streams,
-              referrer_url: 'https://anmol.am',
-              metadata: {
-                source: 'portfolio',
-                signup_date: new Date().toISOString()
-              }
-            })
-          }
-        )
-        
-        if (!response.ok) {
-          const error = await response.text()
-          console.error('Buttondown API error:', error)
-          throw new Error('Failed to subscribe')
-        }
-        
+      // Check response
+      if (response.ok) {
         return NextResponse.json({
           success: true,
           message: 'Successfully subscribed! Check your email for confirmation.'
         })
+      } else if (response.status === 409) {
+        // Already subscribed
+        return NextResponse.json({
+          success: true,
+          message: 'You\'re already subscribed! Check your email for updates.'
+        })
+      } else {
+        const errorText = await response.text()
+        console.error('Buttondown API error:', response.status, errorText)
+        
+        // Parse common errors
+        if (errorText.includes('email')) {
+          return NextResponse.json(
+            { success: false, message: 'Invalid email address. Please check and try again.' },
+            { status: 400 }
+          )
+        }
+        
+        throw new Error('Subscription failed')
       }
-    } catch (buttondownError) {
-      console.error('Buttondown error:', buttondownError)
-      throw buttondownError
+    } catch (fetchError) {
+      console.error('Buttondown fetch error:', fetchError)
+      throw fetchError
     }
     
   } catch (error) {
     console.error('Newsletter subscription error:', error)
     return NextResponse.json(
-      { success: false, message: 'Failed to subscribe. Please try again.' },
+      { success: false, message: 'Failed to subscribe. Please try again later.' },
       { status: 500 }
     )
   }
 }
 
-// GET endpoint to check subscription status
+// GET endpoint to check subscription status (simplified)
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
@@ -136,34 +111,11 @@ export async function GET(request: NextRequest) {
       })
     }
     
-    try {
-      const response = await fetch(
-        `${BUTTONDOWN_API_URL}/subscribers?email=${encodeURIComponent(email)}`,
-        {
-          headers: {
-            'Authorization': `Token ${BUTTONDOWN_API_KEY}`
-          }
-        }
-      )
-      
-      const data = await response.json()
-      const subscriber = data.results?.find((s: any) => s.email === email)
-      
-      if (subscriber) {
-        return NextResponse.json({
-          success: true,
-          subscribed: true,
-          streams: subscriber.tags || ['work']
-        })
-      }
-    } catch (error) {
-      console.error('Buttondown check error:', error)
-    }
-    
+    // For now, just return false - Buttondown's subscriber search is complex
     return NextResponse.json({
       success: true,
       subscribed: false,
-      streams: []
+      streams: ['work']
     })
     
   } catch (error) {

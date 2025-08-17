@@ -4,6 +4,7 @@ import { ArrowRight, Download, Globe2 } from "lucide-react"
 import { siteConfig } from "@/lib/config"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { Card3D, MagneticButton, AnimatedText } from "@/components/DrribbleInspiredFeatures"
+import { NewsletterCTA } from "@/components/NewsletterVariants"
 
 export function Hero() {
   return (
@@ -129,6 +130,8 @@ export function Hero() {
                     Resume
                   </Link>
                 </MagneticButton>
+                
+                <NewsletterCTA className="w-full sm:w-auto sm:min-w-[200px] min-h-[44px]" />
               </div>
             </div>
           </div>

@@ -11,6 +11,7 @@ import { Card3D, MagneticButton } from "@/components/DrribbleInspiredFeatures"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { BlogSearch } from "@/components/BlogSearch"
 import { Breadcrumb } from "@/components/Breadcrumb"
+import { NewsletterCompact } from "@/components/NewsletterVariants"
 
 const blogPosts: BlogPost[] = [
   {
@@ -223,12 +224,29 @@ export default function BlogPage() {
           </p>
         </motion.div>
 
-        {/* Blog Search Component */}
+        {/* Newsletter Subscription */}
         <motion.div 
-          className="mx-auto max-w-4xl mt-12 mb-16"
+          className="mx-auto max-w-4xl mt-12 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="glass-morphism cyber-border p-4 rounded-xl border backdrop-blur-md">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-sm font-medium mb-2">Subscribe to get new articles delivered to your inbox</p>
+                <NewsletterCompact />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Blog Search Component */}
+        <motion.div 
+          className="mx-auto max-w-4xl mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           <BlogSearch 
             posts={blogPosts}
