@@ -541,7 +541,7 @@ export default function BlogPage() {
 
         {/* Work Trackers */}
         <motion.div
-          className="mt-16"
+          className="mt-16 mx-auto max-w-4xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -555,7 +555,7 @@ export default function BlogPage() {
 
         {/* Work Activity Feed */}
         <motion.div
-          className="mt-16"
+          className="mt-16 mx-auto max-w-4xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.9 }}
@@ -564,9 +564,7 @@ export default function BlogPage() {
             <div className="w-1 h-6 bg-gradient-to-b from-primary to-purple-500 rounded-full" />
             Activity Timeline
           </h2>
-          <div className="max-w-3xl">
-            <WorkActivityFeed />
-          </div>
+          <WorkActivityFeed />
         </motion.div>
       </div>
     </div>

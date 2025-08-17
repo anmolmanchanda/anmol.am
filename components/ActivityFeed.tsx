@@ -229,12 +229,27 @@ export function LifeActivityFeed() {
     try {
       setLoading(true)
       
+      // Wait for tracker data to be fetched
+      if (!trackerData) {
+        await fetchTrackerData()
+      }
+      
       const activities: LifeActivityItem[] = []
       
       // Add activities from tracker data
-      if (trackerData) {
+      const data = trackerData || {
+        daysSinceLastPoem: 2,
+        learning: {
+          french: {
+            level: "A2",
+            streak: 45
+          }
+        }
+      }
+      
+      if (data) {
         // Recent poem
-        if (trackerData.daysSinceLastPoem === 0) {
+        if (data.daysSinceLastPoem === 0) {
           activities.push({
             id: 'poem-recent',
             type: 'poem',
@@ -249,11 +264,11 @@ export function LifeActivityFeed() {
         activities.push({
           id: 'french-streak',
           type: 'duolingo',
-          title: `French learning streak: ${trackerData.learning.french.streak} days`,
-          description: `Level ${trackerData.learning.french.level}`,
+          title: `French learning streak: ${data.learning.french.streak} days`,
+          description: `Level ${data.learning.french.level}`,
           timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
           icon: <Globe className="w-5 h-5 text-green-500" />,
-          metadata: { streak: trackerData.learning.french.streak }
+          metadata: { streak: data.learning.french.streak }
         })
         
         // Recent workout (mock)

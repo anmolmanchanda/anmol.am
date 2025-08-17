@@ -3,7 +3,15 @@ import fs from 'fs'
 import path from 'path'
 
 const TRACKER_KEY = 'tracker:data'
-const LOCAL_STORAGE_PATH = path.join(process.cwd(), 'tracker-data.json')
+const LOCAL_STORAGE_PATH = path.join(process.cwd(), 'data', 'tracker-data.json')
+
+// Ensure data directory exists
+const ensureDataDir = () => {
+  const dataDir = path.dirname(LOCAL_STORAGE_PATH)
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true })
+  }
+}
 
 // Try Redis first, fall back to local file storage
 async function getData() {
@@ -20,6 +28,7 @@ async function getData() {
   
   // Fall back to local file storage
   try {
+    ensureDataDir()
     if (fs.existsSync(LOCAL_STORAGE_PATH)) {
       const fileData = fs.readFileSync(LOCAL_STORAGE_PATH, 'utf8')
       return JSON.parse(fileData)
@@ -62,6 +71,7 @@ async function saveData(data: any) {
   
   // Fall back to local file storage
   try {
+    ensureDataDir()
     fs.writeFileSync(LOCAL_STORAGE_PATH, JSON.stringify(data, null, 2))
     return true
   } catch (error) {

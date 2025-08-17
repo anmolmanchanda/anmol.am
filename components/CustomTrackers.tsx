@@ -44,7 +44,30 @@ export function LifeTrackers() {
     fetchTrackerData()
   }, [fetchTrackerData])
   
-  if (isLoading.trackers || !trackerData) {
+  // Use default data if not loaded
+  const data = trackerData || {
+    booksReadThisYear: 24,
+    poemsWritten: 37,
+    kmRun: 523,
+    coffeesConsumed: 999,
+    daysSinceLastPoem: 2,
+    currentSideProject: "Portfolio Website v2",
+    learningQueue: ["Rust", "WebAssembly", "Kubernetes"],
+    learning: {
+      french: { level: "A2", streak: 45 },
+      aws: { progress: 35, target: "Solutions Architect Associate" },
+      ml: { status: "Starting Soon", course: "Fast.ai" }
+    },
+    currentlyUsing: {
+      llms: ["Claude 3.5 Sonnet", "GPT-4"],
+      editor: ["Cursor", "VS Code"],
+      frameworks: ["Next.js 15", "React 19"],
+      databases: ["PostgreSQL", "Redis"],
+      tools: ["Docker", "Git", "Vercel"]
+    }
+  }
+  
+  if (isLoading.trackers) {
     return (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[...Array(4)].map((_, i) => (
@@ -63,28 +86,28 @@ export function LifeTrackers() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <TrackerCard
           title="Books This Year"
-          value={trackerData.booksReadThisYear}
+          value={data.booksReadThisYear}
           icon={<BookOpen className="w-5 h-5 text-white" />}
           gradient="from-green-500 to-emerald-600"
           delay={0.1}
         />
         <TrackerCard
           title="Poems Written"
-          value={trackerData.poemsWritten}
+          value={data.poemsWritten}
           icon={<Zap className="w-5 h-5 text-white" />}
           gradient="from-purple-500 to-pink-600"
           delay={0.2}
         />
         <TrackerCard
           title="KM Run"
-          value={trackerData.kmRun}
+          value={data.kmRun}
           icon={<Activity className="w-5 h-5 text-white" />}
           gradient="from-orange-500 to-red-600"
           delay={0.3}
         />
         <TrackerCard
           title="Coffees"
-          value={trackerData.coffeesConsumed === 999 ? "∞" : trackerData.coffeesConsumed}
+          value={data.coffeesConsumed === 999 ? "∞" : data.coffeesConsumed}
           icon={<Coffee className="w-5 h-5 text-white" />}
           gradient="from-amber-600 to-brown-700"
           delay={0.4}
@@ -101,16 +124,16 @@ export function LifeTrackers() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">French</span>
-              <span className="text-sm text-muted-foreground">{trackerData.learning.french.level}</span>
+              <span className="text-sm text-muted-foreground">{data.learning.french.level}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex-1 h-2 bg-muted/20 rounded-full overflow-hidden">
                 <div 
                   className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
-                  style={{ width: `${Math.min(trackerData.learning.french.streak, 100)}%` }}
+                  style={{ width: `${Math.min(data.learning.french.streak, 100)}%` }}
                 />
               </div>
-              <span className="text-xs text-muted-foreground">{trackerData.learning.french.streak} days</span>
+              <span className="text-xs text-muted-foreground">{data.learning.french.streak} days</span>
             </div>
           </div>
           
@@ -123,20 +146,20 @@ export function LifeTrackers() {
               <div className="flex-1 h-2 bg-muted/20 rounded-full overflow-hidden">
                 <div 
                   className="h-full bg-gradient-to-r from-orange-500 to-amber-500"
-                  style={{ width: `${trackerData.learning.aws.progress}%` }}
+                  style={{ width: `${data.learning.aws.progress}%` }}
                 />
               </div>
-              <span className="text-xs text-muted-foreground">{trackerData.learning.aws.progress}%</span>
+              <span className="text-xs text-muted-foreground">{data.learning.aws.progress}%</span>
             </div>
           </div>
           
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">ML</span>
-              <span className="text-xs text-muted-foreground">{trackerData.learning.ml.status}</span>
+              <span className="text-xs text-muted-foreground">{data.learning.ml.status}</span>
             </div>
             <div className="text-xs text-muted-foreground">
-              {trackerData.learning.ml.course}
+              {data.learning.ml.course}
             </div>
           </div>
         </div>
@@ -147,11 +170,11 @@ export function LifeTrackers() {
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Creative Output</h3>
           <span className="text-sm text-muted-foreground">
-            {trackerData.daysSinceLastPoem === 0 ? "Today!" : `${trackerData.daysSinceLastPoem} days since last poem`}
+            {data.daysSinceLastPoem === 0 ? "Today!" : `${data.daysSinceLastPoem} days since last poem`}
           </span>
         </div>
         <div className="text-sm text-muted-foreground">
-          Current Project: <span className="text-foreground font-medium">{trackerData.currentSideProject}</span>
+          Current Project: <span className="text-foreground font-medium">{data.currentSideProject}</span>
         </div>
       </div>
     </div>
@@ -165,7 +188,22 @@ export function WorkTrackers() {
     fetchTrackerData()
   }, [fetchTrackerData])
   
-  if (isLoading.trackers || !trackerData) {
+  // Use default data if not loaded
+  const data = trackerData || {
+    currentlyUsing: {
+      llms: ["Claude 3.5 Sonnet", "GPT-4"],
+      editor: ["Cursor", "VS Code"],
+      frameworks: ["Next.js 15", "React 19"],
+      databases: ["PostgreSQL", "Redis"],
+      tools: ["Docker", "Git", "Vercel"]
+    },
+    learningQueue: ["Rust", "WebAssembly", "Kubernetes"],
+    learning: {
+      aws: { progress: 35, target: "Solutions Architect Associate" }
+    }
+  }
+  
+  if (isLoading.trackers) {
     return (
       <div className="liquid-glass rounded-xl border backdrop-blur-md p-6 animate-pulse">
         <div className="h-6 bg-muted/20 rounded mb-4 w-1/3" />
@@ -190,7 +228,7 @@ export function WorkTrackers() {
           <div>
             <h4 className="text-sm font-medium text-muted-foreground mb-2">LLMs & AI</h4>
             <div className="flex flex-wrap gap-2">
-              {trackerData.currentlyUsing.llms.map((llm) => (
+              {data.currentlyUsing.llms.map((llm) => (
                 <span key={llm} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
                   {llm}
                 </span>
@@ -201,7 +239,7 @@ export function WorkTrackers() {
           <div>
             <h4 className="text-sm font-medium text-muted-foreground mb-2">Development</h4>
             <div className="flex flex-wrap gap-2">
-              {[...trackerData.currentlyUsing.editor, ...trackerData.currentlyUsing.frameworks].map((tool) => (
+              {[...data.currentlyUsing.editor, ...data.currentlyUsing.frameworks].map((tool) => (
                 <span key={tool} className="px-3 py-1 bg-secondary/50 rounded-full text-sm">
                   {tool}
                 </span>
@@ -212,7 +250,7 @@ export function WorkTrackers() {
           <div>
             <h4 className="text-sm font-medium text-muted-foreground mb-2">Infrastructure</h4>
             <div className="flex flex-wrap gap-2">
-              {[...trackerData.currentlyUsing.databases, ...trackerData.currentlyUsing.tools].map((tool) => (
+              {[...data.currentlyUsing.databases, ...data.currentlyUsing.tools].map((tool) => (
                 <span key={tool} className="px-3 py-1 bg-muted rounded-full text-sm">
                   {tool}
                 </span>
@@ -229,7 +267,7 @@ export function WorkTrackers() {
           Learning Queue
         </h3>
         <div className="flex flex-wrap gap-3">
-          {trackerData.learningQueue.map((item, index) => (
+          {data.learningQueue.map((item, index) => (
             <div key={item} className="flex items-center gap-2">
               <span className="text-2xl font-bold text-primary/30">{index + 1}</span>
               <span className="font-medium">{item}</span>
@@ -247,13 +285,13 @@ export function WorkTrackers() {
         <div className="space-y-3">
           <div>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-sm font-medium">AWS {trackerData.learning.aws.target}</span>
-              <span className="text-sm text-muted-foreground">{trackerData.learning.aws.progress}%</span>
+              <span className="text-sm font-medium">AWS {data.learning.aws.target}</span>
+              <span className="text-sm text-muted-foreground">{data.learning.aws.progress}%</span>
             </div>
             <div className="h-2 bg-muted/20 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-gradient-to-r from-orange-500 to-amber-500"
-                style={{ width: `${trackerData.learning.aws.progress}%` }}
+                style={{ width: `${data.learning.aws.progress}%` }}
               />
             </div>
           </div>
