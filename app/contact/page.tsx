@@ -73,7 +73,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold">Email</h3>
                     <p className="mt-1 text-muted-foreground">
-                      Work: <a href={`mailto:${siteConfig.emailAliases.work}`} className="text-primary hover:underline font-medium">{siteConfig.emailAliases.work}</a>
+                      Opportunities: <a href={`mailto:${siteConfig.emailAliases.hire}`} className="text-primary hover:underline font-medium">{siteConfig.emailAliases.hire}</a>
                     </p>
                   </div>
                 </div>
