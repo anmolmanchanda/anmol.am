@@ -61,7 +61,7 @@ export function Newsletter() {
     setStatus("loading")
     
     try {
-      const response = await fetch('/api/newsletter/buttondown', {
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, streams: selectedStreams })

@@ -1,19 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
-import { Redis } from '@upstash/redis'
 
 interface NewsletterRequest {
   email: string
+  streams?: string[]
 }
 
-// Initialize services
-const resend = new Resend(process.env.RESEND_API_KEY)
-const redis = Redis.fromEnv()
+// Buttondown API configuration
+const BUTTONDOWN_API_KEY = process.env['BUTTONDOWN_API_KEY'] || ''
+const BUTTONDOWN_API_URL = 'https://api.buttondown.email/v1'
 
 export async function POST(request: NextRequest) {
   try {
     const body: NewsletterRequest = await request.json()
-    const { email } = body
+    const { email, streams = ['work'] } = body
     
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -24,75 +23,88 @@ export async function POST(request: NextRequest) {
       )
     }
     
-    // Check if already subscribed (using Redis)
-    const isSubscribed = await redis.sismember('newsletter_subscribers', email)
-    if (isSubscribed) {
-      return NextResponse.json(
-        { success: false, message: 'You are already subscribed!' },
-        { status: 400 }
+    // If Buttondown is not configured, just log and return success
+    if (!BUTTONDOWN_API_KEY) {
+      console.log('Newsletter subscription (Buttondown not configured):', email, streams)
+      return NextResponse.json({
+        success: true,
+        message: 'Subscription recorded! We\'ll be in touch soon.'
+      })
+    }
+    
+    try {
+      // Check if subscriber exists
+      const checkResponse = await fetch(
+        `${BUTTONDOWN_API_URL}/subscribers?email=${encodeURIComponent(email)}`,
+        {
+          headers: {
+            'Authorization': `Token ${BUTTONDOWN_API_KEY}`
+          }
+        }
       )
-    }
-    
-    // Store in Redis
-    await redis.sadd('newsletter_subscribers', email)
-    await redis.hset(`subscriber:${email}`, {
-      email,
-      subscribedAt: new Date().toISOString(),
-      status: 'active',
-      source: 'portfolio_website'
-    })
-    
-    // If Resend is configured, send welcome email and add to audience
-    if (process.env.RESEND_API_KEY && process.env.RESEND_AUDIENCE_ID) {
-      try {
-        // Add to Resend audience
-        await resend.contacts.create({
-          email: email,
-          audienceId: process.env.RESEND_AUDIENCE_ID
-        })
+      
+      const subscribers = await checkResponse.json()
+      const existingSubscriber = subscribers.results?.find(
+        (s: any) => s.email === email
+      )
+      
+      if (existingSubscriber) {
+        // Update existing subscriber's tags
+        await fetch(
+          `${BUTTONDOWN_API_URL}/subscribers/${existingSubscriber.id}`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Authorization': `Token ${BUTTONDOWN_API_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              tags: streams
+            })
+          }
+        )
         
-        // Send welcome email
-        await resend.emails.send({
-          from: process.env.EMAIL_FROM || 'Anmol Manchanda <hello@anmol.am>',
-          to: email,
-          subject: 'Welcome to my newsletter! 🚀',
-          html: `
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h1 style="color: #333; font-size: 28px; margin-bottom: 20px;">Welcome aboard! 🎉</h1>
-              
-              <p style="color: #666; font-size: 16px; line-height: 1.6;">Thank you for subscribing to my newsletter!</p>
-              
-              <p style="color: #666; font-size: 16px; line-height: 1.6;">You'll receive updates about:</p>
-              <ul style="color: #666; font-size: 16px; line-height: 1.8;">
-                <li>New technical articles and tutorials</li>
-                <li>AI-assisted development insights</li>
-                <li>Open source projects and tools</li>
-                <li>Enterprise architecture patterns</li>
-              </ul>
-              
-              <p style="color: #666; font-size: 16px; line-height: 1.6;">Feel free to reply to this email if you have any questions or topics you'd like me to cover.</p>
-              
-              <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
-              
-              <p style="color: #999; font-size: 14px;">Best regards,<br><strong>Anmol Manchanda</strong><br>AI-Assisted Developer & Technical Architect</p>
-              
-              <p style="color: #999; font-size: 12px; margin-top: 20px;">You can unsubscribe at any time by replying with "unsubscribe".</p>
-            </div>
-          `
+        return NextResponse.json({
+          success: true,
+          message: 'Preferences updated successfully!'
         })
-      } catch (resendError) {
-        // Log error but don't fail the subscription
-        console.error('Resend error (subscription still saved):', resendError)
+      } else {
+        // Create new subscriber
+        const response = await fetch(
+          `${BUTTONDOWN_API_URL}/subscribers`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Token ${BUTTONDOWN_API_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email,
+              tags: streams,
+              referrer_url: 'https://anmol.am',
+              metadata: {
+                source: 'portfolio',
+                signup_date: new Date().toISOString()
+              }
+            })
+          }
+        )
+        
+        if (!response.ok) {
+          const error = await response.text()
+          console.error('Buttondown API error:', error)
+          throw new Error('Failed to subscribe')
+        }
+        
+        return NextResponse.json({
+          success: true,
+          message: 'Successfully subscribed! Check your email for confirmation.'
+        })
       }
+    } catch (buttondownError) {
+      console.error('Buttondown error:', buttondownError)
+      throw buttondownError
     }
-    
-    // Log for monitoring
-    console.log('New newsletter subscription:', email)
-    
-    return NextResponse.json({
-      success: true,
-      message: 'Successfully subscribed! Check your email for confirmation.'
-    })
     
   } catch (error) {
     console.error('Newsletter subscription error:', error)
@@ -116,11 +128,42 @@ export async function GET(request: NextRequest) {
       )
     }
     
-    const isSubscribed = await redis.sismember('newsletter_subscribers', email)
+    if (!BUTTONDOWN_API_KEY) {
+      return NextResponse.json({
+        success: true,
+        subscribed: false,
+        message: 'Newsletter not configured'
+      })
+    }
+    
+    try {
+      const response = await fetch(
+        `${BUTTONDOWN_API_URL}/subscribers?email=${encodeURIComponent(email)}`,
+        {
+          headers: {
+            'Authorization': `Token ${BUTTONDOWN_API_KEY}`
+          }
+        }
+      )
+      
+      const data = await response.json()
+      const subscriber = data.results?.find((s: any) => s.email === email)
+      
+      if (subscriber) {
+        return NextResponse.json({
+          success: true,
+          subscribed: true,
+          streams: subscriber.tags || ['work']
+        })
+      }
+    } catch (error) {
+      console.error('Buttondown check error:', error)
+    }
     
     return NextResponse.json({
       success: true,
-      subscribed: Boolean(isSubscribed)
+      subscribed: false,
+      streams: []
     })
     
   } catch (error) {
