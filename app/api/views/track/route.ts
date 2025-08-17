@@ -7,11 +7,12 @@ interface ViewTrackRequest {
   slug: string
 }
 
-interface ViewTrackResponse {
-  success: boolean
-  views: number
-  message?: string
-}
+// Response type for view tracking endpoint
+// interface ViewTrackResponse {
+//   success: boolean
+//   views: number
+//   message?: string
+// }
 
 // Helper function to get client IP
 function getClientIP(request: NextRequest): string {
@@ -22,7 +23,7 @@ function getClientIP(request: NextRequest): string {
   
   if (forwarded) {
     // x-forwarded-for can be a comma-separated list, take the first one
-    return forwarded.split(',')[0].trim()
+    return forwarded.split(',')[0]?.trim() || '0.0.0.0'
   }
   
   if (realIP) {
@@ -39,7 +40,7 @@ function getClientIP(request: NextRequest): string {
 
 // Helper function to hash IP for privacy
 function hashIP(ip: string): string {
-  return createHash('sha256').update(ip + process.env.IP_SALT || 'default-salt').digest('hex')
+  return createHash('sha256').update(ip + process.env['IP_SALT'] || 'default-salt').digest('hex')
 }
 
 export async function POST(request: NextRequest) {

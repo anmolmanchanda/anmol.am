@@ -1,64 +1,99 @@
-# Claude AI Assistant Rules
+# Claude AI Assistant Configuration Hub
 
-## ⚠️ CRITICAL RULES - NEVER VIOLATE ⚠️
+**Last Updated**: January 19, 2025  
+**Version**: 3.0 - Modular Architecture
 
-### 🚫 Commit Messages (ZERO TOLERANCE)
-- **NEVER** add AI signatures to commits
-- **NEVER** include "🤖 Generated with [Claude Code]" 
-- **NEVER** include "Co-Authored-By: Claude"
-- Keep commit messages clean and professional
-- **User will cancel subscription if violated again**
+## 📁 Quick Navigation
 
-### 📤 Push Immediately After Commit (MANDATORY)
-- **ALWAYS ALWAYS ALWAYS push right after committing**
-- **NEVER** leave commits unpushed
-- `git commit` → `git push` (immediately)
+This is the main configuration hub. All detailed instructions are in separate files for better organization and maintenance.
 
-### 🌳 Git Branching (STRICT)
-- **ALWAYS create new branches from main ONLY**
-- **NEVER create new branch until previous is merged to main**
-- **NEVER work directly on main branch**
-- Use format: `feature/description-name`
+### Core Documentation
+- [🚨 Git Workflow Rules](./docs/claude/GIT_RULES.md) - **CRITICAL: Read First - NEVER work on main!**
+- [🗺️ Roadmap & Versioning](./docs/claude/ROADMAP_VERSIONING.md) - **Current: v2.0.0**
+- [🛠️ Development Standards](./docs/claude/DEVELOPMENT_STANDARDS.md)
+- [🤖 MCP Servers Guide](./docs/claude/MCP_SERVERS.md)
+- [📊 Project Context](./docs/claude/PROJECT_CONTEXT.md)
+- [✅ Testing & Quality](./docs/claude/TESTING_QUALITY.md)
+- [🚀 Deployment Guide](./docs/claude/DEPLOYMENT.md)
+- [🎨 UI/UX Guidelines](./docs/claude/UI_UX_GUIDELINES.md)
+- [📈 Performance Standards](./docs/claude/PERFORMANCE.md)
+- [🔒 Security Protocols](./docs/claude/SECURITY.md)
+- [📝 Documentation Standards](./docs/claude/DOCUMENTATION.md)
 
-## 📋 Standard Workflow
+## ⚡ Quick Start Checklist
 
-### Every Development Session:
-1. **Check current branch**: `git branch`
-2. **Switch to main**: `git checkout main`
-3. **Pull latest**: `git pull origin main`
-4. **Create feature branch**: `git checkout -b feature/task-name`
-5. **Make changes**
-6. **Commit**: `git commit -m "Clear description"`
-7. **Push immediately**: `git push -u origin feature/task-name`
-8. **Create PR when ready**
+Before any work session:
+1. ✅ Check current branch: `git branch`
+2. ✅ Review [Git Rules](./docs/claude/GIT_RULES.md)
+3. ✅ Load [MCP Servers](./docs/claude/MCP_SERVERS.md)
+4. ✅ Review [Project Context](./docs/claude/PROJECT_CONTEXT.md)
 
-### Code Quality Standards:
-- Follow existing code patterns and conventions
-- Test changes before committing
-- Keep changes focused and atomic
-- Use meaningful commit messages (no AI signatures!)
-- Verify all functionality works before pushing
+## 🎯 Primary Objectives
 
-### Project-Specific Rules:
-- **Today's date**: July 19, 2025
-- **Portfolio start date**: July 18, 2025
-- **Life Manager**: Started May 2025
-- **N8N workflows**: January 2025
-- **Apple Shortcuts**: July 2019 - Present (716+ shortcuts)
-- **Article length target**: 7-minute average reading time
-- **View tracking**: Uses Redis-Upstash, not Vercel KV
+1. **Quality First**: Every line of code should be production-ready
+2. **Performance Matters**: Optimize for speed and efficiency
+3. **User Experience**: Intuitive, accessible, and delightful
+4. **Maintainability**: Clean, documented, testable code
+5. **Security**: Follow best practices, never expose secrets
 
-## 🔄 Remember This Sequence:
-1. Code/Edit
-2. Test locally
-3. Git add
-4. Git commit (clean message)
-5. **Git push IMMEDIATELY**
-6. Verify push succeeded
+## 🔄 Session Workflow
 
-## ✅ Success Indicators:
-- Clean commit history without AI signatures
-- All commits pushed to remote immediately
-- Proper branching workflow followed
-- Code follows project conventions
-- Features work as expected
+```mermaid
+graph LR
+    A[Start Session] --> B[Check Git Status]
+    B --> C[Load MCP Servers]
+    C --> D[Review Task]
+    D --> E[Create Feature Branch]
+    E --> F[Implement Changes]
+    F --> G[Test Locally]
+    G --> H[Commit with Clean Message]
+    H --> I[Push Immediately]
+    I --> J[Create PR if Ready]
+```
+
+## 🚀 Most Used Commands
+
+```bash
+# Git Workflow
+git checkout main && git pull
+git checkout -b feature/task-name
+git add . && git commit -m "Clear message"
+git push -u origin feature/task-name
+
+# Development
+npm run dev         # Start development server
+npm run build       # Build for production
+npm run lint        # Check code quality
+npm run test        # Run tests
+
+# MCP Operations
+claude --list-mcps  # List available MCP servers
+```
+
+## 📋 Current Project Status
+
+- **Portfolio Version**: 2.0.0 (Released Jan 19, 2025)
+- **Tech Stack**: Next.js 15.4.1, React 19, TypeScript 5, Tailwind CSS v4
+- **Performance**: 96/100 Lighthouse score
+- **Features**: 
+  - ✅ AI-Assisted Development
+  - ✅ TB-scale Data Pipeline
+  - ✅ 50+ MCP Servers Configured
+  - ✅ Real-time Analytics
+  - ✅ PWA Ready
+  - ✅ SEO Optimized
+
+## 🔗 Quick Links
+
+- [Live Site](https://anmol.am)
+- [GitHub Repo](https://github.com/anmolmanchanda/anmol.am)
+- [Project Board](https://github.com/users/anmolmanchanda/projects/1)
+- [Analytics Dashboard](https://vercel.com/anmolmanchanda/anmol-am/analytics)
+
+## 💡 Remember
+
+> "Always follow the modular documentation. Each file contains specific, detailed instructions that must be followed exactly."
+
+---
+
+**Note**: This file serves as the central hub. Always navigate to the specific documentation files for detailed instructions. The modular structure ensures better maintenance and clarity.

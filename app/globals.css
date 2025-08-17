@@ -377,6 +377,127 @@ html {
   100% { background-position: 0% 50%; }
 }
 
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-float,
+  .animate-float-faster,
+  .animate-float-faster-delay,
+  .animate-float-faster-delay-2,
+  .animate-float-faster-delay-3,
+  .animate-float-faster-delay-4,
+  .animate-float-faster-delay-5,
+  .animate-float-faster-delay-6,
+  .animate-float-faster-delay-7 {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1rem 1.5rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0;
+}
+
+.skip-to-main:focus {
+  left: 0;
+  top: 0;
+}
+
+/* Focus visible improvements */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-morphism {
+    backdrop-filter: none;
+    background: var(--background);
+    border: 2px solid var(--foreground);
+  }
+  
+  .text-muted-foreground {
+    color: var(--foreground);
+    opacity: 0.9;
+  }
+}
+
+/* Improved touch targets */
+button,
+a,
+input,
+textarea,
+select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Loading states */
+.skeleton {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  background: linear-gradient(
+    90deg,
+    var(--muted) 0%,
+    var(--muted-foreground) 20%,
+    var(--muted) 40%,
+    var(--muted) 100%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Error state */
+.error-boundary {
+  padding: 2rem;
+  text-align: center;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--muted);
+}
+
+/* Optimized mobile animations */
+@media (max-width: 768px) {
+  .animate-float,
+  .animate-float-faster {
+    animation-duration: 8s;
+  }
+  
+  .glass-morphism {
+    backdrop-filter: blur(5px);
+  }
+  
+  .neural-network::before,
+  .ai-grid {
+    opacity: 0.5;
+  }
+}
+
 @keyframes quantum-pulse {
   0%, 100% { 
     transform: scale(1);

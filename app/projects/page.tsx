@@ -14,14 +14,20 @@ const allProjects: Project[] = [
     description: "TB-scale data processing infrastructure for 12 global cities with real-time monitoring",
     longDescription: "Built TB-scale data processing pipeline for 12 global cities serving UN global initiatives. Architected enterprise-grade AWS infrastructure handling 10+ TB monthly data volume with real-time monitoring and processing capabilities. Lead architect and developer for production system.",
     technologies: ["AWS Glue", "Lambda", "EventBridge", "Step Functions", "PySpark", "Python"],
-    image: "/images/projects/un-pipeline.jpg",
+    image: "https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?w=1920&q=80",
     githubUrl: "",
     liveUrl: "https://qolimpact.com",
     featured: true,
     category: "enterprise",
     date: "June 2024 - Present",
     type: "work",
-    blogArticle: "/blog/building-tb-scale-data-infrastructure-un"
+    blogArticle: "/blog/building-tb-scale-data-infrastructure-un",
+    metrics: {
+      dataProcessed: "10+ TB/month",
+      cities: "12 global cities",
+      uptime: "99.9%",
+      performanceGain: "60% faster processing"
+    }
   },
   {
     id: "2",
@@ -29,13 +35,19 @@ const allProjects: Project[] = [
     description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
     longDescription: "Developed comprehensive productivity solution as native macOS application using AI-assisted development methodologies. Demonstrates cutting-edge AI-assisted development practices for personal productivity optimization and life management.",
     technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
-    image: "/images/projects/life-manager.jpg",
+    image: "https://images.unsplash.com/photo-1554306274-f23873d9a26c?w=1920&q=80",
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
     featured: true,
     category: "ai",
     date: "May 2025 - Present",
     type: "personal",
-    blogArticle: "/blog/ai-assisted-macos-life-manager"
+    blogArticle: "/blog/ai-assisted-macos-life-manager",
+    metrics: {
+      productivity: "40% increase",
+      aiCalls: "1000+ daily",
+      activeUsers: "500+",
+      codeGenerated: "50K+ lines"
+    }
   },
   {
     id: "3",
@@ -43,14 +55,20 @@ const allProjects: Project[] = [
     description: "50+ N8N workflows for process optimization and enterprise automation",
     longDescription: "Created 50+ N8N workflows for enterprise process automation at UN-Habitat, providing significant efficiency improvements across organizational workflows. Covers complex multi-step processes with various API integrations for data processing and notifications.",
     technologies: ["N8N.io", "APIs", "Workflow Design", "Automation"],
-    image: "/images/projects/automation.jpg",
+    image: "https://images.unsplash.com/photo-1647427060118-4911c9821b82?w=1920&q=80",
     githubUrl: "",
     liveUrl: "https://n8n.io",
     featured: true,
     category: "automation",
     date: "January 2025",
     type: "work",
-    blogArticle: "/blog/enterprise-automation-n8n-workflows"
+    blogArticle: "/blog/enterprise-automation-n8n-workflows",
+    metrics: {
+      workflows: "50+ automated",
+      timeSaved: "200+ hours/month",
+      apiIntegrations: "30+",
+      efficiency: "85% improvement"
+    }
   },
   {
     id: "6",
