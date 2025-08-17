@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { kv } from '@vercel/kv'
+import { Redis } from '@upstash/redis'
 
 interface BatchViewRequest {
   slugs: string[]
@@ -34,9 +34,12 @@ export async function POST(request: NextRequest) {
       )
     }
     
+    // Initialize Redis
+    const redis = Redis.fromEnv()
+    
     // Batch get all view counts
     const viewKeys = validSlugs.map(slug => `views:${slug}`)
-    const viewCounts = await kv.mget(...viewKeys)
+    const viewCounts = await redis.mget(...viewKeys)
     
     // Build response object
     const views: Record<string, number> = {}
@@ -80,9 +83,12 @@ export async function GET(request: NextRequest) {
       )
     }
     
+    // Initialize Redis
+    const redis = Redis.fromEnv()
+    
     // Batch get all view counts
     const viewKeys = slugs.map(slug => `views:${slug}`)
-    const viewCounts = await kv.mget(...viewKeys)
+    const viewCounts = await redis.mget(...viewKeys)
     
     // Build response object
     const views: Record<string, number> = {}

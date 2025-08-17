@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { kv } from '@vercel/kv'
+import { Redis } from '@upstash/redis'
+
+const redis = Redis.fromEnv()
 
 export async function GET(
   _request: NextRequest,
@@ -15,7 +17,7 @@ export async function GET(
       )
     }
     
-    const views = await kv.get(`views:${slug}`) || 0
+    const views = await redis.get(`views:${slug}`) || 0
     
     return NextResponse.json({
       success: true,

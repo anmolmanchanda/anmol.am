@@ -124,7 +124,7 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
         </div>
 
         {/* Navigation */}
-        <nav className="space-y-1 max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+        <nav className="space-y-1 max-h-[500px] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
           {headings.map((heading) => {
             const isActive = activeId === heading.id
 

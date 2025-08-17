@@ -1,31 +1,30 @@
-# Vercel KV Setup Guide
+# Upstash Redis Setup Guide (formerly Vercel KV)
 
 ## Overview
-Vercel KV is a Redis-compatible key-value store that's used for view tracking and other real-time features in this portfolio.
+This portfolio uses Upstash Redis for view tracking and other real-time features. Previously configured with Vercel KV, now migrated to Upstash Redis for better flexibility.
 
 ## Setup Instructions
 
-### 1. Create a KV Database
+### 1. Create an Upstash Redis Database
 
-1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
-2. Select your project
-3. Navigate to the **Storage** tab
-4. Click **Create Database**
-5. Select **KV** (Redis-compatible)
-6. Choose a name (e.g., `portfolio-kv`)
-7. Select your preferred region (closest to your users)
-8. Click **Create**
+1. Go to [Upstash Console](https://console.upstash.com)
+2. Click **Create Database**
+3. Choose a name (e.g., `portfolio-redis`)
+4. Select your preferred region (closest to your users)
+5. Enable **Eviction** if you want automatic cleanup
+6. Click **Create**
 
 ### 2. Connect to Your Project
 
 After creating the database:
 
-1. Vercel will automatically add environment variables to your project
-2. The following variables will be added:
-   - `KV_URL` - The connection URL
-   - `KV_REST_API_URL` - REST API endpoint
-   - `KV_REST_API_TOKEN` - Authentication token
-   - `KV_REST_API_READ_ONLY_TOKEN` - Read-only token
+1. In Upstash Console, go to your database details
+2. Copy the following environment variables:
+   - `UPSTASH_REDIS_REST_URL` - REST API endpoint
+   - `UPSTASH_REDIS_REST_TOKEN` - Authentication token
+3. Add these to your Vercel project:
+   - Go to Vercel Dashboard > Settings > Environment Variables
+   - Add both variables for all environments
 
 ### 3. Local Development
 
@@ -39,27 +38,25 @@ npm i -g vercel
 vercel link
 
 # Pull environment variables
-vercel env pull .env.local
+vercel env pull .env.development.local
 ```
 
 ### 4. Verify Setup
 
-Your `.env.local` should now contain:
+Your `.env.development.local` should now contain:
 ```env
-KV_URL="redis://..."
-KV_REST_API_URL="https://..."
-KV_REST_API_TOKEN="..."
-KV_REST_API_READ_ONLY_TOKEN="..."
+UPSTASH_REDIS_REST_URL="https://..."
+UPSTASH_REDIS_REST_TOKEN="..."
 ```
 
 ### 5. Test View Tracking
 
 1. Start your development server: `npm run dev`
 2. Visit a blog post
-3. Check the Vercel KV dashboard to see if keys are being created
+3. Check the Upstash Console Data Browser to see if keys are being created
 4. Keys will be in format: `views:blog-post-slug`
 
-## Features Using Vercel KV
+## Features Using Upstash Redis
 
 ### 1. View Tracking
 - **Location**: `/app/api/views/track/route.ts`
@@ -142,9 +139,12 @@ await mailchimp.lists.addListMember(
 
 #### Option 3: Store in Database
 ```typescript
-// Using Vercel KV
-await kv.sadd('newsletter_subscribers', email);
-await kv.set(`subscriber:${email}`, {
+// Using Upstash Redis
+import { Redis } from '@upstash/redis'
+const redis = Redis.fromEnv()
+
+await redis.sadd('newsletter_subscribers', email);
+await redis.set(`subscriber:${email}`, {
   email,
   subscribedAt: new Date().toISOString(),
   status: 'active'
@@ -171,8 +171,8 @@ EMAIL_FROM=noreply@yourdomain.com
 ## Troubleshooting
 
 ### View counts not updating?
-1. Check if KV is connected: Visit Vercel dashboard > Storage
-2. Verify environment variables are loaded
+1. Check if Redis is connected: Visit Upstash Console
+2. Verify environment variables are loaded (UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN)
 3. Check browser console for API errors
 4. Ensure you're not in the 15-minute cooldown period
 
@@ -182,20 +182,20 @@ EMAIL_FROM=noreply@yourdomain.com
 3. Check API response in Network tab
 
 ### Local development issues?
-1. Run `vercel env pull .env.local` to get latest env vars
-2. Restart development server after updating `.env.local`
-3. Check that all KV_ variables are present
+1. Run `vercel env pull .env.development.local` to get latest env vars
+2. Restart development server after updating `.env.development.local`
+3. Check that UPSTASH_REDIS_ variables are present
 
 ## Costs
 
-- **Vercel KV Free Tier**: 
-  - 30,000 requests/month
+- **Upstash Redis Free Tier**: 
+  - 10,000 commands/day
   - 256MB storage
   - Perfect for portfolio sites
 
 - **For higher traffic**:
-  - Pro plan: $0.36 per 100,000 requests
-  - Storage: $0.75 per GB
+  - Pay as you go: $0.2 per 100K commands
+  - Storage: First 256MB free, then $0.25 per GB
 
 ## Security Notes
 
