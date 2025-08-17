@@ -52,18 +52,10 @@ interface GitHubActivity {
   isPrivate?: boolean
 }
 
-interface SpotifyActivity {
-  track: string
-  artist: string
-  album: string
-  isPlaying: boolean
-  imageUrl?: string
-  trackUrl?: string
-}
 
 interface ActivityFeedItem {
   id: string
-  type: 'github' | 'blog' | 'spotify' | 'duolingo' | 'custom'
+  type: 'github' | 'blog' | 'duolingo' | 'custom'
   title: string
   description?: string
   timestamp: string
@@ -81,9 +73,6 @@ interface ActivityStore {
   githubActivities: GitHubActivity[]
   fetchGitHubActivity: () => Promise<void>
   
-  // Spotify Now Playing
-  spotifyNowPlaying: SpotifyActivity | null
-  fetchSpotifyNowPlaying: () => Promise<void>
   
   // Unified Activity Feed
   activityFeed: ActivityFeedItem[]
@@ -93,7 +82,6 @@ interface ActivityStore {
   isLoading: {
     trackers: boolean
     github: boolean
-    spotify: boolean
     feed: boolean
   }
   
@@ -101,7 +89,6 @@ interface ActivityStore {
   errors: {
     trackers?: string
     github?: string
-    spotify?: string
     feed?: string
   }
 }
@@ -113,12 +100,10 @@ export const useActivityStore = create<ActivityStore>()(
         // Initial state
         trackerData: null,
         githubActivities: [],
-        spotifyNowPlaying: null,
         activityFeed: [],
         isLoading: {
           trackers: false,
           github: false,
-          spotify: false,
           feed: false
         },
         errors: {},
@@ -211,34 +196,7 @@ export const useActivityStore = create<ActivityStore>()(
           }
         },
         
-        // Fetch Spotify now playing
-        fetchSpotifyNowPlaying: async () => {
-          set((state) => ({
-            isLoading: { ...state.isLoading, spotify: true },
-            errors: { ...state.errors, spotify: undefined }
-          }))
-          
-          try {
-            const response = await fetch('/api/spotify/now-playing')
-            const result = await response.json()
-            
-            if (result.success) {
-              set((state) => ({ 
-                spotifyNowPlaying: result.data || null,
-                isLoading: { ...state.isLoading, spotify: false }
-              }))
-            } else {
-              throw new Error('Failed to fetch Spotify data')
-            }
-          } catch (error) {
-            set((state) => ({
-              errors: { ...state.errors, spotify: 'Failed to fetch Spotify data' },
-              isLoading: { ...state.isLoading, spotify: false }
-            }))
-          }
-        },
-        
-        // Fetch unified activity feed
+// Fetch unified activity feed
         fetchActivityFeed: async () => {
           set((state) => ({
             isLoading: { ...state.isLoading, feed: true },
@@ -249,7 +207,6 @@ export const useActivityStore = create<ActivityStore>()(
             // Fetch all data sources in parallel
             await Promise.all([
               get().fetchGitHubActivity(),
-              get().fetchSpotifyNowPlaying(),
               get().fetchTrackerData()
             ])
             

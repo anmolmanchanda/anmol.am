@@ -12,6 +12,8 @@ import { ParallaxElement } from "@/components/InteractiveEffects"
 import { BlogSearch } from "@/components/BlogSearch"
 import { Breadcrumb } from "@/components/Breadcrumb"
 import { NewsletterCompact } from "@/components/NewsletterVariants"
+import { WorkTrackers } from "@/components/CustomTrackers"
+import { GitHubActivityFeed } from "@/components/Phase4Features"
 
 const blogPosts: BlogPost[] = [
   {
@@ -535,6 +537,30 @@ export default function BlogPage() {
               </div>
             </motion.div>
           )}
+        </motion.div>
+
+        {/* Work Trackers and GitHub Activity */}
+        <motion.div
+          className="mt-16 grid gap-8 lg:grid-cols-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <div className="w-1 h-6 bg-gradient-to-b from-primary to-purple-500 rounded-full" />
+              Current Stack & Learning
+            </h2>
+            <WorkTrackers />
+          </div>
+          
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <div className="w-1 h-6 bg-gradient-to-b from-primary to-purple-500 rounded-full" />
+              GitHub Activity
+            </h2>
+            <GitHubActivityFeed />
+          </div>
         </motion.div>
       </div>
     </div>

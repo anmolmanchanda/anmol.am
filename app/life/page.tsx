@@ -1,6 +1,8 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import { BookOpen, Music, Film, Dumbbell, ExternalLink, Heart, Star } from "lucide-react"
+import { LifeTrackers } from "@/components/CustomTrackers"
+import { NotionCard } from "@/components/NotionCard"
 
 export const metadata: Metadata = {
   title: "Personal",
@@ -93,8 +95,18 @@ export default function PersonalPage() {
             </div>
           </div>
 
+          {/* Notion Resource Library */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold mb-8 text-center">Resource Library</h2>
+            <NotionCard 
+              url="https://ai-resource-library.notion.site/AI-LLM-Resource-Library-2212a9c0cb8e80f9bf46d9a3971475bc"
+              className="max-w-2xl mx-auto"
+            />
+          </div>
+
           {/* Personal Interests Grid */}
           <div className="mt-16 space-y-8">
+            <h2 className="text-2xl font-bold mb-8 text-center">Connect & Follow</h2>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {personalLinks.map((link) => (
                 <a
@@ -136,6 +148,12 @@ export default function PersonalPage() {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Life Trackers */}
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold mb-8 text-center">Life Stats & Progress</h2>
+            <LifeTrackers />
           </div>
 
           {/* Personal Philosophy */}
