@@ -26,7 +26,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto flex h-16 items-center px-4 sm:px-6 lg:px-8">
         <div className="flex flex-1 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="inline-flex items-center h-10 space-x-2">
             <span className="text-xl font-bold">{siteConfig.name}</span>
           </Link>
 
@@ -36,7 +36,7 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "inline-flex items-center px-3 py-2 text-sm font-medium transition-colors hover:text-primary rounded-md",
+                  "inline-flex items-center h-10 px-3 text-sm font-medium transition-colors hover:text-primary rounded-md",
                   pathname === item.href
                     ? "text-foreground"
                     : "text-muted-foreground"
