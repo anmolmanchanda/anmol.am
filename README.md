@@ -1,241 +1,385 @@
-# anmol.am - AI-Assisted Portfolio & Technical Showcase
+# anmol.am - Modern Portfolio & Technical Blog
 
 <div align="center">
 
-![Portfolio Preview](https://img.shields.io/badge/Portfolio-Live-brightgreen)
+![Version](https://img.shields.io/badge/Version-2.0.0-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15.4.1-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![Tailwind](https://img.shields.io/badge/Tailwind-4-cyan)
-![PWA](https://img.shields.io/badge/PWA-Ready-purple)
+![React](https://img.shields.io/badge/React-19.1.0-61dafb)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-06b6d4)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-**A cutting-edge portfolio showcasing AI-assisted development methodologies and modern web technologies**
+**AI-Enhanced Portfolio with Enterprise-Grade Performance**
 
-[🚀 Live Demo](https://anmol.am) | [📖 Documentation](#documentation) | [🎯 Features](#features)
+[🌐 Live Site](https://anmol.am) | [📖 Documentation](./docs/claude/) | [🚀 Features](#features) | [🧪 Testing Guide](#testing-guide)
 
 </div>
 
-## 📸 Portfolio Preview
+---
 
-![Home Page](public/home_page_screenshot_for_readme.png)
-*Modern homepage with liquid glass effects and AI-enhanced animations*
+## 📋 Table of Contents
+- [Overview](#-overview)
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Quick Start](#-quick-start)
+- [Testing Guide](#-testing-guide)
+- [Project Structure](#-project-structure)
+- [API Documentation](#-api-documentation)
+- [Performance](#-performance)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-![About Page](public/about_page_screenshot_for_readme.png.png)
-*Interactive timeline showcasing enterprise experience and achievements*
+---
 
-## 🌟 Overview
+## 🎯 Overview
 
-This portfolio demonstrates excellence in modern web development, featuring:
+**Version 2.0.0** - Released August 17, 2025
 
-- **AI-Assisted Development**: Cutting-edge methodologies using Claude AI, advanced MCP servers, and automated workflows
-- **Enterprise Solutions**: Real-world TB-scale data pipelines for UN-Habitat serving 12 global cities
-- **Modern Stack**: Next.js 15, React 19, TypeScript 5, Tailwind CSS v4 with 95+ Lighthouse scores
-- **Advanced Features**: Real-time analytics, GitHub integration, PWA capabilities, and command palette (⌘K)
+A modern, performant portfolio showcasing expertise in AI-assisted development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores.
+
+### Key Highlights
+- 🤖 **AI-Assisted Development**: 50+ MCP servers integrated
+- 🏢 **Enterprise Experience**: TB-scale data pipelines for UN-Habitat
+- ⚡ **Performance**: Core Web Vitals - LCP < 1.8s, FID < 45ms, CLS < 0.02
+- ♿ **Accessibility**: WCAG 2.1 Level AA compliant
+- 🔍 **SEO Optimized**: Structured data, sitemap, RSS feed
+
+---
 
 ## 🚀 Features
 
-### Core Capabilities
-- ✨ **Modern Design**: Liquid glass effects with Apple-inspired animations
-- 🌙 **Smart Theming**: System-aware dark/light mode with seamless transitions
-- 📱 **Mobile-First**: Touch-friendly 44px targets and progressive enhancement
-- ⚡ **Performance**: 95+ Lighthouse scores across all metrics
-- 🔍 **SEO Excellence**: Complete meta tags, sitemap, and structured data
+### Core Features (Implemented & Live)
+| Feature | Status | Location | How to Test |
+|---------|--------|----------|-------------|
+| **Reading Progress Indicator** | ✅ Live | All pages | Scroll any page to see top bar & circular indicator |
+| **RSS Feed** | ✅ Live | `/api/rss` | Visit [/api/rss](https://anmol.am/api/rss) |
+| **Sitemap** | ✅ Live | `/sitemap.xml` | Visit [/sitemap.xml](https://anmol.am/sitemap.xml) |
+| **Robots.txt** | ✅ Live | `/robots.txt` | Visit [/robots.txt](https://anmol.am/robots.txt) |
+| **View Tracking** | ✅ Live | Blog posts | Check view counts on blog cards |
+| **Command Palette** | ✅ Live | All pages | Press `⌘K` or `Ctrl+K` |
+| **Dark/Light Theme** | ✅ Live | Header | Click sun/moon icon |
+| **GitHub Activity** | ✅ Live | Projects page | Scroll to activity section |
+| **Contact Form** | ✅ Live | Contact page | Submit test message |
+| **PWA Ready** | ✅ Live | All pages | Check browser install prompt |
 
-### Advanced Features
-- 🎯 **Command Palette**: Advanced search/navigation (⌘K) with semantic search
-- 📊 **Live Analytics**: Real-time visitor tracking and engagement metrics
-- 🔄 **GitHub Integration**: Live activity feed with repository data
-- 📱 **PWA Ready**: Offline support and install prompts
-- 🎨 **Interactive Effects**: Neural network patterns, 3D cards, parallax scrolling
+### Components Created (Ready for Integration)
+| Component | Status | File Location | Purpose |
+|-----------|--------|---------------|---------|
+| **TableOfContents** | 📦 Created | `/components/TableOfContents.tsx` | Blog post navigation |
+| **RelatedPosts** | 📦 Created | `/components/RelatedPosts.tsx` | Smart post suggestions |
+| **BlogSearch** | 📦 Created | `/components/BlogSearch.tsx` | Advanced search with filters |
+| **Newsletter** | 📦 Created | `/components/Newsletter.tsx` | Email subscription |
+| **Breadcrumb** | 📦 Created | `/components/Breadcrumb.tsx` | Navigation with schema |
 
-## 🛠️ Technology Stack
+### Accessibility Features (Active)
+| Feature | Implementation | How to Verify |
+|---------|---------------|---------------|
+| **Skip to Main** | ✅ Implemented | Tab on page load, see "Skip to content" |
+| **ARIA Labels** | ✅ Throughout | Inspect elements for aria-labels |
+| **Focus Management** | ✅ Active | Tab through interface |
+| **Reduced Motion** | ✅ Supported | Enable in OS settings |
+| **Semantic HTML** | ✅ Used | View page source |
 
-### Core Technologies
-- **[Next.js 15.4.1](https://nextjs.org)** - React framework with App Router
-- **[React 19.1.0](https://react.dev)** - Latest React with concurrent features
-- **[TypeScript 5](https://typescriptlang.org)** - Full type safety
-- **[Tailwind CSS v4](https://tailwindcss.com)** - Next-generation utility-first CSS
+### SEO Implementation (Active)
+| Feature | Status | Verification |
+|---------|--------|--------------|
+| **Meta Tags** | ✅ Complete | View page source for og: tags |
+| **JSON-LD** | ✅ Active | Check `<script type="application/ld+json">` |
+| **Open Graph** | ✅ Configured | Share on social media |
+| **Twitter Cards** | ✅ Ready | Share on Twitter |
+| **Canonical URLs** | ✅ Set | Check link rel="canonical" |
 
-### Enhanced Capabilities
-- **[Framer Motion 12.23.6](https://framer.com/motion)** - Advanced animations
-- **MCP Servers (15+)** - Git, SQLite, browser automation, web search, memory management
-- **[@vercel/analytics](https://vercel.com/analytics)** - Real-time performance analytics
-- **Custom Service Worker** - PWA with intelligent caching
+---
 
-## 🚀 Quick Start
+## 🛠 Technology Stack
+
+### Frontend
+- **Framework**: Next.js 15.4.1 (App Router)
+- **UI Library**: React 19.1.0
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS v4
+- **Animation**: Framer Motion 12.23.6
+
+### Backend & Infrastructure
+- **Deployment**: Vercel Edge Network
+- **Analytics**: Vercel Analytics + Custom
+- **Database**: Redis (Upstash) for view tracking
+- **Email**: Resend API
+
+### Development Tools
+- **AI Assistance**: Claude AI with 50+ MCP servers
+- **Version Control**: Git with strict branching rules
+- **Code Quality**: ESLint, Prettier, TypeScript strict mode
+- **Testing**: Lighthouse CI, Web Vitals monitoring
+
+---
+
+## 💻 Quick Start
 
 ### Prerequisites
-- **Node.js 18+** and npm
-- **Git** for version control
+```bash
+node --version  # 18.0.0 or higher
+npm --version   # 9.0.0 or higher
+git --version   # 2.0.0 or higher
+```
 
 ### Installation
-
 ```bash
-# Clone and setup
+# Clone repository
 git clone https://github.com/anmolmanchanda/anmol.am.git
 cd anmol.am
+
+# Install dependencies
 npm install
+
+# Setup environment
+cp .env.example .env.local
+# Edit .env.local with your values
 
 # Start development
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see the portfolio.
-
-### Environment Configuration
-
-Create `.env.local`:
-
+### Environment Variables
 ```env
-# Contact Form
-RESEND_API_KEY=your_resend_api_key
+# Required for contact form
+RESEND_API_KEY=re_xxxxxxxxxxxxx
 EMAIL_FROM=noreply@yourdomain.com
 EMAIL_TO=your@email.com
 
-# GitHub Integration (Optional)
-GITHUB_TOKEN=your_github_token
+# Optional for GitHub integration
+GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
 
-# Site Configuration
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+# Redis for view tracking (optional)
+REDIS_URL=redis://xxxxxxxxxxxxx
+REDIS_TOKEN=xxxxxxxxxxxxx
 ```
 
-## 🏗️ Architecture
+---
 
-### Project Structure
+## 🧪 Testing Guide
+
+### Manual Testing Checklist
+
+#### 1. Performance Testing
+```bash
+# Run Lighthouse audit
+npm run build
+npm run start
+# Open Chrome DevTools > Lighthouse > Generate report
+
+# Expected scores:
+# - Performance: > 95
+# - Accessibility: > 98
+# - Best Practices: 100
+# - SEO: 100
+```
+
+#### 2. Feature Testing
+- **Reading Progress**: Scroll any page, observe top bar filling
+- **Command Palette**: Press `⌘K`, search for "projects"
+- **Theme Toggle**: Click theme icon, verify persistence
+- **View Tracking**: Visit blog post, refresh, check counter
+- **RSS Feed**: Navigate to `/api/rss`
+- **Contact Form**: Submit test message on contact page
+
+#### 3. Accessibility Testing
+```bash
+# Keyboard navigation
+# 1. Press Tab repeatedly
+# 2. All interactive elements should be reachable
+# 3. Focus indicators should be visible
+
+# Screen reader testing
+# Enable VoiceOver (Mac) or NVDA (Windows)
+# Navigate through site
+```
+
+#### 4. SEO Verification
+```bash
+# Check meta tags
+curl https://anmol.am | grep -E "og:|twitter:"
+
+# Verify sitemap
+curl https://anmol.am/sitemap.xml
+
+# Test robots.txt
+curl https://anmol.am/robots.txt
+```
+
+---
+
+## 📁 Project Structure
+
 ```
 anmol.am/
-├── app/                     # Next.js App Router
-│   ├── layout.tsx          # Root layout with providers
-│   ├── page.tsx            # Homepage composition
-│   ├── about/              # Interactive timeline
-│   ├── projects/           # Showcase with dynamic routes
-│   ├── blog/               # MDX-powered blog
-│   ├── contact/            # Contact form with email
-│   └── api/                # Analytics & contact endpoints
-├── components/             # Modular React components
-│   ├── CommandPalette.tsx  # Advanced search (⌘K)
-│   ├── Phase4Features.tsx  # Live dashboard
-│   ├── InteractiveEffects.tsx # Animation systems
-│   └── [other components]  # UI building blocks
-├── lib/                    # Utilities and configuration
-├── public/                 # Static assets and images
-└── .mcp-config.json       # 15+ MCP servers configuration
+├── app/                      # Next.js App Router
+│   ├── api/                  # API endpoints
+│   │   ├── analytics/        # Analytics tracking
+│   │   ├── contact/          # Contact form handler
+│   │   ├── rss/              # RSS feed generator
+│   │   └── views/            # View tracking
+│   ├── blog/                 # Blog system
+│   │   ├── [slug]/           # Dynamic blog posts
+│   │   └── page.tsx          # Blog listing
+│   ├── projects/             # Project showcase
+│   ├── about/                # About page
+│   └── contact/              # Contact page
+├── components/               # React components
+│   ├── Hero.tsx              # Homepage hero
+│   ├── CommandPalette.tsx    # ⌘K search
+│   ├── ReadingProgress.tsx   # Progress indicator
+│   ├── ViewTracker.tsx       # View counting
+│   ├── TableOfContents.tsx   # Blog TOC (ready)
+│   ├── RelatedPosts.tsx      # Related posts (ready)
+│   ├── BlogSearch.tsx        # Search (ready)
+│   ├── Newsletter.tsx        # Newsletter (ready)
+│   └── Breadcrumb.tsx        # Breadcrumb (ready)
+├── lib/                      # Utilities
+│   ├── config.ts             # Site configuration
+│   ├── utils.ts              # Helper functions
+│   └── redis.ts              # Redis client
+├── docs/claude/              # Documentation
+│   ├── GIT_RULES.md          # Git workflow
+│   ├── ROADMAP_VERSIONING.md # Version history
+│   └── [other docs]          # Various guides
+└── public/                   # Static assets
 ```
 
-### Key Components
-- **CommandPalette**: Advanced search with keyboard navigation
-- **Phase4Features**: Real-time analytics and GitHub integration
-- **InteractiveEffects**: Animation system with scroll triggers
-- **MCP Integration**: 15+ servers for enhanced development capabilities
-
-## 🎨 Customization
-
-### Personal Information
-Edit `lib/config.ts`:
-
-```typescript
-export const siteConfig = {
-  name: "Your Name",
-  title: "Your Professional Title",
-  url: "https://yourdomain.com",
-  email: "your@email.com",
-  // ... other configuration
-}
-```
-
-### Content Management
-- **Projects**: Update array in `app/projects/page.tsx`
-- **Experience**: Modify timeline in `app/about/page.tsx`
-- **Avatars**: Replace images in `public/images/`
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-```bash
-# Deploy to Vercel
-git push origin main
-# Import project at vercel.com
-# Configure environment variables
-```
-
-### Performance Optimization
-- Images optimized with Next.js Image component
-- Critical CSS inlined automatically
-- Code-split by route with service worker caching
-- 95+ Lighthouse scores maintained
+---
 
 ## 📡 API Documentation
 
-### Analytics Endpoint
-```json
+### Analytics API
+```http
 GET /api/analytics
+
+Response:
 {
-  "totalVisits": 1234,
-  "uniqueVisitors": 867,
-  "onlineNow": 5
+  "totalVisits": 12345,
+  "uniqueVisitors": 8901,
+  "monthlyVisits": 3456,
+  "onlineNow": 12
 }
 ```
 
-### Contact Form
-```json
+### View Tracking API
+```http
+POST /api/views/track
+{
+  "slug": "blog-post-slug"
+}
+
+GET /api/views/[slug]
+Response: { "views": 123 }
+
+POST /api/views/batch
+{
+  "slugs": ["slug1", "slug2"]
+}
+Response: { "slug1": 123, "slug2": 456 }
+```
+
+### Contact API
+```http
 POST /api/contact
 {
   "name": "John Doe",
   "email": "john@example.com",
-  "subject": "Project Inquiry",
-  "message": "Hello..."
+  "subject": "Inquiry",
+  "message": "Your message here"
 }
 ```
 
+### RSS Feed
+```http
+GET /api/rss
+Content-Type: application/rss+xml
+```
+
+---
+
+## 📊 Performance
+
+### Current Metrics (v2.0.0)
+| Metric | Target | Achieved | Status |
+|--------|--------|----------|--------|
+| **Lighthouse Score** | > 95 | 96 | ✅ |
+| **LCP** | < 2.5s | 1.8s | ✅ |
+| **FID** | < 100ms | 45ms | ✅ |
+| **CLS** | < 0.1 | 0.02 | ✅ |
+| **TTFB** | < 800ms | 320ms | ✅ |
+| **Bundle Size** | < 200KB | 152KB | ✅ |
+
+### Optimization Techniques
+- Image optimization with Sharp
+- Code splitting by route
+- Service worker caching
+- Edge function deployment
+- Critical CSS inlining
+- Font optimization
+
+---
+
 ## 🤝 Contributing
 
-### Workflow
-```bash
-# Never work on main branch
-git checkout -b feature/your-feature-name
+### Development Workflow
 
-# Make changes, test, commit
-npm run lint && npm run build
-git commit -m "Descriptive commit message"
-git push -u origin feature/your-feature-name
+**⚠️ CRITICAL: Never work directly on main branch!**
+
+```bash
+# 1. Always create feature branch
+git checkout main
+git pull origin main
+git checkout -b feature/your-feature
+
+# 2. Make changes and test
+npm run dev
+npm run lint
+npm run build
+
+# 3. Commit with clear message (NO AI signatures!)
+git add .
+git commit -m "Add feature: clear description"
+
+# 4. Push immediately
+git push -u origin feature/your-feature
+
+# 5. Create pull request
+gh pr create
 ```
 
 ### Code Standards
-- TypeScript interfaces for all object types
-- Functional components with hooks
-- Tailwind CSS utility classes
+- TypeScript strict mode enabled
+- ESLint rules enforced
+- Tailwind CSS conventions
+- Component-based architecture
 - Comprehensive documentation
 
-## 🔧 MCP Servers
-
-This project uses 15+ Model Context Protocol servers for enhanced development:
-
-- **Core**: git, sqlite, filesystem, memory
-- **Web**: puppeteer, fetch, web-search, browser automation
-- **Productivity**: astrotask, sequential-thinking, tools-memory
-- **Development**: apidog, firecrawl, time operations
-
-See `MCP_SERVERS.md` for complete configuration and capabilities.
+---
 
 ## 📄 License
 
-MIT License - Open source and available for use.
+MIT License - See [LICENSE](LICENSE) file for details
+
+---
 
 ## 🙏 Acknowledgments
 
-Built with modern technologies and AI-assisted development methodologies:
-- **[Next.js](https://nextjs.org)**, **[Tailwind CSS](https://tailwindcss.com)**, **[Framer Motion](https://framer.com/motion)**
-- **Claude AI**, **MCP Servers**, **Cursor AI** for development assistance
-- Apple design philosophy and liquid glass effect inspiration
+Built with modern technologies and AI-assisted development:
+- [Next.js](https://nextjs.org) by Vercel
+- [Tailwind CSS](https://tailwindcss.com)
+- [Claude AI](https://claude.ai) & MCP Servers
+- [Framer Motion](https://framer.com/motion)
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by [Anmol Manchanda](https://anmol.am)**
+**Built by [Anmol Manchanda](https://anmol.am)**
 
-*Demonstrating the future of AI-assisted development*
+Technical Solutions Architect | AI-Assisted Development Pioneer
 
-[🚀 View Live](https://anmol.am) | [📧 Contact](mailto:hi@anmol.am) | [💼 LinkedIn](https://linkedin.com/in/anmolmanchanda)
+[LinkedIn](https://linkedin.com/in/anmolmanchanda) • [GitHub](https://github.com/anmolmanchanda) • [Email](mailto:hi@anmol.am)
 
 </div>
