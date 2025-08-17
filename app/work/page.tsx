@@ -23,6 +23,7 @@ const blogPosts: BlogPost[] = [
     tags: ["Next.js", "React", "Web Development", "Scalability", "Enterprise"],
     readingTime: 12,
     slug: "building-scalable-web-apps-nextjs",
+    category: 'technical' as const,
     image: "/images/blog/nextjs-scalable.svg",
     gradient: "from-blue-600 via-purple-600 to-blue-800",
     icon: <Globe className="w-6 h-6" />,
@@ -38,6 +39,7 @@ const blogPosts: BlogPost[] = [
     tags: ["TypeScript", "JavaScript", "Best Practices", "Developer Experience", "Type Safety"],
     readingTime: 15,
     slug: "power-of-typescript",
+    category: 'technical' as const,
     image: "/images/blog/typescript-power.svg",
     gradient: "from-blue-500 via-cyan-500 to-teal-600",
     icon: <Code className="w-6 h-6" />,
@@ -53,6 +55,7 @@ const blogPosts: BlogPost[] = [
     tags: ["React", "State Management", "Frontend", "Redux", "Zustand", "React Query"],
     readingTime: 18,
     slug: "mastering-state-management-react",
+    category: 'technical' as const,
     image: "/images/blog/react-state.svg",
     gradient: "from-purple-600 via-pink-600 to-red-600",
     icon: <Database className="w-6 h-6" />,
@@ -68,6 +71,7 @@ const blogPosts: BlogPost[] = [
     tags: ["WebSockets", "Real-time", "Node.js", "Socket.io", "Enterprise"],
     readingTime: 18,
     slug: "building-realtime-apps-websockets",
+    category: 'technical' as const,
     image: "/images/blog/websockets-realtime.svg",
     gradient: "from-green-500 via-emerald-500 to-teal-600",
     icon: <Zap className="w-6 h-6" />,
@@ -83,6 +87,7 @@ const blogPosts: BlogPost[] = [
     tags: ["Performance", "Optimization", "Web Development", "Core Web Vitals", "Enterprise"],
     readingTime: 22,
     slug: "performance-optimization-techniques",
+    category: 'technical' as const,
     image: "/images/blog/performance-optimization.svg",
     gradient: "from-orange-500 via-red-500 to-pink-600",
     icon: <Gauge className="w-6 h-6" />,
@@ -98,6 +103,7 @@ const blogPosts: BlogPost[] = [
     tags: ["Docker", "DevOps", "Containers", "Deployment", "Infrastructure"],
     readingTime: 12,
     slug: "getting-started-docker",
+    category: 'technical' as const,
     image: "/images/blog/docker-containers.svg",
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     icon: <Container className="w-6 h-6" />,
@@ -113,6 +119,7 @@ const blogPosts: BlogPost[] = [
     tags: ["AWS", "Data Engineering", "Enterprise", "Python", "Infrastructure", "UN"],
     readingTime: 30,
     slug: "building-tb-scale-data-infrastructure-un",
+    category: 'technical' as const,
     image: "/images/blog/nextjs-scalable.svg",
     gradient: "from-emerald-600 via-blue-600 to-purple-800",
     icon: <Database className="w-6 h-6" />,
@@ -128,6 +135,7 @@ const blogPosts: BlogPost[] = [
     tags: ["AI-Assisted", "macOS", "Swift", "Productivity", "Claude AI", "Native Apps"],
     readingTime: 25,
     slug: "ai-assisted-macos-life-manager",
+    category: 'technical' as const,
     image: "/images/blog/typescript-power.svg",
     gradient: "from-purple-600 via-pink-600 to-orange-600",
     icon: <Zap className="w-6 h-6" />,
@@ -143,6 +151,7 @@ const blogPosts: BlogPost[] = [
     tags: ["N8N", "Automation", "Enterprise", "Workflows", "APIs", "Process Optimization"],
     readingTime: 10,
     slug: "enterprise-automation-n8n-workflows",
+    category: 'technical' as const,
     image: "/images/blog/websockets-realtime.svg",
     gradient: "from-green-600 via-teal-600 to-blue-600",
     icon: <Gauge className="w-6 h-6" />,
@@ -155,6 +164,7 @@ export default function BlogPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [filteredPosts, setFilteredPosts] = useState(blogPosts)
   const [isSearchActive, setIsSearchActive] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'technical' | 'personal' | 'thoughts'>('all')
   
   // Get real-time view counts for all blog posts
   const { viewCounts, loading: viewsLoading } = useBatchViewCounts(
@@ -165,8 +175,17 @@ export default function BlogPage() {
     setIsLoaded(true)
   }, [])
 
+  // Filter posts by category
+  useEffect(() => {
+    if (selectedCategory === 'all') {
+      setFilteredPosts(blogPosts)
+    } else {
+      setFilteredPosts(blogPosts.filter(post => post.category === selectedCategory))
+    }
+  }, [selectedCategory])
+
   // const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)))
-  const featuredPosts = blogPosts.filter(post => post.featured)
+  const featuredPosts = filteredPosts.filter(post => post.featured)
 
   return (
     <div className="py-24 sm:py-32 aurora-bg relative overflow-hidden">
@@ -241,6 +260,41 @@ export default function BlogPage() {
           </div>
         </motion.div>
 
+        {/* Category Tabs */}
+        <motion.div 
+          className="mx-auto max-w-4xl mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+        >
+          <div className="flex justify-center gap-2">
+            {[
+              { id: 'all' as const, label: 'All Articles', count: blogPosts.length },
+              { id: 'technical' as const, label: 'Technical', count: blogPosts.filter(p => p.category === 'technical').length },
+              { id: 'personal' as const, label: 'Personal', count: blogPosts.filter(p => p.category === 'personal').length },
+              { id: 'thoughts' as const, label: 'Thoughts', count: blogPosts.filter(p => p.category === 'thoughts').length }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setSelectedCategory(tab.id)
+                  setIsSearchActive(false)
+                }}
+                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+                  selectedCategory === tab.id
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-background/50 hover:bg-background/80 border'
+                }`}
+              >
+                {tab.label}
+                {tab.count > 0 && (
+                  <span className="ml-2 text-xs opacity-70">({tab.count})</span>
+                )}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Blog Search Component */}
         <motion.div 
           className="mx-auto max-w-4xl mb-16"
@@ -278,7 +332,7 @@ export default function BlogPage() {
                   transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                 >
                   <Card3D className="h-full group" glowColor="primary">
-                    <Link href={`/blog/${post.slug}`} className="block h-full">
+                    <Link href={`/work/${post.slug}`} className="block h-full">
                       <div className="liquid-glass rounded-2xl border backdrop-blur-md overflow-hidden h-full cyber-border group-hover:scale-[1.02] transition-all duration-500">
                         {/* Image Header with Gradient Overlay */}
                         <div className="relative h-48 overflow-hidden">
@@ -391,7 +445,7 @@ export default function BlogPage() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <MagneticButton className="h-full block">
-                    <Link href={`/blog/${post.slug}`} className="block h-full">
+                    <Link href={`/work/${post.slug}`} className="block h-full">
                       <div className="liquid-glass rounded-xl border backdrop-blur-md overflow-hidden h-full hover:shadow-xl transition-all duration-300 cyber-border group">
                         {/* Compact Image Header */}
                         <div className="relative h-32 overflow-hidden">

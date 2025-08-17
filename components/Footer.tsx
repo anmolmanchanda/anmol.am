@@ -48,12 +48,12 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
-                    Blog
+                  <Link href="/work" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
+                    Work
                   </Link>
                 </li>
                 <li>
-                  <Link href="/personal" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
+                  <Link href="/life" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
                     Life
                   </Link>
                 </li>
