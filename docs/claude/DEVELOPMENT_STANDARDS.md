@@ -1,0 +1,383 @@
+# 🛠️ Development Standards & Best Practices
+
+## 📋 Code Quality Standards
+
+### TypeScript Configuration
+```typescript
+// Always use strict TypeScript settings
+{
+  "strict": true,
+  "noImplicitAny": true,
+  "strictNullChecks": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "noImplicitReturns": true
+}
+```
+
+### Code Style Rules
+
+#### 1. File Organization
+```typescript
+// Order of imports
+import React from 'react'                    // 1. React
+import { useState, useEffect } from 'react'  // 2. React hooks
+import Link from 'next/link'                 // 3. Next.js
+import { motion } from 'framer-motion'       // 4. Third-party
+import { Button } from '@/components/ui'     // 5. Internal components
+import { cn } from '@/lib/utils'             // 6. Utilities
+import type { User } from '@/types'          // 7. Types
+```
+
+#### 2. Component Structure
+```typescript
+// Always follow this structure:
+export function ComponentName({ prop1, prop2 }: Props) {
+  // 1. Hooks
+  const [state, setState] = useState()
+  const router = useRouter()
+  
+  // 2. Computed values
+  const computedValue = useMemo(() => {}, [])
+  
+  // 3. Effects
+  useEffect(() => {}, [])
+  
+  // 4. Handlers
+  const handleClick = () => {}
+  
+  // 5. Render
+  return <div>...</div>
+}
+```
+
+#### 3. Naming Conventions
+```typescript
+// Components: PascalCase
+export function UserProfile() {}
+
+// Functions: camelCase
+function calculateTotal() {}
+
+// Constants: UPPER_SNAKE_CASE
+const MAX_RETRIES = 3
+
+// Interfaces/Types: PascalCase
+interface UserData {}
+type ButtonProps = {}
+
+// Files:
+// - Components: PascalCase.tsx
+// - Utilities: camelCase.ts
+// - Constants: UPPER_SNAKE_CASE.ts
+```
+
+## 🎨 React/Next.js Patterns
+
+### 1. Data Fetching
+```typescript
+// Server Components (preferred)
+async function Page() {
+  const data = await fetchData()
+  return <Component data={data} />
+}
+
+// Client Components (when needed)
+'use client'
+function ClientComponent() {
+  const [data, setData] = useState()
+  useEffect(() => {
+    fetchData().then(setData)
+  }, [])
+  return <div>{data}</div>
+}
+```
+
+### 2. Error Handling
+```typescript
+// Always handle errors gracefully
+try {
+  const result = await riskyOperation()
+  return { success: true, data: result }
+} catch (error) {
+  console.error('Operation failed:', error)
+  return { success: false, error: 'User-friendly message' }
+}
+```
+
+### 3. Performance Optimization
+```typescript
+// Use dynamic imports for heavy components
+const HeavyComponent = dynamic(() => import('./HeavyComponent'), {
+  loading: () => <LoadingSkeleton />,
+  ssr: false
+})
+
+// Memoize expensive computations
+const expensiveValue = useMemo(() => {
+  return computeExpensiveValue(data)
+}, [data])
+
+// Optimize re-renders
+const MemoizedComponent = memo(Component)
+```
+
+## 🏗️ Project Structure
+
+```
+/Users/Shared/anmol.am/
+├── app/                    # Next.js App Router
+│   ├── (routes)/          # Route groups
+│   ├── api/               # API routes
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+│   ├── ui/               # Base UI components
+│   ├── features/         # Feature-specific components
+│   └── layouts/          # Layout components
+├── lib/                   # Utilities and helpers
+│   ├── utils.ts          # General utilities
+│   ├── api.ts           # API helpers
+│   └── constants.ts     # App constants
+├── hooks/                # Custom React hooks
+├── types/                # TypeScript types
+├── styles/               # Global styles
+├── public/               # Static assets
+└── docs/                 # Documentation
+    └── claude/          # Claude-specific docs
+```
+
+## 🔧 Development Workflow
+
+### 1. Before Starting Development
+```bash
+# Always start fresh
+git checkout main && git pull
+npm install  # Ensure dependencies are up-to-date
+npm run dev  # Start dev server
+```
+
+### 2. During Development
+```bash
+# Test frequently
+npm run lint     # Check code quality
+npm run typecheck # Check types
+npm run build    # Verify production build
+```
+
+### 3. Before Committing
+```bash
+# Quality checks
+npm run lint:fix  # Auto-fix issues
+npm run format    # Format code
+npm run test      # Run tests
+npm run build     # Final build check
+```
+
+## 📊 Performance Standards
+
+### Core Web Vitals Targets
+- **LCP** (Largest Contentful Paint): < 2.5s
+- **FID** (First Input Delay): < 100ms
+- **CLS** (Cumulative Layout Shift): < 0.1
+- **Lighthouse Score**: > 95
+
+### Bundle Size Limits
+```javascript
+// Maximum sizes
+- Initial JS: < 200KB
+- Per route: < 100KB
+- Images: Optimized with next/image
+- Fonts: Subset and preloaded
+```
+
+## ♿ Accessibility Requirements
+
+### WCAG 2.1 Level AA Compliance
+```typescript
+// Always include:
+- aria-label for interactive elements
+- alt text for images
+- proper heading hierarchy (h1 -> h2 -> h3)
+- keyboard navigation support
+- focus indicators
+- color contrast ratio > 4.5:1
+```
+
+### Accessibility Checklist
+- [ ] Keyboard navigable
+- [ ] Screen reader compatible
+- [ ] Focus management
+- [ ] ARIA labels
+- [ ] Alt text
+- [ ] Color contrast
+- [ ] Skip links
+- [ ] Error messages
+
+## 🔒 Security Best Practices
+
+### 1. Never Expose Secrets
+```typescript
+// WRONG
+const apiKey = "sk_live_abc123"
+
+// CORRECT
+const apiKey = process.env.API_KEY
+```
+
+### 2. Validate All Input
+```typescript
+// Always validate and sanitize
+import { z } from 'zod'
+
+const schema = z.object({
+  email: z.string().email(),
+  age: z.number().min(0).max(120)
+})
+
+const validated = schema.parse(input)
+```
+
+### 3. Use HTTPS Only
+```typescript
+// Force HTTPS in production
+if (process.env.NODE_ENV === 'production' && !req.secure) {
+  return res.redirect('https://' + req.headers.host + req.url)
+}
+```
+
+## 📦 Dependencies Management
+
+### Adding Dependencies
+```bash
+# Think before adding
+# Ask: Is this really needed?
+# Check: Bundle size impact
+# Verify: Active maintenance
+# Test: Security vulnerabilities
+
+npm install package-name
+npm audit  # Check for vulnerabilities
+```
+
+### Updating Dependencies
+```bash
+# Regular updates (weekly)
+npm update
+
+# Major updates (monthly)
+npm outdated
+npx npm-check-updates -u
+npm install
+```
+
+## 🧪 Testing Standards
+
+### Unit Tests
+```typescript
+describe('Component', () => {
+  it('should render correctly', () => {
+    render(<Component />)
+    expect(screen.getByText('Text')).toBeInTheDocument()
+  })
+  
+  it('should handle clicks', () => {
+    const handleClick = jest.fn()
+    render(<Component onClick={handleClick} />)
+    fireEvent.click(screen.getByRole('button'))
+    expect(handleClick).toHaveBeenCalled()
+  })
+})
+```
+
+### E2E Tests
+```typescript
+test('user flow', async ({ page }) => {
+  await page.goto('/')
+  await page.click('text=Get Started')
+  await expect(page).toHaveURL('/dashboard')
+})
+```
+
+## 📝 Documentation Standards
+
+### Component Documentation
+```typescript
+/**
+ * UserProfile component displays user information
+ * @param {UserProfileProps} props - Component props
+ * @param {User} props.user - User data object
+ * @param {() => void} props.onEdit - Edit callback
+ * @returns {JSX.Element} Rendered component
+ * @example
+ * <UserProfile user={userData} onEdit={handleEdit} />
+ */
+```
+
+### Function Documentation
+```typescript
+/**
+ * Calculates the total price including tax
+ * @param {number} price - Base price
+ * @param {number} taxRate - Tax rate as decimal
+ * @returns {number} Total price with tax
+ */
+function calculateTotal(price: number, taxRate: number): number {
+  return price * (1 + taxRate)
+}
+```
+
+## 🚀 Optimization Techniques
+
+### 1. Image Optimization
+```typescript
+import Image from 'next/image'
+
+// Always use next/image
+<Image
+  src="/image.jpg"
+  alt="Description"
+  width={800}
+  height={600}
+  loading="lazy"
+  placeholder="blur"
+/>
+```
+
+### 2. Code Splitting
+```typescript
+// Dynamic imports for heavy components
+const HeavyChart = dynamic(() => import('./HeavyChart'), {
+  loading: () => <ChartSkeleton />,
+  ssr: false
+})
+```
+
+### 3. Caching Strategies
+```typescript
+// API route caching
+export const revalidate = 3600  // Revalidate every hour
+
+// Static generation
+export async function generateStaticParams() {
+  return paths
+}
+```
+
+## ✅ Code Review Checklist
+
+Before submitting code:
+- [ ] Follows naming conventions
+- [ ] No console.logs in production
+- [ ] Error handling implemented
+- [ ] Loading states added
+- [ ] Responsive design
+- [ ] Accessibility compliant
+- [ ] Tests written
+- [ ] Documentation updated
+- [ ] Performance optimized
+- [ ] Security reviewed
+
+---
+
+**Last Updated**: January 19, 2025  
+**Version**: 2.0
