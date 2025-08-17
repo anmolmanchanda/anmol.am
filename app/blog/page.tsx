@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Calendar, Clock, Search, Filter, Eye, BookOpen, Zap, Code, Database, Globe, Container, Gauge } from "lucide-react"
+import { Calendar, Clock, Eye, BookOpen, Zap, Code, Database, Globe, Container, Gauge, Search } from "lucide-react"
 import { useBatchViewCounts } from "@/components/ViewTracker"
 import { motion, AnimatePresence } from "framer-motion"
 import { BlogPost } from "@/types"
-import { formatDate, cn } from "@/lib/utils"
+import { formatDate } from "@/lib/utils"
 import { Card3D, MagneticButton } from "@/components/DrribbleInspiredFeatures"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { BlogSearch } from "@/components/BlogSearch"
@@ -164,7 +164,7 @@ export default function BlogPage() {
     setIsLoaded(true)
   }, [])
 
-  const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)))
+  // const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)))
   const featuredPosts = blogPosts.filter(post => post.featured)
   
   const filteredPosts = blogPosts.filter(post => {
@@ -204,12 +204,7 @@ export default function BlogPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Breadcrumb Navigation */}
         <div className="mx-auto max-w-4xl mb-8">
-          <Breadcrumb 
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Blog", href: "/blog" }
-            ]}
-          />
+          <Breadcrumb />
         </div>
 
         {/* Enhanced Header */}
@@ -244,7 +239,7 @@ export default function BlogPage() {
         >
           <BlogSearch 
             posts={blogPosts}
-            onFilteredPostsChange={(posts) => {
+            onResultsChange={(_results) => {
               // Update filtered posts based on search
               // This maintains the existing filteredPosts logic
             }}

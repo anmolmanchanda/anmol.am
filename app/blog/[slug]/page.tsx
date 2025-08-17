@@ -220,11 +220,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Breadcrumb Navigation */}
           <div className="mx-auto max-w-4xl mb-8">
             <Breadcrumb 
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Blog", href: "/blog" },
-                { label: postMeta.title, href: `/blog/${slug}` }
-              ]}
+              customLabels={{
+                "/blog": "Blog",
+                [`/blog/${slug}`]: postMeta.title
+              }}
             />
           </div>
 
@@ -330,9 +329,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Related Posts Section */}
             <div className="mt-12">
               <RelatedPosts 
-                currentPostId={postMeta.id}
-                tags={postMeta.tags}
-                posts={Object.values(blogPostsMetadata).map(post => ({
+                currentPost={{
+                  ...postMeta,
+                  content: content
+                }}
+                allPosts={Object.values(blogPostsMetadata).map(post => ({
                   ...post,
                   content: ""
                 }))}
