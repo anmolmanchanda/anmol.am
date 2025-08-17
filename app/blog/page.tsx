@@ -151,8 +151,6 @@ const blogPosts: BlogPost[] = [
 ]
 
 export default function BlogPage() {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedTag, setSelectedTag] = useState<string | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [filteredPosts, setFilteredPosts] = useState(blogPosts)
   const [isSearchActive, setIsSearchActive] = useState(false)
@@ -455,8 +453,8 @@ export default function BlogPage() {
                 </p>
                 <button
                   onClick={() => {
-                    setSearchQuery('')
-                    setSelectedTag(null)
+                    setFilteredPosts(blogPosts)
+                    setIsSearchActive(false)
                   }}
                   className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
                 >
