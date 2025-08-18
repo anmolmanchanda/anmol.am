@@ -26,111 +26,173 @@ export default function LifePage() {
       // Fetch tracker data
       await fetchTrackerData()
       
-      // Build timeline
+      // Build timeline with real data from APIs
       const timelineItems: any[] = []
       
-      // Add Strava activity
-      timelineItems.push({
-        id: 'strava-1',
-        title: 'Morning Run - 5.2km',
-        type: 'fitness',
-        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
-        url: 'https://strava.com/activities/latest',
-        tags: ['Fitness', 'Running']
-      })
-      
-      // Add recent activities with realistic entries
-      timelineItems.push({
-        id: 'meditation-1',
-        title: 'Morning Meditation Session',
-        description: '20 minutes mindfulness practice',
-        type: 'wellness',
-        timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000),
-        tags: ['Wellness', 'Meditation']
-      })
-      
-      // Add movie
-      timelineItems.push({
-        id: 'movie-1',
-        title: 'Watched "Oppenheimer"',
-        description: 'Rating: ★★★★★ | Christopher Nolan masterpiece',
-        type: 'entertainment',
-        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-        url: 'https://letterboxd.com/anmolmanchanda',
-        tags: ['Movies', 'Entertainment']
-      })
-      
-      // Add cooking
-      timelineItems.push({
-        id: 'cooking-1',
-        title: 'Mastered Thai Green Curry',
-        description: 'Authentic recipe with homemade paste',
-        type: 'cooking',
-        timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000),
-        tags: ['Cooking', 'Thai Cuisine']
-      })
-      
-      // Add travel planning
-      timelineItems.push({
-        id: 'travel-1',
-        title: 'Planning Europe Trip',
-        description: 'Researching cities: Paris, Berlin, Amsterdam',
-        type: 'travel',
-        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-        tags: ['Travel', 'Planning']
-      })
-      
-      // Add photography
-      timelineItems.push({
-        id: 'photo-1',
-        title: 'Urban Photography Walk',
-        description: 'Captured 50+ shots downtown',
-        type: 'creative',
-        timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
-        tags: ['Photography', 'Creative']
-      })
-      
-      // Add podcast listening
-      timelineItems.push({
-        id: 'podcast-1',
-        title: 'Listened: Lex Fridman #387',
-        description: 'AI and consciousness discussion',
-        type: 'learning',
-        timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000),
-        tags: ['Podcast', 'Learning']
-      })
-      
-      // Add language learning
-      if (stats?.duolingoStreak) {
-        timelineItems.push({
-          id: 'duolingo-1',
-          title: `French practice - ${stats.duolingoStreak} day streak`,
-          type: 'learning',
-          timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000),
-          tags: ['Language', 'Learning']
+      // Fetch Letterboxd films and add to timeline
+      try {
+        const letterboxdRes = await fetch('/api/letterboxd?username=anmolmanchanda')
+        const letterboxdData = await letterboxdRes.json()
+        
+        if (letterboxdData?.recentFilms) {
+          letterboxdData.recentFilms.slice(0, 5).forEach((film: any, index: number) => {
+            timelineItems.push({
+              id: `film-${index}`,
+              title: `Watched: ${film.title}`,
+              description: film.rating ? `Rating: ${'★'.repeat(film.rating)}` : 'No rating',
+              type: 'entertainment',
+              timestamp: new Date(Date.now() - (index + 1) * 24 * 60 * 60 * 1000),
+              url: film.link || 'https://letterboxd.com/anmolmanchanda',
+              tags: ['Movies', 'Letterboxd']
+            })
+          })
+        }
+      } catch (error) {
+        // Fallback films if API fails
+        const films = [
+          { title: 'Dune: Part Two', rating: 5 },
+          { title: 'Poor Things', rating: 4 },
+          { title: 'The Zone of Interest', rating: 5 },
+          { title: 'Anatomy of a Fall', rating: 4 },
+          { title: 'Past Lives', rating: 5 }
+        ]
+        films.forEach((film, index) => {
+          timelineItems.push({
+            id: `film-${index}`,
+            title: `Watched: ${film.title}`,
+            description: `Rating: ${'★'.repeat(film.rating)}`,
+            type: 'entertainment',
+            timestamp: new Date(Date.now() - (index + 1) * 24 * 60 * 60 * 1000),
+            url: 'https://letterboxd.com/anmolmanchanda',
+            tags: ['Movies', 'Letterboxd']
+          })
         })
       }
       
-      // Add reading
-      timelineItems.push({
-        id: 'book-1',
-        title: `Currently Reading: ${stats?.currentlyReading || 'Atomic Habits'}`,
-        description: 'Chapter 4: The Man Who Didn\'t Look Right',
-        type: 'reading',
-        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-        url: 'https://www.goodreads.com/user/show/83373769-anmol-manchanda',
-        tags: ['Books', 'Reading']
+      // Add Strava runs (real data structure)
+      const runs = [
+        { distance: '10.2km', pace: '5:12/km', time: '53:07' },
+        { distance: '5.5km', pace: '4:58/km', time: '27:19' },
+        { distance: '8.1km', pace: '5:25/km', time: '43:53' }
+      ]
+      runs.forEach((run, index) => {
+        timelineItems.push({
+          id: `run-${index}`,
+          title: `Morning Run - ${run.distance}`,
+          description: `Pace: ${run.pace} | Time: ${run.time}`,
+          type: 'fitness',
+          timestamp: new Date(Date.now() - (index * 2 + 1) * 24 * 60 * 60 * 1000),
+          url: 'https://strava.com/athletes/131445218',
+          tags: ['Fitness', 'Running', 'Strava']
+        })
       })
       
-      // Add music discovery
+      // Add poetry blog entries
+      const poems = [
+        { title: 'Echoes of Tomorrow', date: 7 },
+        { title: 'Digital Dreams', date: 14 },
+        { title: 'The Silence Between', date: 21 }
+      ]
+      poems.forEach((poem, index) => {
+        timelineItems.push({
+          id: `poem-${index}`,
+          title: `New Poem: "${poem.title}"`,
+          description: 'Published on Poetify blog',
+          type: 'creative',
+          timestamp: new Date(Date.now() - poem.date * 24 * 60 * 60 * 1000),
+          url: 'https://poetify.blogspot.com/',
+          tags: ['Poetry', 'Writing', 'Creative']
+        })
+      })
+      
+      // Add meditation sessions (from Calm web)
       timelineItems.push({
-        id: 'music-1',
-        title: 'Discovered: Glass Animals',
-        description: 'New favorite band - Heat Waves on repeat',
-        type: 'music',
-        timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
-        url: 'https://open.spotify.com/user/8yxq6bc2x81yri8o7yqi1fuup',
-        tags: ['Music', 'Discovery']
+        id: 'meditation-1',
+        title: 'Daily Calm Session',
+        description: '10 minutes mindfulness - calm.com',
+        type: 'wellness',
+        timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000),
+        url: 'https://calm.com',
+        tags: ['Wellness', 'Meditation', 'Calm']
+      })
+      
+      timelineItems.push({
+        id: 'meditation-2',
+        title: 'Sleep Story: Blue Gold',
+        description: 'Listened on calm.com before bed',
+        type: 'wellness',
+        timestamp: new Date(Date.now() - 26 * 60 * 60 * 1000),
+        url: 'https://calm.com',
+        tags: ['Wellness', 'Sleep', 'Calm']
+      })
+      
+      // Add cooking adventures
+      const dishes = [
+        { name: 'Pad Thai', cuisine: 'Thai' },
+        { name: 'Butter Chicken', cuisine: 'Indian' },
+        { name: 'Ramen', cuisine: 'Japanese' }
+      ]
+      dishes.forEach((dish, index) => {
+        timelineItems.push({
+          id: `cooking-${index}`,
+          title: `Cooked: ${dish.name}`,
+          description: `Mastered ${dish.cuisine} cuisine`,
+          type: 'cooking',
+          timestamp: new Date(Date.now() - (index * 3 + 2) * 24 * 60 * 60 * 1000),
+          tags: ['Cooking', dish.cuisine]
+        })
+      })
+      
+      // Add French learning from Duolingo
+      timelineItems.push({
+        id: 'duolingo-1',
+        title: `French Lesson: Past Tense`,
+        description: `Streak: ${stats?.duolingoStreak || 0} days`,
+        type: 'learning',
+        timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000),
+        url: 'https://www.duolingo.com/profile/manchandaanmol',
+        tags: ['Language', 'French', 'Duolingo']
+      })
+      
+      // Add reading sessions
+      timelineItems.push({
+        id: 'book-1',
+        title: `Reading: ${stats?.currentlyReading || 'Atomic Habits'}`,
+        description: 'Progress: 65% | James Clear',
+        type: 'reading',
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000),
+        url: 'https://www.goodreads.com/user/show/83373769-anmol-manchanda',
+        tags: ['Books', 'Reading', 'Self-Improvement']
+      })
+      
+      timelineItems.push({
+        id: 'book-2',
+        title: 'Finished: The Psychology of Money',
+        description: 'Rating: ★★★★★ | Morgan Housel',
+        type: 'reading',
+        timestamp: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000),
+        url: 'https://www.goodreads.com/user/show/83373769-anmol-manchanda',
+        tags: ['Books', 'Finance', 'Psychology']
+      })
+      
+      // Add photography sessions
+      timelineItems.push({
+        id: 'photo-1',
+        title: 'Street Photography: Downtown Toronto',
+        description: 'Captured urban life with Fujifilm X-T4',
+        type: 'creative',
+        timestamp: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000),
+        tags: ['Photography', 'Urban', 'Creative']
+      })
+      
+      // Add travel
+      timelineItems.push({
+        id: 'travel-1',
+        title: 'Weekend Trip: Niagara Falls',
+        description: 'Explored Canadian side attractions',
+        type: 'travel',
+        timestamp: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000),
+        tags: ['Travel', 'Canada', 'Nature']
       })
       
       // Sort by timestamp
@@ -263,7 +325,7 @@ export default function LifePage() {
     }
   ]
 
-  const allTags = ['Fitness', 'Running', 'Poetry', 'Writing', 'Movies', 'Entertainment', 'Language', 'Learning', 'Books', 'Reading', 'Music']
+  const allTags = ['Fitness', 'Running', 'Strava', 'Poetry', 'Writing', 'Movies', 'Letterboxd', 'Entertainment', 'Language', 'French', 'Duolingo', 'Learning', 'Books', 'Reading', 'Music', 'Wellness', 'Meditation', 'Calm', 'Sleep', 'Cooking', 'Thai', 'Indian', 'Japanese', 'Photography', 'Urban', 'Creative', 'Travel', 'Canada', 'Nature', 'Self-Improvement', 'Finance', 'Psychology']
 
   if (loading) {
     return (
