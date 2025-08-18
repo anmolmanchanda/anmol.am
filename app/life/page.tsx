@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
-import { Heart, Activity, Globe, PenTool, Film, BookOpen, Music, Brain, MapPin, Languages, Utensils, Coffee, ExternalLink, Clock, Loader2 } from "lucide-react"
+import { Heart, Activity, Globe, PenTool, Film, BookOpen, Music, Brain, MapPin, Languages, Utensils, Coffee, ExternalLink, Clock, Loader2, Camera, Headphones, UtensilsCrossed, MapPinned } from "lucide-react"
 import { SearchFilter } from "@/components/SearchFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
 import { fetchAllStats } from "@/lib/external-apis"
@@ -39,24 +39,65 @@ export default function LifePage() {
         tags: ['Fitness', 'Running']
       })
       
-      // Add poetry
+      // Add recent activities with realistic entries
       timelineItems.push({
-        id: 'poem-1',
-        title: 'New Poem: "Digital Dreams"',
-        type: 'creative',
-        timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
-        url: 'https://poetify.blogspot.com',
-        tags: ['Poetry', 'Writing']
+        id: 'meditation-1',
+        title: 'Morning Meditation Session',
+        description: '20 minutes mindfulness practice',
+        type: 'wellness',
+        timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000),
+        tags: ['Wellness', 'Meditation']
       })
       
       // Add movie
       timelineItems.push({
         id: 'movie-1',
-        title: 'Watched "Oppenheimer" - ★★★★★',
+        title: 'Watched "Oppenheimer"',
+        description: 'Rating: ★★★★★ | Christopher Nolan masterpiece',
         type: 'entertainment',
         timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
         url: 'https://letterboxd.com/anmolmanchanda',
         tags: ['Movies', 'Entertainment']
+      })
+      
+      // Add cooking
+      timelineItems.push({
+        id: 'cooking-1',
+        title: 'Mastered Thai Green Curry',
+        description: 'Authentic recipe with homemade paste',
+        type: 'cooking',
+        timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000),
+        tags: ['Cooking', 'Thai Cuisine']
+      })
+      
+      // Add travel planning
+      timelineItems.push({
+        id: 'travel-1',
+        title: 'Planning Europe Trip',
+        description: 'Researching cities: Paris, Berlin, Amsterdam',
+        type: 'travel',
+        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+        tags: ['Travel', 'Planning']
+      })
+      
+      // Add photography
+      timelineItems.push({
+        id: 'photo-1',
+        title: 'Urban Photography Walk',
+        description: 'Captured 50+ shots downtown',
+        type: 'creative',
+        timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
+        tags: ['Photography', 'Creative']
+      })
+      
+      // Add podcast listening
+      timelineItems.push({
+        id: 'podcast-1',
+        title: 'Listened: Lex Fridman #387',
+        description: 'AI and consciousness discussion',
+        type: 'learning',
+        timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000),
+        tags: ['Podcast', 'Learning']
       })
       
       // Add language learning
@@ -73,11 +114,23 @@ export default function LifePage() {
       // Add reading
       timelineItems.push({
         id: 'book-1',
-        title: `Reading: ${stats?.currentlyReading || 'Atomic Habits'}`,
+        title: `Currently Reading: ${stats?.currentlyReading || 'Atomic Habits'}`,
+        description: 'Chapter 4: The Man Who Didn\'t Look Right',
         type: 'reading',
         timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
         url: 'https://www.goodreads.com/user/show/83373769-anmol-manchanda',
         tags: ['Books', 'Reading']
+      })
+      
+      // Add music discovery
+      timelineItems.push({
+        id: 'music-1',
+        title: 'Discovered: Glass Animals',
+        description: 'New favorite band - Heat Waves on repeat',
+        type: 'music',
+        timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+        url: 'https://open.spotify.com/user/8yxq6bc2x81yri8o7yqi1fuup',
+        tags: ['Music', 'Discovery']
       })
       
       // Sort by timestamp
@@ -129,7 +182,7 @@ export default function LifePage() {
       title: "Duolingo",
       value: `${stats?.duolingoStreak || 45} days`,
       subtitle: "streak 🔥",
-      url: "https://www.duolingo.com/profile/anmolmanchanda",
+      url: "https://www.duolingo.com/profile/manchandaanmol",
       icon: <Globe className="w-4 h-4 text-white" />,
       color: "bg-green-600"
     },
@@ -221,9 +274,9 @@ export default function LifePage() {
   }
 
   return (
-    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden life-gradient-bg">
-      {/* Joyful, bright gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-500 opacity-20" />
+    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden aurora-bg-life">
+      {/* Joyful, bright animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-400/20 via-purple-400/25 to-indigo-500/20" />
       <div className="absolute inset-0 bg-gradient-to-tl from-yellow-400/20 via-transparent to-cyan-400/20 animate-pulse" />
       <div className="absolute inset-0 ai-grid opacity-20" />
       
@@ -272,42 +325,104 @@ export default function LifePage() {
           <div className="mb-16">
             <h2 className="text-2xl font-bold mb-6">Life Timeline</h2>
             <div className="space-y-4">
-              {filteredTimeline.map((item) => (
-                <div key={item.id} className="liquid-glass rounded-lg border backdrop-blur-md p-4 hover:shadow-lg transition-all">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        {item.type === 'fitness' && <Activity className="w-4 h-4 text-orange-500" />}
-                        {item.type === 'creative' && <PenTool className="w-4 h-4 text-purple-500" />}
-                        {item.type === 'entertainment' && <Film className="w-4 h-4 text-blue-500" />}
-                        {item.type === 'learning' && <Globe className="w-4 h-4 text-green-500" />}
-                        {item.type === 'reading' && <BookOpen className="w-4 h-4 text-green-600" />}
-                        <h3 className="font-semibold text-sm">{item.title}</h3>
+              {filteredTimeline.map((item) => {
+                const getItemColor = () => {
+                  switch(item.type) {
+                    case 'fitness': return 'border-orange-500/30 bg-orange-500/5'
+                    case 'creative': return 'border-purple-500/30 bg-purple-500/5'
+                    case 'entertainment': return 'border-blue-500/30 bg-blue-500/5'
+                    case 'learning': return 'border-green-500/30 bg-green-500/5'
+                    case 'reading': return 'border-emerald-500/30 bg-emerald-500/5'
+                    case 'wellness': return 'border-indigo-500/30 bg-indigo-500/5'
+                    case 'cooking': return 'border-amber-500/30 bg-amber-500/5'
+                    case 'travel': return 'border-cyan-500/30 bg-cyan-500/5'
+                    case 'music': return 'border-pink-500/30 bg-pink-500/5'
+                    default: return ''
+                  }
+                }
+                
+                const getIcon = () => {
+                  switch(item.type) {
+                    case 'fitness': return <Activity className="w-5 h-5 text-orange-400" />
+                    case 'creative': return <Camera className="w-5 h-5 text-purple-400" />
+                    case 'entertainment': return <Film className="w-5 h-5 text-blue-400" />
+                    case 'learning': return <Headphones className="w-5 h-5 text-green-400" />
+                    case 'reading': return <BookOpen className="w-5 h-5 text-emerald-400" />
+                    case 'wellness': return <Brain className="w-5 h-5 text-indigo-400" />
+                    case 'cooking': return <UtensilsCrossed className="w-5 h-5 text-amber-400" />
+                    case 'travel': return <MapPinned className="w-5 h-5 text-cyan-400" />
+                    case 'music': return <Music className="w-5 h-5 text-pink-400" />
+                    default: return <Heart className="w-5 h-5 text-gray-400" />
+                  }
+                }
+                
+                return (
+                  <div 
+                    key={item.id} 
+                    className={`liquid-glass rounded-lg border backdrop-blur-md p-4 hover:shadow-lg transition-all ${getItemColor()}`}
+                  >
+                    <div className="flex items-start gap-3">
+                      {/* Larger icon with background */}
+                      <div className={`p-2 rounded-lg ${
+                        item.type === 'fitness' ? 'bg-orange-500/20' :
+                        item.type === 'creative' ? 'bg-purple-500/20' :
+                        item.type === 'entertainment' ? 'bg-blue-500/20' :
+                        item.type === 'learning' ? 'bg-green-500/20' :
+                        item.type === 'reading' ? 'bg-emerald-500/20' :
+                        item.type === 'wellness' ? 'bg-indigo-500/20' :
+                        item.type === 'cooking' ? 'bg-amber-500/20' :
+                        item.type === 'travel' ? 'bg-cyan-500/20' :
+                        item.type === 'music' ? 'bg-pink-500/20' :
+                        'bg-secondary'
+                      }`}>
+                        {getIcon()}
                       </div>
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {formatDate(item.timestamp)}
-                        </span>
-                        {item.tags && (
-                          <div className="flex gap-1">
-                            {item.tags.map((tag: string) => (
-                              <span key={tag} className="px-2 py-0.5 bg-secondary rounded-full">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
+                      
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
+                        {item.description && (
+                          <p className="text-xs text-muted-foreground mb-2">{item.description}</p>
                         )}
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {formatDate(item.timestamp)}
+                          </span>
+                          {item.tags && (
+                            <div className="flex gap-1">
+                              {item.tags.map((tag: string) => (
+                                <span 
+                                  key={tag} 
+                                  className={`px-2 py-0.5 rounded-full ${
+                                    tag === 'Fitness' ? 'bg-orange-500/20 text-orange-300' :
+                                    tag === 'Creative' || tag === 'Photography' ? 'bg-purple-500/20 text-purple-300' :
+                                    tag === 'Movies' || tag === 'Entertainment' ? 'bg-blue-500/20 text-blue-300' :
+                                    tag === 'Learning' || tag === 'Podcast' ? 'bg-green-500/20 text-green-300' :
+                                    tag === 'Books' || tag === 'Reading' ? 'bg-emerald-500/20 text-emerald-300' :
+                                    tag === 'Wellness' || tag === 'Meditation' ? 'bg-indigo-500/20 text-indigo-300' :
+                                    tag === 'Cooking' ? 'bg-amber-500/20 text-amber-300' :
+                                    tag === 'Travel' ? 'bg-cyan-500/20 text-cyan-300' :
+                                    tag === 'Music' ? 'bg-pink-500/20 text-pink-300' :
+                                    'bg-secondary'
+                                  }`}
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
+                      
+                      {item.url && (
+                        <a href={item.url} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 text-muted-foreground hover:text-primary" />
+                        </a>
+                      )}
                     </div>
-                    {item.url && (
-                      <a href={item.url} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 text-muted-foreground hover:text-primary" />
-                      </a>
-                    )}
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>

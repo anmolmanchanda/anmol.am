@@ -8,7 +8,7 @@ import { NewsletterCTA } from "@/components/NewsletterVariants"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden aurora-bg">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Enhanced futuristic gradient background with animated mesh */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-accent/10" />
       <div className="absolute inset-0 bg-gradient-to-tl from-violet-500/10 via-transparent to-cyan-500/10 animate-pulse" />
@@ -136,8 +136,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Enhanced social links with magnetic buttons */}
-          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-12 sm:mt-16 lg:mt-20 pt-6 sm:pt-8 border-t border-border/30">
+          {/* GitHub link positioned separately */}
+          <div className="flex items-center justify-center mt-8">
             <MagneticButton className="group">
               <a
                 href={siteConfig.links.github}
@@ -147,37 +147,6 @@ export function Hero() {
               >
                 <span className="text-sm sm:text-base">GitHub</span>
                 <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
-              </a>
-            </MagneticButton>
-            <MagneticButton className="group">
-              <a
-                href={siteConfig.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium text-foreground/80 hover:text-foreground transition-all duration-300 hover:shadow-lg hover:border-primary/30 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
-              >
-                <span className="text-sm sm:text-base">LinkedIn</span>
-                <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
-              </a>
-            </MagneticButton>
-            <MagneticButton className="group">
-              <a
-                href={siteConfig.links.fiverr}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium text-foreground/80 hover:text-foreground transition-all duration-300 hover:shadow-lg hover:border-primary/30 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
-              >
-                <span className="text-sm sm:text-base">Fiverr</span>
-                <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
-              </a>
-            </MagneticButton>
-            <MagneticButton className="group">
-              <a
-                href="/contact"
-                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-300 hover:shadow-lg hover:border-primary/50 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
-              >
-                <span className="text-sm sm:text-base font-semibold">Get in Touch</span>
-                <ArrowRight className="w-3 h-3 transition-all duration-300 transform group-hover:translate-x-1" />
               </a>
             </MagneticButton>
           </div>

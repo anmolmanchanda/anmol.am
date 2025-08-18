@@ -85,7 +85,7 @@ export async function fetchStravaStats(_athleteId: string = '131445218') {
 }
 
 // Duolingo Stats (unofficial API)
-export async function fetchDuolingoStats(username: string = 'anmolmanchanda') {
+export async function fetchDuolingoStats(username: string = 'manchandaanmol') {
   try {
     // Using unofficial API endpoint
     const response = await fetch(`https://www.duolingo.com/users/${username}`)

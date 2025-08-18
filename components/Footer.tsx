@@ -12,19 +12,15 @@ export function Footer() {
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-6">
-          {/* Website Analytics Section */}
-          <div className="mb-4 text-center">
-            <div className="inline-block">
-              <VisitorCounter />
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-4">
             <div>
               <h3 className="text-base sm:text-lg font-semibold">{siteConfig.name}</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 {siteConfig.title}
               </p>
+              <div className="mt-4">
+                <VisitorCounter />
+              </div>
             </div>
 
             <div>

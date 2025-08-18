@@ -158,16 +158,16 @@ export default function WorkPage() {
   const workWidgets = [
     {
       title: "GitHub",
-      value: stats?.publicRepos || 38,
-      subtitle: "repositories",
+      value: stats?.publicRepos ? `${stats.publicRepos}+` : "25+",
+      subtitle: "public repos",
       url: "https://github.com/anmolmanchanda",
       icon: <Github className="w-4 h-4 text-white" />,
       color: "bg-gray-800"
     },
     {
       title: "Lines of Code",
-      value: stats?.linesOfCode ? `${(stats.linesOfCode / 1000000).toFixed(1)}M` : "1.2M",
-      subtitle: "written",
+      value: stats?.linesOfCode ? `~${(stats.linesOfCode / 1000000).toFixed(1)}M` : "~1.2M",
+      subtitle: "estimated",
       icon: <Code className="w-4 h-4 text-white" />,
       color: "bg-green-600"
     },
@@ -187,9 +187,9 @@ export default function WorkPage() {
       color: "bg-orange-600"
     },
     {
-      title: "Projects",
-      value: trackerData?.projectsCompleted || 50,
-      subtitle: "completed",
+      title: "GitHub Stars",
+      value: stats?.totalStars || "234",
+      subtitle: "earned",
       icon: <Trophy className="w-4 h-4 text-white" />,
       color: "bg-yellow-600"
     },
@@ -213,9 +213,9 @@ export default function WorkPage() {
   }
 
   return (
-    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden work-gradient-bg">
-      {/* Professional gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900" />
+    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden aurora-bg-work">
+      {/* Professional animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-indigo-950/85 to-slate-900/90" />
       <div className="absolute inset-0 bg-gradient-to-tl from-blue-900/20 via-transparent to-purple-900/20 animate-pulse" />
       <div className="absolute inset-0 ai-grid opacity-30" />
       
