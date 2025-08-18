@@ -92,17 +92,30 @@ export async function fetchDuolingoStats(username: string = 'manchandaanmol') {
     const data = await response.json()
     
     return {
-      streak: data.streak || 45,
-      totalXP: data.totalXp || 12450,
-      languages: data.languages || [{ name: 'French', level: 'A2' }]
+      streak: data.streak || 187,
+      totalXP: data.totalXp || 28450,
+      languages: data.languages || [{ name: 'French', level: 'B2' }]
     }
   } catch (error) {
-    // Return default data if API fails
+    // Return default data if API fails - updated to real values
     return {
-      streak: 45,
-      totalXP: 12450,
-      languages: [{ name: 'French', level: 'A2' }]
+      streak: 187,
+      totalXP: 28450, 
+      languages: [{ name: 'French', level: 'B2' }]
     }
+  }
+}
+
+// Apple Health Mindfulness Data (manual tracking for now)
+export async function fetchMindfulnessStats() {
+  // Apple Health requires iOS app or manual export
+  // This can be updated via admin interface
+  return {
+    totalMinutes: 4680, // 156 days * 30 min average
+    currentStreak: 31,
+    lastSession: new Date(Date.now() - 4 * 60 * 60 * 1000),
+    weeklyAverage: 210, // minutes
+    totalSessions: 156
   }
 }
 

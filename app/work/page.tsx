@@ -175,7 +175,7 @@ export default function WorkPage() {
       title: "UN-Habitat",
       value: "Current",
       subtitle: "Software Engineer",
-      url: "https://unhabitat.org",
+      url: "https://www.qolimpact.com",
       icon: <Briefcase className="w-4 h-4 text-white" />,
       color: "bg-blue-600"
     },

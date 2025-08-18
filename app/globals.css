@@ -859,18 +859,18 @@ select {
   animation: holographic-shift 12s ease-in-out infinite;
 }
 
-/* Work page aurora - professional, darker */
+/* Work page aurora - professional, darker with prominent animation */
 .aurora-bg-work {
   background: linear-gradient(
     135deg,
-    rgba(15, 23, 42, 0.05) 0%,
-    rgba(30, 58, 138, 0.1) 25%,
-    rgba(51, 65, 85, 0.08) 50%,
-    rgba(67, 56, 202, 0.12) 75%,
-    rgba(30, 41, 59, 0.05) 100%
+    rgba(30, 58, 138, 0.25) 0%,
+    rgba(67, 56, 202, 0.3) 25%,
+    rgba(99, 102, 241, 0.2) 50%,
+    rgba(30, 64, 175, 0.25) 75%,
+    rgba(55, 48, 163, 0.2) 100%
   );
   background-size: 400% 400%;
-  animation: holographic-shift 20s ease-in-out infinite;
+  animation: holographic-shift 8s ease-in-out infinite;
 }
 
 /* Life page aurora - joyful, bright */

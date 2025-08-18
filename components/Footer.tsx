@@ -12,58 +12,53 @@ export function Footer() {
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-6">
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-4">
+          <div className="flex justify-between items-start">
+            {/* Analytics - far left */}
             <div>
-              <h3 className="text-base sm:text-lg font-semibold">{siteConfig.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {siteConfig.title}
-              </p>
-              <div className="mt-4">
-                <VisitorCounter />
-              </div>
+              <VisitorCounter />
             </div>
 
+            {/* Quick Links - center */}
             <div>
               <h3 className="text-base sm:text-lg font-semibold">Quick Links</h3>
               <ul className="mt-2 space-y-1 text-sm">
                 <li>
-                  <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
+                  <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
+                  <Link href="/projects" className="text-muted-foreground hover:text-foreground transition-colors">
                     Projects
                   </Link>
                 </li>
                 <li>
-                  <Link href="/work" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
+                  <Link href="/work" className="text-muted-foreground hover:text-foreground transition-colors">
                     Work
                   </Link>
                 </li>
                 <li>
-                  <Link href="/life" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
+                  <Link href="/life" className="text-muted-foreground hover:text-foreground transition-colors">
                     Life
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors min-h-[44px] flex items-center">
+                  <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
                     Contact
                   </Link>
                 </li>
               </ul>
             </div>
 
+            {/* Connect - center */}
             <div>
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold">Connect</h3>
-                  <div className="mt-2 flex space-x-3 sm:space-x-4">
+              <h3 className="text-base sm:text-lg font-semibold">Connect</h3>
+              <div className="mt-2 flex space-x-3 sm:space-x-4">
                 <a
                   href={siteConfig.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="GitHub"
                 >
                   <Github className="h-5 w-5" />
@@ -72,7 +67,7 @@ export function Footer() {
                   href={siteConfig.links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-5 w-5" />
@@ -81,34 +76,33 @@ export function Footer() {
                   href={siteConfig.links.fiverr}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Fiverr"
                 >
                   <FiverrIcon className="h-5 w-5" />
                 </a>
                 <a
                   href={siteConfig.links.email}
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   aria-label="Email"
                 >
                   <Mail className="h-5 w-5" />
                 </a>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {siteConfig.email}
-                  </p>
-                </div>
-                {/* Compact Newsletter Signup */}
-                <div className="ml-auto">
-                  <Newsletter compact />
-                </div>
               </div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {siteConfig.email}
+              </p>
+            </div>
+            
+            {/* Newsletter - far right */}
+            <div>
+              <Newsletter compact />
             </div>
           </div>
 
           <div className="mt-4 sm:mt-6 border-t pt-4 sm:pt-6">
             <p className="text-center text-sm text-muted-foreground">
-              © {currentYear} {siteConfig.name}. All rights reserved.
+              © {currentYear} All rights reserved.
             </p>
           </div>
         </div>

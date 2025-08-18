@@ -180,7 +180,7 @@ export default function LifePage() {
     },
     {
       title: "Duolingo",
-      value: `${stats?.duolingoStreak || 45} days`,
+      value: `${stats?.duolingoStreak || 187} days`,
       subtitle: "streak 🔥",
       url: "https://www.duolingo.com/profile/manchandaanmol",
       icon: <Globe className="w-4 h-4 text-white" />,
