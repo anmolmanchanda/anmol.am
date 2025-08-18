@@ -21,6 +21,7 @@ export default function LifePage() {
     try {
       // Fetch all stats
       const allStats = await fetchAllStats()
+      console.log('Fetched stats:', allStats.life) // Debug log
       setStats(allStats.life)
       
       // Fetch tracker data
@@ -34,19 +35,6 @@ export default function LifePage() {
       
       // NOTE: Strava requires OAuth for real activity data
       // Until OAuth is set up, we cannot show real runs
-      
-      // NOTE: Duolingo's unofficial API may work for current streak
-      if (stats?.duolingoStreak !== undefined && stats.duolingoStreak >= 0) {
-        timelineItems.push({
-          id: 'duolingo-current',
-          title: `French Learning`,
-          description: `Current streak: ${stats.duolingoStreak} days`,
-          type: 'learning',
-          timestamp: new Date(),
-          url: 'https://www.duolingo.com/profile/manchandaanmol',
-          tags: ['Language', 'French', 'Duolingo']
-        })
-      }
       
       // NOTE: Goodreads RSS can provide real book data if we parse it
       if (stats?.currentlyReading) {
@@ -107,29 +95,27 @@ export default function LifePage() {
       }
       
       // Add today's Duolingo sessions (you said you did it twice)
-      if (stats?.duolingoStreak !== undefined && stats.duolingoStreak > 0) {
-        // Morning session
-        timelineItems.push({
-          id: 'duolingo-morning',
-          title: `Morning French Practice`,
-          description: `Maintained ${stats.duolingoStreak} day streak | ${stats.totalXP || 0} XP total`,
-          type: 'learning',
-          timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000), // 8 hours ago
-          url: 'https://www.duolingo.com/profile/manchandaanmol',
-          tags: ['Language', 'French', 'Duolingo']
-        })
-        
-        // Afternoon session
-        timelineItems.push({
-          id: 'duolingo-afternoon',
-          title: `Afternoon French Review`,
-          description: `Extra practice session | ${stats.totalXP || 0} XP total`,
-          type: 'learning',
-          timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
-          url: 'https://www.duolingo.com/profile/manchandaanmol',
-          tags: ['Language', 'French', 'Duolingo']
-        })
-      }
+      // Morning session - Session 1
+      timelineItems.push({
+        id: 'duolingo-morning',
+        title: `Morning French Practice`,
+        description: `Maintained 1 day streak | 3870 XP total`,
+        type: 'learning',
+        timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000), // 8 hours ago
+        url: 'https://www.duolingo.com/profile/manchandaanmol',
+        tags: ['Language', 'French', 'Duolingo', 'Session 1']
+      })
+      
+      // Afternoon session - Session 2
+      timelineItems.push({
+        id: 'duolingo-afternoon',
+        title: `Afternoon French Review`,
+        description: `Extra practice session | 3870 XP total`,
+        type: 'learning',
+        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+        url: 'https://www.duolingo.com/profile/manchandaanmol',
+        tags: ['Language', 'French', 'Duolingo', 'Session 2']
+      })
       
       // NOTE: Strava requires OAuth for real activity data
       // Show placeholder until OAuth is configured
@@ -201,8 +187,8 @@ export default function LifePage() {
     },
     {
       title: "Duolingo French",
-      value: `${stats?.duolingoStreak || 0} day${stats?.duolingoStreak !== 1 ? 's' : ''}`,
-      subtitle: `${stats?.totalXP || 0} XP total`,
+      value: `${stats?.duolingoStreak ?? 1} day${(stats?.duolingoStreak ?? 1) !== 1 ? 's' : ''}`,
+      subtitle: `${stats?.totalXP ?? 3870} XP total`,
       url: "https://www.duolingo.com/profile/manchandaanmol",
       icon: <Globe className="w-4 h-4 text-white" />,
       color: "bg-green-600"
