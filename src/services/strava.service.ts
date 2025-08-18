@@ -111,6 +111,11 @@ class StravaService {
    * Get valid access token (refresh if expired)
    */
   private async getValidToken(): Promise<string> {
+    // First check if we have a direct access token
+    if (config.apis.strava.accessToken) {
+      return config.apis.strava.accessToken
+    }
+    
     if (this.cachedTokens && this.cachedTokens.expires_at > Date.now() / 1000) {
       return this.cachedTokens.access_token
     }

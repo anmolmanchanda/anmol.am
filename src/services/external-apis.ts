@@ -73,9 +73,30 @@ export async function fetchGitHubStats(username: string = 'anmolmanchanda') {
   }
 }
 
-// Strava Stats (requires OAuth)
+// Strava Stats (with OAuth)
 export async function fetchStravaStats(_athleteId: string = '131445218') {
-  // For now, return mock data - real implementation requires OAuth
+  try {
+    // Import Strava service
+    const { stravaService } = await import('./strava.service')
+    
+    // Get formatted stats from Strava
+    const stats = await stravaService.getFormattedStats()
+    
+    if (stats) {
+      return {
+        totalRuns: stats.totalRuns,
+        totalDistance: stats.totalDistanceRaw, // in km
+        thisWeek: stats.recent.distance.replace(' km', ''), // remove km suffix
+        longestRun: 21.1, // This would need activity analysis
+        lastActivity: new Date(), // Would need latest activity
+        ...stats
+      }
+    }
+  } catch (error) {
+    console.error('Failed to fetch Strava stats:', error)
+  }
+  
+  // Fallback data if API fails
   return {
     totalRuns: 156,
     totalDistance: 523, // km

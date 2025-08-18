@@ -52,9 +52,10 @@ export const config = {
       username: getOptionalEnvVar('NEXT_PUBLIC_GITHUB_USERNAME', 'anmolmanchanda'),
     },
     strava: {
-      clientId: getOptionalEnvVar('STRAVA_CLIENT_ID'),
+      clientId: getOptionalEnvVar('STRAVA_ClIENT_ID') || getOptionalEnvVar('STRAVA_CLIENT_ID'),
       clientSecret: getOptionalEnvVar('STRAVA_CLIENT_SECRET'),
       refreshToken: getOptionalEnvVar('STRAVA_REFRESH_TOKEN'),
+      accessToken: getOptionalEnvVar('STRAVA_ACCESS_TOKEN'),
       athleteId: getOptionalEnvVar('STRAVA_ATHLETE_ID', '131445218'),
     },
     duolingo: {

@@ -131,6 +131,18 @@ export default function LifePage() {
         tags: ['Language', 'French', 'Duolingo', 'Session 2']
       })
       
+      // Fetch Strava activities
+      try {
+        const { stravaService } = await import('@/src/services/strava.service')
+        const stravaActivities = await stravaService.getTimelineActivities(5)
+        
+        stravaActivities.forEach(activity => {
+          timelineItems.push(activity)
+        })
+      } catch (error) {
+        console.log('Could not fetch Strava activities:', error)
+      }
+      
       // For now, show a message about data availability
       if (timelineItems.length === 0) {
         timelineItems.push({
