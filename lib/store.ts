@@ -162,7 +162,39 @@ export const useActivityStore = create<ActivityStore>()(
               }))
             }
           } catch (error) {
+            // Set default data on error
             set((state) => ({
+              trackerData: {
+                daysSinceLastPoem: 0,
+                currentSideProject: "Portfolio Website v2",
+                learningQueue: ["Rust", "WebAssembly", "Kubernetes"],
+                booksReadThisYear: 24,
+                poemsWritten: 37,
+                kmRun: 523,
+                coffeesConsumed: 999,
+                currentlyUsing: {
+                  llms: ["Claude 3.5 Sonnet", "GPT-4"],
+                  editor: ["Cursor", "VS Code"],
+                  frameworks: ["Next.js 15", "React 19"],
+                  databases: ["PostgreSQL", "Redis"],
+                  tools: ["Docker", "Git", "Vercel"]
+                },
+                learning: {
+                  french: {
+                    level: "A2",
+                    streak: 45
+                  },
+                  aws: {
+                    progress: 35,
+                    target: "Solutions Architect Associate"
+                  },
+                  ml: {
+                    status: "Starting Soon",
+                    course: "Fast.ai"
+                  }
+                },
+                lastUpdated: new Date().toISOString()
+              },
               errors: { ...state.errors, trackers: 'Failed to fetch tracker data' },
               isLoading: { ...state.isLoading, trackers: false }
             }))

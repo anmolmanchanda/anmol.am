@@ -121,28 +121,31 @@ export function WorkActivityFeed() {
         let description = ''
         let icon = <Github className="w-5 h-5 text-primary" />
         
+        // Simplify repo name by removing username if it's yours
+        const repoName = event.repo.name.replace('anmolmanchanda/', '')
+        
         switch(event.type) {
           case 'PushEvent':
-            title = `Pushed to ${event.repo.name}`
+            title = `Pushed to ${repoName}`
             description = `${event.payload.commits?.length || 0} commits`
             icon = <Code className="w-5 h-5 text-green-500" />
             break
           case 'CreateEvent':
-            title = `Created ${event.payload.ref_type} in ${event.repo.name}`
+            title = `Created ${event.payload.ref_type} in ${repoName}`
             icon = <Zap className="w-5 h-5 text-purple-500" />
             break
           case 'PullRequestEvent':
-            title = `${event.payload.action} PR in ${event.repo.name}`
+            title = `${event.payload.action} PR in ${repoName}`
             description = event.payload.pull_request?.title
             icon = <Github className="w-5 h-5 text-blue-500" />
             break
           case 'IssuesEvent':
-            title = `${event.payload.action} issue in ${event.repo.name}`
+            title = `${event.payload.action} issue in ${repoName}`
             description = event.payload.issue?.title
             icon = <Hash className="w-5 h-5 text-orange-500" />
             break
           default:
-            title = `${event.type.replace('Event', '')} in ${event.repo.name}`
+            title = `${event.type.replace('Event', '')} in ${repoName}`
         }
         
         activities.push({
@@ -157,16 +160,36 @@ export function WorkActivityFeed() {
         })
       })
       
-      // Add recent blog posts (mock data - replace with actual)
-      activities.push({
-        id: 'blog-1',
-        type: 'blog',
-        title: 'Published: Building TB-Scale Infrastructure',
-        description: 'Deep dive into AWS architecture for UN-Habitat',
-        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-        url: '/work/building-tb-scale-data-infrastructure-un',
-        icon: <FileText className="w-5 h-5 text-primary" />
-      })
+      // Add recent blog posts with more variety
+      const blogPosts = [
+        {
+          title: 'Building TB-Scale Infrastructure',
+          description: 'Deep dive into AWS architecture for UN-Habitat',
+          url: '/work/building-tb-scale-data-infrastructure-un',
+          daysAgo: 2
+        },
+        {
+          title: 'AI-Assisted macOS Development',
+          description: 'Building Life Manager with Claude AI',
+          url: '/work/ai-assisted-macos-life-manager',
+          daysAgo: 7
+        }
+      ]
+      
+      // Add a random blog post
+      if (blogPosts.length > 0) {
+        const randomIndex = Math.floor(Math.random() * blogPosts.length)
+        const randomBlog = blogPosts[randomIndex]!
+        activities.push({
+          id: 'blog-recent',
+          type: 'blog',
+          title: `Published: ${randomBlog.title}`,
+          description: randomBlog.description,
+          timestamp: new Date(Date.now() - randomBlog.daysAgo * 24 * 60 * 60 * 1000),
+          url: randomBlog.url,
+          icon: <FileText className="w-5 h-5 text-primary" />
+        })
+      }
       
       // Add learning progress from tracker data
       if (trackerData) {

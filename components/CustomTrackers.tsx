@@ -38,7 +38,7 @@ function TrackerCard({ title, value, icon, gradient, delay = 0 }: TrackerCardPro
 }
 
 export function LifeTrackers() {
-  const { trackerData, fetchTrackerData, isLoading } = useActivityStore()
+  const { trackerData, fetchTrackerData } = useActivityStore()
   
   useEffect(() => {
     fetchTrackerData()
@@ -67,18 +67,19 @@ export function LifeTrackers() {
     }
   }
   
-  if (isLoading.trackers) {
-    return (
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="liquid-glass rounded-xl border backdrop-blur-md p-4 animate-pulse">
-            <div className="h-8 bg-muted/20 rounded mb-2" />
-            <div className="h-6 bg-muted/20 rounded w-2/3" />
-          </div>
-        ))}
-      </div>
-    )
-  }
+  // Don't show loading skeleton since we have default data
+  // if (isLoading.trackers) {
+  //   return (
+  //     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+  //       {[...Array(4)].map((_, i) => (
+  //         <div key={i} className="liquid-glass rounded-xl border backdrop-blur-md p-4 animate-pulse">
+  //           <div className="h-8 bg-muted/20 rounded mb-2" />
+  //           <div className="h-6 bg-muted/20 rounded w-2/3" />
+  //         </div>
+  //       ))}
+  //     </div>
+  //   )
+  // }
   
   return (
     <div className="space-y-8">
@@ -182,7 +183,7 @@ export function LifeTrackers() {
 }
 
 export function WorkTrackers() {
-  const { trackerData, fetchTrackerData, isLoading } = useActivityStore()
+  const { trackerData, fetchTrackerData } = useActivityStore()
   
   useEffect(() => {
     fetchTrackerData()
@@ -203,18 +204,19 @@ export function WorkTrackers() {
     }
   }
   
-  if (isLoading.trackers) {
-    return (
-      <div className="liquid-glass rounded-xl border backdrop-blur-md p-6 animate-pulse">
-        <div className="h-6 bg-muted/20 rounded mb-4 w-1/3" />
-        <div className="space-y-3">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-4 bg-muted/20 rounded w-2/3" />
-          ))}
-        </div>
-      </div>
-    )
-  }
+  // Don't show loading skeleton since we have default data
+  // if (isLoading.trackers) {
+  //   return (
+  //     <div className="liquid-glass rounded-xl border backdrop-blur-md p-6 animate-pulse">
+  //       <div className="h-6 bg-muted/20 rounded mb-4 w-1/3" />
+  //       <div className="space-y-3">
+  //         {[...Array(3)].map((_, i) => (
+  //           <div key={i} className="h-4 bg-muted/20 rounded w-2/3" />
+  //         ))}
+  //       </div>
+  //     </div>
+  //   )
+  // }
   
   return (
     <div className="space-y-6">
