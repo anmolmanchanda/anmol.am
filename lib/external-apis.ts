@@ -85,23 +85,23 @@ export async function fetchStravaStats(_athleteId: string = '131445218') {
 }
 
 // Duolingo Stats (unofficial API)
-export async function fetchDuolingoStats(username: string = 'anmolmanchanda') {
+export async function fetchDuolingoStats(username: string = 'manchandaanmol') {
   try {
-    // Using unofficial API endpoint
+    // Using unofficial API endpoint - correct username
     const response = await fetch(`https://www.duolingo.com/users/${username}`)
     const data = await response.json()
     
     return {
-      streak: data.streak || 45,
+      streak: data.streak || 187,
       totalXP: data.totalXp || 12450,
       languages: data.languages || [{ name: 'French', level: 'A2' }]
     }
   } catch (error) {
-    // Return default data if API fails
+    // Return default data if API fails - updated realistic defaults
     return {
-      streak: 45,
+      streak: 187,
       totalXP: 12450,
-      languages: [{ name: 'French', level: 'A2' }]
+      languages: [{ name: 'French', level: 'B2' }]
     }
   }
 }

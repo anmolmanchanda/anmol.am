@@ -82,13 +82,27 @@ export function VisitorCounter() {
   })
 
   useEffect(() => {
+    // Track visit on mount
+    const trackVisit = async () => {
+      try {
+        await fetch('/api/analytics', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            page: window.location.pathname,
+            timestamp: new Date().toISOString()
+          })
+        })
+      } catch (error) {
+        console.log('Visit tracking failed:', error)
+      }
+    }
+    
+    trackVisit()
+    
     // Fetch real analytics data
     const fetchAnalytics = async () => {
       try {
-        // In a real implementation, this would call your analytics API
-        // For now, we'll use Vercel Analytics or Google Analytics API
-        
-        // Placeholder for real API call
         const response = await fetch('/api/analytics', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }

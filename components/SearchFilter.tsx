@@ -18,7 +18,7 @@ export function SearchFilter({
 }: SearchFilterProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [showFilters, setShowFilters] = useState(false)
+  const [showFilters, setShowFilters] = useState(true)
 
   const handleSearch = (query: string) => {
     setSearchQuery(query)

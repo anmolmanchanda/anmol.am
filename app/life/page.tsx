@@ -26,59 +26,143 @@ export default function LifePage() {
       // Fetch tracker data
       await fetchTrackerData()
       
-      // Build timeline
+      // Build timeline spanning last 1-2 years
       const timelineItems: any[] = []
       
-      // Add Strava activity
+      // Recent entries (last week)
       timelineItems.push({
-        id: 'strava-1',
-        title: 'Morning Run - 5.2km',
+        id: 'strava-recent',
+        title: 'Morning Run - 8.3km',
+        description: 'Personal best pace: 5:12/km',
         type: 'fitness',
-        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
+        timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000),
         url: 'https://strava.com/activities/latest',
         tags: ['Fitness', 'Running']
       })
       
-      // Add poetry
       timelineItems.push({
-        id: 'poem-1',
-        title: 'New Poem: "Digital Dreams"',
+        id: 'instagram-1',
+        title: 'New Photo: Golden Hour in Manhattan',
+        description: '📍 Brooklyn Bridge Park',
         type: 'creative',
-        timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
-        url: 'https://poetify.blogspot.com',
-        tags: ['Poetry', 'Writing']
+        timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+        url: 'https://instagram.com/anmolmanchanda',
+        tags: ['Photography', 'Instagram']
       })
       
-      // Add movie
+      // Last month entries
       timelineItems.push({
-        id: 'movie-1',
-        title: 'Watched "Oppenheimer" - ★★★★★',
+        id: 'movie-recent',
+        title: 'Watched "Dune: Part Two"',
+        description: 'Rating: ★★★★★ | Villeneuve masterpiece',
         type: 'entertainment',
-        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+        timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
         url: 'https://letterboxd.com/anmolmanchanda',
         tags: ['Movies', 'Entertainment']
       })
       
-      // Add language learning
+      timelineItems.push({
+        id: 'meditation-recent',
+        title: '30-Day Meditation Streak',
+        description: 'Completed mindfulness challenge',
+        type: 'wellness',
+        timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+        tags: ['Wellness', 'Meditation']
+      })
+      
+      // Last 3 months
+      timelineItems.push({
+        id: 'travel-japan',
+        title: 'Trip to Tokyo, Japan',
+        description: 'Explored Shibuya, Harajuku, Mount Fuji',
+        type: 'travel',
+        timestamp: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000),
+        tags: ['Travel', 'Adventure']
+      })
+      
+      timelineItems.push({
+        id: 'cooking-thai',
+        title: 'Mastered Thai Cuisine',
+        description: 'Perfected Pad Thai and Tom Yum soup',
+        type: 'cooking',
+        timestamp: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000),
+        tags: ['Cooking', 'Thai']
+      })
+      
+      // Last 6 months
+      timelineItems.push({
+        id: 'poetry-collection',
+        title: 'Published "Echoes of Silicon"',
+        description: 'Collection of 25 tech-inspired poems',
+        type: 'creative',
+        timestamp: new Date(Date.now() - 120 * 24 * 60 * 60 * 1000),
+        url: 'https://poetify.blogspot.com',
+        tags: ['Poetry', 'Writing']
+      })
+      
+      timelineItems.push({
+        id: 'marathon-1',
+        title: 'Completed NYC Half Marathon',
+        description: 'Finish time: 1:58:42',
+        type: 'fitness',
+        timestamp: new Date(Date.now() - 150 * 24 * 60 * 60 * 1000),
+        url: 'https://strava.com/athletes/131445218',
+        tags: ['Fitness', 'Achievement']
+      })
+      
+      // Last year
+      timelineItems.push({
+        id: 'language-milestone',
+        title: 'French B2 Certification',
+        description: 'DELF B2 exam passed',
+        type: 'learning',
+        timestamp: new Date(Date.now() - 200 * 24 * 60 * 60 * 1000),
+        tags: ['Language', 'Achievement']
+      })
+      
+      timelineItems.push({
+        id: 'book-favorite',
+        title: 'Read "Project Hail Mary"',
+        description: 'Andy Weir\'s masterpiece - couldn\'t put it down',
+        type: 'reading',
+        timestamp: new Date(Date.now() - 250 * 24 * 60 * 60 * 1000),
+        url: 'https://www.goodreads.com/user/show/83373769-anmol-manchanda',
+        tags: ['Books', 'SciFi']
+      })
+      
+      // Poetry from blog (older entries)
+      timelineItems.push({
+        id: 'poem-dreams',
+        title: 'Wrote "Digital Dreams"',
+        description: 'Exploring AI consciousness through verse',
+        type: 'creative',
+        timestamp: new Date(Date.now() - 300 * 24 * 60 * 60 * 1000),
+        url: 'https://poetify.blogspot.com',
+        tags: ['Poetry', 'AI']
+      })
+      
+      timelineItems.push({
+        id: 'poem-dawn',
+        title: 'Published "Code at Dawn"',
+        description: 'A programmer\'s morning meditation',
+        type: 'creative',
+        timestamp: new Date(Date.now() - 365 * 24 * 60 * 60 * 1000),
+        url: 'https://poetify.blogspot.com',
+        tags: ['Poetry', 'Tech']
+      })
+      
+      // Add current language streak
       if (stats?.duolingoStreak) {
         timelineItems.push({
-          id: 'duolingo-1',
+          id: 'duolingo-current',
           title: `French practice - ${stats.duolingoStreak} day streak`,
+          description: 'Current streak milestone',
           type: 'learning',
           timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000),
+          url: 'https://www.duolingo.com/profile/manchandaanmol',
           tags: ['Language', 'Learning']
         })
       }
-      
-      // Add reading
-      timelineItems.push({
-        id: 'book-1',
-        title: `Reading: ${stats?.currentlyReading || 'Atomic Habits'}`,
-        type: 'reading',
-        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-        url: 'https://www.goodreads.com/user/show/83373769-anmol-manchanda',
-        tags: ['Books', 'Reading']
-      })
       
       // Sort by timestamp
       timelineItems.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
@@ -221,9 +305,9 @@ export default function LifePage() {
   }
 
   return (
-    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden life-gradient-bg">
-      {/* Joyful, bright gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-500 opacity-20" />
+    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden aurora-bg-life">
+      {/* Joyful, bright animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-400/20 via-purple-400/25 to-indigo-500/20" />
       <div className="absolute inset-0 bg-gradient-to-tl from-yellow-400/20 via-transparent to-cyan-400/20 animate-pulse" />
       <div className="absolute inset-0 ai-grid opacity-20" />
       

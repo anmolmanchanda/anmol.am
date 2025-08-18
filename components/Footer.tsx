@@ -12,21 +12,13 @@ export function Footer() {
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-6">
-          {/* Website Analytics Section */}
-          <div className="mb-4 text-center">
-            <div className="inline-block">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-4">
+            {/* Analytics - moved to first column */}
+            <div>
               <VisitorCounter />
             </div>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-3">
-            <div>
-              <h3 className="text-base sm:text-lg font-semibold">{siteConfig.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {siteConfig.title}
-              </p>
-            </div>
 
+            {/* Quick Links */}
             <div>
               <h3 className="text-base sm:text-lg font-semibold">Quick Links</h3>
               <ul className="mt-2 space-y-1 text-sm">
@@ -58,11 +50,10 @@ export function Footer() {
               </ul>
             </div>
 
+            {/* Connect */}
             <div>
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-base sm:text-lg font-semibold">Connect</h3>
-                  <div className="mt-2 flex space-x-3 sm:space-x-4">
+              <h3 className="text-base sm:text-lg font-semibold">Connect</h3>
+              <div className="mt-2 flex space-x-3 sm:space-x-4">
                 <a
                   href={siteConfig.links.github}
                   target="_blank"
@@ -97,16 +88,15 @@ export function Footer() {
                 >
                   <Mail className="h-5 w-5" />
                 </a>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {siteConfig.email}
-                  </p>
-                </div>
-                {/* Compact Newsletter Signup */}
-                <div className="ml-auto">
-                  <Newsletter compact />
-                </div>
               </div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {siteConfig.email}
+              </p>
+            </div>
+            
+            {/* Newsletter - moved to last column */}
+            <div>
+              <Newsletter compact />
             </div>
           </div>
 
