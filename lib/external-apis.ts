@@ -188,11 +188,14 @@ export async function fetchLetterboxdStats(username: string = 'anmolmanchanda') 
       const ratingMatch = title ? title.match(/★+/) : null
       const rating = ratingMatch ? ratingMatch[0].length : 0
       
+      // Parse film title - handle the split safely
+      const filmTitle = title ? (title.split(' - ')[0] || '').trim() : 'Unknown Film'
+      
       return {
-        title: title.split(' - ')[0].trim(),
+        title: filmTitle || 'Unknown Film',
         rating,
-        link: linkMatch ? linkMatch[1] : '',
-        watched: descMatch ? descMatch[1].includes('Watched') : false
+        link: linkMatch?.[1] || '',
+        watched: descMatch?.[1]?.includes('Watched') || false
       }
     })
     
