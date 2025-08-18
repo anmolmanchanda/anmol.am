@@ -174,8 +174,8 @@ export default function LifePage() {
   const lifeWidgets = [
     {
       title: "Strava",
-      value: `${stats?.kmRun || 523} km`,
-      subtitle: "total run",
+      value: `${stats?.kmRun || 230} km`,
+      subtitle: "31 runs total",
       url: "https://strava.com/athletes/131445218",
       icon: <Activity className="w-4 h-4 text-white" />,
       color: "bg-orange-600"

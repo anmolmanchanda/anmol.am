@@ -239,30 +239,54 @@ class StravaService {
    * Get recent activities formatted for timeline
    */
   async getTimelineActivities(limit = 10) {
-    const activities = await this.getActivities(1, limit)
-    
-    return activities
-      .filter(activity => activity.type === 'Run' || activity.type === 'Ride')
-      .map(activity => ({
-        id: `strava-${activity.id}`,
-        title: activity.name,
-        description: `${this.formatDistance(activity.distance)} in ${this.formatTime(activity.moving_time)} • Pace: ${this.formatPace(activity.moving_time, activity.distance)}`,
-        type: 'fitness',
-        timestamp: new Date(activity.start_date),
-        url: `https://www.strava.com/activities/${activity.id}`,
-        tags: [
-          activity.type,
-          'Strava',
-          `${Math.round(activity.distance / 1000)}km`,
-        ],
-        metadata: {
-          distance: activity.distance,
-          duration: activity.moving_time,
-          elevation: activity.total_elevation_gain,
-          pace: this.formatPace(activity.moving_time, activity.distance),
-          kudos: activity.kudos_count,
-        },
-      }))
+    try {
+      const activities = await this.getActivities(1, limit)
+      
+      // If we get activities, format them
+      if (activities && activities.length > 0) {
+        return activities
+          .filter(activity => activity.type === 'Run' || activity.type === 'Ride')
+          .map(activity => ({
+            id: `strava-${activity.id}`,
+            title: activity.name,
+            description: `${this.formatDistance(activity.distance)} in ${this.formatTime(activity.moving_time)} • Pace: ${this.formatPace(activity.moving_time, activity.distance)}`,
+            type: 'fitness',
+            timestamp: new Date(activity.start_date),
+            url: `https://www.strava.com/activities/${activity.id}`,
+            tags: [
+              activity.type,
+              'Strava',
+              `${Math.round(activity.distance / 1000)}km`,
+            ],
+            metadata: {
+              distance: activity.distance,
+              duration: activity.moving_time,
+              elevation: activity.total_elevation_gain,
+              pace: this.formatPace(activity.moving_time, activity.distance),
+              kudos: activity.kudos_count,
+            },
+          }))
+      }
+      
+      // If no activities due to permissions, return placeholder showing stats
+      const stats = await this.getAthleteStats()
+      if (stats) {
+        return [{
+          id: 'strava-stats',
+          title: 'Strava Running Stats',
+          description: `${Math.round(stats.all_run_totals.distance / 1000)} km across ${stats.all_run_totals.count} runs`,
+          type: 'fitness',
+          timestamp: new Date(),
+          url: 'https://strava.com/athletes/131445218',
+          tags: ['Running', 'Strava', 'Stats'],
+        }]
+      }
+      
+      return []
+    } catch (error) {
+      console.error('Error getting timeline activities:', error)
+      return []
+    }
   }
 }
 

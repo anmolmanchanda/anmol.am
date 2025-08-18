@@ -1,8 +1,9 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, Calendar, Clock, Share2, BookOpen } from "lucide-react"
+import { Calendar, Clock, BookOpen } from "lucide-react"
 import { ViewTracker } from "@/components/ViewTracker"
+import { ShareButton } from "@/components/ShareButton"
 import { BlogPost } from "@/types"
 import { formatDate } from "@/lib/utils"
 import { TableOfContents } from "@/components/TableOfContents"
@@ -237,14 +238,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           <div className="mx-auto max-w-4xl">
-            {/* Navigation */}
-            <Link
-              href="/blog"
-              className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-8 glass-morphism p-3 rounded-lg border backdrop-blur-md"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Knowledge Hub
-            </Link>
 
             {/* Article Header */}
             <header className="liquid-glass rounded-2xl border backdrop-blur-md p-8 mb-12">
@@ -280,10 +273,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   initialViews={postMeta.views || 0}
                   className="text-primary"
                 />
-                <button className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <Share2 className="h-4 w-4" />
-                  <span>Share</span>
-                </button>
+                <ShareButton title={postMeta.title} excerpt={postMeta.excerpt} />
               </div>
               
               {/* Tags */}

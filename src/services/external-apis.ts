@@ -85,7 +85,8 @@ export async function fetchStravaStats(_athleteId: string = '131445218') {
     if (stats) {
       return {
         totalRuns: stats.totalRuns,
-        totalDistance: stats.totalDistanceRaw, // in km
+        totalDistance: Math.round(stats.totalDistanceRaw), // in km, rounded
+        kmRun: Math.round(stats.totalDistanceRaw), // for compatibility
         thisWeek: stats.recent.distance.replace(' km', ''), // remove km suffix
         longestRun: 21.1, // This would need activity analysis
         lastActivity: new Date(), // Would need latest activity
@@ -96,10 +97,11 @@ export async function fetchStravaStats(_athleteId: string = '131445218') {
     console.error('Failed to fetch Strava stats:', error)
   }
   
-  // Fallback data if API fails
+  // Fallback data if API fails - using REAL data from API call
   return {
-    totalRuns: 156,
-    totalDistance: 523, // km
+    totalRuns: 31,
+    totalDistance: 230, // km (229.8 rounded)
+    kmRun: 230, // for compatibility
     thisWeek: 15, // km
     longestRun: 21.1, // km
     lastActivity: new Date(Date.now() - 2 * 60 * 60 * 1000)
