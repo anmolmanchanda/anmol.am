@@ -6,7 +6,7 @@ import { Clock, Code, ExternalLink, Briefcase } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 import { SearchFilter } from "@/components/SearchFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
-import { fetchAllStats } from "@/lib/external-apis"
+import { fetchAllStats } from "@/src/services/external-apis"
 import { useActivityStore } from "@/lib/store"
 import { Loader2, Github, FileText, Trophy, TrendingUp, Calendar, GitCommit, GitPullRequest } from "lucide-react"
 

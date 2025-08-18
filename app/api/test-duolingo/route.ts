@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { fetchDuolingoStats } from '@/lib/external-apis'
+import { fetchDuolingoStats } from '@/src/services/external-apis'
 
 export async function GET() {
   try {

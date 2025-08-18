@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchLetterboxdStats } from '@/lib/external-apis'
+import { fetchLetterboxdStats } from '@/src/services/external-apis'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
