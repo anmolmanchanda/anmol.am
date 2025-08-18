@@ -214,9 +214,9 @@ export default function WorkPage() {
 
   return (
     <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden aurora-bg-work">
-      {/* Light professional gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-primary/5 to-accent/5" />
-      <div className="absolute inset-0 ai-grid opacity-20" />
+      {/* Strong professional gradient overlay like Life page */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/85 via-primary/10 to-accent/10" />
+      <div className="absolute inset-0 ai-grid opacity-30" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-4xl">
