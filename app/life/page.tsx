@@ -1,238 +1,308 @@
-import { Metadata } from "next"
-import Image from "next/image"
-import { Heart, Star, ExternalLink, Activity, Globe, PenTool, Film, BookOpen, Music } from "lucide-react"
-import { NotionCard } from "@/components/NotionCard"
-import { UnifiedLifeFeed, LifeMetrics } from "@/components/UnifiedLifeFeed"
+"use client"
 
-export const metadata: Metadata = {
-  title: "Life",
-  description: "Personal interests, hobbies, and creative pursuits of Anmol Manchanda",
-}
+import { useState, useEffect, useCallback } from "react"
+import Image from "next/image"
+import { Heart, Activity, Globe, PenTool, Film, BookOpen, Music, Brain, MapPin, Languages, Utensils, Coffee, ExternalLink, Clock, Loader2 } from "lucide-react"
+import { SearchFilter } from "@/components/SearchFilter"
+import { WidgetGrid } from "@/components/CompactWidgets"
+import { fetchAllStats } from "@/lib/external-apis"
+import { useActivityStore } from "@/lib/store"
+import { formatDate } from "@/lib/utils"
 
 export default function LifePage() {
+  const [stats, setStats] = useState<any>(null)
+  const [timeline, setTimeline] = useState<any[]>([])
+  const [filteredTimeline, setFilteredTimeline] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const { trackerData, fetchTrackerData } = useActivityStore()
+
+  const fetchData = useCallback(async () => {
+    setLoading(true)
+    try {
+      // Fetch all stats
+      const allStats = await fetchAllStats()
+      setStats(allStats.life)
+      
+      // Fetch tracker data
+      await fetchTrackerData()
+      
+      // Build timeline
+      const timelineItems: any[] = []
+      
+      // Add Strava activity
+      timelineItems.push({
+        id: 'strava-1',
+        title: 'Morning Run - 5.2km',
+        type: 'fitness',
+        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
+        url: 'https://strava.com/activities/latest',
+        tags: ['Fitness', 'Running']
+      })
+      
+      // Add poetry
+      timelineItems.push({
+        id: 'poem-1',
+        title: 'New Poem: "Digital Dreams"',
+        type: 'creative',
+        timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
+        url: 'https://poetify.blogspot.com',
+        tags: ['Poetry', 'Writing']
+      })
+      
+      // Add movie
+      timelineItems.push({
+        id: 'movie-1',
+        title: 'Watched "Oppenheimer" - ★★★★★',
+        type: 'entertainment',
+        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+        url: 'https://letterboxd.com/anmolmanchanda',
+        tags: ['Movies', 'Entertainment']
+      })
+      
+      // Add language learning
+      if (stats?.duolingoStreak) {
+        timelineItems.push({
+          id: 'duolingo-1',
+          title: `French practice - ${stats.duolingoStreak} day streak`,
+          type: 'learning',
+          timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000),
+          tags: ['Language', 'Learning']
+        })
+      }
+      
+      // Add reading
+      timelineItems.push({
+        id: 'book-1',
+        title: `Reading: ${stats?.currentlyReading || 'Atomic Habits'}`,
+        type: 'reading',
+        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+        url: 'https://www.goodreads.com/user/show/83373769-anmol-manchanda',
+        tags: ['Books', 'Reading']
+      })
+      
+      // Sort by timestamp
+      timelineItems.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+      
+      setTimeline(timelineItems)
+      setFilteredTimeline(timelineItems)
+    } catch (error) {
+      console.error('Failed to fetch data:', error)
+    } finally {
+      setLoading(false)
+    }
+  }, [fetchTrackerData])
+
+  useEffect(() => {
+    fetchData()
+  }, [fetchData])
+
+  const handleSearch = (query: string) => {
+    if (!query) {
+      setFilteredTimeline(timeline)
+      return
+    }
+    
+    const filtered = timeline.filter(item => 
+      item.title.toLowerCase().includes(query.toLowerCase()) ||
+      item.tags?.some((tag: string) => tag.toLowerCase().includes(query.toLowerCase()))
+    )
+    setFilteredTimeline(filtered)
+  }
+
+  const handleTagFilter = (tag: string) => {
+    const filtered = timeline.filter(item => 
+      item.tags?.includes(tag)
+    )
+    setFilteredTimeline(filtered)
+  }
+
+  const lifeWidgets = [
+    {
+      title: "Strava",
+      value: `${stats?.kmRun || 523} km`,
+      subtitle: "total run",
+      url: "https://strava.com/athletes/131445218",
+      icon: <Activity className="w-4 h-4 text-white" />,
+      color: "bg-orange-600"
+    },
+    {
+      title: "Duolingo",
+      value: `${stats?.duolingoStreak || 45} days`,
+      subtitle: "streak 🔥",
+      url: "https://www.duolingo.com/profile/anmolmanchanda",
+      icon: <Globe className="w-4 h-4 text-white" />,
+      color: "bg-green-600"
+    },
+    {
+      title: "Goodreads",
+      value: stats?.booksThisYear || 24,
+      subtitle: "books/year",
+      url: "https://www.goodreads.com/user/show/83373769-anmol-manchanda",
+      icon: <BookOpen className="w-4 h-4 text-white" />,
+      color: "bg-green-700"
+    },
+    {
+      title: "Letterboxd",
+      value: stats?.filmsWatched || 47,
+      subtitle: "films/year",
+      url: "https://letterboxd.com/anmolmanchanda/",
+      icon: <Film className="w-4 h-4 text-white" />,
+      color: "bg-blue-600"
+    },
+    {
+      title: "Poetry",
+      value: stats?.poemsWritten || 37,
+      subtitle: "poems",
+      url: "https://poetify.blogspot.com/",
+      icon: <PenTool className="w-4 h-4 text-white" />,
+      color: "bg-purple-600"
+    },
+    {
+      title: "Spotify",
+      value: "Playlists",
+      subtitle: "curated",
+      url: "https://open.spotify.com/user/8yxq6bc2x81yri8o7yqi1fuup",
+      icon: <Music className="w-4 h-4 text-white" />,
+      color: "bg-green-500"
+    },
+    {
+      title: "Notion",
+      value: "AI Library",
+      subtitle: "resources",
+      url: "https://ai-resource-library.notion.site/AI-LLM-Resource-Library-2212a9c0cb8e80f9bf46d9a3971475bc",
+      icon: <Brain className="w-4 h-4 text-white" />,
+      color: "bg-gray-800"
+    },
+    {
+      title: "Countries",
+      value: trackerData?.countriesVisited || 12,
+      subtitle: "visited",
+      icon: <MapPin className="w-4 h-4 text-white" />,
+      color: "bg-blue-700"
+    },
+    {
+      title: "Languages",
+      value: trackerData?.languagesSpoken || 3,
+      subtitle: "spoken",
+      icon: <Languages className="w-4 h-4 text-white" />,
+      color: "bg-purple-700"
+    },
+    {
+      title: "Cuisines",
+      value: trackerData?.cuisinesMastered || 15,
+      subtitle: "mastered",
+      icon: <Utensils className="w-4 h-4 text-white" />,
+      color: "bg-red-600"
+    },
+    {
+      title: "Meditation",
+      value: trackerData?.daysMeditated || 156,
+      subtitle: "days",
+      icon: <Brain className="w-4 h-4 text-white" />,
+      color: "bg-indigo-600"
+    },
+    {
+      title: "Coffee",
+      value: "∞",
+      subtitle: "consumed",
+      icon: <Coffee className="w-4 h-4 text-white" />,
+      color: "bg-amber-700"
+    }
+  ]
+
+  const allTags = ['Fitness', 'Running', 'Poetry', 'Writing', 'Movies', 'Entertainment', 'Language', 'Learning', 'Books', 'Reading', 'Music']
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
   return (
-    <div className="py-24 sm:py-32 relative overflow-hidden">
+    <div className="py-24 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex flex-col items-center mb-8">
-              <div className="relative group mb-6">
-                <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg">
+          <div className="text-center mb-8">
+            <div className="flex justify-center mb-4">
+              <div className="relative">
+                <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg">
                   <Image
                     src="/images/life_avatar.jpeg"
-                    alt="Anmol Manchanda - Personal Side"
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-cover scale-110"
+                    alt="Anmol Manchanda"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover"
                     priority
                   />
                 </div>
                 <div className="absolute -bottom-1 -right-1">
-                  <div className="w-6 h-6 rounded-full bg-purple-500 border-2 border-background shadow-lg flex items-center justify-center">
+                  <div className="w-5 h-5 rounded-full bg-purple-500 border-2 border-background shadow-lg flex items-center justify-center">
                     <Heart className="w-3 h-3 text-white" />
                   </div>
                 </div>
               </div>
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Life Beyond Code</h1>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl">
-                Exploring creativity, literature, music, cinema, fitness, and continuous learning
-              </p>
             </div>
           </div>
 
-          {/* Life Metrics */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Life Stats & Progress</h2>
-            <LifeMetrics />
-          </div>
-
-          {/* Unified Activity Feed */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Life Timeline</h2>
-            <div className="max-w-3xl mx-auto">
-              <UnifiedLifeFeed />
-            </div>
-          </div>
-
-          {/* Platform Embeds Section */}
-          <div className="space-y-12 mb-16">
-            {/* Strava Widget */}
-            <div className="liquid-glass rounded-xl border backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Activity className="w-5 h-5 text-orange-500" />
-                Running & Fitness
-              </h3>
-              <div className="mb-4">
-                <iframe 
-                  height="160" 
-                  width="100%" 
-                  frameBorder="0" 
-                  allowTransparency={true}
-                  scrolling="no" 
-                  src="https://www.strava.com/athletes/131445218/activity-summary/c8e7d9f8c5f3b0f3c5f3b0f3c5f3b0f3c5f3b0f3"
-                  className="rounded-lg"
-                />
-              </div>
-              <a 
-                href="https://strava.com/athletes/131445218" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-orange-500 hover:text-orange-600"
-              >
-                View Full Strava Profile <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            {/* Duolingo Progress */}
-            <div className="liquid-glass rounded-xl border backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Globe className="w-5 h-5 text-green-500" />
-                Language Learning
-              </h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>French</span>
-                    <span className="font-bold">Level A2</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Current Streak</span>
-                    <span className="font-bold text-orange-500">45 days 🔥</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Total XP</span>
-                    <span className="font-bold">12,450</span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-green-500">45</div>
-                    <div className="text-xs text-muted-foreground">Day Streak</div>
-                  </div>
-                </div>
-              </div>
-              <a 
-                href="https://www.duolingo.com/profile/anmolmanchanda" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-green-500 hover:text-green-600 mt-4"
-              >
-                View Duolingo Profile <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            {/* Poetry Blog */}
-            <div className="liquid-glass rounded-xl border backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <PenTool className="w-5 h-5 text-purple-500" />
-                Poetry & Creative Writing
-              </h3>
-              <div className="prose prose-sm dark:prose-invert max-w-none mb-4">
-                <p className="text-sm text-muted-foreground">
-                  My creative expressions through poetry, exploring themes of technology, humanity, and existence.
-                </p>
-              </div>
-              <a 
-                href="https://poetify.blogspot.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-purple-500 hover:text-purple-600"
-              >
-                Read Poetry on Poetify <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            {/* Letterboxd */}
-            <div className="liquid-glass rounded-xl border backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Film className="w-5 h-5 text-blue-500" />
-                Film Diary
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
-                {/* Mock film posters */}
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="aspect-[2/3] bg-muted rounded" />
-                ))}
-              </div>
-              <a 
-                href="https://letterboxd.com/anmolmanchanda/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-blue-500 hover:text-blue-600"
-              >
-                View Letterboxd Profile <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            {/* Reading List */}
-            <div className="liquid-glass rounded-xl border backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-green-500" />
-                Currently Reading
-              </h3>
-              <div className="space-y-3 mb-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-12 h-16 bg-muted rounded flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-sm">Atomic Habits</p>
-                    <p className="text-xs text-muted-foreground">by James Clear</p>
-                    <p className="text-xs text-muted-foreground mt-1">65% complete</p>
-                  </div>
-                </div>
-              </div>
-              <a 
-                href="https://www.goodreads.com/user/show/83373769-anmol-manchanda" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-green-500 hover:text-green-600"
-              >
-                View Goodreads Profile <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            {/* Music */}
-            <div className="liquid-glass rounded-xl border backdrop-blur-md p-6">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Music className="w-5 h-5 text-green-400" />
-                Music & Playlists
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Curated playlists for coding, running, and relaxation
-              </p>
-              <a 
-                href="https://open.spotify.com/user/8yxq6bc2x81yri8o7yqi1fuup" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-green-400 hover:text-green-500"
-              >
-                Follow on Spotify <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-          </div>
-
-          {/* Notion Resource Library */}
-          <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-6">Resource Library</h2>
-            <NotionCard 
-              url="https://ai-resource-library.notion.site/AI-LLM-Resource-Library-2212a9c0cb8e80f9bf46d9a3971475bc"
+          {/* Search & Filter */}
+          <div className="mb-8">
+            <SearchFilter
+              onSearch={handleSearch}
+              onTagSelect={handleTagFilter}
+              availableTags={allTags}
+              placeholder="Search activities, books, movies..."
             />
           </div>
 
-          {/* Personal Philosophy */}
-          <div className="liquid-glass p-8 rounded-2xl border backdrop-blur-md shadow-lg">
-            <div className="text-center">
-              <div className="flex justify-center mb-6">
-                <div className="p-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 bg-opacity-10">
-                  <Star className="w-8 h-8 text-purple-500" />
+          {/* Life Stats */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">Life Stats</h2>
+            <WidgetGrid widgets={lifeWidgets} />
+          </div>
+
+          {/* Life Timeline */}
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold mb-6">Life Timeline</h2>
+            <div className="space-y-4">
+              {filteredTimeline.map((item) => (
+                <div key={item.id} className="liquid-glass rounded-lg border backdrop-blur-md p-4 hover:shadow-lg transition-all">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        {item.type === 'fitness' && <Activity className="w-4 h-4 text-orange-500" />}
+                        {item.type === 'creative' && <PenTool className="w-4 h-4 text-purple-500" />}
+                        {item.type === 'entertainment' && <Film className="w-4 h-4 text-blue-500" />}
+                        {item.type === 'learning' && <Globe className="w-4 h-4 text-green-500" />}
+                        {item.type === 'reading' && <BookOpen className="w-4 h-4 text-green-600" />}
+                        <h3 className="font-semibold text-sm">{item.title}</h3>
+                      </div>
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {formatDate(item.timestamp)}
+                        </span>
+                        {item.tags && (
+                          <div className="flex gap-1">
+                            {item.tags.map((tag: string) => (
+                              <span key={tag} className="px-2 py-0.5 bg-secondary rounded-full">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    {item.url && (
+                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 text-muted-foreground hover:text-primary" />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <h2 className="text-2xl font-bold tracking-tight mb-4">Philosophy</h2>
-              <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                Balance through creative expression, continuous learning, and physical wellness. 
-                Poetry for exploring emotions, books for expanding perspectives, music for creativity, 
-                films for storytelling inspiration, and fitness for grounding energy.
-              </p>
+              ))}
             </div>
           </div>
         </div>

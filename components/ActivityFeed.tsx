@@ -260,53 +260,32 @@ export function LifeActivityFeed() {
       const activities: LifeActivityItem[] = []
       
       // Add activities from tracker data
-      const data = trackerData || {
-        daysSinceLastPoem: 2,
-        learning: {
-          french: {
-            level: "A2",
-            streak: 45
-          }
-        }
-      }
-      
-      if (data) {
-        // Recent poem
-        if (data.daysSinceLastPoem === 0) {
-          activities.push({
-            id: 'poem-recent',
-            type: 'poem',
-            title: 'Wrote a new poem',
-            description: 'Added to personal collection',
-            timestamp: new Date(),
-            icon: <BookOpen className="w-5 h-5 text-purple-500" />
-          })
-        }
-        
+      if (trackerData && trackerData.learning?.french) {
         // French learning streak
         activities.push({
           id: 'french-streak',
           type: 'duolingo',
-          title: `French learning streak: ${data.learning.french.streak} days`,
-          description: `Level ${data.learning.french.level}`,
+          title: `French learning streak: ${trackerData.learning.french.streak} days`,
+          description: `Level ${trackerData.learning.french.level}`,
           timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
           icon: <Globe className="w-5 h-5 text-green-500" />,
-          metadata: { streak: data.learning.french.streak }
+          metadata: { streak: trackerData.learning.french.streak }
         })
-        
-        // Recent workout (mock)
-        activities.push({
-          id: 'workout-1',
-          type: 'workout',
-          title: 'Morning Run',
-          description: '5.2 km in 28 minutes',
-          timestamp: new Date(Date.now() - 12 * 60 * 60 * 1000),
-          icon: <Activity className="w-5 h-5 text-orange-500" />,
-          metadata: { distance: '5.2 km', duration: '28 min' }
-        })
-        
-        // Reading progress
-        activities.push({
+      }
+      
+      // Recent workout (mock)
+      activities.push({
+        id: 'workout-1',
+        type: 'workout',
+        title: 'Morning Run',
+        description: '5.2 km in 28 minutes',
+        timestamp: new Date(Date.now() - 12 * 60 * 60 * 1000),
+        icon: <Activity className="w-5 h-5 text-orange-500" />,
+        metadata: { distance: '5.2 km', duration: '28 min' }
+      })
+      
+      // Reading progress
+      activities.push({
           id: 'book-current',
           type: 'book',
           title: 'Currently reading: Atomic Habits',
@@ -315,7 +294,6 @@ export function LifeActivityFeed() {
           icon: <BookOpen className="w-5 h-5 text-blue-500" />,
           metadata: { author: 'James Clear' }
         })
-      }
       
       // Sort by timestamp
       activities.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())

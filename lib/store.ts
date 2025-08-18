@@ -2,16 +2,29 @@ import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
 interface TrackerData {
-  // Custom Trackers
-  daysSinceLastPoem: number
-  currentSideProject: string
-  learningQueue: string[]
+  // Manual Life Stats
+  countriesVisited: number
+  languagesSpoken: number
+  cuisinesMastered: number
+  daysMeditated: number
   
-  // Life Stats
-  booksReadThisYear: number
-  poemsWritten: number
-  kmRun: number
-  coffeesConsumed: number
+  // Manual Work Stats  
+  citiesImpacted: number
+  yearsExperience: number
+  projectsCompleted: number
+  dataProcessed: string // "3TB"
+  
+  // API Keys for external services
+  apiKeys?: {
+    wakatime?: string
+    strava?: string
+    duolingo?: string
+  }
+  
+  // Current Status
+  currentSideProject: string
+  currentlyReading: string
+  currentRole: string
   
   // Tech Stack (Work)
   currentlyUsing: {
@@ -128,13 +141,24 @@ export const useActivityStore = create<ActivityStore>()(
               // Set default data if none exists
               set((state) => ({
                 trackerData: {
-                  daysSinceLastPoem: 0,
+                  // Manual Life Stats
+                  countriesVisited: 12,
+                  languagesSpoken: 3,
+                  cuisinesMastered: 15,
+                  daysMeditated: 156,
+                  
+                  // Manual Work Stats
+                  citiesImpacted: 12,
+                  yearsExperience: 8,
+                  projectsCompleted: 50,
+                  dataProcessed: "3TB",
+                  
+                  // Current Status
                   currentSideProject: "Portfolio Website v2",
-                  learningQueue: ["Rust", "WebAssembly", "Kubernetes"],
-                  booksReadThisYear: 24,
-                  poemsWritten: 37,
-                  kmRun: 523,
-                  coffeesConsumed: 999,
+                  currentlyReading: "Atomic Habits",
+                  currentRole: "Senior Software Engineer",
+                  
+                  // Tech Stack
                   currentlyUsing: {
                     llms: ["Claude 3.5 Sonnet", "GPT-4"],
                     editor: ["Cursor", "VS Code"],
@@ -142,6 +166,8 @@ export const useActivityStore = create<ActivityStore>()(
                     databases: ["PostgreSQL", "Redis"],
                     tools: ["Docker", "Git", "Vercel"]
                   },
+                  
+                  // Learning Progress
                   learning: {
                     french: {
                       level: "A2",
@@ -156,6 +182,7 @@ export const useActivityStore = create<ActivityStore>()(
                       course: "Fast.ai"
                     }
                   },
+                  
                   lastUpdated: new Date().toISOString()
                 },
                 isLoading: { ...state.isLoading, trackers: false }
@@ -165,13 +192,24 @@ export const useActivityStore = create<ActivityStore>()(
             // Set default data on error
             set((state) => ({
               trackerData: {
-                daysSinceLastPoem: 0,
+                // Manual Life Stats
+                countriesVisited: 12,
+                languagesSpoken: 3,
+                cuisinesMastered: 15,
+                daysMeditated: 156,
+                
+                // Manual Work Stats
+                citiesImpacted: 12,
+                yearsExperience: 8,
+                projectsCompleted: 50,
+                dataProcessed: "3TB",
+                
+                // Current Status
                 currentSideProject: "Portfolio Website v2",
-                learningQueue: ["Rust", "WebAssembly", "Kubernetes"],
-                booksReadThisYear: 24,
-                poemsWritten: 37,
-                kmRun: 523,
-                coffeesConsumed: 999,
+                currentlyReading: "Atomic Habits",
+                currentRole: "Senior Software Engineer",
+                
+                // Tech Stack
                 currentlyUsing: {
                   llms: ["Claude 3.5 Sonnet", "GPT-4"],
                   editor: ["Cursor", "VS Code"],
@@ -179,6 +217,8 @@ export const useActivityStore = create<ActivityStore>()(
                   databases: ["PostgreSQL", "Redis"],
                   tools: ["Docker", "Git", "Vercel"]
                 },
+                
+                // Learning Progress
                 learning: {
                   french: {
                     level: "A2",
@@ -193,6 +233,7 @@ export const useActivityStore = create<ActivityStore>()(
                     course: "Fast.ai"
                   }
                 },
+                
                 lastUpdated: new Date().toISOString()
               },
               errors: { ...state.errors, trackers: 'Failed to fetch tracker data' },
