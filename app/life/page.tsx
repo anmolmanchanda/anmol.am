@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Heart, Activity, Globe, PenTool, Film, BookOpen, Music, Brain, MapPin, Languages, Utensils, Coffee, ExternalLink, Clock, Loader2, Camera, Headphones, UtensilsCrossed, MapPinned } from "lucide-react"
 import { SearchFilter } from "@/components/SearchFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
-import { fetchAllStats } from "@/lib/external-apis"
+import { fetchAllStats } from "@/src/services/external-apis"
 import { useActivityStore } from "@/lib/store"
 import { formatDate } from "@/lib/utils"
 
@@ -95,11 +95,15 @@ export default function LifePage() {
       }
       
       // Add today's Duolingo sessions (you said you did it twice)
+      // Get actual XP from stats or use the known current value
+      const currentXP = stats?.totalXP || 4075
+      const currentStreak = stats?.duolingoStreak || 1
+      
       // Morning session - Session 1
       timelineItems.push({
         id: 'duolingo-morning',
         title: `Morning French Practice`,
-        description: `Maintained 1 day streak | 3870 XP total`,
+        description: `Maintained ${currentStreak} day streak | ${currentXP} XP total`,
         type: 'learning',
         timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000), // 8 hours ago
         url: 'https://www.duolingo.com/profile/manchandaanmol',
@@ -110,22 +114,11 @@ export default function LifePage() {
       timelineItems.push({
         id: 'duolingo-afternoon',
         title: `Afternoon French Review`,
-        description: `Extra practice session | 3870 XP total`,
+        description: `Extra practice session | ${currentXP} XP total`,
         type: 'learning',
         timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
         url: 'https://www.duolingo.com/profile/manchandaanmol',
         tags: ['Language', 'French', 'Duolingo', 'Session 2']
-      })
-      
-      // NOTE: Strava requires OAuth for real activity data
-      // Show placeholder until OAuth is configured
-      timelineItems.push({
-        id: 'strava-note',
-        title: 'Strava Integration',
-        description: 'Configure OAuth to see real running activities',
-        type: 'info',
-        timestamp: new Date(),
-        tags: ['Strava', 'Setup']
       })
       
       // For now, show a message about data availability
@@ -188,7 +181,7 @@ export default function LifePage() {
     {
       title: "Duolingo French",
       value: `${stats?.duolingoStreak ?? 1} day${(stats?.duolingoStreak ?? 1) !== 1 ? 's' : ''}`,
-      subtitle: `${stats?.totalXP ?? 3870} XP total`,
+      subtitle: `${stats?.totalXP ?? 4075} XP total`,
       url: "https://www.duolingo.com/profile/manchandaanmol",
       icon: <Globe className="w-4 h-4 text-white" />,
       color: "bg-green-600"
