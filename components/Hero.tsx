@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Download, Globe2 } from "lucide-react"
-import { siteConfig } from "@/lib/config"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { Card3D, MagneticButton, AnimatedText } from "@/components/DrribbleInspiredFeatures"
 import { NewsletterCTA } from "@/components/NewsletterVariants"
@@ -136,20 +135,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* GitHub link positioned separately */}
-          <div className="flex items-center justify-center mt-8">
-            <MagneticButton className="group">
-              <a
-                href={siteConfig.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-morphism cyber-border px-4 py-2.5 rounded-xl border backdrop-blur-md font-medium text-foreground/80 hover:text-foreground transition-all duration-300 hover:shadow-lg hover:border-primary/30 flex items-center gap-2 min-h-[44px] group-hover:scale-105"
-              >
-                <span className="text-sm sm:text-base">GitHub</span>
-                <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
-              </a>
-            </MagneticButton>
-          </div>
         </div>
       </div>
     </section>

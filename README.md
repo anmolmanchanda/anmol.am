@@ -33,9 +33,9 @@
 
 ## 🎯 Overview
 
-**Version 2.0.0** - Released August 17, 2025
+**Version 2.1.0** - Released August 18, 2025
 
-A modern, performant portfolio showcasing expertise in AI-assisted development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores.
+A modern, performant portfolio showcasing expertise in AI-assisted development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores. Features real-time data integration with external APIs for life tracking, professional work metrics, and dynamic content updates.
 
 ### Key Highlights
 - 🤖 **AI-Assisted Development**: 50+ MCP servers integrated
@@ -43,6 +43,8 @@ A modern, performant portfolio showcasing expertise in AI-assisted development, 
 - ⚡ **Performance**: Core Web Vitals - LCP < 1.8s, FID < 45ms, CLS < 0.02
 - ♿ **Accessibility**: WCAG 2.1 Level AA compliant
 - 🔍 **SEO Optimized**: Structured data, sitemap, RSS feed
+- 📊 **Real-Time Data**: Live integration with Duolingo, Letterboxd, GitHub APIs
+- 🌈 **Aurora Animations**: Dynamic gradient backgrounds with holographic effects
 
 ---
 
@@ -61,6 +63,10 @@ A modern, performant portfolio showcasing expertise in AI-assisted development, 
 | **GitHub Activity** | ✅ Live | Projects page | Scroll to activity section |
 | **Contact Form** | ✅ Live | Contact page | Submit test message |
 | **PWA Ready** | ✅ Live | All pages | Check browser install prompt |
+| **Life Timeline** | ✅ Live | Life page | View real-time activities |
+| **Duolingo Integration** | ✅ Live | Life page | 1 day streak, 3870 XP |
+| **Letterboxd RSS** | ✅ Live | Life page | Film history with ratings |
+| **Aurora Backgrounds** | ✅ Live | All pages | Animated gradients |
 
 ### Components Created (Ready for Integration)
 | Component | Status | File Location | Purpose |
@@ -105,6 +111,8 @@ A modern, performant portfolio showcasing expertise in AI-assisted development, 
 - **Analytics**: Vercel Analytics + Custom
 - **Database**: Redis (Upstash) for view tracking
 - **Email**: Resend API
+- **External APIs**: Duolingo, Letterboxd RSS, GitHub, Goodreads
+- **Real-Time Data**: Live fetching with fallback caching
 
 ### Development Tools
 - **AI Assistance**: Claude AI with 50+ MCP servers
@@ -153,6 +161,12 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
 # Redis for view tracking (optional)
 REDIS_URL=redis://xxxxxxxxxxxxx
 REDIS_TOKEN=xxxxxxxxxxxxx
+
+# External API Configuration (optional)
+DUOLINGO_USERNAME=manchandaanmol
+LETTERBOXD_USERNAME=anmolmanchanda
+GOODREADS_USER_ID=83373769
+STRAVA_ATHLETE_ID=131445218
 ```
 
 ---
@@ -223,6 +237,8 @@ anmol.am/
 │   │   ├── [slug]/           # Dynamic blog posts
 │   │   └── page.tsx          # Blog listing
 │   ├── projects/             # Project showcase
+│   ├── work/                 # Professional experience
+│   ├── life/                 # Life timeline & stats
 │   ├── about/                # About page
 │   └── contact/              # Contact page
 ├── components/               # React components
@@ -238,7 +254,9 @@ anmol.am/
 ├── lib/                      # Utilities
 │   ├── config.ts             # Site configuration
 │   ├── utils.ts              # Helper functions
-│   └── redis.ts              # Redis client
+│   ├── redis.ts              # Redis client
+│   ├── external-apis.ts      # External API integrations
+│   └── store.ts              # Zustand state management
 ├── docs/claude/              # Documentation
 │   ├── GIT_RULES.md          # Git workflow
 │   ├── ROADMAP_VERSIONING.md # Version history
@@ -297,11 +315,39 @@ GET /api/rss
 Content-Type: application/rss+xml
 ```
 
+### External API Integrations
+```http
+GET /api/duolingo?username=manchandaanmol
+Response: {
+  "streak": 1,
+  "totalXP": 3870,
+  "languages": [{
+    "name": "French",
+    "xp": 1182
+  }]
+}
+
+GET /api/letterboxd?username=anmolmanchanda
+Response: {
+  "filmsThisYear": 8,
+  "totalFilms": 156,
+  "avgRating": 4.3,
+  "recentFilms": [...]
+}
+
+GET /api/github-activity?username=anmolmanchanda
+Response: {
+  "publicRepos": 50,
+  "totalStars": 234,
+  "contributions": 1234
+}
+```
+
 ---
 
 ## 📊 Performance
 
-### Current Metrics (v2.0.0)
+### Current Metrics (v2.1.0)
 | Metric | Target | Achieved | Status |
 |--------|--------|----------|--------|
 | **Lighthouse Score** | > 95 | 96 | ✅ |
