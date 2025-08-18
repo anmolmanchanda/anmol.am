@@ -268,7 +268,7 @@ export async function fetchAllStats() {
       kmRun: strava.totalDistance,
       runsThisYear: strava.totalRuns,
       duolingoStreak: duolingo.streak,
-      frenchLevel: duolingo.languages[0]?.level || 'A2',
+      frenchLevel: duolingo.languages[0] ? 'A2' : 'Beginner', // Level estimation based on XP
       booksThisYear: goodreads.booksThisYear,
       currentlyReading: goodreads.currentlyReading,
       filmsWatched: letterboxd.filmsThisYear,
