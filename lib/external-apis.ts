@@ -185,7 +185,7 @@ export async function fetchLetterboxdStats(username: string = 'anmolmanchanda') 
       
       // Extract rating from title (e.g., "Film Title, 2024 - ★★★★")
       const title = titleMatch ? titleMatch[1] : ''
-      const ratingMatch = title.match(/★+/)
+      const ratingMatch = title ? title.match(/★+/) : null
       const rating = ratingMatch ? ratingMatch[0].length : 0
       
       return {
