@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { Heart, Activity, Globe, PenTool, Film, BookOpen, Music, Brain, MapPin, Languages, Utensils, Coffee, ExternalLink, Clock, Loader2, Camera, Headphones, UtensilsCrossed, MapPinned } from "lucide-react"
 import { SearchFilter } from "@/components/SearchFilter"
+import { TagFilter, useTagFilter } from "@/components/TagFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
 import { fetchAllStats } from "@/src/services/external-apis"
 import { useActivityStore } from "@/lib/store"
@@ -12,9 +13,18 @@ import { formatDate } from "@/lib/utils"
 export default function LifePage() {
   const [stats, setStats] = useState<any>(null)
   const [timeline, setTimeline] = useState<any[]>([])
-  const [filteredTimeline, setFilteredTimeline] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const { trackerData, fetchTrackerData } = useActivityStore()
+  
+  // Use the tag filter hook
+  const {
+    selectedTags,
+    availableTags,
+    filteredItems: filteredTimeline,
+    handleTagSelect,
+    handleTagRemove,
+    handleClearAll
+  } = useTagFilter(timeline)
 
   const fetchData = useCallback(async () => {
     setLoading(true)
@@ -137,7 +147,6 @@ export default function LifePage() {
       timelineItems.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
       
       setTimeline(timelineItems)
-      setFilteredTimeline(timelineItems)
     } catch (error) {
       console.error('Failed to fetch data:', error)
     } finally {
@@ -149,25 +158,6 @@ export default function LifePage() {
     fetchData()
   }, [fetchData])
 
-  const handleSearch = (query: string) => {
-    if (!query) {
-      setFilteredTimeline(timeline)
-      return
-    }
-    
-    const filtered = timeline.filter(item => 
-      item.title.toLowerCase().includes(query.toLowerCase()) ||
-      item.tags?.some((tag: string) => tag.toLowerCase().includes(query.toLowerCase()))
-    )
-    setFilteredTimeline(filtered)
-  }
-
-  const handleTagFilter = (tag: string) => {
-    const filtered = timeline.filter(item => 
-      item.tags?.includes(tag)
-    )
-    setFilteredTimeline(filtered)
-  }
 
   const lifeWidgets = [
     {
@@ -263,7 +253,6 @@ export default function LifePage() {
     }
   ]
 
-  const allTags = ['Fitness', 'Running', 'Strava', 'Poetry', 'Writing', 'Movies', 'Letterboxd', 'Entertainment', 'Language', 'French', 'Duolingo', 'Learning', 'Books', 'Reading', 'Music', 'Wellness', 'Meditation', 'Calm', 'Sleep', 'Cooking', 'Thai', 'Indian', 'Japanese', 'Photography', 'Urban', 'Creative', 'Travel', 'Canada', 'Nature', 'Self-Improvement', 'Finance', 'Psychology']
 
   if (loading) {
     return (
@@ -305,13 +294,15 @@ export default function LifePage() {
             </div>
           </div>
 
-          {/* Search & Filter */}
+          {/* Tag Filter */}
           <div className="mb-8">
-            <SearchFilter
-              onSearch={handleSearch}
-              onTagSelect={handleTagFilter}
-              availableTags={allTags}
-              placeholder="Search activities, books, movies..."
+            <h3 className="text-sm font-medium mb-3 text-muted-foreground">Filter by tags</h3>
+            <TagFilter
+              tags={availableTags}
+              selectedTags={selectedTags}
+              onTagSelect={handleTagSelect}
+              onTagRemove={handleTagRemove}
+              onClearAll={handleClearAll}
             />
           </div>
 

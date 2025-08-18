@@ -2,6 +2,92 @@
 
 ## 📋 Code Quality Standards
 
+### DRY Principle (Don't Repeat Yourself) - MANDATORY
+**This is a CRITICAL rule that must ALWAYS be followed:**
+
+#### Never Duplicate Code
+```typescript
+// ❌ WRONG - Duplicated logic
+function UserCard({ user }) {
+  return (
+    <div className="p-4 rounded-lg border">
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+    </div>
+  )
+}
+
+function AdminCard({ admin }) {
+  return (
+    <div className="p-4 rounded-lg border">
+      <h3>{admin.name}</h3>
+      <p>{admin.email}</p>
+    </div>
+  )
+}
+
+// ✅ CORRECT - Reusable component
+function PersonCard({ person, type }) {
+  return (
+    <div className="p-4 rounded-lg border">
+      <h3>{person.name}</h3>
+      <p>{person.email}</p>
+      {type && <span className="badge">{type}</span>}
+    </div>
+  )
+}
+```
+
+#### Extract Common Logic
+```typescript
+// Create utilities for repeated operations
+export const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('en-US').format(date)
+}
+
+// Create hooks for repeated state logic
+export function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value)
+  
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedValue(value), delay)
+    return () => clearTimeout(handler)
+  }, [value, delay])
+  
+  return debouncedValue
+}
+```
+
+#### Use Constants for Repeated Values
+```typescript
+// constants/index.ts
+export const API_ENDPOINTS = {
+  USERS: '/api/users',
+  POSTS: '/api/posts',
+  COMMENTS: '/api/comments'
+}
+
+export const QUERY_KEYS = {
+  USERS: 'users',
+  POSTS: 'posts', 
+  COMMENTS: 'comments'
+}
+```
+
+#### Create Shared Types
+```typescript
+// types/index.ts
+export interface ApiResponse<T> {
+  success: boolean
+  data?: T
+  error?: string
+}
+
+// Use throughout the app
+const userResponse: ApiResponse<User> = await fetchUser()
+const postsResponse: ApiResponse<Post[]> = await fetchPosts()
+```
+
 ### TypeScript Configuration
 ```typescript
 // Always use strict TypeScript settings

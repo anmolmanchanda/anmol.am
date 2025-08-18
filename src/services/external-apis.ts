@@ -61,10 +61,11 @@ export async function fetchGitHubStats(username: string = 'anmolmanchanda') {
     return {
       publicRepos: user.public_repos,
       followers: user.followers,
-      totalStars,
+      totalStars: totalStars || 0, // Actual count from API
       totalForks,
-      estimatedLOC: Math.round(estimatedLOC),
-      contributions: user.contributions || 0
+      estimatedLOC: Math.round(estimatedLOC), // This is a rough estimate, ~40% confidence
+      contributions: user.contributions || 0,
+      repos: repos // Include repos for timeline
     }
   } catch (error) {
     console.error('GitHub API error:', error)
