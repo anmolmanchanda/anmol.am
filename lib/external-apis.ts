@@ -84,24 +84,33 @@ export async function fetchStravaStats(_athleteId: string = '131445218') {
   }
 }
 
-// Duolingo Stats (unofficial API)
+// Duolingo Stats (unofficial API - working as of 2024)
 export async function fetchDuolingoStats(username: string = 'manchandaanmol') {
   try {
-    // Using unofficial API endpoint
-    const response = await fetch(`https://www.duolingo.com/users/${username}`)
+    // Using working API endpoint
+    const response = await fetch(`https://www.duolingo.com/2017-06-30/users?username=${username}`)
     const data = await response.json()
     
-    return {
-      streak: data.streak || 0,
-      totalXP: data.totalXp || 12450,
-      languages: data.languages || [{ name: 'French', level: 'A2' }]
+    if (data.users && data.users.length > 0) {
+      const user = data.users[0]
+      
+      // Find French course
+      const frenchCourse = user.courses?.find((c: any) => c.learningLanguage === 'fr')
+      
+      return {
+        streak: user.streak || 0,
+        totalXP: user.totalXp || frenchCourse?.xp || 0,
+        languages: frenchCourse ? [{ name: 'French', xp: frenchCourse.xp }] : []
+      }
     }
+    
+    throw new Error('User not found')
   } catch (error) {
     // Return default data if API fails
     return {
       streak: 0,
-      totalXP: 12450, 
-      languages: [{ name: 'French', level: 'A2' }]
+      totalXP: 0, 
+      languages: [{ name: 'French', xp: 0 }]
     }
   }
 }
