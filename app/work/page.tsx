@@ -14,6 +14,7 @@ import { Breadcrumb } from "@/components/Breadcrumb"
 import { NewsletterCompact } from "@/components/NewsletterVariants"
 import { WorkTrackers } from "@/components/CustomTrackers"
 import { WorkActivityFeed } from "@/components/ActivityFeed"
+import { WorkMetrics } from "@/components/UnifiedLifeFeed"
 
 const blogPosts: BlogPost[] = [
   {
@@ -539,6 +540,20 @@ export default function BlogPage() {
           )}
         </motion.div>
 
+        {/* Work Metrics */}
+        <motion.div
+          className="mt-16 mx-auto max-w-4xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+        >
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+            <div className="w-1 h-6 bg-gradient-to-b from-primary to-purple-500 rounded-full" />
+            Professional Impact
+          </h2>
+          <WorkMetrics />
+        </motion.div>
+
         {/* Work Trackers */}
         <motion.div
           className="mt-16 mx-auto max-w-4xl"
@@ -555,7 +570,7 @@ export default function BlogPage() {
 
         {/* Work Activity Feed */}
         <motion.div
-          className="mt-16 mx-auto max-w-4xl"
+          className="mt-16 mx-auto max-w-4xl mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.9 }}
@@ -564,7 +579,9 @@ export default function BlogPage() {
             <div className="w-1 h-6 bg-gradient-to-b from-primary to-purple-500 rounded-full" />
             Activity Timeline
           </h2>
-          <WorkActivityFeed />
+          <div className="relative">
+            <WorkActivityFeed />
+          </div>
         </motion.div>
       </div>
     </div>
