@@ -1,0 +1,301 @@
+/* Mobile Optimizations */
+
+/* Improve tap targets for mobile */
+@media (max-width: 768px) {
+  /* Ensure all interactive elements meet minimum tap target size */
+  button, a, input, textarea, select, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve text readability on mobile */
+  body {
+    font-size: 16px; /* Prevent zoom on iOS */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Better spacing for mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Fix horizontal scrolling issues */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Optimize cards for mobile */
+  .card, .liquid-glass {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  /* Stack grid layouts on mobile */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  /* Optimize timeline for mobile */
+  .timeline-item {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  /* Fix widget grid for mobile */
+  .widget-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  /* Optimize aurora backgrounds for performance */
+  .aurora-bg, .aurora-bg-work, .aurora-bg-life {
+    animation-duration: 20s; /* Slower animation for better performance */
+    background-size: 200% 200%; /* Smaller size for mobile */
+  }
+
+  /* Hide complex animations on mobile for performance */
+  .animate-float-faster,
+  .animate-float-faster-delay,
+  .animate-float-faster-delay-2,
+  .animate-float-faster-delay-3,
+  .animate-float-faster-delay-4,
+  .animate-float-faster-delay-5,
+  .animate-float-faster-delay-6,
+  .animate-float-faster-delay-7 {
+    animation: none;
+  }
+
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Fix footer layout on mobile */
+  footer .flex {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Optimize forms for mobile */
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 12px;
+    width: 100%;
+  }
+
+  /* Better modal/dialog display on mobile */
+  .modal, .dialog {
+    width: calc(100vw - 2rem);
+    max-height: calc(100vh - 4rem);
+    margin: 1rem;
+  }
+
+  /* Optimize table display for mobile */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Fix command palette for mobile */
+  [cmdk-dialog] {
+    max-width: calc(100vw - 2rem) !important;
+    margin: 1rem !important;
+  }
+
+  /* Optimize skill bars for mobile */
+  .skill-bar {
+    font-size: 0.875rem;
+  }
+
+  /* Fix text truncation on mobile */
+  .truncate {
+    max-width: calc(100vw - 3rem);
+  }
+
+  /* Better spacing for hero sections */
+  .hero-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Optimize blog post layout */
+  .prose {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .prose h1 {
+    font-size: 1.875rem;
+  }
+
+  .prose h2 {
+    font-size: 1.5rem;
+  }
+
+  .prose h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Fix code blocks on mobile */
+  pre {
+    overflow-x: auto;
+    font-size: 0.875rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Optimize project cards */
+  .project-card {
+    padding: 1rem;
+  }
+
+  /* Better touch feedback */
+  button:active, a:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+
+  /* Fix sticky header on mobile */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  main {
+    padding-top: 4rem; /* Account for fixed header */
+  }
+
+  /* Optimize loading states */
+  .skeleton {
+    animation-duration: 2s;
+  }
+
+  /* Better scroll behavior */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix Life page stats on mobile */
+  .life-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  /* Fix Work timeline on mobile */
+  .work-timeline {
+    padding: 0.5rem;
+  }
+
+  /* Optimize contact form */
+  .contact-form {
+    padding: 1rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 380px) {
+  /* Single column for widgets on very small screens */
+  .widget-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Smaller text for space efficiency */
+  body {
+    font-size: 14px;
+  }
+
+  /* Reduce padding on very small screens */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Stack navigation items */
+  .nav-items {
+    flex-direction: column;
+  }
+}
+
+/* Landscape orientation optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Reduce header height in landscape */
+  header {
+    height: 3rem;
+  }
+
+  /* Adjust hero sections for landscape */
+  .hero-section {
+    min-height: calc(100vh - 3rem);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Hide less important elements in landscape */
+  .decorative-element {
+    display: none;
+  }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix iOS rubber band scrolling */
+  body {
+    position: fixed;
+    width: 100%;
+  }
+
+  /* Fix iOS form zoom */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Fix iOS tap highlight */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Android-specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* Fix Android font rendering */
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Dark mode mobile optimizations */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+  /* Improve contrast on mobile dark mode */
+  .card {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Better dark mode readability */
+  .text-muted-foreground {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  /* Disable all animations on mobile when requested */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

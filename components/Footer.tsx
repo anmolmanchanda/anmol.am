@@ -11,8 +11,8 @@ export function Footer() {
   return (
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-6">
-          <div className="flex justify-between items-start">
+        <div className="py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-6 sm:gap-4 sm:items-start">
             {/* Analytics - far left */}
             <div>
               <VisitorCounter />

@@ -21,30 +21,30 @@ export function Hero() {
         <div className="absolute top-[60%] right-[5%] w-1 h-1 bg-violet-500 rounded-full animate-pulse opacity-30" style={{ animationDelay: '0.5s' }} />
       </div>
       
-      {/* Enhanced floating tech bubbles - spread across entire viewport */}
-      <ParallaxElement speed="slow" className="absolute inset-0 pointer-events-none">
+      {/* Enhanced floating tech bubbles - responsive and mobile-optimized */}
+      <ParallaxElement speed="slow" className="absolute inset-0 pointer-events-none hidden sm:block">
         <div className="absolute top-[8%] left-[3%] animate-float-faster">
-          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+          <div className="glass-morphism cyber-border px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
             <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent font-semibold">AWS Expert</span>
           </div>
         </div>
         <div className="absolute top-[12%] right-[8%] animate-float-faster-delay">
-          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+          <div className="glass-morphism cyber-border px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
             <span className="bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 bg-clip-text text-transparent font-semibold">Claude AI</span>
           </div>
         </div>
-        <div className="absolute top-[25%] left-[2%] animate-float-faster-delay-2">
-          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+        <div className="absolute top-[25%] left-[2%] animate-float-faster-delay-2 hidden md:block">
+          <div className="glass-morphism cyber-border px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
             <span className="bg-gradient-to-r from-green-600 via-emerald-500 to-teal-500 bg-clip-text text-transparent font-semibold">UN-Habitat</span>
           </div>
         </div>
-        <div className="absolute top-[35%] right-[5%] animate-float-faster-delay-3">
-          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+        <div className="absolute top-[35%] right-[5%] animate-float-faster-delay-3 hidden lg:block">
+          <div className="glass-morphism cyber-border px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
             <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-purple-500 bg-clip-text text-transparent font-semibold">AI-Assisted</span>
           </div>
         </div>
-        <div className="absolute top-[45%] left-[8%] animate-float-faster-delay-4">
-          <div className="glass-morphism cyber-border px-4 py-2 rounded-full text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
+        <div className="absolute top-[45%] left-[8%] animate-float-faster-delay-4 hidden lg:block">
+          <div className="glass-morphism cyber-border px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
             <span className="bg-gradient-to-r from-cyan-600 via-sky-500 to-blue-500 bg-clip-text text-transparent font-semibold">Data Pipeline</span>
           </div>
         </div>
