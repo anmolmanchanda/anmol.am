@@ -130,7 +130,7 @@ export function Hero() {
                   </Link>
                 </MagneticButton>
                 
-                <NewsletterCTA className="w-full sm:w-auto sm:min-w-[200px] min-h-[44px]" />
+                <NewsletterCTA />
               </div>
             </div>
           </div>
