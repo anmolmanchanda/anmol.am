@@ -190,30 +190,42 @@ export async function fetchLetterboxdStats(username: string = 'anmolmanchanda') 
     const recentFilms = items.slice(0, 5).map(item => {
       const titleMatch = item.match(/<title>([^<]+)<\/title>/)
       const linkMatch = item.match(/<link>([^<]+)<\/link>/)
-      const descMatch = item.match(/<description><!\[CDATA\[([^\]]+)\]\]><\/description>/)
+      const dateMatch = item.match(/<letterboxd:watchedDate>([^<]+)<\/letterboxd:watchedDate>/)
+      const ratingMatch = item.match(/<letterboxd:memberRating>([^<]+)<\/letterboxd:memberRating>/)
       
-      // Extract rating from title (e.g., "Film Title, 2024 - ★★★★")
+      // Extract rating from title or rating field
       const title = titleMatch ? titleMatch[1] : ''
-      const ratingMatch = title ? title.match(/★+/) : null
-      const rating = ratingMatch ? ratingMatch[0].length : 0
+      const rating = ratingMatch?.[1] ? Math.round(parseFloat(ratingMatch[1])) : 0
       
       // Parse film title - handle the split safely
-      const filmTitle = title ? (title.split(' - ')[0] || '').trim() : 'Unknown Film'
+      const filmTitle = title ? (title.split(',')[0] || '').trim() : 'Unknown Film'
       
       return {
         title: filmTitle || 'Unknown Film',
         rating,
         link: linkMatch?.[1] || '',
-        watched: descMatch?.[1]?.includes('Watched') || false
+        date: dateMatch?.[1] || null,
+        watched: true
       }
     })
     
+    // Count films from current year
+    const currentYear = new Date().getFullYear()
+    const filmsThisYear = items.filter(item => {
+      const dateMatch = item.match(/<letterboxd:watchedDate>([^<]+)<\/letterboxd:watchedDate>/)
+      if (dateMatch && dateMatch[1]) {
+        const year = new Date(dateMatch[1]).getFullYear()
+        return year === currentYear
+      }
+      return false
+    }).length
+    
     // Calculate stats
-    const totalFilms = items.length
     const avgRating = recentFilms.reduce((sum, f) => sum + f.rating, 0) / recentFilms.length || 0
     
     return {
-      filmsThisYear: totalFilms,
+      filmsThisYear: filmsThisYear || items.length, // Total if no current year films
+      totalFilms: items.length,
       lastWatched: recentFilms[0]?.title || 'No recent films',
       avgRating: avgRating.toFixed(1),
       watchlist: 23, // This needs manual update
@@ -223,9 +235,10 @@ export async function fetchLetterboxdStats(username: string = 'anmolmanchanda') 
   } catch (error) {
     // Fallback data if RSS fails
     return {
-      filmsThisYear: 47,
-      lastWatched: 'Oppenheimer',
-      avgRating: 4.1,
+      filmsThisYear: 0,
+      totalFilms: 8,
+      lastWatched: 'Spirited Away',
+      avgRating: 4.3,
       watchlist: 23,
       recentFilms: [],
       favoriteFilms: []
@@ -272,7 +285,9 @@ export async function fetchAllStats() {
       frenchLevel: duolingo.languages[0] ? 'A2' : 'Beginner', // Level estimation based on XP
       booksThisYear: goodreads.booksThisYear,
       currentlyReading: goodreads.currentlyReading,
-      filmsWatched: letterboxd.filmsThisYear,
+      filmsThisYear: letterboxd.filmsThisYear,
+      totalFilms: letterboxd.totalFilms,
+      avgRating: letterboxd.avgRating,
       poemsWritten: blog.totalPoems
     }
   }

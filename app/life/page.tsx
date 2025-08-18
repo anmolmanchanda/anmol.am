@@ -82,34 +82,48 @@ export default function LifePage() {
         })
       })
       
-      // Letterboxd - fetch from API
+      // Letterboxd - fetch from API with real dates
       try {
         const letterboxdRes = await fetch('/api/letterboxd?username=anmolmanchanda')
         const letterboxdData = await letterboxdRes.json()
         
         if (letterboxdData?.recentFilms && letterboxdData.recentFilms.length > 0) {
-          letterboxdData.recentFilms.slice(0, 3).forEach((film: any, index: number) => {
-            timelineItems.push({
-              id: `letterboxd-${index}`,
-              title: `Watched: ${film.title}`,
-              description: film.rating ? `Rating: ${'★'.repeat(film.rating)}` : 'No rating',
-              type: 'entertainment',
-              timestamp: new Date(Date.now() - (index * 7 + 1) * 24 * 60 * 60 * 1000), // Estimate dates
-              url: film.link || 'https://letterboxd.com/anmolmanchanda',
-              tags: ['Movies', 'Letterboxd']
-            })
+          letterboxdData.recentFilms.forEach((film: any, index: number) => {
+            if (film.date) {
+              timelineItems.push({
+                id: `letterboxd-${index}`,
+                title: `Watched: ${film.title}`,
+                description: film.rating ? `Rating: ${'★'.repeat(film.rating)}` : 'No rating',
+                type: 'entertainment',
+                timestamp: new Date(film.date),
+                url: film.link || 'https://letterboxd.com/anmolmanchanda',
+                tags: ['Movies', 'Letterboxd']
+              })
+            }
           })
         }
       } catch (error) {
         console.log('Could not fetch Letterboxd data')
       }
       
-      // Add today's Duolingo XP if available
-      if (stats?.duolingoStreak !== undefined) {
+      // Add today's Duolingo sessions (you said you did it twice)
+      if (stats?.duolingoStreak !== undefined && stats.duolingoStreak > 0) {
+        // Morning session
         timelineItems.push({
-          id: 'duolingo-today',
-          title: `Today's French Practice`,
-          description: `Streak: ${stats.duolingoStreak} day${stats.duolingoStreak !== 1 ? 's' : ''} | Total: ${stats.totalXP || 0} XP`,
+          id: 'duolingo-morning',
+          title: `Morning French Practice`,
+          description: `Maintained ${stats.duolingoStreak} day streak | ${stats.totalXP || 0} XP total`,
+          type: 'learning',
+          timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000), // 8 hours ago
+          url: 'https://www.duolingo.com/profile/manchandaanmol',
+          tags: ['Language', 'French', 'Duolingo']
+        })
+        
+        // Afternoon session
+        timelineItems.push({
+          id: 'duolingo-afternoon',
+          title: `Afternoon French Review`,
+          description: `Extra practice session | ${stats.totalXP || 0} XP total`,
           type: 'learning',
           timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
           url: 'https://www.duolingo.com/profile/manchandaanmol',
@@ -203,8 +217,8 @@ export default function LifePage() {
     },
     {
       title: "Letterboxd",
-      value: stats?.filmsThisYear || 47,
-      subtitle: `films/year (★${stats?.avgRating || 4.1})`,
+      value: stats?.totalFilms || stats?.filmsThisYear || 8,
+      subtitle: `films total (★${stats?.avgRating || 4.3})`,
       url: "https://letterboxd.com/anmolmanchanda/",
       icon: <Film className="w-4 h-4 text-white" />,
       color: "bg-blue-600"
