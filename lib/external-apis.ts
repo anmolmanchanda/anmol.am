@@ -28,7 +28,7 @@ export interface ExternalAPIKeys {
   }
 }
 
-// GitHub Stats
+// GitHub Stats with better LOC estimation
 export async function fetchGitHubStats(username: string = 'anmolmanchanda') {
   try {
     const [userRes, reposRes] = await Promise.all([
@@ -42,15 +42,28 @@ export async function fetchGitHubStats(username: string = 'anmolmanchanda') {
     const totalStars = repos.reduce((acc: number, repo: any) => acc + repo.stargazers_count, 0)
     const totalForks = repos.reduce((acc: number, repo: any) => acc + repo.forks_count, 0)
     
-    // Estimate lines of code (rough calculation)
-    const estimatedLOC = repos.length * 5000 // Average 5k lines per repo
+    // Better LOC estimation based on repo size and language
+    let estimatedLOC = 0
+    repos.forEach((repo: any) => {
+      // Estimate based on size (KB) and language
+      const sizeInKB = repo.size || 0
+      let multiplier = 10 // Default: ~10 lines per KB
+      
+      // Adjust multiplier based on primary language
+      if (repo.language === 'JavaScript' || repo.language === 'TypeScript') multiplier = 12
+      else if (repo.language === 'Python') multiplier = 15
+      else if (repo.language === 'Java' || repo.language === 'C++') multiplier = 8
+      else if (repo.language === 'HTML' || repo.language === 'CSS') multiplier = 20
+      
+      estimatedLOC += sizeInKB * multiplier
+    })
     
     return {
       publicRepos: user.public_repos,
       followers: user.followers,
       totalStars,
       totalForks,
-      estimatedLOC,
+      estimatedLOC: Math.round(estimatedLOC),
       contributions: user.contributions || 0
     }
   } catch (error) {

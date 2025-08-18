@@ -28,7 +28,11 @@ const STREAM_CONFIG = {
   }
 }
 
-export function Newsletter() {
+interface NewsletterProps {
+  compact?: boolean
+}
+
+export function Newsletter({ compact = false }: NewsletterProps) {
   const [email, setEmail] = useState("")
   const [selectedStreams, setSelectedStreams] = useState<ContentStream[]>(['work'])
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
@@ -92,6 +96,40 @@ export function Newsletter() {
         setMessage("")
       }, 5000)
     }
+  }
+
+  if (compact) {
+    return (
+      <div className="max-w-xs">
+        <h4 className="text-sm font-semibold mb-2">Newsletter</h4>
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your email"
+            required
+            disabled={status === "loading" || status === "success"}
+            className="flex-1 px-3 py-1 text-sm bg-background border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50"
+          />
+          <button
+            type="submit"
+            disabled={status === "loading" || status === "success" || selectedStreams.length === 0}
+            className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50 transition-colors"
+          >
+            {status === "loading" ? "..." : "Subscribe"}
+          </button>
+        </form>
+        {message && (
+          <p className={cn(
+            "text-xs mt-1",
+            status === "success" ? "text-green-500" : "text-red-500"
+          )}>
+            {message}
+          </p>
+        )}
+      </div>
+    )
   }
 
   return (

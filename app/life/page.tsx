@@ -221,8 +221,13 @@ export default function LifePage() {
   }
 
   return (
-    <div className="py-24 sm:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden life-gradient-bg">
+      {/* Joyful, bright gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-500 opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-yellow-400/20 via-transparent to-cyan-400/20 animate-pulse" />
+      <div className="absolute inset-0 ai-grid opacity-20" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mx-auto max-w-4xl">
           {/* Header */}
           <div className="text-center mb-8">

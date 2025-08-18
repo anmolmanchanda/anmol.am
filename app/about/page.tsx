@@ -3,7 +3,6 @@ import Image from "next/image"
 import { Building2, Smartphone, ChefHat, Users, GraduationCap, Code2, Database, Zap } from "lucide-react"
 import { Experience } from "@/types"
 import { TimelineItem } from "@/components/InteractiveEffects"
-import { Newsletter } from "@/components/Newsletter"
 
 export const metadata: Metadata = {
   title: "About",
@@ -367,16 +366,6 @@ export default function AboutPage() {
               </div>
             </section>
 
-            {/* Newsletter Section */}
-            <section className="relative z-10">
-              <div className="liquid-glass rounded-2xl border backdrop-blur-md p-8 shadow-xl cyber-border">
-                <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
-                <p className="text-muted-foreground mb-6">
-                  Get weekly insights on AI-assisted development, technical architecture, and lessons learned from building enterprise solutions at scale.
-                </p>
-                <Newsletter />
-              </div>
-            </section>
 
             <section className="relative z-10">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Career Goals & Services</h2>
