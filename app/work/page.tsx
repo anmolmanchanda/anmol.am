@@ -246,7 +246,7 @@ export default function WorkPage() {
               <div className="relative">
                 <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg ring-4 ring-indigo-500/30">
                   <Image
-                    src="/images/work_avatar.jpeg"
+                    src="/images/work_avatar.JPG"
                     alt="Professional Avatar"
                     width={96}
                     height={96}
