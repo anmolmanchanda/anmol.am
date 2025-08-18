@@ -92,16 +92,16 @@ export async function fetchDuolingoStats(username: string = 'manchandaanmol') {
     const data = await response.json()
     
     return {
-      streak: data.streak || 187,
-      totalXP: data.totalXp || 28450,
-      languages: data.languages || [{ name: 'French', level: 'B2' }]
+      streak: data.streak || 0,
+      totalXP: data.totalXp || 12450,
+      languages: data.languages || [{ name: 'French', level: 'A2' }]
     }
   } catch (error) {
-    // Return default data if API fails - updated to real values
+    // Return default data if API fails
     return {
-      streak: 187,
-      totalXP: 28450, 
-      languages: [{ name: 'French', level: 'B2' }]
+      streak: 0,
+      totalXP: 12450, 
+      languages: [{ name: 'French', level: 'A2' }]
     }
   }
 }
