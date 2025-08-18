@@ -50,16 +50,16 @@ export function CommandPalette() {
       title: 'Life',
       description: 'Personal interests and hobbies',
       icon: <Heart className="w-4 h-4" />,
-      action: () => router.push('/personal'),
+      action: () => router.push('/life'),
       keywords: ['personal', 'life', 'hobbies', 'interests', 'books', 'music', 'fitness']
     },
     {
-      id: 'blog',
-      title: 'Blog',
-      description: 'Read my thoughts and articles',
+      id: 'work',
+      title: 'Work',
+      description: 'Read my technical articles and insights',
       icon: <FileText className="w-4 h-4" />,
-      action: () => router.push('/blog'),
-      keywords: ['blog', 'articles', 'writing', 'thoughts', 'posts']
+      action: () => router.push('/work'),
+      keywords: ['work', 'blog', 'articles', 'writing', 'technical', 'posts']
     },
     {
       id: 'contact',
@@ -284,7 +284,7 @@ export function CommandPaletteTrigger() {
         })
         document.dispatchEvent(event)
       }}
-      className="hidden md:flex items-center gap-2 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md border border-border/50 hover:border-border"
+      className="hidden md:inline-flex items-center gap-2 px-3 py-2 h-10 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md border border-border/50 hover:border-border"
     >
       <Search className="w-4 h-4" />
       <span>Search...</span>

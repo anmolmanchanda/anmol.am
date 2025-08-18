@@ -26,6 +26,7 @@ export interface BlogPost {
   tags: string[]
   readingTime: number
   slug: string
+  category: 'technical' | 'personal' | 'thoughts'
   image?: string
   gradient?: string
   icon?: React.ReactNode

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ChevronRight, Home } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 interface BreadcrumbProps {
   className?: string
@@ -30,36 +31,47 @@ export function Breadcrumb({ className, customLabels = {} }: BreadcrumbProps) {
   })
   
   return (
-    <nav
+    <motion.nav
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
       aria-label="Breadcrumb"
-      className={cn("flex items-center space-x-2 text-sm text-muted-foreground py-4", className)}
+      className={cn("inline-block", className)}
     >
-      <Link
-        href="/"
-        className="flex items-center hover:text-foreground transition-colors"
-        aria-label="Home"
-      >
-        <Home className="w-4 h-4" />
-      </Link>
-      
-      {breadcrumbs.map((crumb) => (
-        <div key={crumb.path} className="flex items-center space-x-2">
-          <ChevronRight className="w-4 h-4" />
-          {crumb.isLast ? (
-            <span className="text-foreground font-medium" aria-current="page">
-              {crumb.label}
-            </span>
-          ) : (
-            <Link
-              href={crumb.path}
-              className="hover:text-foreground transition-colors"
-            >
-              {crumb.label}
-            </Link>
-          )}
-        </div>
-      ))}
-    </nav>
+      <div className="glass-morphism cyber-border px-5 py-3 rounded-full border backdrop-blur-md inline-flex items-center gap-3 text-base">
+        <Link
+          href="/"
+          className="inline-flex items-center hover:text-primary transition-colors group"
+          aria-label="Home"
+        >
+          <Home className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+        </Link>
+        
+        {breadcrumbs.map((crumb, index) => (
+          <motion.div 
+            key={crumb.path} 
+            className="inline-flex items-center gap-3"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <ChevronRight className="w-4 h-4 text-muted-foreground/50" />
+            {crumb.isLast ? (
+              <span className="font-semibold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent whitespace-nowrap" aria-current="page">
+                {crumb.label}
+              </span>
+            ) : (
+              <Link
+                href={crumb.path}
+                className="text-muted-foreground hover:text-primary transition-colors font-medium whitespace-nowrap"
+              >
+                {crumb.label}
+              </Link>
+            )}
+          </motion.div>
+        ))}
+      </div>
+    </motion.nav>
   )
 }
 

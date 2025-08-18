@@ -366,6 +366,7 @@ export default function AboutPage() {
               </div>
             </section>
 
+
             <section className="relative z-10">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Career Goals & Services</h2>
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">

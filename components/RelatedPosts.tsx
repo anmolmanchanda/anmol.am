@@ -57,7 +57,7 @@ export function RelatedPosts({ currentPost, allPosts, maxPosts = 3 }: RelatedPos
 
 function PostCard({ post }: { post: BlogPost }) {
   return (
-    <Link href={`/blog/${post.slug}`}>
+    <Link href={`/work/${post.slug}`}>
       <article className="group h-full flex flex-col rounded-xl border bg-card hover:shadow-lg transition-all duration-300">
         {post.image && (
           <div className="aspect-video rounded-t-xl overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10">

@@ -50,3 +50,7 @@ Thumbs.db
 
 # Resume (add your actual resume later)
 /public/resume.pdf
+
+# Local data storage
+/data/
+tracker-data.json

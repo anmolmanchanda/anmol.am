@@ -5,6 +5,10 @@ import { ArrowLeft, Calendar, Clock, Share2, BookOpen } from "lucide-react"
 import { ViewTracker } from "@/components/ViewTracker"
 import { BlogPost } from "@/types"
 import { formatDate } from "@/lib/utils"
+import { TableOfContents } from "@/components/TableOfContents"
+import { RelatedPosts } from "@/components/RelatedPosts"
+import { Newsletter } from "@/components/Newsletter"
+import { Breadcrumb } from "@/components/Breadcrumb"
 import fs from 'fs'
 import path from 'path'
 import { remark } from 'remark'
@@ -20,6 +24,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["Next.js", "React", "Web Development", "Scalability", "Enterprise"],
     readingTime: 12,
     slug: "building-scalable-web-apps-nextjs",
+    category: 'technical' as const,
     image: "/images/blog/nextjs-scalable.svg",
     gradient: "from-blue-600 via-purple-600 to-blue-800",
     views: 0,
@@ -33,6 +38,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["TypeScript", "JavaScript", "Best Practices", "Developer Experience", "Type Safety"],
     readingTime: 15,
     slug: "power-of-typescript",
+    category: 'technical' as const,
     image: "/images/blog/typescript-power.svg",
     gradient: "from-blue-500 via-cyan-500 to-teal-600",
     views: 0,
@@ -46,6 +52,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["React", "State Management", "Frontend", "Redux", "Zustand", "React Query"],
     readingTime: 18,
     slug: "mastering-state-management-react",
+    category: 'technical' as const,
     image: "/images/blog/react-state.svg",
     gradient: "from-purple-600 via-pink-600 to-red-600",
     views: 0,
@@ -59,6 +66,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["WebSockets", "Real-time", "Node.js", "Socket.io", "Enterprise"],
     readingTime: 18,
     slug: "building-realtime-apps-websockets",
+    category: 'technical' as const,
     image: "/images/blog/websockets-realtime.svg",
     gradient: "from-green-500 via-emerald-500 to-teal-600",
     views: 0,
@@ -72,6 +80,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["Performance", "Optimization", "Web Development", "Core Web Vitals", "Enterprise"],
     readingTime: 22,
     slug: "performance-optimization-techniques",
+    category: 'technical' as const,
     image: "/images/blog/performance-optimization.svg",
     gradient: "from-orange-500 via-red-500 to-pink-600",
     views: 0,
@@ -85,6 +94,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["Docker", "DevOps", "Containers", "Deployment", "Infrastructure"],
     readingTime: 12,
     slug: "getting-started-docker",
+    category: 'technical' as const,
     image: "/images/blog/docker-containers.svg",
     gradient: "from-indigo-500 via-purple-500 to-pink-500",
     views: 0,
@@ -98,6 +108,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["AI", "Swift", "macOS", "Native Development", "Life Management", "Claude AI"],
     readingTime: 25,
     slug: "ai-assisted-macos-life-manager",
+    category: 'technical' as const,
     image: "/images/blog/ai-macos-app.svg",
     gradient: "from-violet-600 via-purple-600 to-indigo-600",
     views: 0,
@@ -111,6 +122,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["AWS", "Big Data", "Infrastructure", "UN-Habitat", "Data Pipeline", "Enterprise"],
     readingTime: 30,
     slug: "building-tb-scale-data-infrastructure-un",
+    category: 'technical' as const,
     image: "/images/blog/aws-infrastructure.svg",
     gradient: "from-orange-500 via-red-500 to-pink-600",
     views: 0,
@@ -124,6 +136,7 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     tags: ["N8N", "Automation", "Workflows", "UN-Habitat", "Enterprise", "DevOps"],
     readingTime: 25,
     slug: "enterprise-automation-n8n-workflows",
+    category: 'technical' as const,
     image: "/images/blog/n8n-automation.svg",
     gradient: "from-cyan-500 via-teal-500 to-emerald-600",
     views: 0,
@@ -213,6 +226,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       
       <article className="py-24 sm:py-32 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumb Navigation */}
+          <div className="mx-auto max-w-4xl mb-8">
+            <Breadcrumb 
+              customLabels={{
+                "/blog": "Blog",
+                [`/blog/${slug}`]: postMeta.title
+              }}
+            />
+          </div>
+
           <div className="mx-auto max-w-4xl">
             {/* Navigation */}
             <Link
@@ -276,10 +299,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             </header>
 
-            {/* Article Content */}
-            <div className="liquid-glass rounded-2xl border backdrop-blur-md p-8">
-              <div 
-                className="prose prose-xs max-w-none dark:prose-invert [&>*]:text-[0.7rem]
+            {/* Article Content with Table of Contents */}
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+              {/* Table of Contents - Sticky Sidebar */}
+              <aside className="hidden xl:block xl:col-span-4">
+                <div className="sticky top-24">
+                  <TableOfContents content={content} />
+                </div>
+              </aside>
+
+              {/* Main Content */}
+              <div className="xl:col-span-8 liquid-glass rounded-2xl border backdrop-blur-md p-8">
+                <div 
+                  id="article-content"
+                  className="prose prose-xs max-w-none dark:prose-invert [&>*]:text-[0.7rem]
                           prose-headings:bg-gradient-to-r prose-headings:from-primary prose-headings:via-purple-500 prose-headings:to-cyan-500 prose-headings:bg-clip-text prose-headings:text-transparent prose-headings:font-bold prose-headings:mb-12 prose-headings:mt-16
                           prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-h4:text-base
                           prose-p:text-[0.7rem] prose-p:leading-[1.9] prose-p:mb-8 prose-p:text-muted-foreground prose-p:break-words
@@ -297,8 +330,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                           prose-th:bg-secondary prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-th:text-[0.7rem] prose-th:border-b-2 prose-th:border-border
                           prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-border prose-td:text-[0.7rem]
                           prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-12 prose-img:mx-auto prose-img:border-2 prose-img:border-border prose-img:max-w-full"
-                dangerouslySetInnerHTML={{ __html: content }} 
+                  dangerouslySetInnerHTML={{ __html: content }} 
+                />
+              </div>
+            </div>
+
+            {/* Related Posts Section */}
+            <div className="mt-12">
+              <RelatedPosts 
+                currentPost={{
+                  ...postMeta,
+                  content: content
+                }}
+                allPosts={Object.values(blogPostsMetadata).map(post => ({
+                  ...post,
+                  content: ""
+                }))}
               />
+            </div>
+
+            {/* Newsletter Section */}
+            <div className="mt-12">
+              <Newsletter />
             </div>
 
             {/* Article Footer */}

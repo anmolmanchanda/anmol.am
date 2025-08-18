@@ -41,7 +41,7 @@ export function ThemeToggle() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center justify-center rounded-md p-2 text-sm font-medium transition-all duration-300 hover:bg-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        className="inline-flex items-center justify-center rounded-md w-10 h-10 text-sm font-medium transition-all duration-300 hover:bg-secondary hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         aria-label="Toggle theme"
       >
         {theme === "dark" ? (
