@@ -213,7 +213,7 @@ export default function WorkPage() {
   }
 
   return (
-    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden aurora-bg-work">
+    <div className="relative min-h-screen py-24 sm:py-32 overflow-hidden aurora-bg">
       {/* Professional animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-indigo-950/85 to-slate-900/90" />
       <div className="absolute inset-0 bg-gradient-to-tl from-blue-900/20 via-transparent to-purple-900/20 animate-pulse" />

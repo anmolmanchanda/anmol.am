@@ -70,9 +70,6 @@ const experiences: Experience[] = [
 export default function AboutPage() {
   return (
     <div className="py-24 sm:py-32 aurora-bg relative overflow-hidden">
-      {/* Aurora background layers - significantly darker */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/85 via-primary/2 to-accent/3" />
-      <div className="absolute inset-0 bg-gradient-to-tl from-violet-500/3 via-transparent to-cyan-500/3 animate-pulse" />
       <div className="absolute inset-0 ai-grid" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">

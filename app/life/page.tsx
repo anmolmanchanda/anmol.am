@@ -196,8 +196,8 @@ export default function LifePage() {
     },
     {
       title: "Letterboxd",
-      value: stats?.filmsWatched || 47,
-      subtitle: "films/year",
+      value: stats?.filmsThisYear || 47,
+      subtitle: `films/year (★${stats?.avgRating || 4.1})`,
       url: "https://letterboxd.com/anmolmanchanda/",
       icon: <Film className="w-4 h-4 text-white" />,
       color: "bg-blue-600"
