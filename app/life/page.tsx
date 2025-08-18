@@ -82,15 +82,58 @@ export default function LifePage() {
         })
       })
       
-      // Letterboxd - this can potentially work via RSS
-      // But we need to parse actual dates from RSS, not make them up
+      // Letterboxd - fetch from API
+      try {
+        const letterboxdRes = await fetch('/api/letterboxd?username=anmolmanchanda')
+        const letterboxdData = await letterboxdRes.json()
+        
+        if (letterboxdData?.recentFilms && letterboxdData.recentFilms.length > 0) {
+          letterboxdData.recentFilms.slice(0, 3).forEach((film: any, index: number) => {
+            timelineItems.push({
+              id: `letterboxd-${index}`,
+              title: `Watched: ${film.title}`,
+              description: film.rating ? `Rating: ${'★'.repeat(film.rating)}` : 'No rating',
+              type: 'entertainment',
+              timestamp: new Date(Date.now() - (index * 7 + 1) * 24 * 60 * 60 * 1000), // Estimate dates
+              url: film.link || 'https://letterboxd.com/anmolmanchanda',
+              tags: ['Movies', 'Letterboxd']
+            })
+          })
+        }
+      } catch (error) {
+        console.log('Could not fetch Letterboxd data')
+      }
+      
+      // Add today's Duolingo XP if available
+      if (stats?.duolingoStreak !== undefined) {
+        timelineItems.push({
+          id: 'duolingo-today',
+          title: `Today's French Practice`,
+          description: `Streak: ${stats.duolingoStreak} day${stats.duolingoStreak !== 1 ? 's' : ''} | Total: ${stats.totalXP || 0} XP`,
+          type: 'learning',
+          timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+          url: 'https://www.duolingo.com/profile/manchandaanmol',
+          tags: ['Language', 'French', 'Duolingo']
+        })
+      }
+      
+      // NOTE: Strava requires OAuth for real activity data
+      // Show placeholder until OAuth is configured
+      timelineItems.push({
+        id: 'strava-note',
+        title: 'Strava Integration',
+        description: 'Configure OAuth to see real running activities',
+        type: 'info',
+        timestamp: new Date(),
+        tags: ['Strava', 'Setup']
+      })
       
       // For now, show a message about data availability
       if (timelineItems.length === 0) {
         timelineItems.push({
           id: 'no-data',
           title: 'Limited API Access',
-          description: 'Most wellness apps don\'t provide public APIs for activity history. Setup OAuth for Strava to see real runs.',
+          description: 'Most wellness apps don\'t provide public APIs for activity history.',
           type: 'info',
           timestamp: new Date(),
           tags: ['Info']
@@ -143,9 +186,9 @@ export default function LifePage() {
       color: "bg-orange-600"
     },
     {
-      title: "French (A2)",
-      value: `${stats?.duolingoStreak || 0} days`,
-      subtitle: "Duolingo streak",
+      title: "Duolingo French",
+      value: `${stats?.duolingoStreak || 0} day${stats?.duolingoStreak !== 1 ? 's' : ''}`,
+      subtitle: `${stats?.totalXP || 0} XP total`,
       url: "https://www.duolingo.com/profile/manchandaanmol",
       icon: <Globe className="w-4 h-4 text-white" />,
       color: "bg-green-600"

@@ -856,7 +856,7 @@ select {
     rgba(245, 101, 101, 0.1) 100%
   );
   background-size: 400% 400%;
-  animation: holographic-shift 12s ease-in-out infinite;
+  animation: holographic-shift 8s ease-in-out infinite;
 }
 
 /* Work page aurora - professional, much lighter with fast animation */
