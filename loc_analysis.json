@@ -1,0 +1,110 @@
+{
+  "total_loc": 7722023,
+  "confidence": 0.7179999999999996,
+  "confidence_percent": "71.8%",
+  "total_repos": 25,
+  "language_breakdown": {
+    "TypeScript": 4664887,
+    "Makefile": 2184625,
+    "JavaScript": 419143,
+    "HTML": 174510,
+    "Java": 141370,
+    "Python": 72652,
+    "Swift": 61510,
+    "Kotlin": 2750,
+    "C#": 576
+  },
+  "top_repos": [
+    {
+      "name": "CityGenerator",
+      "language": "TypeScript",
+      "size_kb": 165053,
+      "estimated_loc": 4126325,
+      "confidence": 0.75,
+      "is_fork": false,
+      "last_pushed": "2025-07-15T02:27:37Z"
+    },
+    {
+      "name": "LifeManager",
+      "language": "Makefile",
+      "size_kb": 87385,
+      "estimated_loc": 2184625,
+      "confidence": 0.8,
+      "is_fork": false,
+      "last_pushed": "2025-08-18T22:46:36Z"
+    },
+    {
+      "name": "anmol.am",
+      "language": "TypeScript",
+      "size_kb": 21482,
+      "estimated_loc": 537050,
+      "confidence": 0.8,
+      "is_fork": false,
+      "last_pushed": "2025-08-18T22:46:16Z"
+    },
+    {
+      "name": "Basic-react-website",
+      "language": "JavaScript",
+      "size_kb": 13224,
+      "estimated_loc": 407299,
+      "confidence": 0.7,
+      "is_fork": false,
+      "last_pushed": "2024-06-12T17:27:46Z"
+    },
+    {
+      "name": "HeartbeatPOC",
+      "language": "HTML",
+      "size_kb": 4986,
+      "estimated_loc": 174510,
+      "confidence": 0.75,
+      "is_fork": false,
+      "last_pushed": "2025-05-20T15:10:45Z"
+    },
+    {
+      "name": "PopularMoviesStage1",
+      "language": "Java",
+      "size_kb": 3544,
+      "estimated_loc": 81866,
+      "confidence": 0.7,
+      "is_fork": false,
+      "last_pushed": "2018-12-31T12:16:33Z"
+    },
+    {
+      "name": "Python-projects",
+      "language": "Python",
+      "size_kb": 2064,
+      "estimated_loc": 72652,
+      "confidence": 0.7,
+      "is_fork": false,
+      "last_pushed": "2024-06-12T17:27:56Z"
+    },
+    {
+      "name": "MobileApplicationsDevelopmentLab4",
+      "language": "Swift",
+      "size_kb": 1843,
+      "estimated_loc": 51087,
+      "confidence": 0.7,
+      "is_fork": false,
+      "last_pushed": "2021-10-11T07:47:20Z"
+    },
+    {
+      "name": "E-commerce-android-app",
+      "language": "Java",
+      "size_kb": 2007,
+      "estimated_loc": 46361,
+      "confidence": 0.7,
+      "is_fork": false,
+      "last_pushed": "2022-11-01T21:29:44Z"
+    },
+    {
+      "name": "S06.03-Exercise-PolishingPreferences",
+      "language": "Java",
+      "size_kb": 359,
+      "estimated_loc": 8292,
+      "confidence": 0.7,
+      "is_fork": false,
+      "last_pushed": "2020-02-13T19:43:44Z"
+    }
+  ],
+  "methodology": "GitHub API size with language-specific multipliers and repository characteristics"
+}

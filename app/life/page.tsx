@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { Heart, Activity, Globe, PenTool, Film, BookOpen, Music, Brain, MapPin, Languages, Utensils, Coffee, ExternalLink, Clock, Loader2, Camera, Headphones, UtensilsCrossed, MapPinned } from "lucide-react"
-import { SearchFilter } from "@/components/SearchFilter"
 import { TagFilter, useTagFilter } from "@/components/TagFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
 import { fetchAllStats } from "@/src/services/external-apis"

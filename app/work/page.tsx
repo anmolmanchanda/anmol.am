@@ -24,9 +24,13 @@ export default function WorkPage() {
       const allStats = await fetchAllStats()
       setStats(allStats.work)
       
-      // Fetch GitHub activity
-      const githubRes = await fetch('https://api.github.com/users/anmolmanchanda/events/public?per_page=20')
+      // Fetch more GitHub activity - get ALL recent activity
+      const [githubRes, reposRes] = await Promise.all([
+        fetch('https://api.github.com/users/anmolmanchanda/events/public?per_page=100'),
+        fetch('https://api.github.com/users/anmolmanchanda/repos?per_page=100&sort=pushed')
+      ])
       const githubData = await githubRes.json()
+      const reposData = await reposRes.json()
       
       // Fetch tracker data
       await fetchTrackerData()
@@ -34,8 +38,8 @@ export default function WorkPage() {
       // Build timeline with GitHub events and blog posts
       const timelineItems: any[] = []
       
-      // Add GitHub events (show more detail)
-      githubData.slice(0, 15).forEach((event: any) => {
+      // Add GitHub events - show ALL activity from all repos
+      githubData.forEach((event: any) => {
         const repoName = event.repo.name.replace('anmolmanchanda/', '')
         let title = ''
         const type = 'github'
@@ -119,11 +123,27 @@ export default function WorkPage() {
       
       timelineItems.push(...blogPosts)
       
-      // Sort by timestamp
-      timelineItems.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+      // Add repository summaries for active repos (last 5 pushed)
+      reposData.slice(0, 5).forEach((repo: any) => {
+        if (repo.pushed_at) {
+          timelineItems.push({
+            id: `repo-${repo.id}`,
+            title: `Active Repository: ${repo.name}`,
+            description: repo.description || `${repo.language || 'Multiple languages'} • ${repo.size} KB • ${repo.stargazers_count} stars`,
+            type: 'github',
+            timestamp: new Date(repo.pushed_at),
+            url: repo.html_url,
+            tags: ['GitHub', 'Repository', repo.language || 'Code'].filter(Boolean)
+          })
+        }
+      })
       
-      setTimeline(timelineItems)
-      setFilteredTimeline(timelineItems)
+      // Sort by timestamp and deduplicate
+      const uniqueItems = Array.from(new Map(timelineItems.map(item => [item.id, item])).values())
+      uniqueItems.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+      
+      setTimeline(uniqueItems)
+      setFilteredTimeline(uniqueItems)
     } catch (error) {
       console.error('Failed to fetch data:', error)
     } finally {
