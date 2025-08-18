@@ -179,9 +179,9 @@ export default function LifePage() {
       color: "bg-orange-600"
     },
     {
-      title: "Duolingo",
+      title: "French (A2)",
       value: `${stats?.duolingoStreak || 0} days`,
-      subtitle: "streak",
+      subtitle: "Duolingo streak",
       url: "https://www.duolingo.com/profile/manchandaanmol",
       icon: <Globe className="w-4 h-4 text-white" />,
       color: "bg-green-600"

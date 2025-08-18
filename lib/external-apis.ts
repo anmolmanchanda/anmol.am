@@ -106,15 +106,15 @@ export async function fetchDuolingoStats(username: string = 'manchandaanmol') {
   }
 }
 
-// Apple Health Mindfulness Data (manual tracking for now)
+// Meditation/Mindfulness Data (manual tracking)
 export async function fetchMindfulnessStats() {
-  // Apple Health requires iOS app or manual export
-  // This can be updated via admin interface
+  // Manual tracking via admin interface
+  // Can track sessions from any meditation app/practice
   return {
-    totalMinutes: 4680, // 156 days * 30 min average
-    currentStreak: 31,
+    totalMinutes: 4680, // Total accumulated
+    currentStreak: 31, // Days in a row
     lastSession: new Date(Date.now() - 4 * 60 * 60 * 1000),
-    weeklyAverage: 210, // minutes
+    weeklyAverage: 210, // minutes per week
     totalSessions: 156
   }
 }
