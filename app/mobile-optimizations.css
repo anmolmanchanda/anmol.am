@@ -253,9 +253,8 @@
 /* iOS-specific fixes */
 @supports (-webkit-touch-callout: none) {
   /* Fix iOS rubber band scrolling */
-  body {
-    position: fixed;
-    width: 100%;
+  html {
+    overscroll-behavior: none;
   }
 
   /* Fix iOS form zoom */
