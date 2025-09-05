@@ -3,7 +3,6 @@ import Image from "next/image"
 import { ArrowRight, Download, Globe2, Linkedin, Github } from "lucide-react"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { Card3D, MagneticButton, AnimatedText } from "@/components/DrribbleInspiredFeatures"
-import { NewsletterCTA } from "@/components/NewsletterVariants"
 
 export function Hero() {
   return (
