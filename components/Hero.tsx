@@ -78,7 +78,7 @@ export function Hero() {
                     alt="Anmol Manchanda - Technical Solutions Architect"
                     width={256}
                     height={256}
-                    className="w-full h-full object-cover scale-110 transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover object-top scale-150 transition-transform duration-700 group-hover:scale-145"
                     priority
                   />
                 </div>
