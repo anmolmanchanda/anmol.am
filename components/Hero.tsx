@@ -74,7 +74,7 @@ export function Hero() {
               <Card3D className="relative group" glowColor="primary">
                 <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
-                    src="/images/home_avatar.JPG"
+                    src="/images/home_avatar.jpeg"
                     alt="Anmol Manchanda - Technical Solutions Architect"
                     width={256}
                     height={256}
