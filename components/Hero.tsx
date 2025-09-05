@@ -69,7 +69,7 @@ export function Hero() {
           <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16 xl:gap-20">
             
             {/* Avatar Section - Enhanced with 3D effect */}
-            <div className="flex-shrink-0 order-2 lg:order-1">
+            <div className="flex-shrink-0 order-2 lg:order-1 lg:-mt-8">
               <Card3D className="relative group" glowColor="primary">
                 <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(255,255,255,0.05)] transition-all duration-700 group-hover:shadow-[0_0_80px_rgba(0,0,0,0.15)] neural-glow">
                   <Image
