@@ -1,8 +1,42 @@
 # 🗺️ Project Roadmap & Versioning
 
-## 📊 Current Version: 2.0.0
-**Release Date**: January 19, 2025  
+## 📊 Current Version: 2.1.0
+**Release Date**: September 5, 2025  
 **Status**: Production Ready
+
+---
+
+## 🚀 Version 2.1.0 - Hero Section & Mobile Enhancement Release
+**Released**: September 5, 2025
+
+### Major Updates
+- ✅ **Hero Section Redesign**
+  - Updated job title to "Technical Solutions Architect / Full Stack Software Engineer"
+  - Redesigned CTA buttons with consistent styling and futuristic gradient effects
+  - Repositioned buttons to center of page with optimal spacing
+  - Added LinkedIn and GitHub buttons (temporary replacement for Subscribe to Notes and Fiverr)
+  - Improved avatar positioning and alignment
+
+- ✅ **Mobile Experience Improvements**
+  - Fixed critical mobile scrolling issue caused by position: fixed CSS rule
+  - Updated avatar image with manually cropped headshot for better presentation
+  - Optimized button layout for mobile responsiveness
+  - Enhanced touch targets and interaction feedback
+
+- ✅ **Code Quality & Standards**
+  - Added critical code standards to CLAUDE.md prohibiting AI references in commits
+  - Removed unused imports to fix TypeScript build errors
+  - Updated all project documentation and README with new screenshots
+  - Enhanced project structure documentation
+
+- ✅ **Visual Assets**
+  - Updated screenshots for README: home, about, and projects pages
+  - New avatar image with proper headshot cropping and styling
+  - Consistent visual branding across all pages
+
+### Future Planned Changes
+- 📋 Replace LinkedIn button with "Subscribe to Notes" functionality
+- 📋 Replace GitHub button with "Fiverr" professional services link
 
 ---
 

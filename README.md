@@ -13,12 +13,16 @@
 
 [🌐 Live Site](https://anmol.am) | [📖 Documentation](./docs/claude/) | [🚀 Features](#features) | [🧪 Testing Guide](#testing-guide)
 
+![Home Page](./public/home_page_screenshot_for_readme.png)
+
+
 </div>
 
 ---
 
 ## 📋 Table of Contents
 - [Overview](#-overview)
+- [Screenshots](#-screenshots)
 - [Features](#-features)
 - [Technology Stack](#-technology-stack)
 - [Quick Start](#-quick-start)
@@ -33,7 +37,7 @@
 
 ## 🎯 Overview
 
-**Version 2.1.0** - Released August 18, 2025
+**Version 2.1.0** - Updated September 5, 2025
 
 A modern, performant portfolio showcasing expertise in AI-assisted development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores. Features real-time data integration with external APIs for life tracking, professional work metrics, and dynamic content updates.
 
@@ -45,6 +49,22 @@ A modern, performant portfolio showcasing expertise in AI-assisted development, 
 - 🔍 **SEO Optimized**: Structured data, sitemap, RSS feed
 - 📊 **Real-Time Data**: Live integration with Duolingo, Letterboxd, GitHub APIs
 - 🌈 **Aurora Animations**: Dynamic gradient backgrounds with holographic effects
+
+---
+
+## 📸 Screenshots
+
+### Home Page - Hero Section
+![Home Page](./public/home_page_screenshot_for_readme.png)
+*Modern hero section with avatar, dynamic job title, and centered CTA buttons including LinkedIn and GitHub links*
+
+### About Page - Professional Experience
+![About Page](./public/about_page_screenshot_for_readme.png)
+*Clean professional timeline showcasing Technical Solutions Architect role and Full Stack Software Engineer experience*
+
+### Projects Page - Portfolio Showcase
+![Projects Page](./public/project_page_screenshot_for_readme.png)
+*Interactive project cards with filtering by category (Enterprise, AI-Assisted, Automation, Blockchain) and live demos*
 
 ---
 
@@ -424,7 +444,7 @@ Built with modern technologies and AI-assisted development:
 
 **Built by [Anmol Manchanda](https://anmol.am)**
 
-Technical Solutions Architect | AI-Assisted Development Pioneer
+Technical Solutions Architect / Full Stack Software Engineer | AI-Assisted Development Pioneer
 
 [LinkedIn](https://linkedin.com/in/anmolmanchanda) • [GitHub](https://github.com/anmolmanchanda) • [Email](mailto:hi@anmol.am)
 
