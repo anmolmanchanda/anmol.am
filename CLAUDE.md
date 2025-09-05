@@ -36,6 +36,16 @@ Before any work session:
 4. **Maintainability**: Clean, documented, testable code
 5. **Security**: Follow best practices, never expose secrets
 
+## 🚫 CRITICAL: Code and Commit Standards
+
+**NEVER include any of the following in code or commit messages:**
+- Mentions of "Claude", "Anthropic", or any AI assistant references
+- Emojis in commit messages or code
+- AI-generated footers or signatures
+- Any indication that AI was involved in the code generation
+
+All code must appear as if written by a human developer.
+
 ## 🔄 Session Workflow
 
 ```mermaid
