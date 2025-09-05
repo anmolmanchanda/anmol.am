@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Download, Globe2 } from "lucide-react"
+import { ArrowRight, Download, Globe2, Linkedin, Github } from "lucide-react"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { Card3D, MagneticButton, AnimatedText } from "@/components/DrribbleInspiredFeatures"
 import { NewsletterCTA } from "@/components/NewsletterVariants"
@@ -115,7 +115,7 @@ export function Hero() {
 
 
               {/* Enhanced CTAs with magnetic effect */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
                 <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group w-full sm:w-auto sm:min-w-[200px] min-h-[44px] cyber-border futuristic-gradient">
                   <Link href="/projects" className="flex items-center">
                     View Portfolio
@@ -123,14 +123,26 @@ export function Hero() {
                   </Link>
                 </MagneticButton>
                 
-                <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full border border-border bg-background/50 backdrop-blur-sm font-medium transition-all duration-300 hover:bg-background hover:shadow-md w-full sm:w-auto sm:min-w-[200px] min-h-[44px]">
+                <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group w-full sm:w-auto sm:min-w-[200px] min-h-[44px] cyber-border futuristic-gradient">
                   <Link href="/Anmol's Resume.pdf" className="flex items-center">
                     <Download className="mr-2 w-4 h-4" />
                     Resume
                   </Link>
                 </MagneticButton>
                 
-                <NewsletterCTA className="w-full sm:w-auto sm:min-w-[200px] min-h-[44px]" />
+                <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group w-full sm:w-auto sm:min-w-[200px] min-h-[44px] cyber-border futuristic-gradient">
+                  <Link href="https://www.linkedin.com/in/anmolmanchanda/" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <Linkedin className="mr-2 w-4 h-4" />
+                    LinkedIn
+                  </Link>
+                </MagneticButton>
+                
+                <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group w-full sm:w-auto sm:min-w-[200px] min-h-[44px] cyber-border futuristic-gradient">
+                  <Link href="https://github.com/anmolmanchanda" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    <Github className="mr-2 w-4 h-4" />
+                    GitHub
+                  </Link>
+                </MagneticButton>
               </div>
             </div>
           </div>
