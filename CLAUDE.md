@@ -57,7 +57,7 @@ graph LR
     E --> F[Implement Changes]
     F --> G[Test Locally]
     G --> H[Commit with Clean Message]
-    H --> I[Push Immediately]
+    H --> I[Push Immediately - ALWAYS!]
     I --> J[Create PR if Ready]
 ```
 
@@ -68,7 +68,7 @@ graph LR
 git checkout main && git pull
 git checkout -b feature/task-name
 git add . && git commit -m "Clear message"
-git push -u origin feature/task-name
+git push -u origin feature/task-name  # ALWAYS push after commit!
 
 # Development
 npm run dev         # Start development server
@@ -103,6 +103,13 @@ claude --list-mcps  # List available MCP servers
 ## 💡 Remember
 
 > "Always follow the modular documentation. Each file contains specific, detailed instructions that must be followed exactly."
+
+## ⚠️ CRITICAL: Always Push After Commit
+
+**NEVER leave commits unpushed locally!** After every commit, immediately push to remote:
+- Local commits are invisible on GitHub
+- Changes won't appear in browser until pushed
+- Always verify push completed successfully
 
 ---
 
