@@ -104,7 +104,7 @@ export function Hero() {
                 {/* Clean credential badge */}
                 <div className="inline-flex items-center gap-3 glass-morphism px-6 py-3 rounded-full border-2 border-primary/20 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300">
                   <Globe2 className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">Technical Solutions Architect at UN-Habitat</span>
+                  <span className="text-sm font-medium">Technical Solutions Architect / Full Stack Software Engineer</span>
                 </div>
               </div>
 

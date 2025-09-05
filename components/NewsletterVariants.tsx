@@ -87,13 +87,11 @@ export function NewsletterCTA({ className }: { className?: string }) {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "inline-flex items-center gap-2 px-6 py-3 rounded-lg",
-          "bg-primary/10 text-primary border border-primary/20",
-          "hover:bg-primary/20 transition-all",
+          "inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full border border-border bg-background/50 backdrop-blur-sm font-medium transition-all duration-300 hover:bg-background hover:shadow-md",
           className
         )}
       >
-        <Mail className="w-4 h-4" />
+        <Mail className="mr-2 w-4 h-4" />
         Subscribe to Notes
       </button>
       
