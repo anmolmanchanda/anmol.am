@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { Building2, Smartphone, ChefHat, Users, GraduationCap, Code2, Database, Zap } from "lucide-react"
+import { Building2, Smartphone, ChefHat, Users, GraduationCap, Code2, Database, Zap, Award } from "lucide-react"
 import { Experience } from "@/types"
 import { TimelineItem } from "@/components/InteractiveEffects"
 
@@ -39,6 +39,34 @@ const experiences: Experience[] = [
       "Built proof-of-concept implementation using Docker containerization",
       "Explored consensus mechanisms and developed the iOS app in Xcode using Swift",
       "Wireframed & designed the iOS app in Figma"
+    ]
+  },
+  {
+    id: "3",
+    company: "Williams Fresh Cafe",
+    position: "Line Cook",
+    startDate: "2022-01",
+    endDate: "2024-01",
+    description: "Gained diverse experience in hospitality while transitioning into technical roles",
+    technologies: ["Operations", "Team Collaboration", "Customer Service"],
+    achievements: [
+      "Developed strong work ethic and team collaboration skills",
+      "Maintained high-quality standards in fast-paced environment",
+      "Balanced hospitality work with technical skill development"
+    ]
+  },
+  {
+    id: "4",
+    company: "AIESEC Delhi IIT",
+    position: "Manager",
+    startDate: "2016-01",
+    endDate: "2017-01",
+    description: "Volunteer leadership role managing international exchange programs and team coordination",
+    technologies: ["Leadership", "Project Management", "International Coordination"],
+    achievements: [
+      "Led international exchange programs",
+      "Managed cross-cultural teams and initiatives",
+      "Developed leadership and organizational skills"
     ]
   }
 ]
@@ -91,6 +119,10 @@ export default function AboutPage() {
                   Experienced in technical and non technical communication, presentation skills, AWS services, ETL optimization, and technical 
                   leadership. Extraordinarily quick learner and backed up with excellent references.
                 </p>
+                <p>
+                  Core values include continuous learning and adaptation, creative problem-solving with AI assistance, 
+                  efficiency through intelligent automation, and maintaining work-life balance.
+                </p>
               </div>
             </section>
 
@@ -101,12 +133,16 @@ export default function AboutPage() {
                   const getIcon = () => {
                     if (exp.id === "1") return <Database className="w-5 h-5 text-blue-500 icon-float" />
                     if (exp.id === "2") return <Code2 className="w-5 h-5 text-purple-500 icon-pulse" />
+                    if (exp.id === "3") return <ChefHat className="w-5 h-5 text-orange-500 icon-float" />
+                    if (exp.id === "4") return <Users className="w-5 h-5 text-green-500 icon-pulse" />
                     return <Building2 className="w-5 h-5 text-primary icon-float" />
                   }
                   
                   const getDetails = () => {
                     if (exp.id === "1") return "Led multidisciplinary data team in designing and deploying 500TB+ scalable, secure geospatial mobile-ping analytics solution."
                     if (exp.id === "2") return "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts for municipal applications."
+                    if (exp.id === "3") return "Developed strong work ethic and customer service skills while transitioning to technical career."
+                    if (exp.id === "4") return "International leadership experience managing cross-cultural teams and exchange programs."
                     return ""
                   }
 
@@ -290,9 +326,127 @@ export default function AboutPage() {
                   </div>
                 </TimelineItem>
 
+                <TimelineItem
+                  details="Google-certified Android development program focusing on modern development practices and Material Design principles."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Award className="w-5 h-5 text-green-500 icon-pulse" />
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20 flex items-center justify-center">
+                      <Image
+                        src="/images/Google_1.png"
+                        alt="Google"
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-md object-cover bg-white p-1"
+                      />
+                    </div>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Android Basics Nanodegree</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Udacity (by Google) • 2017
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Google-certified program focusing on Android development fundamentals and best practices.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Android SDK</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Material Design</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Google Certified</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </TimelineItem>
+
               </div>
             </section>
 
+            <section className="relative z-10">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Skills & Technologies</h2>
+              <div className="mt-6 sm:mt-8">
+                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border">
+                  <div className="space-y-6">
+                    {/* Skill level 4 - Expert */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Zap className="w-5 h-5 text-yellow-500" />
+                        Expert Level
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI-Assisted Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-yellow-500/20 hover:bg-yellow-500/30 px-3 py-1.5 text-sm font-medium text-yellow-700 dark:text-yellow-300 transition-colors border border-yellow-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Skill level 3 - Advanced */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Database className="w-5 h-5 text-blue-500" />
+                        Advanced
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["AWS Glue", "JavaScript", "React", "Next.js", "Node.js", "TypeScript", "Git", "Github Actions", "Vercel", "Tailwind CSS", "Mobile App Development", "SQL", "AWS EventBridge"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-blue-500/20 hover:bg-blue-500/30 px-3 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-300 transition-colors border border-blue-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Skill level 2 - Intermediate */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Code2 className="w-5 h-5 text-green-500" />
+                        Intermediate
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["AWS RDS", "AWS Step Functions", "PyTorch", "Transformers", "Streamlit", "MongoDB", "PostgreSQL", "PySpark", "Java", "Swift", "Kotlin"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-green-500/20 hover:bg-green-500/30 px-3 py-1.5 text-sm font-medium text-green-700 dark:text-green-300 transition-colors border border-green-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Skill level 1 - Learning */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <GraduationCap className="w-5 h-5 text-purple-500" />
+                        Learning & Exploring
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["AWS DynamoDB", "AWS ECS (Elastic Container Service)", "Kubernetes", "Docker", "Terraform", "Scikit-learn", "GCP", "C++", "CUDA"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-purple-500/20 hover:bg-purple-500/30 px-3 py-1.5 text-sm font-medium text-purple-700 dark:text-purple-300 transition-colors border border-purple-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             <section className="relative z-10">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Career Goals & Services</h2>
