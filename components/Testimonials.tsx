@@ -22,60 +22,51 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Sarah Johnson",
-    role: "Product Manager",
-    company: "UN-Habitat",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-    content: "Anmol delivered an exceptional data pipeline that transformed how we process city data across 12 global locations. His expertise in AWS and ability to handle TB-scale data was instrumental in our success. The system he built processes millions of records daily with 99.9% uptime.",
+    name: "Grayson Bass",
+    role: "Innovation Advisor & Project Manager",
+    company: "Grayson managed Anmol directly",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Grayson",
+    content: "I have worked with Anmol in two different roles. He was one of the last hires I made in one role and one of the first hires I made in the other. Anmol is a consistently reliable, honorable, and effective team member. He jumps in and tackles any challenge. In less than 2 months, he built a data pipeline and scaled up to data engineering. His work powered incredible insights and a plug and play tool for analyzing large mobile ping data sets. If I move to a third role, he would definitely be on my list to recruit.",
     rating: 5,
-    date: "2024-12",
-    projectType: "Enterprise Data Pipeline",
+    date: "2024",
+    projectType: "Data Engineering & Leadership",
     highlighted: true
   },
   {
     id: "2",
-    name: "Michael Chen",
-    role: "CTO",
-    company: "TechStart Inc",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
-    content: "Working with Anmol on our real-time analytics platform was a game-changer. He integrated WebSocket connections seamlessly and optimized our React application to handle thousands of concurrent users. Performance improved by 60% after his optimizations.",
+    name: "Salman Naqvi",
+    role: "Senior Infrastructure Security and Backend Engineer",
+    company: "Salman worked with Anmol on the same team",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Salman",
+    content: "Over the 12 months that I worked with Anmol, I was consistently amazed by his ability to leverage emerging technologies, especially AI, to accomplish tasks I didn't think were possible in such short timeframes. In particular, over a three-month period, he built a 500 TB data processing pipeline in AWS using AWS Glue, a project that would typically take an experienced data scientist 12 to 18 months to complete. He did this without any previous AWS or data science experience! He also produced rapid prototypes that were nothing short of jaw-dropping. Anmol has an exceptional ability to quickly learn and implement entirely new technologies, even in areas where he has no prior experience. Whenever I'm hiring again, he'll be the first person I reach out to before considering any other candidates.",
     rating: 5,
-    date: "2024-11",
-    projectType: "Real-time Application"
-  },
-  {
-    id: "3",
-    name: "Emily Rodriguez",
-    role: "Engineering Director",
-    company: "DataFlow Systems",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily",
-    content: "Anmol's expertise in automation saved us hundreds of hours monthly. He created 50+ N8N workflows that streamlined our operations. His solutions are robust, well-documented, and easy to maintain. A true professional who delivers beyond expectations.",
-    rating: 5,
-    date: "2024-10",
-    projectType: "Process Automation"
-  },
-  {
-    id: "4",
-    name: "David Kim",
-    role: "Founder & CEO",
-    company: "AI Solutions Ltd",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
-    content: "The AI-powered life manager Anmol built for our team increased productivity by 40%. His innovative approach to integrating Claude AI with native macOS features created a solution we didn't know was possible. Exceptional work and communication throughout.",
-    rating: 5,
-    date: "2025-01",
-    projectType: "AI Integration",
+    date: "2024",
+    projectType: "AWS Infrastructure & Data Pipeline",
     highlighted: true
   },
   {
-    id: "5",
-    name: "Lisa Thompson",
-    role: "VP of Engineering",
-    company: "Global Tech Corp",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa",
-    content: "Anmol architected our entire cloud infrastructure on AWS, handling everything from serverless functions to data lakes. His deep understanding of cloud services and best practices resulted in a 70% reduction in our infrastructure costs while improving performance.",
+    id: "3",
+    name: "Ishu Trivedi",
+    role: "Senior Full Stack AI Engineer",
+    company: "Ishu worked with Anmol on the same team",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ishu",
+    content: "Anmol's deep domain expertise stood out from day one, especially when he helped me get onboarded and understand the project's technical nuances. He is the deepest domain expert of our team, always bringing fresh perspectives and staying ahead of the curve with emerging technologies. He has made remarkable contributions in building and optimizing our data processing workflows, particularly through his expertise in AWS-based data pipelines capable of handling large and complex datasets efficiently. Anmol's enthusiasm for exploring new tools and techniques consistently pushes our work to the next level. It's been a privilege working alongside him, and I highly recommend Anmol for any role that values innovation, technical excellence, and collaborative excellence.",
     rating: 5,
-    date: "2024-09",
-    projectType: "Cloud Architecture"
+    date: "2024",
+    projectType: "Data Processing & AWS Architecture",
+    highlighted: false
+  },
+  {
+    id: "4",
+    name: "Guruprasanna Rajukannan Suresh",
+    role: "AI Software Engineer",
+    company: "Guruprasanna worked with Anmol on the same team",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Guruprasanna",
+    content: "I've worked with Anmol for over a year, and he has consistently shown strong technical and problem-solving skills. He independently built a scalable, cloud-native data pipeline on AWS capable of handling big and real-time data efficiently. He also contributed significantly to our QoL Impactor platform project with his advanced SQL expertise. During brainstorming and problem-solving sessions, his analytical thinking and decision-making stood out and often guided management direction. Anmol constantly explores new AI tools to enhance project performance and has developed several internal AI solutions to improve team operations. He's a creative, reliable, and forward-thinking engineer who delivers results.",
+    rating: 5,
+    date: "2024",
+    projectType: "Cloud Architecture & AI Solutions",
+    highlighted: false
   }
 ]
 
@@ -98,10 +89,10 @@ export function Testimonials() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Client Success Stories
+            LinkedIn Recommendations
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Trusted by organizations worldwide to deliver enterprise-grade solutions
+            What colleagues and managers say about working with me
           </p>
         </div>
 

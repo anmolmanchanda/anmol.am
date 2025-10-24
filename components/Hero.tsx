@@ -103,13 +103,13 @@ export function Hero() {
                 {/* Clean credential badge */}
                 <div className="inline-flex items-center gap-3 glass-morphism px-6 py-3 rounded-full border-2 border-primary/20 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300">
                   <Globe2 className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">Technical Solutions Architect / Full Stack Software Engineer</span>
+                  <span className="text-sm font-medium">Cloud Architect & AI Engineer</span>
                 </div>
               </div>
 
               {/* Essential description */}
               <p className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed text-muted-foreground max-w-2xl">
-                Building enterprise-scale solutions with AI acceleration. From TB-scale data pipelines to native applications.
+                From 500TB+ cloud architectures to AI-driven innovation - Engineering at scale
               </p>
 
 
@@ -123,7 +123,7 @@ export function Hero() {
                 </MagneticButton>
                 
                 <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group w-full sm:w-auto sm:min-w-[200px] min-h-[44px] cyber-border futuristic-gradient">
-                  <Link href="/Anmol's Resume.pdf" className="flex items-center">
+                  <Link href="/Anmol Manchanda's Résumé.pdf" className="flex items-center">
                     <Download className="mr-2 w-4 h-4" />
                     Resume
                   </Link>
