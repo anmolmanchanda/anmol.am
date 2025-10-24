@@ -444,8 +444,8 @@ Built with modern technologies and AI-powered development:
 
 **Built by [Anmol Manchanda](https://anmol.am)**
 
-Technical Solutions Architect / Full Stack Software Engineer | AI Development Pioneer
+Cloud Architect & AI Engineer | Full Stack Software Engineer at UN-Habitat
 
-[LinkedIn](https://linkedin.com/in/anmolmanchanda) • [GitHub](https://github.com/anmolmanchanda) • [Email](mailto:hi@anmol.am)
+[LinkedIn](https://linkedin.com/in/anmolmanchanda) • [GitHub](https://github.com/anmolmanchanda) • [Email](mailto:hire@anmol.am)
 
 </div>
