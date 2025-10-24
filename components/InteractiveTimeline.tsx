@@ -47,7 +47,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     id: "5",
-    year: "2017",
+    year: "2016-2017",
     title: "Android Basics Nanodegree",
     company: "Udacity by Google",
     description: "Google-certified Android development fundamentals and best practices",
@@ -63,7 +63,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     id: "3",
     year: "2021 - 2023",
-    title: "Post Graduate Diploma",
+    title: "Post Graduate Diploma in Mobile Solutions Development",
     company: "Conestoga College, Waterloo",
     description: "Mobile Solutions Development with focus on iOS and Android platforms",
     icon: <GraduationCap className="w-5 h-5" />,
