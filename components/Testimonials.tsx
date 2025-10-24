@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Star, Quote, ChevronLeft, ChevronRight, Briefcase } from "lucide-react"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface Testimonial {
@@ -121,14 +120,7 @@ export function Testimonials() {
               </p>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={testimonials[currentIndex]?.avatar || ""}
-                    alt={testimonials[currentIndex]?.name || ""}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
+                <div>
                   <div>
                     <h4 className="font-semibold">{testimonials[currentIndex]?.name}</h4>
                     <p className="text-sm text-muted-foreground">
@@ -188,7 +180,7 @@ export function Testimonials() {
             href="/contact"
             className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            Start Your Project
+            Contact Anmol
           </a>
         </div>
       </div>
