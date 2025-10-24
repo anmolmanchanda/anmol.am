@@ -120,7 +120,7 @@ export default function AboutPage() {
                   leadership. Extraordinarily quick learner and backed up with excellent references.
                 </p>
                 <p>
-                  Core values include continuous learning and adaptation, creative problem-solving with AI assistance, 
+                  Core values include continuous learning and adaptation, creative problem-solving with AI tools, 
                   efficiency through intelligent automation, and maintaining work-life balance.
                 </p>
               </div>
@@ -379,7 +379,7 @@ export default function AboutPage() {
                         Expert Level
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI-Assisted Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda", "Apple Shortcuts", "HTML/CSS"].map((skill) => (
+                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda", "Apple Shortcuts", "HTML/CSS"].map((skill) => (
                           <span
                             key={skill}
                             className="inline-flex items-center rounded-md bg-yellow-500/20 hover:bg-yellow-500/30 px-3 py-1.5 text-sm font-medium text-yellow-700 dark:text-yellow-300 transition-colors border border-yellow-500/30"
@@ -452,7 +452,7 @@ export default function AboutPage() {
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Career Goals & Services</h2>
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
                 <TimelineItem
-                  details="Seeking challenging Technical/AI Solutions Architect roles that leverage AI-assisted development methodologies and diverse technical skills."
+                  details="Seeking challenging Technical/AI Solutions Architect roles that leverage AI-powered development methodologies and diverse technical skills."
                   className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
                 >
                   <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
@@ -476,7 +476,7 @@ export default function AboutPage() {
                           solve complex technical challenges.
                         </p>
                         <div className="flex flex-wrap gap-2 pt-2">
-                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">AI-Assisted Development</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">AI-Driven Development</span>
                           <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Solutions Architecture</span>
                           <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Technical Leadership</span>
                         </div>
@@ -533,7 +533,7 @@ export default function AboutPage() {
                           </li>
                           <li className="flex items-start">
                             <span className="mr-2 text-primary font-bold">•</span>
-                            <span>AI-assisted automation solutions</span>
+                            <span>AI-powered automation solutions</span>
                           </li>
                         </ul>
                       </div>

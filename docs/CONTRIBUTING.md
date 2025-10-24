@@ -1,6 +1,6 @@
 # Contributing to anmol.am Portfolio
 
-Thank you for your interest in contributing to this AI-assisted portfolio project! This document provides comprehensive guidelines for contributing to the codebase.
+Thank you for your interest in contributing to this AI-powered portfolio project! This document provides comprehensive guidelines for contributing to the codebase.
 
 ## 📋 Table of Contents
 
@@ -638,4 +638,4 @@ Contributors will be recognized in:
 - Release notes for significant contributions
 - Special thanks for major features
 
-Thank you for contributing to the advancement of AI-assisted development! 🚀
+Thank you for contributing to the advancement of AI-powered development! 🚀

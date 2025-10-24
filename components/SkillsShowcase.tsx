@@ -89,7 +89,7 @@ export function SkillsShowcase() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Technical Skills</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Real technologies I use for AI-assisted development and enterprise solutions
+            Real technologies I use for AI-powered development and enterprise solutions
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-5xl">

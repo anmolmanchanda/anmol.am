@@ -39,7 +39,7 @@ export function Hero() {
         </div>
         <div className="absolute top-[35%] right-[5%] animate-float-faster-delay-3 hidden lg:block">
           <div className="glass-morphism cyber-border px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
-            <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-purple-500 bg-clip-text text-transparent font-semibold">AI-Assisted</span>
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-purple-500 bg-clip-text text-transparent font-semibold">AI-Powered</span>
           </div>
         </div>
         <div className="absolute top-[45%] left-[8%] animate-float-faster-delay-4 hidden lg:block">

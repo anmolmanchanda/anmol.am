@@ -169,9 +169,9 @@ export function WorkActivityFeed() {
           daysAgo: 2
         },
         {
-          title: 'AI-Assisted macOS Development',
+          title: 'AI-Powered macOS Development',
           description: 'Building Life Manager with Claude AI',
-          url: '/work/ai-assisted-macos-life-manager',
+          url: '/work/ai-powered-macos-life-manager',
           daysAgo: 7
         }
       ]

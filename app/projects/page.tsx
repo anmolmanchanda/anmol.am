@@ -31,8 +31,8 @@ const allProjects: Project[] = [
   {
     id: "2",
     title: "AI-Powered Life Manager",
-    description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
-    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-assisted development methodologies. Demonstrates cutting-edge AI-assisted development practices for personal productivity optimization and life management.",
+    description: "Comprehensive productivity solution built as native macOS application using AI-powered development",
+    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-powered development methodologies. Demonstrates cutting-edge AI-powered development practices for personal productivity optimization and life management.",
     technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
     image: "https://images.unsplash.com/photo-1554306274-f23873d9a26c?w=1920&q=80",
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
@@ -40,7 +40,7 @@ const allProjects: Project[] = [
     category: "ai",
     date: "May 2025 - Present",
     type: "personal",
-    blogArticle: "/blog/ai-assisted-macos-life-manager",
+    blogArticle: "/blog/ai-powered-macos-life-manager",
     metrics: {
       productivity: "40% increase",
       aiCalls: "1000+ daily",
@@ -98,7 +98,7 @@ const allProjects: Project[] = [
   {
     id: "5",
     title: "Personal Website",
-    description: "LLM-driven and AI Assisted development",
+    description: "LLM-driven and AI-powered development",
     longDescription: "Effectively used MCPs to optimize token usage and looking up documentation. Used MCPs like TaskMaster in conjunction with Sequential thinking for effective planning.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Claude AI", "MCP Servers", "TaskMaster", "Sequential Thinking"],
     image: "/images/projects/ai-portfolio.jpg",
@@ -114,7 +114,7 @@ const allProjects: Project[] = [
 const categories = [
   { value: "all", label: "All Projects" },
   { value: "enterprise", label: "Enterprise" },
-  { value: "ai", label: "AI-Assisted" },
+  { value: "ai", label: "AI-Powered" },
   { value: "automation", label: "Automation" },
   { value: "blockchain", label: "Blockchain" },
   { value: "other", label: "Other" }
@@ -137,7 +137,7 @@ export default function ProjectsPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Projects</h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-muted-foreground">
-            Real portfolio projects demonstrating AI-assisted development, enterprise solutions, and technical innovation
+            Real portfolio projects demonstrating AI-powered development, enterprise solutions, and technical innovation
           </p>
         </div>
 

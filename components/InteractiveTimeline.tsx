@@ -71,7 +71,7 @@ const timelineEvents: TimelineEvent[] = [
     achievements: [
       "Specialized in mobile application development",
       "Mastered iOS and Android frameworks",
-      "Built foundation for AI-assisted development"
+      "Built foundation for AI-powered development"
     ]
   },
   {
@@ -160,7 +160,7 @@ export function InteractiveTimeline() {
             <span className="holographic">Career Journey</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            From foundations to AI-assisted innovation at the United Nations
+            From foundations to AI-powered innovation at the United Nations
           </p>
         </div>
 

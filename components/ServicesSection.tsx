@@ -46,7 +46,7 @@ const servicePackages: ServicePackage[] = [
     popular: true,
     highlighted: true,
     features: [
-      "AI-assisted development (70% faster delivery)",
+      "AI-powered development (70% faster delivery)",
       "Production-ready prototypes, not demos",
       "AWS/cloud infrastructure included",
       "Real-time data processing pipelines",

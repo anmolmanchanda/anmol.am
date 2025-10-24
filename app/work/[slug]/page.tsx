@@ -100,14 +100,14 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     views: 0,
     featured: false
   },
-  "ai-assisted-macos-life-manager": {
+  "ai-powered-macos-life-manager": {
     id: "7",
-    title: "AI-Assisted Development: Building a Native macOS Life Manager",
+    title: "AI-Powered Development: Building a Native macOS Life Manager",
     excerpt: "The future of software development isn't replacing developers with AI—it's about augmenting human creativity. Building a comprehensive life management application for macOS using Claude AI as development partner.",
     date: "2025-07-19",
     tags: ["AI", "Swift", "macOS", "Native Development", "Life Management", "Claude AI"],
     readingTime: 25,
-    slug: "ai-assisted-macos-life-manager",
+    slug: "ai-powered-macos-life-manager",
     category: 'technical' as const,
     image: "/images/blog/ai-macos-app.svg",
     gradient: "from-violet-600 via-purple-600 to-indigo-600",
@@ -363,7 +363,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </div>
                   <div>
                     <p className="font-semibold">Anmol Manchanda</p>
-                    <p className="text-sm text-muted-foreground">AI-Assisted Developer & Technical Architect</p>
+                    <p className="text-sm text-muted-foreground">AI-Powered Developer & Technical Architect</p>
                   </div>
                 </div>
                 <Link

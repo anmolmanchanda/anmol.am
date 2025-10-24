@@ -30,7 +30,7 @@ const featuredProjects: Project[] = [
   {
     id: "3",
     title: "Personal Website",
-    description: "LLM-driven and AI Assisted development using MCPs like TaskMaster with Sequential thinking for effective planning",
+    description: "LLM-driven and AI-powered development using MCPs like TaskMaster with Sequential thinking for effective planning",
     technologies: ["Next.js", "React", "TypeScript", "Claude AI", "MCP Servers", "TaskMaster"],
     image: "/images/projects/personal-website.jpg",
     githubUrl: "https://github.com/anmolmanchanda/anmol.am",
@@ -49,7 +49,7 @@ export function FeaturedProjects() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Projects</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Real projects demonstrating AI-assisted development and enterprise-scale solutions
+            Real projects demonstrating AI-powered development and enterprise-scale solutions
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
@@ -63,7 +63,7 @@ export function FeaturedProjects() {
             const getProjectMetrics = () => {
               if (project.id === "1") return { metric: "AWS Bedrock", label: "RAG & Embeddings" }
               if (project.id === "2") return { metric: "17 Users", label: "Real-time Platform" }
-              if (project.id === "3") return { metric: "MCP-Driven", label: "AI-Assisted Dev" }
+              if (project.id === "3") return { metric: "MCP-Driven", label: "AI-Powered Dev" }
               return { metric: "100+", label: "Features Built" }
             }
 

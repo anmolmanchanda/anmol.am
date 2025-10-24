@@ -331,7 +331,7 @@ Track usage and effectiveness:
 9. sentry: Track errors
 ```
 
-### AI-Assisted Development:
+### AI-Powered Development:
 ```javascript
 1. memory: Load project context
 2. sequential-thinking: Break down task

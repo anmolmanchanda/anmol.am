@@ -20,7 +20,7 @@
 - **Analytics**: Vercel Analytics
 
 ### Key Features Implemented
-1. **AI-Assisted Development Showcase**
+1. **AI-Powered Development Showcase**
 2. **TB-Scale Data Pipeline Portfolio**
 3. **Real-time View Tracking**
 4. **PWA Capabilities**
