@@ -4,56 +4,50 @@ import { Skill } from "@/types"
 import { useEffect, useRef, useState } from "react"
 
 const skills: Skill[] = [
-  // Expert level (4)
-  { name: "Claude AI", level: "expert", category: "ai" },
-  { name: "Cursor AI", level: "expert", category: "ai" },
-  { name: "Windsurf AI", level: "expert", category: "ai" },
-  { name: "Zed AI", level: "expert", category: "ai" },
-  { name: "MCP Tools (80+ servers)", level: "expert", category: "ai" },
-  { name: "Python", level: "expert", category: "programming" },
-  { name: "Airtable", level: "expert", category: "cloud" },
-  { name: "AI Development", level: "expert", category: "ai" },
-  { name: "Rapid Prototyping", level: "expert", category: "ai" },
-  { name: "AI Agent (LangChain, N8N)", level: "expert", category: "ai" },
-  { name: "AWS Lambda", level: "expert", category: "cloud" },
-  { name: "Apple Shortcuts", level: "expert", category: "automation" },
-  { name: "HTML/CSS", level: "expert", category: "programming" },
-  
-  // Advanced level (3)
-  { name: "AWS Glue", level: "advanced", category: "cloud" },
-  { name: "JavaScript", level: "advanced", category: "programming" },
-  { name: "React", level: "advanced", category: "programming" },
-  { name: "Next.js", level: "advanced", category: "programming" },
-  { name: "Node.js", level: "advanced", category: "programming" },
-  { name: "TypeScript", level: "advanced", category: "programming" },
-  { name: "Git", level: "advanced", category: "programming" },
-  { name: "GitHub Actions", level: "advanced", category: "cloud" },
-  { name: "Vercel", level: "advanced", category: "cloud" },
-  { name: "Tailwind CSS", level: "advanced", category: "programming" },
-  { name: "Mobile App Development", level: "advanced", category: "programming" },
-  { name: "SQL", level: "advanced", category: "programming" },
+  // Cloud & Infrastructure
+  { name: "AWS S3", level: "expert", category: "cloud" },
+  { name: "AWS Glue", level: "expert", category: "cloud" },
   { name: "AWS EventBridge", level: "advanced", category: "cloud" },
+  { name: "AWS Athena", level: "intermediate", category: "cloud" },
+  { name: "AWS QuickSight", level: "intermediate", category: "cloud" },
+  { name: "AWS Lambda", level: "advanced", category: "cloud" },
+  { name: "AWS Step Functions", level: "advanced", category: "cloud" },
+  { name: "CloudWatch", level: "intermediate", category: "cloud" },
+  { name: "Terraform", level: "intermediate", category: "cloud" },
+  { name: "Docker", level: "intermediate", category: "cloud" },
   
-  // Intermediate level (2)
-  { name: "AWS RDS", level: "intermediate", category: "cloud" },
-  { name: "AWS Step Functions", level: "intermediate", category: "cloud" },
-  { name: "PyTorch", level: "intermediate", category: "ai" },
-  { name: "Transformers", level: "intermediate", category: "ai" },
-  { name: "Streamlit", level: "intermediate", category: "programming" },
-  { name: "MongoDB", level: "intermediate", category: "cloud" },
-  { name: "PostgreSQL", level: "intermediate", category: "cloud" },
-  { name: "PySpark", level: "intermediate", category: "cloud" },
-  { name: "Java", level: "intermediate", category: "programming" },
-  { name: "Swift", level: "intermediate", category: "programming" },
-  { name: "Kotlin", level: "intermediate", category: "programming" }
+  // Languages & Libraries
+  { name: "Python", level: "intermediate", category: "languages" },
+  { name: "PySpark", level: "intermediate", category: "languages" },
+  { name: "JSON", level: "advanced", category: "languages" },
+  { name: "Pandas", level: "intermediate", category: "languages" },
+  { name: "Boto3", level: "intermediate", category: "languages" },
+  { name: "SQL/PostgreSQL", level: "expert", category: "languages" },
+  { name: "HTML/CSS", level: "expert", category: "languages" },
+  
+  // AI & Development Tools
+  { name: "Claude AI/Claude Code", level: "expert", category: "ai" },
+  { name: "Cursor AI", level: "expert", category: "ai" },
+  { name: "AWS Bedrock", level: "intermediate", category: "ai" },
+  { name: "RAG/Embeddings", level: "intermediate", category: "ai" },
+  { name: "MCP (Model Context Protocol)", level: "expert", category: "ai" },
+  { name: "ChatGPT/OpenAI API", level: "expert", category: "ai" },
+  { name: "Prompt Engineering", level: "expert", category: "ai" },
+  
+  // Other Tools
+  { name: "GitHub/GitHub Actions", level: "expert", category: "tools" },
+  { name: "N8N.io", level: "advanced", category: "tools" },
+  { name: "Postman", level: "advanced", category: "tools" },
+  { name: "Figma", level: "advanced", category: "tools" },
+  { name: "IAM Security", level: "expert", category: "tools" },
+  { name: "Apple Shortcuts", level: "expert", category: "tools" }
 ]
 
 const categories = {
-  programming: "Programming Languages",
-  cloud: "Cloud & Infrastructure", 
+  cloud: "Cloud & Infrastructure",
+  languages: "Languages & Libraries",
   ai: "AI & Development Tools",
-  design: "Design & Automation",
-  automation: "Workflow Automation"
+  tools: "Other Tools"
 }
 
 export function SkillsShowcase() {
@@ -87,10 +81,11 @@ export function SkillsShowcase() {
 
   const getLevelWidth = (level: string) => {
     switch (level) {
-      case 'expert': return 75
-      case 'advanced': return 60
-      case 'intermediate': return 45
-      default: return 25
+      case 'expert': return 100  // Score 4
+      case 'advanced': return 75  // Score 3
+      case 'intermediate': return 50  // Score 2
+      case 'beginner': return 25  // Score 1
+      default: return 0
     }
   }
 
@@ -99,6 +94,7 @@ export function SkillsShowcase() {
       case 'expert': return 'bg-gradient-to-r from-green-500 to-emerald-500'
       case 'advanced': return 'bg-gradient-to-r from-blue-500 to-cyan-500'
       case 'intermediate': return 'bg-gradient-to-r from-yellow-500 to-orange-500'
+      case 'beginner': return 'bg-gradient-to-r from-gray-400 to-gray-500'
       default: return 'bg-gradient-to-r from-gray-400 to-gray-500'
     }
   }
