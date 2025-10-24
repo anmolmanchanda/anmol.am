@@ -5,53 +5,40 @@ import { Project } from "@/types"
 const featuredProjects: Project[] = [
   {
     id: "1",
-    title: "Enterprise Data Pipeline (UN)",
-    description: "TB-scale data processing infrastructure for 12 global cities with real-time monitoring",
-    technologies: ["AWS Glue", "Lambda", "EventBridge", "Step Functions", "PySpark"],
-    image: "/images/projects/un-pipeline.jpg",
+    title: "Chatbot & AI Agent using AWS Bedrock",
+    description: "Built intelligent Q&A system using Python, AWS Bedrock with RAG, vector embeddings, and PGVector",
+    technologies: ["Python", "AWS Bedrock", "RAG", "Vector Embeddings", "PGVector"],
+    image: "/images/projects/ai-chatbot.jpg",
     githubUrl: "",
-    liveUrl: "https://qolimpact.com",
     featured: true,
-    category: "enterprise",
-    date: "2024-06",
-    type: "work" // UN work project
+    category: "ai",
+    date: "2024",
+    type: "personal"
   },
   {
     id: "2",
-    title: "AI-Powered Life Manager",
-    description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
-    technologies: ["Swift", "AI Integration", "macOS Frameworks"],
-    image: "/images/projects/life-manager.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/LifeManager",
+    title: "Resource Management System",
+    description: "Built task management platform with Next.js, React, TypeScript supporting 17 users with real-time updates",
+    technologies: ["Next.js", "React", "TypeScript", "Airtable", "LLMs", "MCPs"],
+    image: "/images/projects/resource-management.jpg",
+    githubUrl: "",
     featured: true,
-    category: "ai",
-    date: "2024-05",
-    type: "personal" // Personal project
+    category: "enterprise",
+    date: "2024",
+    type: "work"
   },
   {
     id: "3",
-    title: "N8N Workflow Automation",
-    description: "50+ N8N workflows for process optimization and enterprise automation",
-    technologies: ["N8N.io", "APIs", "Workflow Design", "Automation"],
-    image: "/images/projects/automation.jpg",
-    githubUrl: "",
-    liveUrl: "https://n8n.io",
+    title: "Personal Website",
+    description: "LLM-driven and AI Assisted development using MCPs like TaskMaster with Sequential thinking for effective planning",
+    technologies: ["Next.js", "React", "TypeScript", "Claude AI", "MCP Servers", "TaskMaster"],
+    image: "/images/projects/personal-website.jpg",
+    githubUrl: "https://github.com/anmolmanchanda/anmol.am",
+    liveUrl: "https://anmol.am",
     featured: true,
-    category: "automation",
-    date: "2024-01",
-    type: "work" // N8N: work (UN)
-  },
-  {
-    id: "4",
-    title: "Apple Shortcuts Collection",
-    description: "50+ Apple Shortcuts for iOS/macOS process optimization and personal efficiency",
-    technologies: ["Apple Shortcuts", "iOS", "macOS", "Personal Automation"],
-    image: "/images/projects/automation.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/automation-suite",
-    featured: true,
-    category: "automation",
-    date: "2024-01",
-    type: "personal" // Apple Shortcuts: personal
+    category: "ai",
+    date: "2025",
+    type: "personal"
   }
 ]
 
@@ -68,17 +55,16 @@ export function FeaturedProjects() {
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
           {featuredProjects.slice(0, 3).map((project) => {
             const getProjectIcon = () => {
-              if (project.id === "1") return <Database className="w-8 h-8 text-blue-500" />
-              if (project.id === "2") return <Zap className="w-8 h-8 text-purple-500" />
+              if (project.id === "1") return <Zap className="w-8 h-8 text-purple-500" />
+              if (project.id === "2") return <Database className="w-8 h-8 text-blue-500" />
               return <TrendingUp className="w-8 h-8 text-green-500" />
             }
 
             const getProjectMetrics = () => {
-              if (project.id === "1") return { metric: "10+ TB", label: "Data Processed Monthly" }
-              if (project.id === "2") return { metric: "AI-Powered", label: "Native macOS App" }
-              if (project.id === "3") return { metric: "50+", label: "N8N Workflows" }
-              if (project.id === "4") return { metric: "50+", label: "Apple Shortcuts" }
-              return { metric: "100+", label: "Automations Created" }
+              if (project.id === "1") return { metric: "AWS Bedrock", label: "RAG & Embeddings" }
+              if (project.id === "2") return { metric: "17 Users", label: "Real-time Platform" }
+              if (project.id === "3") return { metric: "MCP-Driven", label: "AI-Assisted Dev" }
+              return { metric: "100+", label: "Features Built" }
             }
 
             const metrics = getProjectMetrics()

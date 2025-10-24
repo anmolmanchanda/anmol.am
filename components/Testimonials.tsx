@@ -96,58 +96,7 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* Featured testimonials grid */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          {testimonials
-            .filter(t => t.highlighted)
-            .map((testimonial) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="glass-morphism rounded-2xl p-8 h-full border border-primary/20 hover:border-primary/40 transition-all duration-300">
-                  <Quote className="w-10 h-10 text-primary/20 mb-4" />
-                  
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
-                    ))}
-                  </div>
-
-                  <p className="text-lg mb-6 leading-relaxed">{testimonial.content}</p>
-
-                  <div className="flex items-center gap-4">
-                    <Image
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      width={56}
-                      height={56}
-                      className="rounded-full"
-                    />
-                    <div className="flex-1">
-                      <h4 className="font-semibold">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Building2 className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{testimonial.company}</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
-                        <Briefcase className="w-3 h-3" />
-                        {testimonial.projectType}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-        </div>
-
-        {/* Carousel for additional testimonials */}
+        {/* Carousel for all testimonials */}
         <div className="relative max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div

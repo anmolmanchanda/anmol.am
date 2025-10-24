@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { GraduationCap, Rocket, Users, Database, Zap } from "lucide-react"
+import { GraduationCap, Rocket, Database, Zap } from "lucide-react"
 
 interface TimelineEvent {
   id: string
