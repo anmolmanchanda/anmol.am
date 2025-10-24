@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Star, Quote, ChevronLeft, ChevronRight, Building2, Briefcase } from "lucide-react"
+import { Star, Quote, ChevronLeft, ChevronRight, Briefcase } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
