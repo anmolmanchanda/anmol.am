@@ -92,9 +92,6 @@ export function Footer() {
               <p className="mt-2 text-sm text-muted-foreground">
                 {siteConfig.email}
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Hiring: hire@anmol.am
-              </p>
             </div>
             
             {/* Newsletter - far right */}

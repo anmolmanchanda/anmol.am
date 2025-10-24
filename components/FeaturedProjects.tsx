@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowUpRight, Database, Zap, TrendingUp } from "lucide-react"
+import { ArrowUpRight, Database, Zap, TrendingUp, BookOpen, Github } from "lucide-react"
 import { Project } from "@/types"
 
 const featuredProjects: Project[] = [
@@ -216,11 +216,14 @@ export function FeaturedProjects() {
                   {/* Enhanced action buttons */}
                   <div className="mt-6 flex items-center gap-4">
                     <Link
-                      href={`/projects/${project.id}`}
-                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link"
+                      href={project.id === "7" ? "/work/building-intelligent-chatbot-aws-bedrock" : 
+                             project.id === "8" ? "/work/enterprise-resource-management-system" :
+                             project.id === "5" ? "/work/ai-powered-portfolio-development" : 
+                             `/projects/${project.id}`}
+                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                     >
-                      View Project
-                      <ArrowUpRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                      <BookOpen className="mr-1.5 h-4 w-4" />
+                      Read More
                     </Link>
                     
                     {project.githubUrl && (
@@ -228,8 +231,9 @@ export function FeaturedProjects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                        className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                       >
+                        <Github className="mr-1.5 h-4 w-4" />
                         Code
                       </a>
                     )}
@@ -239,9 +243,10 @@ export function FeaturedProjects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                        className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                       >
                         Live Demo
+                        <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
                       </a>
                     )}
                   </div>
