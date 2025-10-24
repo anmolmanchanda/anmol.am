@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Star, Quote, ChevronLeft, ChevronRight, Building2, Briefcase } from "lucide-react"
-import Image from "next/image"
+import { Star, Quote, ChevronLeft, ChevronRight, Briefcase } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface Testimonial {
@@ -24,7 +23,7 @@ const testimonials: Testimonial[] = [
     id: "1",
     name: "Grayson Bass",
     role: "Innovation Advisor & Project Manager",
-    company: "Grayson managed Anmol directly",
+    company: "Direct Manager",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Grayson",
     content: "I have worked with Anmol in two different roles. He was one of the last hires I made in one role and one of the first hires I made in the other. Anmol is a consistently reliable, honorable, and effective team member. He jumps in and tackles any challenge. In less than 2 months, he built a data pipeline and scaled up to data engineering. His work powered incredible insights and a plug and play tool for analyzing large mobile ping data sets. If I move to a third role, he would definitely be on my list to recruit.",
     rating: 5,
@@ -36,7 +35,7 @@ const testimonials: Testimonial[] = [
     id: "2",
     name: "Salman Naqvi",
     role: "Senior Infrastructure Security and Backend Engineer",
-    company: "Salman worked with Anmol on the same team",
+    company: "UN-Habitat Team",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Salman",
     content: "Over the 12 months that I worked with Anmol, I was consistently amazed by his ability to leverage emerging technologies, especially AI, to accomplish tasks I didn't think were possible in such short timeframes. In particular, over a three-month period, he built a 500 TB data processing pipeline in AWS using AWS Glue, a project that would typically take an experienced data scientist 12 to 18 months to complete. He did this without any previous AWS or data science experience! He also produced rapid prototypes that were nothing short of jaw-dropping. Anmol has an exceptional ability to quickly learn and implement entirely new technologies, even in areas where he has no prior experience. Whenever I'm hiring again, he'll be the first person I reach out to before considering any other candidates.",
     rating: 5,
@@ -48,7 +47,7 @@ const testimonials: Testimonial[] = [
     id: "3",
     name: "Ishu Trivedi",
     role: "Senior Full Stack AI Engineer",
-    company: "Ishu worked with Anmol on the same team",
+    company: "UN-Habitat Team",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ishu",
     content: "Anmol's deep domain expertise stood out from day one, especially when he helped me get onboarded and understand the project's technical nuances. He is the deepest domain expert of our team, always bringing fresh perspectives and staying ahead of the curve with emerging technologies. He has made remarkable contributions in building and optimizing our data processing workflows, particularly through his expertise in AWS-based data pipelines capable of handling large and complex datasets efficiently. Anmol's enthusiasm for exploring new tools and techniques consistently pushes our work to the next level. It's been a privilege working alongside him, and I highly recommend Anmol for any role that values innovation, technical excellence, and collaborative excellence.",
     rating: 5,
@@ -60,7 +59,7 @@ const testimonials: Testimonial[] = [
     id: "4",
     name: "Guruprasanna Rajukannan Suresh",
     role: "AI Software Engineer",
-    company: "Guruprasanna worked with Anmol on the same team",
+    company: "UN-Habitat Team",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Guruprasanna",
     content: "I've worked with Anmol for over a year, and he has consistently shown strong technical and problem-solving skills. He independently built a scalable, cloud-native data pipeline on AWS capable of handling big and real-time data efficiently. He also contributed significantly to our QoL Impactor platform project with his advanced SQL expertise. During brainstorming and problem-solving sessions, his analytical thinking and decision-making stood out and often guided management direction. Anmol constantly explores new AI tools to enhance project performance and has developed several internal AI solutions to improve team operations. He's a creative, reliable, and forward-thinking engineer who delivers results.",
     rating: 5,
@@ -96,58 +95,7 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* Featured testimonials grid */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          {testimonials
-            .filter(t => t.highlighted)
-            .map((testimonial) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="glass-morphism rounded-2xl p-8 h-full border border-primary/20 hover:border-primary/40 transition-all duration-300">
-                  <Quote className="w-10 h-10 text-primary/20 mb-4" />
-                  
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
-                    ))}
-                  </div>
-
-                  <p className="text-lg mb-6 leading-relaxed">{testimonial.content}</p>
-
-                  <div className="flex items-center gap-4">
-                    <Image
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      width={56}
-                      height={56}
-                      className="rounded-full"
-                    />
-                    <div className="flex-1">
-                      <h4 className="font-semibold">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Building2 className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground">{testimonial.company}</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
-                        <Briefcase className="w-3 h-3" />
-                        {testimonial.projectType}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-        </div>
-
-        {/* Carousel for additional testimonials */}
+        {/* Carousel for all testimonials */}
         <div className="relative max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
@@ -172,18 +120,11 @@ export function Testimonials() {
               </p>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src={testimonials[currentIndex]?.avatar || ""}
-                    alt={testimonials[currentIndex]?.name || ""}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
+                <div>
                   <div>
                     <h4 className="font-semibold">{testimonials[currentIndex]?.name}</h4>
                     <p className="text-sm text-muted-foreground">
-                      {testimonials[currentIndex]?.role} at {testimonials[currentIndex]?.company}
+                      {testimonials[currentIndex]?.role} - {testimonials[currentIndex]?.company}
                     </p>
                   </div>
                 </div>
@@ -239,7 +180,7 @@ export function Testimonials() {
             href="/contact"
             className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            Start Your Project
+            Contact Anmol
           </a>
         </div>
       </div>

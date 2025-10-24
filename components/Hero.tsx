@@ -123,7 +123,7 @@ export function Hero() {
                 </MagneticButton>
                 
                 <MagneticButton className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-foreground text-background font-medium transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg group w-full sm:w-auto sm:min-w-[200px] min-h-[44px] cyber-border futuristic-gradient">
-                  <Link href="/Anmol Manchanda's Résumé.pdf" className="flex items-center">
+                  <Link href="/Resume_24.10.25.pdf" className="flex items-center">
                     <Download className="mr-2 w-4 h-4" />
                     Resume
                   </Link>
