@@ -17,6 +17,38 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
+    id: "cert1",
+    year: "2025",
+    title: "AWS Solutions Architect Associate",
+    company: "Amazon Web Services",
+    description: "AWS certified professional in cloud architecture and best practices",
+    icon: <Award className="w-5 h-5" />,
+    color: "bg-yellow-500",
+    achievements: [
+      "Certified in designing distributed systems on AWS",
+      "Expertise in AWS services and cloud architecture patterns",
+      "Cost optimization and security best practices",
+      "High availability and fault-tolerant systems design"
+    ],
+    technologies: ["AWS", "Cloud Architecture", "Security", "Cost Optimization"]
+  },
+  {
+    id: "cert2",
+    year: "2025",
+    title: "Cloud, Data and Technical Solutions Architect",
+    company: "Quality of Life Initiative, UN-Habitat",
+    description: "Specialized certification in cloud and data solutions for urban development",
+    icon: <Award className="w-5 h-5" />,
+    color: "bg-blue-500",
+    achievements: [
+      "Certified in UN-Habitat's technical architecture standards",
+      "Specialized in geospatial data processing",
+      "Urban analytics and smart city solutions",
+      "Global scale data infrastructure design"
+    ],
+    technologies: ["Cloud Architecture", "Data Engineering", "Geospatial Analytics"]
+  },
+  {
     id: "1",
     year: "2024-2025",
     title: "Full Stack Software Engineer",
@@ -52,6 +84,21 @@ const timelineEvents: TimelineEvent[] = [
       "Used Node.js, Go, YAML and XML"
     ],
     technologies: ["Hyperledger Fabric", "Smart Contracts", "Docker", "Swift", "Node.js", "Go", "YAML", "XML", "Figma"]
+  },
+  {
+    id: "edu1", 
+    year: "Recent",
+    title: "Python for Beginners",
+    company: "FreeCodeCamp",
+    description: "Comprehensive Python programming fundamentals course",
+    icon: <GraduationCap className="w-5 h-5" />,
+    color: "bg-purple-500",
+    achievements: [
+      "Mastered Python programming fundamentals",
+      "Data structures and algorithms in Python",
+      "Object-oriented programming concepts",
+      "Practical projects and problem-solving"
+    ]
   },
   {
     id: "3",
@@ -94,6 +141,21 @@ const timelineEvents: TimelineEvent[] = [
       "Built multiple Android applications",
       "Learned Material Design principles",
       "Mastered Android Studio and development tools"
+    ]
+  },
+  {
+    id: "cert3",
+    year: "2016",
+    title: "Android Training With Projects",
+    company: "A.J. Data Consultancy Services",
+    description: "Comprehensive Android development training with hands-on project experience",
+    icon: <Award className="w-5 h-5" />,
+    color: "bg-indigo-500",
+    achievements: [
+      "Completed intensive Android development training",
+      "Built real-world Android applications",
+      "Learned Java for Android development",
+      "Hands-on experience with Android SDK and tools"
     ]
   }
 ]
