@@ -39,10 +39,10 @@
 
 **Version 2.1.0** - Updated September 5, 2025
 
-A modern, performant portfolio showcasing expertise in AI-assisted development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores. Features real-time data integration with external APIs for life tracking, professional work metrics, and dynamic content updates.
+A modern, performant portfolio showcasing expertise in AI-powered development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores. Features real-time data integration with external APIs for life tracking, professional work metrics, and dynamic content updates.
 
 ### Key Highlights
-- 🤖 **AI-Assisted Development**: 50+ MCP servers integrated
+- 🤖 **AI-Powered Development**: 50+ MCP servers integrated
 - 🏢 **Enterprise Experience**: TB-scale data pipelines for UN-Habitat
 - ⚡ **Performance**: Core Web Vitals - LCP < 1.8s, FID < 45ms, CLS < 0.02
 - ♿ **Accessibility**: WCAG 2.1 Level AA compliant
@@ -64,7 +64,7 @@ A modern, performant portfolio showcasing expertise in AI-assisted development, 
 
 ### Projects Page - Portfolio Showcase
 ![Projects Page](./public/project_page_screenshot_for_readme.png)
-*Interactive project cards with filtering by category (Enterprise, AI-Assisted, Automation, Blockchain) and live demos*
+*Interactive project cards with filtering by category (Enterprise, AI-Powered, Automation, Blockchain) and live demos*
 
 ---
 
@@ -432,7 +432,7 @@ MIT License - See [LICENSE](LICENSE) file for details
 
 ## 🙏 Acknowledgments
 
-Built with modern technologies and AI-assisted development:
+Built with modern technologies and AI-powered development:
 - [Next.js](https://nextjs.org) by Vercel
 - [Tailwind CSS](https://tailwindcss.com)
 - [Claude AI](https://claude.ai) & MCP Servers
@@ -444,8 +444,8 @@ Built with modern technologies and AI-assisted development:
 
 **Built by [Anmol Manchanda](https://anmol.am)**
 
-Technical Solutions Architect / Full Stack Software Engineer | AI-Assisted Development Pioneer
+Cloud Architect & AI Engineer | Full Stack Software Engineer at UN-Habitat
 
-[LinkedIn](https://linkedin.com/in/anmolmanchanda) • [GitHub](https://github.com/anmolmanchanda) • [Email](mailto:hi@anmol.am)
+[LinkedIn](https://linkedin.com/in/anmolmanchanda) • [GitHub](https://github.com/anmolmanchanda) • [Email](mailto:hire@anmol.am)
 
 </div>

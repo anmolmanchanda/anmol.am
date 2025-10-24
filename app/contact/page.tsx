@@ -148,7 +148,7 @@ export default function ContactPage() {
                   <p>• AI implementation assessment and strategy</p>
                   <p>• Rapid prototype development</p>
                   <p>• Data pipeline architecture and development</p>
-                  <p>• AI-assisted automation solutions</p>
+                  <p>• AI-powered automation solutions</p>
                   <p className="font-medium text-foreground">Rate: $90-150/hour</p>
                 </div>
               </div>

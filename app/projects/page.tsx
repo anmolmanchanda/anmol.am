@@ -2,11 +2,53 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, Github } from "lucide-react"
+import { ArrowUpRight, Github, BookOpen } from "lucide-react"
 import { Project } from "@/types"
 import { cn } from "@/lib/utils"
 
 const allProjects: Project[] = [
+  {
+    id: "7",
+    title: "Chatbot & AI Agent using AWS Bedrock",
+    description: "Built intelligent Q&A system using Python, AWS Bedrock with RAG, vector embeddings, and PGVector",
+    longDescription: "Developed an intelligent chatbot and AI agent system leveraging AWS Bedrock for natural language processing. Implemented RAG (Retrieval Augmented Generation) architecture with vector embeddings stored in PGVector for efficient similarity search and contextual responses.",
+    technologies: ["Python", "AWS Bedrock", "RAG", "Vector Embeddings", "PGVector"],
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
+    githubUrl: "https://github.com/anmolmanchanda/ai-chatbot-bedrock",
+    liveUrl: "",
+    featured: true,
+    category: "ai",
+    date: "2024",
+    type: "personal",
+    blogArticle: "/work/building-intelligent-chatbot-aws-bedrock",
+    metrics: {
+      responseTime: "<200ms",
+      accuracy: "95%",
+      vectorDimensions: "1536",
+      ragDocuments: "10,000+"
+    }
+  },
+  {
+    id: "8",
+    title: "Resource Management System",
+    description: "Built task management platform with Next.js, React, TypeScript supporting 17 users with real-time updates",
+    longDescription: "Created a comprehensive resource management system for UN-Habitat to streamline task allocation and project tracking. The platform supports real-time collaboration for 17 team members with features like task assignment, progress tracking, and automated notifications.",
+    technologies: ["Next.js", "React", "TypeScript", "Airtable", "LLMs", "MCPs"],
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1920&q=80",
+    githubUrl: "https://github.com/anmolmanchanda/resource-management",
+    liveUrl: "",
+    featured: true,
+    category: "enterprise",
+    date: "2024",
+    type: "work",
+    blogArticle: "/work/enterprise-resource-management-system",
+    metrics: {
+      activeUsers: "17",
+      tasksManaged: "500+/month",
+      efficiency: "40% improvement",
+      uptime: "99.9%"
+    }
+  },
   {
     id: "1",
     title: "Enterprise Data Pipeline (UN)",
@@ -20,7 +62,7 @@ const allProjects: Project[] = [
     category: "enterprise",
     date: "June 2024 - Present",
     type: "work",
-    blogArticle: "/blog/building-tb-scale-data-infrastructure-un",
+    blogArticle: "/work/building-tb-scale-data-infrastructure-un",
     metrics: {
       dataProcessed: "10+ TB/month",
       cities: "12 global cities",
@@ -31,8 +73,8 @@ const allProjects: Project[] = [
   {
     id: "2",
     title: "AI-Powered Life Manager",
-    description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
-    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-assisted development methodologies. Demonstrates cutting-edge AI-assisted development practices for personal productivity optimization and life management.",
+    description: "Comprehensive productivity solution built as native macOS application using AI-powered development",
+    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-powered development methodologies. Demonstrates cutting-edge AI-powered development practices for personal productivity optimization and life management.",
     technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
     image: "https://images.unsplash.com/photo-1554306274-f23873d9a26c?w=1920&q=80",
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
@@ -40,7 +82,7 @@ const allProjects: Project[] = [
     category: "ai",
     date: "May 2025 - Present",
     type: "personal",
-    blogArticle: "/blog/ai-assisted-macos-life-manager",
+    blogArticle: "/work/ai-powered-macos-life-manager",
     metrics: {
       productivity: "40% increase",
       aiCalls: "1000+ daily",
@@ -61,7 +103,7 @@ const allProjects: Project[] = [
     category: "automation",
     date: "January 2025",
     type: "work",
-    blogArticle: "/blog/enterprise-automation-n8n-workflows",
+    blogArticle: "/work/enterprise-automation-n8n-workflows",
     metrics: {
       workflows: "50+ automated",
       timeSaved: "200+ hours/month",
@@ -76,11 +118,13 @@ const allProjects: Project[] = [
     longDescription: "Developed 716+ Apple Shortcuts for iOS and macOS to automate personal productivity workflows. Started with iOS 13 public beta release in July 2019. Includes shortcuts for file management, calendar scheduling, note-taking, and cross-device synchronization to streamline daily tasks.",
     technologies: ["Apple Shortcuts", "iOS", "macOS", "Personal Automation"],
     image: "/images/projects/automation.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/automation-suite",
+    githubUrl: "https://github.com/anmolmanchanda/apple-shortcuts",
+    liveUrl: "https://routinehub.co/user/anmolmanchanda",
     featured: true,
     category: "automation",
     date: "July 2019 - Present",
-    type: "personal"
+    type: "personal",
+    blogArticle: "/work/apple-shortcuts-automation-collection"
   },
   {
     id: "4",
@@ -90,15 +134,17 @@ const allProjects: Project[] = [
     technologies: ["Blockchain", "Swift", "Kotlin", "JavaScript", "Mobile Development"],
     image: "/images/projects/blockchain.jpg",
     githubUrl: "https://github.com/anmolmanchanda/blockchain-solutions",
+    liveUrl: "",
     featured: false,
     category: "blockchain",
     date: "February 2024 - June 2024",
-    type: "work"
+    type: "work",
+    blogArticle: "/work/blockchain-solutions-smart-waterloo"
   },
   {
     id: "5",
     title: "Personal Website",
-    description: "LLM-driven and AI Assisted development",
+    description: "LLM-driven and AI-powered development",
     longDescription: "Effectively used MCPs to optimize token usage and looking up documentation. Used MCPs like TaskMaster in conjunction with Sequential thinking for effective planning.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Claude AI", "MCP Servers", "TaskMaster", "Sequential Thinking"],
     image: "/images/projects/ai-portfolio.jpg",
@@ -107,14 +153,15 @@ const allProjects: Project[] = [
     featured: false,
     category: "ai",
     date: "January 2025 - Present",
-    type: "personal"
+    type: "personal",
+    blogArticle: "/work/ai-powered-portfolio-development"
   }
 ]
 
 const categories = [
   { value: "all", label: "All Projects" },
   { value: "enterprise", label: "Enterprise" },
-  { value: "ai", label: "AI-Assisted" },
+  { value: "ai", label: "AI-Powered" },
   { value: "automation", label: "Automation" },
   { value: "blockchain", label: "Blockchain" },
   { value: "other", label: "Other" }
@@ -137,7 +184,7 @@ export default function ProjectsPage() {
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Projects</h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-muted-foreground">
-            Real portfolio projects demonstrating AI-assisted development, enterprise solutions, and technical innovation
+            Real portfolio projects demonstrating AI-powered development, enterprise solutions, and technical innovation
           </p>
         </div>
 
@@ -324,9 +371,7 @@ export default function ProjectsPage() {
                     )}
                   </div>
                   <h3 className="mt-3 text-lg sm:text-xl font-semibold">
-                    <Link href={project.blogArticle || `/projects/${project.id}`} className="hover:text-primary transition-colors">
-                      {project.title}
-                    </Link>
+                    {project.title}
                   </h3>
                   <p className="mt-3 text-sm sm:text-base text-muted-foreground line-clamp-2">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -346,6 +391,15 @@ export default function ProjectsPage() {
                   </div>
                 </div>
                 <div className="mt-4 sm:mt-6 flex items-center gap-3 sm:gap-4">
+                  {project.blogArticle && (
+                    <Link
+                      href={project.blogArticle}
+                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors min-h-[44px] py-2"
+                    >
+                      <BookOpen className="mr-1.5 h-4 w-4" />
+                      Read More
+                    </Link>
+                  )}
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}

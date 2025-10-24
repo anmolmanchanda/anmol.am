@@ -86,7 +86,7 @@ claude --list-mcps  # List available MCP servers
 - **Tech Stack**: Next.js 15.4.1, React 19, TypeScript 5, Tailwind CSS v4
 - **Performance**: 96/100 Lighthouse score
 - **Features**: 
-  - ✅ AI-Assisted Development
+  - ✅ AI-Powered Development
   - ✅ TB-scale Data Pipeline
   - ✅ 50+ MCP Servers Configured
   - ✅ Real-time Analytics

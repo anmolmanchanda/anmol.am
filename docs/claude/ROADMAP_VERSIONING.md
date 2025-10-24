@@ -11,7 +11,7 @@
 
 ### Major Updates
 - ✅ **Hero Section Redesign**
-  - Updated job title to "Technical Solutions Architect / Full Stack Software Engineer"
+  - Updated job title to "Cloud Architect & AI Engineer"
   - Redesigned CTA buttons with consistent styling and futuristic gradient effects
   - Repositioned buttons to center of page with optimal spacing
   - Added LinkedIn and GitHub buttons (temporary replacement for Subscribe to Notes and Fiverr)

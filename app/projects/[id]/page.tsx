@@ -23,8 +23,8 @@ const projects: Record<string, Project> = {
   "2": {
     id: "2",
     title: "AI-Powered Life Manager",
-    description: "Comprehensive productivity solution built as native macOS application using AI-assisted development",
-    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-assisted development methodologies. Demonstrates cutting-edge AI-assisted development practices for personal productivity optimization and life management.",
+    description: "Comprehensive productivity solution built as native macOS application using AI-powered development",
+    longDescription: "Developed comprehensive productivity solution as native macOS application using AI-powered development methodologies. Demonstrates cutting-edge AI-powered development practices for personal productivity optimization and life management.",
     technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
     image: "/images/projects/life-manager.jpg",
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
@@ -32,7 +32,7 @@ const projects: Record<string, Project> = {
     category: "ai",
     date: "May 2024 - Present",
     type: "personal",
-    blogArticle: "/blog/ai-assisted-macos-life-manager"
+    blogArticle: "/blog/ai-powered-macos-life-manager"
   },
   "3": {
     id: "3",
@@ -64,12 +64,12 @@ const projects: Record<string, Project> = {
   },
   "5": {
     id: "5",
-    title: "AI-Assisted Development Portfolio",
-    description: "Collection of projects demonstrating AI-assisted development methodologies",
-    longDescription: "Portfolio showcasing various AI-assisted development approaches and techniques. Demonstrates proficiency with Claude AI, ChatGPT, Cursor AI, and other AI development tools for rapid prototyping and solution development.",
+    title: "AI-Powered Development Portfolio",
+    description: "Collection of projects demonstrating AI-powered development methodologies",
+    longDescription: "Portfolio showcasing various AI-powered development approaches and techniques. Demonstrates proficiency with Claude AI, ChatGPT, Cursor AI, and other AI development tools for rapid prototyping and solution development.",
     technologies: ["Claude AI", "ChatGPT", "Cursor AI", "Python", "Swift", "JavaScript"],
     image: "/images/projects/ai-portfolio.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
+    githubUrl: "https://github.com/anmolmanchanda/ai-powered-projects",
     featured: false,
     category: "ai",
     date: "April 2024 - Present",

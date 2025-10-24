@@ -17,35 +17,79 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    id: "cert1",
-    year: "Oct-Nov 2025",
-    title: "AWS Solutions Architect Associate (In Progress)",
-    company: "Amazon Web Services",
-    description: "Currently pursuing AWS certification in cloud architecture and best practices",
-    icon: <Award className="w-5 h-5" />,
-    color: "bg-yellow-500",
+    id: "4",
+    year: "2014 - 2019",
+    title: "Bachelors in Computer Applications",
+    company: "Guru Gobind Singh Indraprastha University, India",
+    description: "Comprehensive computer science education with focus on programming fundamentals and software development",
+    icon: <GraduationCap className="w-5 h-5" />,
+    color: "bg-orange-500",
     achievements: [
-      "Studying distributed systems design on AWS",
-      "Learning AWS services and cloud architecture patterns",
-      "Focusing on cost optimization and security best practices",
-      "Preparing for high availability and fault-tolerant systems"
-    ],
-    technologies: ["AWS", "Cloud Architecture", "Security", "Cost Optimization"]
+      "Strong foundation in computer science principles",
+      "Programming fundamentals and algorithms", 
+      "Software development best practices"
+    ]
   },
   {
-    id: "edu1", 
-    year: "Oct 2025",
-    title: "Python for Beginners",
-    company: "FreeCodeCamp",
-    description: "Comprehensive Python programming fundamentals course",
+    id: "cert3",
+    year: "2016",
+    title: "Android Training With Projects",
+    company: "iON Tata Consultancy Services",
+    description: "Comprehensive Android development training with hands-on project experience",
+    icon: <Award className="w-5 h-5" />,
+    color: "bg-indigo-500",
+    achievements: [
+      "Completed intensive Android development training",
+      "Built real-world Android applications",
+      "Learned Java for Android development",
+      "Hands-on experience with Android SDK and tools"
+    ]
+  },
+  {
+    id: "5",
+    year: "2016-2017",
+    title: "Android Basics Nanodegree",
+    company: "Udacity by Google",
+    description: "Google-certified Android development fundamentals and best practices",
+    icon: <Award className="w-5 h-5" />,
+    color: "bg-green-500",
+    achievements: [
+      "Completed Android development fundamentals",
+      "Built multiple Android applications",
+      "Learned Material Design principles",
+      "Mastered Android Studio and development tools"
+    ]
+  },
+  {
+    id: "3",
+    year: "2021 - 2023",
+    title: "Post Graduate Diploma in Mobile Solutions Development",
+    company: "Conestoga College, Waterloo",
+    description: "Mobile Solutions Development with focus on iOS and Android platforms",
     icon: <GraduationCap className="w-5 h-5" />,
+    color: "bg-green-500",
+    achievements: [
+      "Specialized in mobile application development",
+      "Mastered iOS and Android frameworks",
+      "Built foundation for AI-powered development"
+    ]
+  },
+  {
+    id: "2", 
+    year: "Feb 2024 - Jun 2024",
+    title: "Hyperledger Fabric Architect & Mobile Developer",
+    company: "Region of Waterloo - Smart Waterloo Region Innovation Lab",
+    description: "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts for municipal applications",
+    icon: <Rocket className="w-5 h-5" />,
     color: "bg-purple-500",
     achievements: [
-      "Mastered Python programming fundamentals",
-      "Data structures and algorithms in Python",
-      "Object-oriented programming concepts",
-      "Practical projects and problem-solving"
-    ]
+      "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts",
+      "Built proof-of-concept implementation using Docker containerization",
+      "Explored consensus mechanisms and developed the iOS app in Xcode using Swift",
+      "Wireframed & designed the iOS app in Figma",
+      "Used Node.js, Go, YAML and XML"
+    ],
+    technologies: ["Hyperledger Fabric", "Smart Contracts", "Docker", "Swift", "Node.js", "Go", "YAML", "XML", "Figma"]
   },
   {
     id: "1",
@@ -68,79 +112,35 @@ const timelineEvents: TimelineEvent[] = [
     technologies: ["AWS Glue", "PySpark", "Python", "Lambda", "EventBridge", "Step Functions", "Claude AI", "Cursor AI", "GitHub Actions"]
   },
   {
-    id: "2", 
-    year: "Feb 2024 - Jun 2024",
-    title: "Hyperledger Fabric Architect & Mobile Developer",
-    company: "Region of Waterloo - Smart Waterloo Region Innovation Lab",
-    description: "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts for municipal applications",
-    icon: <Rocket className="w-5 h-5" />,
+    id: "edu1", 
+    year: "Oct 2025",
+    title: "Python for Beginners",
+    company: "FreeCodeCamp",
+    description: "Comprehensive Python programming fundamentals course",
+    icon: <GraduationCap className="w-5 h-5" />,
     color: "bg-purple-500",
     achievements: [
-      "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts",
-      "Built proof-of-concept implementation using Docker containerization",
-      "Explored consensus mechanisms and developed the iOS app in Xcode using Swift",
-      "Wireframed & designed the iOS app in Figma",
-      "Used Node.js, Go, YAML and XML"
+      "Mastered Python programming fundamentals",
+      "Data structures and algorithms in Python",
+      "Object-oriented programming concepts",
+      "Practical projects and problem-solving"
+    ]
+  },
+  {
+    id: "cert1",
+    year: "Oct-Nov 2025",
+    title: "AWS Solutions Architect Associate (In Progress)",
+    company: "Amazon Web Services",
+    description: "Currently pursuing AWS certification in cloud architecture and best practices",
+    icon: <Award className="w-5 h-5" />,
+    color: "bg-yellow-500",
+    achievements: [
+      "Studying distributed systems design on AWS",
+      "Learning AWS services and cloud architecture patterns",
+      "Focusing on cost optimization and security best practices",
+      "Preparing for high availability and fault-tolerant systems"
     ],
-    technologies: ["Hyperledger Fabric", "Smart Contracts", "Docker", "Swift", "Node.js", "Go", "YAML", "XML", "Figma"]
-  },
-  {
-    id: "3",
-    year: "2021 - 2023",
-    title: "Post Graduate Diploma",
-    company: "Conestoga College, Waterloo",
-    description: "Mobile Solutions Development with focus on iOS and Android platforms",
-    icon: <GraduationCap className="w-5 h-5" />,
-    color: "bg-green-500",
-    achievements: [
-      "Specialized in mobile application development",
-      "Mastered iOS and Android frameworks",
-      "Built foundation for AI-assisted development"
-    ]
-  },
-  {
-    id: "4",
-    year: "2014 - 2019",
-    title: "Bachelors in Computer Applications",
-    company: "Guru Gobind Singh Indraprastha University, India",
-    description: "Comprehensive computer science education with focus on programming fundamentals and software development",
-    icon: <GraduationCap className="w-5 h-5" />,
-    color: "bg-orange-500",
-    achievements: [
-      "Strong foundation in computer science principles",
-      "Programming fundamentals and algorithms", 
-      "Software development best practices"
-    ]
-  },
-  {
-    id: "5",
-    year: "2017",
-    title: "Android Basics Nanodegree",
-    company: "Udacity by Google",
-    description: "Google-certified Android development fundamentals and best practices",
-    icon: <Award className="w-5 h-5" />,
-    color: "bg-green-500",
-    achievements: [
-      "Completed Android development fundamentals",
-      "Built multiple Android applications",
-      "Learned Material Design principles",
-      "Mastered Android Studio and development tools"
-    ]
-  },
-  {
-    id: "cert3",
-    year: "2016",
-    title: "Android Training With Projects",
-    company: "iON Tata Consultancy Services",
-    description: "Comprehensive Android development training with hands-on project experience",
-    icon: <Award className="w-5 h-5" />,
-    color: "bg-indigo-500",
-    achievements: [
-      "Completed intensive Android development training",
-      "Built real-world Android applications",
-      "Learned Java for Android development",
-      "Hands-on experience with Android SDK and tools"
-    ]
+    technologies: ["AWS", "Cloud Architecture", "Security", "Cost Optimization"]
   }
 ]
 
@@ -160,7 +160,7 @@ export function InteractiveTimeline() {
             <span className="holographic">Career Journey</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            From foundations to AI-assisted innovation at the United Nations
+            From foundations to AI-powered innovation at the United Nations
           </p>
         </div>
 

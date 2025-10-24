@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Download, Globe2, Linkedin, Github } from "lucide-react"
+import { ArrowRight, Download, Cloud, Linkedin, Github } from "lucide-react"
 import { ParallaxElement } from "@/components/InteractiveEffects"
 import { Card3D, MagneticButton, AnimatedText } from "@/components/DrribbleInspiredFeatures"
 
@@ -39,7 +39,7 @@ export function Hero() {
         </div>
         <div className="absolute top-[35%] right-[5%] animate-float-faster-delay-3 hidden lg:block">
           <div className="glass-morphism cyber-border px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium border backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow quantum-glow">
-            <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-purple-500 bg-clip-text text-transparent font-semibold">AI-Assisted</span>
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-purple-500 bg-clip-text text-transparent font-semibold">AI-Powered</span>
           </div>
         </div>
         <div className="absolute top-[45%] left-[8%] animate-float-faster-delay-4 hidden lg:block">
@@ -102,7 +102,7 @@ export function Hero() {
 
                 {/* Clean credential badge */}
                 <div className="inline-flex items-center gap-3 glass-morphism px-6 py-3 rounded-full border-2 border-primary/20 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300">
-                  <Globe2 className="w-5 h-5 text-primary" />
+                  <Cloud className="w-5 h-5 text-primary" />
                   <span className="text-sm font-medium">Cloud Architect & AI Engineer</span>
                 </div>
               </div>

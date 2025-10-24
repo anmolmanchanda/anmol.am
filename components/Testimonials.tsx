@@ -22,49 +22,49 @@ const testimonials: Testimonial[] = [
   {
     id: "1",
     name: "Grayson Bass",
-    role: "Innovation Advisor & Project Manager",
+    role: "UN-Habitat",
     company: "Direct Manager",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Grayson",
     content: "I have worked with Anmol in two different roles. He was one of the last hires I made in one role and one of the first hires I made in the other. Anmol is a consistently reliable, honorable, and effective team member. He jumps in and tackles any challenge. In less than 2 months, he built a data pipeline and scaled up to data engineering. His work powered incredible insights and a plug and play tool for analyzing large mobile ping data sets. If I move to a third role, he would definitely be on my list to recruit.",
     rating: 5,
     date: "2024",
-    projectType: "Data Engineering & Leadership",
+    projectType: "Innovation Advisor & Project Manager",
     highlighted: true
   },
   {
     id: "2",
     name: "Salman Naqvi",
-    role: "Senior Infrastructure Security and Backend Engineer",
-    company: "UN-Habitat Team",
+    role: "UN-Habitat",
+    company: "Team Member",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Salman",
     content: "Over the 12 months that I worked with Anmol, I was consistently amazed by his ability to leverage emerging technologies, especially AI, to accomplish tasks I didn't think were possible in such short timeframes. In particular, over a three-month period, he built a 500 TB data processing pipeline in AWS using AWS Glue, a project that would typically take an experienced data scientist 12 to 18 months to complete. He did this without any previous AWS or data science experience! He also produced rapid prototypes that were nothing short of jaw-dropping. Anmol has an exceptional ability to quickly learn and implement entirely new technologies, even in areas where he has no prior experience. Whenever I'm hiring again, he'll be the first person I reach out to before considering any other candidates.",
     rating: 5,
     date: "2024",
-    projectType: "AWS Infrastructure & Data Pipeline",
+    projectType: "Senior Infrastructure Security and Backend Engineer",
     highlighted: true
   },
   {
     id: "3",
     name: "Ishu Trivedi",
-    role: "Senior Full Stack AI Engineer",
-    company: "UN-Habitat Team",
+    role: "UN-Habitat",
+    company: "Team Member",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ishu",
     content: "Anmol's deep domain expertise stood out from day one, especially when he helped me get onboarded and understand the project's technical nuances. He is the deepest domain expert of our team, always bringing fresh perspectives and staying ahead of the curve with emerging technologies. He has made remarkable contributions in building and optimizing our data processing workflows, particularly through his expertise in AWS-based data pipelines capable of handling large and complex datasets efficiently. Anmol's enthusiasm for exploring new tools and techniques consistently pushes our work to the next level. It's been a privilege working alongside him, and I highly recommend Anmol for any role that values innovation, technical excellence, and collaborative excellence.",
     rating: 5,
     date: "2024",
-    projectType: "Data Processing & AWS Architecture",
+    projectType: "Senior Full Stack AI Engineer",
     highlighted: false
   },
   {
     id: "4",
     name: "Guruprasanna Rajukannan Suresh",
-    role: "AI Software Engineer",
-    company: "UN-Habitat Team",
+    role: "UN-Habitat",
+    company: "Team Member",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Guruprasanna",
     content: "I've worked with Anmol for over a year, and he has consistently shown strong technical and problem-solving skills. He independently built a scalable, cloud-native data pipeline on AWS capable of handling big and real-time data efficiently. He also contributed significantly to our QoL Impactor platform project with his advanced SQL expertise. During brainstorming and problem-solving sessions, his analytical thinking and decision-making stood out and often guided management direction. Anmol constantly explores new AI tools to enhance project performance and has developed several internal AI solutions to improve team operations. He's a creative, reliable, and forward-thinking engineer who delivers results.",
     rating: 5,
     date: "2024",
-    projectType: "Cloud Architecture & AI Solutions",
+    projectType: "AI Software Engineer",
     highlighted: false
   }
 ]
@@ -173,9 +173,6 @@ export function Testimonials() {
 
         {/* Call to action */}
         <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Join these successful organizations in transforming your digital infrastructure
-          </p>
           <a
             href="/contact"
             className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"

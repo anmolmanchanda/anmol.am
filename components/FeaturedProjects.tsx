@@ -4,7 +4,7 @@ import { Project } from "@/types"
 
 const featuredProjects: Project[] = [
   {
-    id: "1",
+    id: "7",
     title: "Chatbot & AI Agent using AWS Bedrock",
     description: "Built intelligent Q&A system using Python, AWS Bedrock with RAG, vector embeddings, and PGVector",
     technologies: ["Python", "AWS Bedrock", "RAG", "Vector Embeddings", "PGVector"],
@@ -16,7 +16,7 @@ const featuredProjects: Project[] = [
     type: "personal"
   },
   {
-    id: "2",
+    id: "8",
     title: "Resource Management System",
     description: "Built task management platform with Next.js, React, TypeScript supporting 17 users with real-time updates",
     technologies: ["Next.js", "React", "TypeScript", "Airtable", "LLMs", "MCPs"],
@@ -28,9 +28,9 @@ const featuredProjects: Project[] = [
     type: "work"
   },
   {
-    id: "3",
+    id: "5",
     title: "Personal Website",
-    description: "LLM-driven and AI Assisted development using MCPs like TaskMaster with Sequential thinking for effective planning",
+    description: "LLM-driven and AI-powered development using MCPs like TaskMaster with Sequential thinking for effective planning",
     technologies: ["Next.js", "React", "TypeScript", "Claude AI", "MCP Servers", "TaskMaster"],
     image: "/images/projects/personal-website.jpg",
     githubUrl: "https://github.com/anmolmanchanda/anmol.am",
@@ -49,21 +49,21 @@ export function FeaturedProjects() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Featured Projects</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Real projects demonstrating AI-assisted development and enterprise-scale solutions
+            Real projects demonstrating AI-powered development and enterprise-scale solutions
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
           {featuredProjects.slice(0, 3).map((project) => {
             const getProjectIcon = () => {
-              if (project.id === "1") return <Zap className="w-8 h-8 text-purple-500" />
-              if (project.id === "2") return <Database className="w-8 h-8 text-blue-500" />
+              if (project.id === "7") return <Zap className="w-8 h-8 text-purple-500" />
+              if (project.id === "8") return <Database className="w-8 h-8 text-blue-500" />
               return <TrendingUp className="w-8 h-8 text-green-500" />
             }
 
             const getProjectMetrics = () => {
-              if (project.id === "1") return { metric: "AWS Bedrock", label: "RAG & Embeddings" }
-              if (project.id === "2") return { metric: "17 Users", label: "Real-time Platform" }
-              if (project.id === "3") return { metric: "MCP-Driven", label: "AI-Assisted Dev" }
+              if (project.id === "7") return { metric: "AWS Bedrock", label: "RAG & Embeddings" }
+              if (project.id === "8") return { metric: "17 Users", label: "Real-time Platform" }
+              if (project.id === "5") return { metric: "MCP-Driven", label: "AI-Powered Dev" }
               return { metric: "100+", label: "Features Built" }
             }
 
@@ -80,7 +80,7 @@ export function FeaturedProjects() {
                   
                   {/* Enhanced animated data visualization backgrounds */}
                   <div className="absolute inset-0 opacity-50">
-                    {project.id === "1" && (
+                    {project.id === "7" && (
                       <div className="w-full h-full bg-gradient-to-br from-blue-600/60 via-cyan-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
                         <div className="grid grid-cols-12 gap-1 opacity-80 rotate-3 animate-pulse">
                           {[...Array(60)].map((_, i) => (
@@ -106,7 +106,7 @@ export function FeaturedProjects() {
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent animate-pulse" />
                       </div>
                     )}
-                    {project.id === "2" && (
+                    {project.id === "8" && (
                       <div className="w-full h-full bg-gradient-to-br from-purple-600/60 via-pink-500/50 to-violet-400/40 flex items-center justify-center">
                         <div className="relative">
                           <div className="w-32 h-32 border-4 border-purple-300 rounded-2xl opacity-70 rotate-12 animate-pulse" />
@@ -116,7 +116,7 @@ export function FeaturedProjects() {
                         </div>
                       </div>
                     )}
-                    {(project.id === "3" || project.id === "4") && (
+                    {(project.id === "5" || project.id === "4") && (
                       <div className="w-full h-full bg-gradient-to-br from-green-600/60 via-emerald-500/50 to-teal-400/40 flex items-center justify-center overflow-hidden">
                         <div className="grid grid-cols-8 gap-3 opacity-70 -rotate-6">
                           {[...Array(32)].map((_, i) => (

@@ -180,7 +180,7 @@ export const SUCCESS_MESSAGES = {
 export const SEO_DEFAULTS = {
   TITLE_TEMPLATE: '%s | Anmol Manchanda',
   DEFAULT_TITLE: 'Anmol Manchanda - Technical Solutions Architect',
-  DEFAULT_DESCRIPTION: 'Technical Solutions Architect specializing in AI-assisted development, enterprise solutions, and modern web technologies.',
+  DEFAULT_DESCRIPTION: 'Technical Solutions Architect specializing in AI-powered development, enterprise solutions, and modern web technologies.',
   DEFAULT_IMAGE: '/images/og-image.png',
   SITE_NAME: 'anmol.am',
   TWITTER_HANDLE: '@anmolmanchanda',

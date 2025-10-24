@@ -1,40 +1,44 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { Building2, Smartphone, ChefHat, Users, GraduationCap, Code2, Database, Zap } from "lucide-react"
+import { Building2, ChefHat, Users, GraduationCap, Code2, Database, Zap, Award } from "lucide-react"
 import { Experience } from "@/types"
 import { TimelineItem } from "@/components/InteractiveEffects"
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn more about Anmol Manchanda - AI-Assisted Technical Solutions Architect at United Nations",
+  description: "Learn more about Anmol Manchanda - Cloud Architect & AI Engineer specializing in scalable AWS infrastructure and AI-driven innovation",
 }
 
 const experiences: Experience[] = [
   {
     id: "1",
-    company: "United Nations (UN-Habitat/UNOPS)",
-    position: "Software Engineer (Integration)",
+    company: "United Nations-Habitat",
+    position: "Full Stack Software Engineer",
     startDate: "2024-06",
-    description: "Building TB-scale data processing pipeline for 12 global cities, pioneering AI-assisted development approach within UN technical teams",
-    technologies: ["AWS", "Glue", "Lambda", "EventBridge", "Step Functions", "PySpark", "Python"],
+    endDate: "2025-08",
+    description: "Led multidisciplinary data team designing and deploying 500TB+ scalable, secure geospatial mobile-ping analytics solution for global cities",
+    technologies: ["AWS Glue", "PySpark", "Python", "Lambda", "EventBridge", "Step Functions", "Claude AI", "Cursor AI"],
     achievements: [
-      "Built TB-scale data processing pipeline for 12 global cities",
-      "Pioneered AI-assisted development approach within UN technical teams",
-      "Architected enterprise-grade AWS infrastructure handling 10+ TB monthly data volume"
+      "Contributed to $20M project with projected expansion to $30-40M annually by 2026/2027",
+      "Spearheaded global scale-up: 50 cities in 2025, 300+ in 2026, and thousands beyond 2027",
+      "Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) through optimization",
+      "Designed and deployed scalable AWS infrastructure processing 500TB+ monthly using AWS Glue and PySpark",
+      "Leveraged LLMs (Claude Opus 4.1, GPT-5) and code editors for rapid prototyping"
     ]
   },
   {
     id: "2",
-    company: "Smart Waterloo Region Innovation Lab",
-    position: "Blockchain Engineer & Mobile App Developer",
+    company: "Region of Waterloo - Smart Waterloo Region Innovation Lab",
+    position: "Hyperledger Fabric Architect & Mobile Developer",
     startDate: "2024-02",
     endDate: "2024-06",
-    description: "Developed blockchain solutions and mobile applications for regional innovation initiatives",
-    technologies: ["Blockchain", "Swift", "Kotlin", "JavaScript", "Mobile Development"],
+    description: "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts for municipal applications",
+    technologies: ["Hyperledger Fabric", "Smart Contracts", "Docker", "Swift", "Node.js", "Go", "YAML", "XML", "Figma"],
     achievements: [
-      "Built mobile applications for regional innovation projects",
-      "Implemented blockchain solutions for secure data management",
-      "Collaborated with regional stakeholders on technology initiatives"
+      "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts",
+      "Built proof-of-concept implementation using Docker containerization",
+      "Explored consensus mechanisms and developed the iOS app in Xcode using Swift",
+      "Wireframed & designed the iOS app in Figma"
     ]
   },
   {
@@ -96,7 +100,7 @@ export default function AboutPage() {
               </div>
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">About Me</h1>
               <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-2xl">
-                AI-Assisted Technical Solutions Architect solving complex problems in days, not weeks
+                Cloud Architect & AI Engineer specializing in scalable AWS infrastructure and AI-driven innovation
               </p>
             </div>
           </div>
@@ -106,19 +110,18 @@ export default function AboutPage() {
               <h2 className="text-2xl font-bold tracking-tight">Who I Am</h2>
               <div className="mt-6 space-y-4 text-foreground">
                 <p>
-                  Technical Solutions Architect with expertise in AI-assisted development, data engineering, and rapid prototyping. 
-                  Proven ability to solve complex technical challenges across multiple domains using modern AI tools and cloud infrastructure, 
-                  with experience managing TB-scale data pipelines for global initiatives.
+                  Proficient cloud, data and technical solutions architect specializing in building scalable AWS infrastructure as well as rapid 
+                  prototyping. Proven ability to solve complex technical challenges across multiple domains using cloud infrastructure and cloud 
+                  infrastructure. Reduced infrastructure costs by 80% while processing 500TB+ monthly for UN global initiative through 
+                  automation, reusability, optimization, and modularization.
                 </p>
                 <p>
-                  Started with mobile development education, gained diverse experience through hospitality work and volunteer leadership, 
-                  then transitioned into technical roles combining data engineering, AI-assisted development, and solutions architecture. 
-                  Known for pioneering AI-assisted development approaches and creating efficient automation solutions.
+                  Experienced in technical and non technical communication, presentation skills, AWS services, ETL optimization, and technical 
+                  leadership. Extraordinarily quick learner and backed up with excellent references.
                 </p>
                 <p>
-                  Core values include continuous learning and adaptation, creative problem-solving with AI assistance, 
-                  efficiency through intelligent automation, and maintaining work-life balance. Possess unique abilities 
-                  including hyperphantasia and eidetic memory for rapid problem-solving.
+                  Core values include continuous learning and adaptation, creative problem-solving with AI tools, 
+                  efficiency through intelligent automation, and maintaining work-life balance.
                 </p>
               </div>
             </section>
@@ -128,7 +131,7 @@ export default function AboutPage() {
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
                 {experiences.map((exp) => {
                   const getIcon = () => {
-                    if (exp.id === "1") return <Building2 className="w-5 h-5 text-blue-500 icon-float" />
+                    if (exp.id === "1") return <Database className="w-5 h-5 text-blue-500 icon-float" />
                     if (exp.id === "2") return <Code2 className="w-5 h-5 text-purple-500 icon-pulse" />
                     if (exp.id === "3") return <ChefHat className="w-5 h-5 text-orange-500 icon-float" />
                     if (exp.id === "4") return <Users className="w-5 h-5 text-green-500 icon-pulse" />
@@ -136,8 +139,8 @@ export default function AboutPage() {
                   }
                   
                   const getDetails = () => {
-                    if (exp.id === "1") return "Leading technical innovation at UN-Habitat, building scalable data infrastructure for global urban development initiatives."
-                    if (exp.id === "2") return "Pioneered blockchain solutions for regional innovation, collaborating with government stakeholders and tech startups."
+                    if (exp.id === "1") return "Led multidisciplinary data team in designing and deploying 500TB+ scalable, secure geospatial mobile-ping analytics solution."
+                    if (exp.id === "2") return "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts for municipal applications."
                     if (exp.id === "3") return "Developed strong work ethic and customer service skills while transitioning to technical career."
                     if (exp.id === "4") return "International leadership experience managing cross-cultural teams and exchange programs."
                     return ""
@@ -269,7 +272,7 @@ export default function AboutPage() {
                         <div>
                           <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Post Graduate Diploma in Mobile Solutions Development</h3>
                           <p className="text-sm text-muted-foreground">
-                            Conestoga College, Waterloo • 2023
+                            Conestoga College, Waterloo • 2021 - 2023
                           </p>
                         </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">
@@ -307,7 +310,7 @@ export default function AboutPage() {
                         <div>
                           <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Bachelor of Computer Applications</h3>
                           <p className="text-sm text-muted-foreground">
-                            GGSIPU, India • 2017
+                            GGSIPU, India • 2014 - 2019
                           </p>
                         </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">
@@ -328,7 +331,7 @@ export default function AboutPage() {
                   className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
                 >
                   <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <Smartphone className="w-5 h-5 text-green-500 icon-pulse" />
+                    <Award className="w-5 h-5 text-green-500 icon-pulse" />
                   </div>
                   <div className="flex items-start gap-4">
                     <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-green-500/20 to-green-400/10 border border-green-500/20 flex items-center justify-center">
@@ -360,15 +363,96 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </TimelineItem>
+
               </div>
             </section>
 
+            <section className="relative z-10">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Skills & Technologies</h2>
+              <div className="mt-6 sm:mt-8">
+                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border">
+                  <div className="space-y-6">
+                    {/* Skill level 4 - Expert */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Zap className="w-5 h-5 text-yellow-500" />
+                        Expert Level
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda", "Apple Shortcuts", "HTML/CSS"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-yellow-500/20 hover:bg-yellow-500/30 px-3 py-1.5 text-sm font-medium text-yellow-700 dark:text-yellow-300 transition-colors border border-yellow-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Skill level 3 - Advanced */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Database className="w-5 h-5 text-blue-500" />
+                        Advanced
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["AWS Glue", "JavaScript", "React", "Next.js", "Node.js", "TypeScript", "Git", "Github Actions", "Vercel", "Tailwind CSS", "Mobile App Development", "SQL", "AWS EventBridge"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-blue-500/20 hover:bg-blue-500/30 px-3 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-300 transition-colors border border-blue-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Skill level 2 - Intermediate */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Code2 className="w-5 h-5 text-green-500" />
+                        Intermediate
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["AWS RDS", "AWS Step Functions", "PyTorch", "Transformers", "Streamlit", "MongoDB", "PostgreSQL", "PySpark", "Java", "Swift", "Kotlin"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-green-500/20 hover:bg-green-500/30 px-3 py-1.5 text-sm font-medium text-green-700 dark:text-green-300 transition-colors border border-green-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Skill level 1 - Learning */}
+                    <div>
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <GraduationCap className="w-5 h-5 text-purple-500" />
+                        Learning & Exploring
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {["AWS DynamoDB", "AWS ECS (Elastic Container Service)", "Kubernetes", "Docker", "Terraform", "Scikit-learn", "GCP", "C++", "CUDA"].map((skill) => (
+                          <span
+                            key={skill}
+                            className="inline-flex items-center rounded-md bg-purple-500/20 hover:bg-purple-500/30 px-3 py-1.5 text-sm font-medium text-purple-700 dark:text-purple-300 transition-colors border border-purple-500/30"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             <section className="relative z-10">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Career Goals & Services</h2>
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
                 <TimelineItem
-                  details="Seeking challenging Technical/AI Solutions Architect roles that leverage AI-assisted development methodologies and diverse technical skills."
+                  details="Seeking challenging Technical/AI Solutions Architect roles that leverage AI-powered development methodologies and diverse technical skills."
                   className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
                 >
                   <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
@@ -383,16 +467,16 @@ export default function AboutPage() {
                         <div>
                           <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Career Focus</h3>
                           <p className="text-sm text-muted-foreground">
-                            Technical/AI Solutions Architect • 125-150k+ CAD
+                            Cloud Architect & AI Engineer • Open to new opportunities
                           </p>
                         </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                          Targeting Technical/AI Solutions Architect roles focusing on challenging projects 
-                          that utilize diverse technical skills and AI-assisted development methodologies. Open to both full-time 
-                          opportunities and consulting arrangements.
+                          Seeking cloud architect and AI engineering roles where I can leverage my expertise in 
+                          building scalable AWS infrastructure, AI-driven development, and rapid prototyping to 
+                          solve complex technical challenges.
                         </p>
                         <div className="flex flex-wrap gap-2 pt-2">
-                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">AI-Assisted Development</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">AI-Driven Development</span>
                           <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Solutions Architecture</span>
                           <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Technical Leadership</span>
                         </div>
@@ -449,7 +533,7 @@ export default function AboutPage() {
                           </li>
                           <li className="flex items-start">
                             <span className="mr-2 text-primary font-bold">•</span>
-                            <span>AI-assisted automation solutions</span>
+                            <span>AI-powered automation solutions</span>
                           </li>
                         </ul>
                       </div>

@@ -90,11 +90,11 @@ export default function WorkPage() {
         },
         {
           id: 'blog-2',
-          title: 'AI-Assisted macOS Development',
+          title: 'AI-Powered macOS Development',
           description: 'Creating a personal life management system with Claude AI',
           type: 'article',
           timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
-          url: '/work/ai-assisted-macos-life-manager',
+          url: '/work/ai-powered-macos-life-manager',
           tags: ['Article', 'AI', 'macOS', 'Swift']
         },
         {

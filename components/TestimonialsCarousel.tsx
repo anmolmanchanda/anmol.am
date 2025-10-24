@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
     name: "Dr. Sarah Chen",
     role: "Technical Director",
     company: "UN-Habitat",
-    content: "Anmol's AI-assisted development approach revolutionized our data processing capabilities. He transformed our TB-scale challenges into elegant, automated solutions that process data in hours instead of weeks.",
+    content: "Anmol's AI-powered development approach revolutionized our data processing capabilities. He transformed our TB-scale challenges into elegant, automated solutions that process data in hours instead of weeks.",
     rating: 5,
     metrics: "10+ TB processed monthly"
   },
@@ -39,7 +39,7 @@ const testimonials: Testimonial[] = [
     name: "Alex Thompson",
     role: "CTO",
     company: "TechVenture Solutions",
-    content: "Anmol's automation expertise saved us countless hours. His 100+ custom automations transformed our workflows and demonstrated the true power of AI-assisted development. Highly recommend for any technical consulting needs.",
+    content: "Anmol's automation expertise saved us countless hours. His 100+ custom automations transformed our workflows and demonstrated the true power of AI-powered development. Highly recommend for any technical consulting needs.",
     rating: 5,
     metrics: "40% efficiency increase"
   },
@@ -48,7 +48,7 @@ const testimonials: Testimonial[] = [
     name: "Dr. Priya Sharma",
     role: "Data Science Manager", 
     company: "Global Analytics Corp",
-    content: "The speed and quality of Anmol's work is impressive. He delivers complex technical solutions in days, not weeks, while maintaining enterprise-grade quality. His AI-assisted approach is the future of development.",
+    content: "The speed and quality of Anmol's work is impressive. He delivers complex technical solutions in days, not weeks, while maintaining enterprise-grade quality. His AI-powered approach is the future of development.",
     rating: 5,
     metrics: "75% faster delivery"
   }
@@ -91,7 +91,7 @@ export function TestimonialsCarousel() {
             Client <span className="holographic">Testimonials</span>
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Trusted by organizations worldwide for AI-assisted technical solutions
+            Trusted by organizations worldwide for AI-powered technical solutions
           </p>
         </div>
 
