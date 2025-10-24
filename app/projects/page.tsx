@@ -97,15 +97,16 @@ const allProjects: Project[] = [
   },
   {
     id: "5",
-    title: "AI-Assisted Development Portfolio",
-    description: "Collection of projects demonstrating AI-assisted development methodologies",
-    longDescription: "Portfolio showcasing various AI-assisted development approaches and techniques. Demonstrates proficiency with Claude AI, ChatGPT, Cursor AI, and other AI development tools for rapid prototyping and solution development.",
-    technologies: ["Claude AI", "ChatGPT", "Cursor AI", "Python", "Swift", "JavaScript"],
+    title: "Personal Website",
+    description: "LLM-driven and AI Assisted development",
+    longDescription: "Effectively used MCPs to optimize token usage and looking up documentation. Used MCPs like TaskMaster in conjunction with Sequential thinking for effective planning.",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Claude AI", "MCP Servers", "TaskMaster", "Sequential Thinking"],
     image: "/images/projects/ai-portfolio.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/ai-assisted-projects",
+    githubUrl: "https://github.com/anmolmanchanda/anmol.am",
+    liveUrl: "https://anmol.am",
     featured: false,
     category: "ai",
-    date: "July 18, 2025 - Present",
+    date: "January 2025 - Present",
     type: "personal"
   }
 ]
