@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Image from "next/image"
-import { Building2, Smartphone, ChefHat, Users, GraduationCap, Code2, Database, Zap, Award } from "lucide-react"
+import { Building2, ChefHat, Users, GraduationCap, Code2, Database, Zap, Award } from "lucide-react"
 import { Experience } from "@/types"
 import { TimelineItem } from "@/components/InteractiveEffects"
 
@@ -379,7 +379,7 @@ export default function AboutPage() {
                         Expert Level
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI-Assisted Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda"].map((skill) => (
+                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI-Assisted Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda", "Apple Shortcuts", "HTML/CSS"].map((skill) => (
                           <span
                             key={skill}
                             className="inline-flex items-center rounded-md bg-yellow-500/20 hover:bg-yellow-500/30 px-3 py-1.5 text-sm font-medium text-yellow-700 dark:text-yellow-300 transition-colors border border-yellow-500/30"

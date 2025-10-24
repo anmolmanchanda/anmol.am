@@ -1,13 +1,13 @@
 export const siteConfig = {
   name: "Anmol Manchanda",
   url: "https://anmol.am",
-  email: "me@anmol.am",
-  title: "AI-Assisted Technical Solutions Architect",
-  description: "Technical Solutions Architect with expertise in AI-assisted development, data engineering, and rapid prototyping. Currently Technical Solutions Architect at UN-Habitat.",
+  email: "hire@anmol.am",
+  title: "Cloud Architect & AI Engineer",
+  description: "Cloud Architect & AI Engineer with expertise in scalable AWS infrastructure and AI-driven innovation. Currently Full Stack Software Engineer at UN-Habitat.",
   keywords: [
     "Anmol Manchanda",
-    "AI-Assisted Development",
-    "Technical Solutions Architect",
+    "Cloud Architect",
+    "AI Engineer",
     "United Nations",
     "AWS",
     "Data Engineering",
@@ -19,7 +19,7 @@ export const siteConfig = {
   ],
   author: {
     name: "Anmol Manchanda",
-    email: "me@anmol.am",
+    email: "hire@anmol.am",
     twitter: "@anmolmanchanda",
     linkedin: "anmolmanchanda",
     github: "anmolmanchanda"
@@ -28,11 +28,11 @@ export const siteConfig = {
     github: "https://github.com/anmolmanchanda",
     linkedin: "https://linkedin.com/in/anmolmanchanda",
     fiverr: "https://fiverr.com/anmolmanchanda",
-    email: "mailto:me@anmol.am"
+    email: "mailto:hire@anmol.am"
   },
   emailAliases: {
     hire: "hire@anmol.am",
-    general: "me@anmol.am",
+    general: "hire@anmol.am",
     newsletter: "notes@anmol.am"
   },
   location: "Kitchener, Ontario, Canada"

@@ -173,9 +173,6 @@ export function Testimonials() {
 
         {/* Call to action */}
         <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Join these successful organizations in transforming your digital infrastructure
-          </p>
           <a
             href="/contact"
             className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
