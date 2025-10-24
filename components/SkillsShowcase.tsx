@@ -24,57 +24,30 @@ const skills: Skill[] = [
   { name: "Boto3", level: "intermediate", category: "languages" },
   { name: "SQL/PostgreSQL", level: "expert", category: "languages" },
   { name: "HTML/CSS", level: "expert", category: "languages" },
-  { name: "Java", level: "intermediate", category: "languages" },
   
   // AI & Development Tools
   { name: "Claude AI/Claude Code", level: "expert", category: "ai" },
   { name: "Cursor AI", level: "expert", category: "ai" },
-  { name: "Windsurf AI", level: "expert", category: "ai" },
-  { name: "Zed AI", level: "expert", category: "ai" },
   { name: "AWS Bedrock", level: "intermediate", category: "ai" },
   { name: "RAG/Embeddings", level: "intermediate", category: "ai" },
   { name: "MCP (Model Context Protocol)", level: "expert", category: "ai" },
   { name: "ChatGPT/OpenAI API", level: "expert", category: "ai" },
   { name: "Prompt Engineering", level: "expert", category: "ai" },
-  { name: "LangChain", level: "intermediate", category: "ai" },
-  { name: "Streamlit", level: "intermediate", category: "ai" },
-  { name: "PyTorch", level: "intermediate", category: "ai" },
-  { name: "Transformers", level: "intermediate", category: "ai" },
   
   // Other Tools
   { name: "GitHub/GitHub Actions", level: "expert", category: "tools" },
-  { name: "Git", level: "advanced", category: "tools" },
   { name: "N8N.io", level: "advanced", category: "tools" },
   { name: "Postman", level: "advanced", category: "tools" },
   { name: "Figma", level: "advanced", category: "tools" },
   { name: "IAM Security", level: "expert", category: "tools" },
-  { name: "Airtable", level: "expert", category: "tools" },
-  { name: "Vercel", level: "advanced", category: "tools" },
-  { name: "MongoDB", level: "intermediate", category: "tools" },
-  
-  // Mobile & Automation
-  { name: "Apple Shortcuts", level: "expert", category: "mobile" },
-  { name: "iOS Development", level: "advanced", category: "mobile" },
-  { name: "Android Development", level: "advanced", category: "mobile" },
-  { name: "Swift", level: "intermediate", category: "mobile" },
-  { name: "Kotlin", level: "intermediate", category: "mobile" },
-  
-  // Web Development
-  { name: "JavaScript", level: "advanced", category: "web" },
-  { name: "TypeScript", level: "advanced", category: "web" },
-  { name: "React", level: "advanced", category: "web" },
-  { name: "Next.js", level: "advanced", category: "web" },
-  { name: "Node.js", level: "advanced", category: "web" },
-  { name: "Tailwind CSS", level: "advanced", category: "web" }
+  { name: "Apple Shortcuts", level: "expert", category: "tools" }
 ]
 
 const categories = {
   cloud: "Cloud & Infrastructure",
   languages: "Languages & Libraries",
   ai: "AI & Development Tools",
-  tools: "Other Tools",
-  mobile: "Mobile & Automation",
-  web: "Web Development"
+  tools: "Other Tools"
 }
 
 export function SkillsShowcase() {

@@ -141,6 +141,48 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     gradient: "from-cyan-500 via-teal-500 to-emerald-600",
     views: 0,
     featured: true
+  },
+  "building-intelligent-chatbot-aws-bedrock": {
+    id: "10",
+    title: "Building an Intelligent Chatbot with AWS Bedrock",
+    excerpt: "Learn how to build an intelligent Q&A system using AWS Bedrock with RAG architecture, vector embeddings, and PGVector for contextual responses.",
+    date: "2024-10-15",
+    tags: ["AWS", "AI", "Python", "RAG", "Vector Embeddings"],
+    readingTime: 8,
+    slug: "building-intelligent-chatbot-aws-bedrock",
+    category: 'technical' as const,
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
+    gradient: "from-purple-600 via-pink-600 to-indigo-600",
+    views: 0,
+    featured: true
+  },
+  "enterprise-resource-management-system": {
+    id: "11",
+    title: "Building an Enterprise Resource Management System",
+    excerpt: "How we built a comprehensive resource management platform supporting 17 UN-Habitat team members with real-time collaboration and task tracking.",
+    date: "2024-09-20",
+    tags: ["Next.js", "React", "TypeScript", "Real-time", "Airtable"],
+    readingTime: 10,
+    slug: "enterprise-resource-management-system",
+    category: 'technical' as const,
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1920&q=80",
+    gradient: "from-blue-600 via-cyan-600 to-teal-600",
+    views: 0,
+    featured: true
+  },
+  "ai-powered-portfolio-development": {
+    id: "12",
+    title: "AI-Powered Portfolio Development with MCP Servers",
+    excerpt: "How I built a modern portfolio website using AI-powered development tools, MCP servers, and systematic task management to optimize productivity and code quality.",
+    date: "2025-01-20",
+    tags: ["Next.js", "MCP", "Claude AI", "TaskMaster", "Portfolio"],
+    readingTime: 12,
+    slug: "ai-powered-portfolio-development",
+    category: 'technical' as const,
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&q=80",
+    gradient: "from-violet-600 via-purple-600 to-pink-600",
+    views: 0,
+    featured: true
   }
 }
 
