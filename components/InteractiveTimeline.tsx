@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { GraduationCap, Rocket, Database, Zap } from "lucide-react"
+import { GraduationCap, Rocket, Database, Zap, Award } from "lucide-react"
 
 interface TimelineEvent {
   id: string
@@ -77,9 +77,23 @@ const timelineEvents: TimelineEvent[] = [
     color: "bg-orange-500",
     achievements: [
       "Strong foundation in computer science principles",
-      "Programming fundamentals and algorithms",
-      "Software development best practices",
-      "Completed Android Basics Nanodegree by Google (Udacity) in 2017"
+      "Programming fundamentals and algorithms", 
+      "Software development best practices"
+    ]
+  },
+  {
+    id: "5",
+    year: "2017",
+    title: "Android Basics Nanodegree",
+    company: "Udacity by Google",
+    description: "Google-certified Android development fundamentals and best practices",
+    icon: <Award className="w-5 h-5" />,
+    color: "bg-green-500",
+    achievements: [
+      "Completed Android development fundamentals",
+      "Built multiple Android applications",
+      "Learned Material Design principles",
+      "Mastered Android Studio and development tools"
     ]
   }
 ]
