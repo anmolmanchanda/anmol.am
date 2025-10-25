@@ -38,7 +38,7 @@ export interface Skill {
   name: string
   icon?: string
   level: 'beginner' | 'intermediate' | 'advanced' | 'expert'
-  category: 'frontend' | 'backend' | 'database' | 'devops' | 'programming' | 'cloud' | 'ai' | 'design' | 'automation' | 'other'
+  category: 'cloud' | 'languages' | 'ai' | 'tools'
 }
 
 export interface Experience {
