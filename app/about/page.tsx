@@ -152,9 +152,9 @@ export default function AboutPage() {
               </div>
             </section>
 
-            <section className="relative z-10">
+            <section className="relative z-10 overflow-visible">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Experience</h2>
-              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
+              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8 overflow-visible">
                 {experiences.map((exp) => {
                   const getIcon = () => {
                     if (exp.id === "1") return <Database className="w-5 h-5 text-blue-500 icon-float" />
@@ -227,19 +227,19 @@ export default function AboutPage() {
                   // Special layout for Full Stack Software Engineer position
                   if (exp.id === "1") {
                     return (
-                      <TimelineItem
-                        key={exp.id}
-                        details={getDetails()}
-                        className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
-                      >
-                        <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          {getIcon()}
-                        </div>
-                        <div className="flex items-start gap-3 sm:gap-4">
-                          <div className={`w-20 h-20 rounded-lg overflow-hidden shadow-md flex items-center justify-center ${getLogoStyle()}`}>
-                            {getLogo()}
+                      <div key={exp.id} className="relative -mx-4 sm:-mx-8 lg:-mx-16 xl:-mx-32 mb-8">
+                        <TimelineItem
+                          details={getDetails()}
+                          className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                        >
+                          <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            {getIcon()}
                           </div>
-                          <div className="liquid-glass p-6 sm:p-8 lg:p-10 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1 max-w-none">
+                          <div className="flex items-start gap-3 sm:gap-4 px-4 sm:px-8 lg:px-16 xl:px-32">
+                            <div className={`w-20 h-20 rounded-lg overflow-hidden shadow-md flex items-center justify-center ${getLogoStyle()}`}>
+                              {getLogo()}
+                            </div>
+                            <div className="liquid-glass p-6 sm:p-8 lg:p-10 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
                             <div className="space-y-4">
                               <div>
                                 <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{exp.position}</h3>
@@ -294,6 +294,7 @@ export default function AboutPage() {
                           </div>
                         </div>
                       </TimelineItem>
+                    </div>
                     )
                   }
 
