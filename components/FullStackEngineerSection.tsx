@@ -69,29 +69,15 @@ export function FullStackEngineerSection() {
     }
   ]
 
-  const keyAchievements = [
+  const topAchievements = [
     "Contributed to a $20M project with projected expansion to $30–40M annually by 2026/2027",
-    "Spearheading global scale-up: 50 cities in 2025, 300+ in 2026, and thousands beyond 2027",
-    "Designed and deployed automated and scalable AWS infrastructure processing 500TB+ monthly using AWS Glue and PySpark",
-    "Used advanced prompt engineering and Claude Code CLI for development with latest MCPs",
-    "Used GitHub actions for CI/CD",
-    "Deployed S3 buckets, created S3 Inventory and added lifecycle policies"
-  ]
-
-  // Additional achievements to include in the key achievements
-  const additionalKeyAchievements = [
-    "Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) and Improved processing time by 85% from 6 hours to under 1 hour through resource optimization, parallel processing, reusability, and modularization for AWS Glue code",
-    "Implemented least-privilege IAM policies, users & roles through AWS CLI and Console, improving security posture and audit readiness for permissions like S3 buckets and other AWS services",
-    "Built serverless event-driven architectures using Lambda functions with python and added zip layers of libraries like Pandas, Step Functions with JSON, and EventBridge for automated Event-driven architecture",
-    "Established infrastructure monitoring and alerting using CloudWatch and cost optimization strategies",
-    "Leveraged state-of-the-art LLMs (Claude Opus 4.1, GPT-5 Thinking, Gemini 2.5 Pro) and code editors (Cursor.AI, WindSurf, Zed, Claude Code CLI) to prototype rapidly accelerating PoC turnaround significantly",
-    "Sequential Thinking for structured problem-solving, Task Master AI for task management & organization, Brave Search for searching information"
+    "Spearheading global scale-up: 50 cities in 2025, 300+ in 2026, and thousands beyond 2027"
   ]
 
   const technologies = ["AWS Glue", "PySpark", "Python", "Lambda", "EventBridge", "Step Functions", "Claude AI", "Cursor AI"]
 
   return (
-    <div className="relative bg-gradient-to-b from-muted/30 via-muted/10 to-muted/30 py-16 my-12 -mx-4 sm:-mx-6 lg:-mx-8">
+    <div className="relative bg-gradient-to-b from-muted/30 via-muted/10 to-muted/30 py-16 -mt-8">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row items-start gap-8 mb-12">
@@ -126,11 +112,10 @@ export function FullStackEngineerSection() {
           </div>
         </div>
 
-        {/* Key Achievements */}
-        <div className="glass-morphism p-8 rounded-xl border backdrop-blur-md mb-8">
-          <h4 className="text-2xl font-bold text-primary mb-6">Key Project Achievements</h4>
-          <div className="grid md:grid-cols-2 gap-4">
-            {[...keyAchievements, ...additionalKeyAchievements].map((achievement, idx) => (
+        {/* Top Achievements - Only 2 as per resume */}
+        <div className="mb-8">
+          <div className="space-y-3">
+            {topAchievements.map((achievement, idx) => (
               <div key={idx} className="flex items-start">
                 <span className="mr-3 text-primary font-bold text-lg">•</span>
                 <p className="text-base">{achievement}</p>

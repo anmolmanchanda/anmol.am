@@ -153,15 +153,19 @@ export default function AboutPage() {
               </div>
             </section>
 
-            <section className="relative z-10 overflow-visible">
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Experience</h2>
-              
-              {/* Full Stack Software Engineer - Full Width Section */}
-              <div className="mt-6 sm:mt-8 -mx-4 sm:-mx-6 lg:-mx-8">
-                <FullStackEngineerSection />
-              </div>
-              
-              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8 overflow-visible">
+            <section className="relative z-10">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-6 sm:mb-8">Experience</h2>
+            </section>
+          </div>
+        </div>
+        
+        {/* Full Stack Software Engineer - Full Width Section */}
+        <FullStackEngineerSection />
+        
+        {/* Resume container for remaining content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <div className="space-y-6 sm:space-y-8">
                 {experiences.map((exp) => {
                   const getIcon = () => {
                     if (exp.id === "1") return <Database className="w-5 h-5 text-blue-500 icon-float" />
@@ -283,14 +287,8 @@ export default function AboutPage() {
                     </TimelineItem>
                   )
                 })}
-              </div>
-            </section>
-          </div>
-        </div>
-        
-        {/* Resume container for remaining content */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
+            </div>
+            
             <section className="relative z-10">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Education</h2>
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
