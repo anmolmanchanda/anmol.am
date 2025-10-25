@@ -120,6 +120,7 @@ const allProjects: Project[] = [
     image: "/images/projects/automation.jpg",
     githubUrl: "",
     liveUrl: "/shortcuts",
+    liveDemoText: "Explore Shortcuts",
     featured: true,
     category: "automation",
     date: "July 2019 - Present",

@@ -220,7 +220,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 href={project.liveUrl}
                 className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
               >
-                Live Demo
+                {project.liveDemoText || "Live Demo"}
                 <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
               </Link>
             ) : (
@@ -230,7 +230,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
               >
-                Live Demo
+                {project.liveDemoText || "Live Demo"}
                 <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
               </a>
             )

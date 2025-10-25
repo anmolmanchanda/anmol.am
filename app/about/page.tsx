@@ -327,6 +327,40 @@ export default function AboutPage() {
                 </TimelineItem>
 
                 <TimelineItem
+                  details="Comprehensive Python programming course covering fundamentals, data structures, algorithms, and practical applications."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Code2 className="w-5 h-5 text-purple-500 icon-pulse" />
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-purple-500/20 to-purple-400/10 border border-purple-500/20 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-purple-600 rounded-md flex items-center justify-center text-white font-bold text-xl">
+                        fCC
+                      </div>
+                    </div>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Python for Beginners</h3>
+                          <p className="text-sm text-muted-foreground">
+                            FreeCodeCamp • October 2025
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Completed comprehensive Python programming course covering fundamentals, OOP, data structures, and practical projects.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Python</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Programming Fundamentals</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Data Structures</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </TimelineItem>
+
+                <TimelineItem
                   details="Google-certified Android development program focusing on modern development practices and Material Design principles."
                   className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
                 >
@@ -364,87 +398,6 @@ export default function AboutPage() {
                   </div>
                 </TimelineItem>
 
-              </div>
-            </section>
-
-            <section className="relative z-10">
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Skills & Technologies</h2>
-              <div className="mt-6 sm:mt-8">
-                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border">
-                  <div className="space-y-6">
-                    {/* Skill level 4 - Expert */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <Zap className="w-5 h-5 text-yellow-500" />
-                        Expert Level
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda", "Apple Shortcuts", "HTML/CSS"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-yellow-500/20 hover:bg-yellow-500/30 px-3 py-1.5 text-sm font-medium text-yellow-700 dark:text-yellow-300 transition-colors border border-yellow-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Skill level 3 - Advanced */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <Database className="w-5 h-5 text-blue-500" />
-                        Advanced
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["AWS Glue", "JavaScript", "React", "Next.js", "Node.js", "TypeScript", "Git", "Github Actions", "Vercel", "Tailwind CSS", "Mobile App Development", "SQL", "AWS EventBridge"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-blue-500/20 hover:bg-blue-500/30 px-3 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-300 transition-colors border border-blue-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Skill level 2 - Intermediate */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <Code2 className="w-5 h-5 text-green-500" />
-                        Intermediate
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["AWS RDS", "AWS Step Functions", "PyTorch", "Transformers", "Streamlit", "MongoDB", "PostgreSQL", "PySpark", "Java", "Swift", "Kotlin"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-green-500/20 hover:bg-green-500/30 px-3 py-1.5 text-sm font-medium text-green-700 dark:text-green-300 transition-colors border border-green-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Skill level 1 - Learning */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <GraduationCap className="w-5 h-5 text-purple-500" />
-                        Learning & Exploring
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["AWS DynamoDB", "AWS ECS (Elastic Container Service)", "Kubernetes", "Docker", "Terraform", "Scikit-learn", "GCP", "C++", "CUDA"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-purple-500/20 hover:bg-purple-500/30 px-3 py-1.5 text-sm font-medium text-purple-700 dark:text-purple-300 transition-colors border border-purple-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </section>
 
