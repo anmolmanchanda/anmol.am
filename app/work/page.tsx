@@ -44,10 +44,10 @@ export default function WorkPage() {
         
         switch(event.type) {
           case 'PushEvent':
-            const commitCount = event.payload.commits?.length || 0
+            const commitCount = event.payload.size || event.payload.commits?.length || 0
             const commitMessages = event.payload.commits?.slice(0, 2).map((c: any) => c.message).join(', ') || ''
             title = `Pushed ${commitCount} commit${commitCount !== 1 ? 's' : ''} to ${repoName}`
-            description = commitMessages.length > 60 ? commitMessages.substring(0, 60) + '...' : commitMessages
+            description = commitMessages || `Updated ${repoName}`
             break
           case 'CreateEvent':
             title = `Created ${event.payload.ref_type} in ${repoName}`
