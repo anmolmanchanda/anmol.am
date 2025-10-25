@@ -10,11 +10,13 @@ const featuredProjects: Project[] = [
     description: "Built intelligent Q&A system using Python, AWS Bedrock with RAG, vector embeddings, and PGVector",
     technologies: ["Python", "AWS Bedrock", "RAG", "Vector Embeddings", "PGVector"],
     image: "/images/projects/ai-chatbot.jpg",
-    githubUrl: "",
+    githubUrl: "https://github.com/anmolmanchanda/chatbot-bedrock",
+    showDisabledLiveDemo: true,
     featured: true,
     category: "ai",
     date: "2024",
-    type: "personal"
+    type: "personal",
+    blogArticle: "/work/building-intelligent-chatbot-aws-bedrock"
   },
   {
     id: "8",
@@ -22,11 +24,13 @@ const featuredProjects: Project[] = [
     description: "Built task management platform with Next.js, React, TypeScript supporting 17 users with real-time updates",
     technologies: ["Next.js", "React", "TypeScript", "Airtable", "LLMs", "MCPs"],
     image: "/images/projects/resource-management.jpg",
-    githubUrl: "",
+    githubUrl: "https://github.com/anmolmanchanda/resource-management",
+    liveUrl: "https://resource-management-eight.vercel.app/",
     featured: true,
     category: "enterprise",
     date: "2024",
-    type: "work"
+    type: "work",
+    blogArticle: "/work/enterprise-resource-management-system"
   },
   {
     id: "5",

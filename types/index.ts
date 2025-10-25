@@ -7,6 +7,7 @@ export interface Project {
   image: string
   githubUrl?: string
   liveUrl?: string
+  showDisabledLiveDemo?: boolean
   featured: boolean
   category: 'web' | 'mobile' | 'api' | 'enterprise' | 'ai' | 'automation' | 'blockchain' | 'other'
   date: string

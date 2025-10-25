@@ -214,16 +214,33 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             </a>
           )}
           
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-            >
-              Live Demo
-              <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-            </a>
+          {project.liveUrl ? (
+            project.liveUrl.startsWith('/') ? (
+              <Link
+                href={project.liveUrl}
+                className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              >
+                Live Demo
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+              </Link>
+            ) : (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              >
+                Live Demo
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+              </a>
+            )
+          ) : (
+            project.showDisabledLiveDemo && (
+              <span className="inline-flex items-center text-sm font-medium text-muted-foreground cursor-not-allowed opacity-60">
+                Live Demo
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+              </span>
+            )
           )}
         </div>
       </div>
