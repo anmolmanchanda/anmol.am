@@ -3,6 +3,7 @@ import Image from "next/image"
 import { Building2, ChefHat, Users, GraduationCap, Code2, Database, Zap, Award } from "lucide-react"
 import { Experience } from "@/types"
 import { TimelineItem } from "@/components/InteractiveEffects"
+import { FullStackEngineerSection } from "@/components/FullStackEngineerSection"
 
 export const metadata: Metadata = {
   title: "About",
@@ -224,78 +225,9 @@ export default function AboutPage() {
                     return "bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20"
                   }
 
-                  // Special layout for Full Stack Software Engineer position
+                  // Special layout for Full Stack Software Engineer position - rendered separately
                   if (exp.id === "1") {
-                    return (
-                      <div key={exp.id} className="relative -mx-4 sm:-mx-8 lg:-mx-16 xl:-mx-32 mb-8">
-                        <TimelineItem
-                          details={getDetails()}
-                          className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
-                        >
-                          <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                            {getIcon()}
-                          </div>
-                          <div className="flex items-start gap-3 sm:gap-4 px-4 sm:px-8 lg:px-16 xl:px-32">
-                            <div className={`w-20 h-20 rounded-lg overflow-hidden shadow-md flex items-center justify-center ${getLogoStyle()}`}>
-                              {getLogo()}
-                            </div>
-                            <div className="liquid-glass p-6 sm:p-8 lg:p-10 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
-                            <div className="space-y-4">
-                              <div>
-                                <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{exp.position}</h3>
-                                <p className="text-sm text-muted-foreground">
-                                  {exp.company} • {new Date(exp.startDate).getFullYear()} - {exp.endDate ? new Date(exp.endDate).getFullYear() : 'Present'}
-                                </p>
-                              </div>
-                              <p className="text-sm text-muted-foreground leading-relaxed mb-6">{exp.description}</p>
-                              <div className="flex flex-wrap gap-2 pt-2 mb-6">
-                                {exp.technologies.map((tech) => (
-                                  <span
-                                    key={tech}
-                                    className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors"
-                                  >
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                              <div className="space-y-6">
-                                {exp.achievements.map((achievement, idx) => {
-                                  // Parse achievements with role percentages
-                                  const roleMatch = achievement.match(/^([^:]+\s\(\d+\.?\d*%\)):(.+)$/)
-                                  const boldMatch = achievement.match(/^([^:]+):(.+)$/)
-                                  
-                                  if (roleMatch && roleMatch[1] && roleMatch[2]) {
-                                    return (
-                                      <div key={idx} className="space-y-2">
-                                        <h4 className="font-bold text-primary">{roleMatch[1]}</h4>
-                                        <p className="text-sm text-muted-foreground pl-4">{roleMatch[2].trim()}</p>
-                                      </div>
-                                    )
-                                  } else if (boldMatch && boldMatch[1] && boldMatch[2] && ["FinOps", "Security", "AI/LLM", "MCP", "Integration", "Test", "Design"].includes(boldMatch[1])) {
-                                    return (
-                                      <div key={idx} className="space-y-2">
-                                        <h4 className="font-bold text-primary">{boldMatch[1]}:</h4>
-                                        <p className="text-sm text-muted-foreground pl-4">{boldMatch[2].trim()}</p>
-                                      </div>
-                                    )
-                                  } else {
-                                    return (
-                                      <div key={idx} className="pl-4">
-                                        <p className="text-sm text-muted-foreground flex items-start">
-                                          <span className="mr-2 text-primary font-bold flex-shrink-0">•</span>
-                                          <span>{achievement}</span>
-                                        </p>
-                                      </div>
-                                    )
-                                  }
-                                })}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </TimelineItem>
-                    </div>
-                    )
+                    return null
                   }
 
                   // Regular layout for other positions
@@ -347,7 +279,15 @@ export default function AboutPage() {
                 })}
               </div>
             </section>
-
+          </div>
+        </div>
+        
+        {/* Full Stack Software Engineer - Full Width Section */}
+        <FullStackEngineerSection />
+        
+        {/* Resume container for remaining content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
             <section className="relative z-10">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Education</h2>
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
