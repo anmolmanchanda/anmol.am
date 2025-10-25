@@ -3,6 +3,7 @@ import Image from "next/image"
 import { Building2, ChefHat, Users, GraduationCap, Code2, Database, Zap, Award } from "lucide-react"
 import { Experience } from "@/types"
 import { TimelineItem } from "@/components/InteractiveEffects"
+import { FullStackEngineerSection } from "@/components/FullStackEngineerSection"
 
 export const metadata: Metadata = {
   title: "About",
@@ -19,11 +20,35 @@ const experiences: Experience[] = [
     description: "Led multidisciplinary data team designing and deploying 500TB+ scalable, secure geospatial mobile-ping analytics solution for global cities",
     technologies: ["AWS Glue", "PySpark", "Python", "Lambda", "EventBridge", "Step Functions", "Claude AI", "Cursor AI"],
     achievements: [
-      "Contributed to $20M project with projected expansion to $30-40M annually by 2026/2027",
-      "Spearheaded global scale-up: 50 cities in 2025, 300+ in 2026, and thousands beyond 2027",
-      "Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) through optimization",
-      "Designed and deployed scalable AWS infrastructure processing 500TB+ monthly using AWS Glue and PySpark",
-      "Leveraged LLMs (Claude Opus 4.1, GPT-5) and code editors for rapid prototyping"
+      "Contributed to a $20M project with projected expansion to $30–40M annually by 2026/2027",
+      "Spearheading global scale-up: 50 cities in 2025, 300+ in 2026, and thousands beyond 2027",
+      "Cloud Architect & Data Engineer (32.5%): Led a multidisciplinary data team in designing and deploying a 500TB+ scalable, secure geospatial mobile-ping analytics solution; built dashboards (Pandas, QuickSight) and AWS Glue–based PySpark pipelines",
+      "FinOps: Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) and Improved processing time by 85% from 6 hours to under 1 hour through resource optimization, parallel processing, reusability, and modularization for AWS Glue code",
+      "Designed and deployed automated and scalable AWS infrastructure processing 500TB+ monthly using AWS Glue and PySpark",
+      "Security: Implemented least-privilege IAM policies, users & roles through AWS CLI and Console, improving security posture and audit readiness for permissions like S3 buckets and other AWS services",
+      "Built serverless event-driven architectures using Lambda functions with python and added zip layers of libraries like Pandas, Step Functions with JSON, and EventBridge for automated Event-driven architecture",
+      "Established infrastructure monitoring and alerting using CloudWatch and cost optimization strategies",
+      "Used advanced prompt engineering and Claude Code CLI for development with latest MCPs",
+      "Used GitHub actions for CI/CD",
+      "Deployed S3 buckets, created S3 Inventory and added lifecycle policies",
+      "AI/LLM: Leveraged state-of-the-art LLMs (Claude Opus 4.1, GPT-5 Thinking, Gemini 2.5 Pro) and code editors (Cursor.AI, WindSurf, Zed, Claude Code CLI) to prototype rapidly accelerating PoC turnaround significantly",
+      "MCP: Sequential Thinking for structured problem-solving, Task Master AI for task management & organization, Brave Search for searching information",
+      "Document & Technical Writer (22.5%): Developed comprehensive technical documentation, including API endpoints, deployment prerequisites, and integration guidelines to align stakeholders on project milestones",
+      "Contributed to technical diagrams, and maintained deliverables, enhancing the project's architecture and deployment planning",
+      "Translated & communicated project specifications to non-technical team members & stakeholders",
+      "Develop & Rapid Prototype (15%): Drove rapid prototyping initiatives—leveraged AI development to accelerate major project delivery from idea to implementation in hours",
+      "Reduced development cycles greatly through intelligent prompt engineering",
+      "Developed many web apps: Geospatial product - visualized citizen movement patterns, built a web-based online tool for managing 100s of GBs of location data",
+      "Integration (10%): Orchestrated platform integrations (Cinchy.com) to expand service capabilities",
+      "Worked with a B2B company, Cinchy to use their product as our centralized data network",
+      "Completed Cinchy University and learned about their product",
+      "Designed & maintained scalable database schemas for 12 cities ensuring real-time data synchronization for our QoL Impact website",
+      "Developed & maintained Cinchy CQL queries, and tested them in the Cinchy Platform",
+      "Scrum & Agile (7.5%): Tracked tasks in daily stand-ups for all team members",
+      "Created biweekly sprints reports and helped with sprint planning",
+      "Created and maintained the financial budget of the project",
+      "Test (7.5%): Implemented GitHub Action workflows with automated testing using Cursor.AI and LLM model, Claude Sonnet 3.7",
+      "Design (5%): Design a wireframe and high fidelity prototype in Figma for my novel Indicator Science idea to showcase the science and process behind Quality of Life Initiative Indicators"
     ]
   },
   {
@@ -35,10 +60,12 @@ const experiences: Experience[] = [
     description: "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts for municipal applications",
     technologies: ["Hyperledger Fabric", "Smart Contracts", "Docker", "Swift", "Node.js", "Go", "YAML", "XML", "Figma"],
     achievements: [
-      "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts",
-      "Built proof-of-concept implementation using Docker containerization",
-      "Explored consensus mechanisms and developed the iOS app in Xcode using Swift",
-      "Wireframed & designed the iOS app in Figma"
+      "Designed architecture for custom Blockchain network using Hyperledger Fabric architecture and Smart Contracts for municipal applications",
+      "Built proof-of-concept implementation using Docker containerization for Organizations",
+      "Explored consensus mechanisms",
+      "Used Node.js, Go, YAML and XML",
+      "Wireframed & designed the iOS app in Figma",
+      "Developed the iOS app in Xcode using Swift"
     ]
   },
   {
@@ -126,9 +153,15 @@ export default function AboutPage() {
               </div>
             </section>
 
-            <section className="relative z-10">
+            <section className="relative z-10 overflow-visible">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Experience</h2>
-              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
+              
+              {/* Full Stack Software Engineer - Full Width Section */}
+              <div className="mt-6 sm:mt-8 -mx-4 sm:-mx-6 lg:-mx-8">
+                <FullStackEngineerSection />
+              </div>
+              
+              <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8 overflow-visible">
                 {experiences.map((exp) => {
                   const getIcon = () => {
                     if (exp.id === "1") return <Database className="w-5 h-5 text-blue-500 icon-float" />
@@ -198,6 +231,12 @@ export default function AboutPage() {
                     return "bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/20"
                   }
 
+                  // Special layout for Full Stack Software Engineer position - rendered separately
+                  if (exp.id === "1") {
+                    return null
+                  }
+
+                  // Regular layout for other positions
                   return (
                     <TimelineItem
                       key={exp.id}
@@ -246,7 +285,12 @@ export default function AboutPage() {
                 })}
               </div>
             </section>
-
+          </div>
+        </div>
+        
+        {/* Resume container for remaining content */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
             <section className="relative z-10">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Education</h2>
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
@@ -327,6 +371,40 @@ export default function AboutPage() {
                 </TimelineItem>
 
                 <TimelineItem
+                  details="Comprehensive Python programming course covering fundamentals, data structures, algorithms, and practical applications."
+                  className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
+                >
+                  <div className="absolute left-0 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <Code2 className="w-5 h-5 text-purple-500 icon-pulse" />
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-20 h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-purple-500/20 to-purple-400/10 border border-purple-500/20 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-purple-600 rounded-md flex items-center justify-center text-white font-bold text-xl">
+                        fCC
+                      </div>
+                    </div>
+                    <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border group interactive-element flex-1">
+                      <div className="space-y-3">
+                        <div>
+                          <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">Python for Beginners</h3>
+                          <p className="text-sm text-muted-foreground">
+                            FreeCodeCamp • October 2025
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Completed comprehensive Python programming course covering fundamentals, OOP, data structures, and practical projects.
+                        </p>
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Python</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Programming Fundamentals</span>
+                          <span className="inline-flex items-center rounded-md bg-secondary/50 hover:bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors">Data Structures</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </TimelineItem>
+
+                <TimelineItem
                   details="Google-certified Android development program focusing on modern development practices and Material Design principles."
                   className="relative pl-12 before:absolute before:left-3 before:top-6 before:h-full before:w-px before:bg-gradient-to-b before:from-primary before:to-transparent"
                 >
@@ -364,87 +442,6 @@ export default function AboutPage() {
                   </div>
                 </TimelineItem>
 
-              </div>
-            </section>
-
-            <section className="relative z-10">
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Skills & Technologies</h2>
-              <div className="mt-6 sm:mt-8">
-                <div className="liquid-glass p-6 rounded-lg border backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300 cyber-border">
-                  <div className="space-y-6">
-                    {/* Skill level 4 - Expert */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <Zap className="w-5 h-5 text-yellow-500" />
-                        Expert Level
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["Claude AI", "Cursor AI", "Windsurf AI", "Zed AI", "MCP Tools (80+ servers)", "Python", "Airtable", "AI Development", "Rapid Prototyping", "AI Agent development (LangChain, N8N)", "AWS Lambda", "Apple Shortcuts", "HTML/CSS"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-yellow-500/20 hover:bg-yellow-500/30 px-3 py-1.5 text-sm font-medium text-yellow-700 dark:text-yellow-300 transition-colors border border-yellow-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Skill level 3 - Advanced */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <Database className="w-5 h-5 text-blue-500" />
-                        Advanced
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["AWS Glue", "JavaScript", "React", "Next.js", "Node.js", "TypeScript", "Git", "Github Actions", "Vercel", "Tailwind CSS", "Mobile App Development", "SQL", "AWS EventBridge"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-blue-500/20 hover:bg-blue-500/30 px-3 py-1.5 text-sm font-medium text-blue-700 dark:text-blue-300 transition-colors border border-blue-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Skill level 2 - Intermediate */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <Code2 className="w-5 h-5 text-green-500" />
-                        Intermediate
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["AWS RDS", "AWS Step Functions", "PyTorch", "Transformers", "Streamlit", "MongoDB", "PostgreSQL", "PySpark", "Java", "Swift", "Kotlin"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-green-500/20 hover:bg-green-500/30 px-3 py-1.5 text-sm font-medium text-green-700 dark:text-green-300 transition-colors border border-green-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Skill level 1 - Learning */}
-                    <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <GraduationCap className="w-5 h-5 text-purple-500" />
-                        Learning & Exploring
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {["AWS DynamoDB", "AWS ECS (Elastic Container Service)", "Kubernetes", "Docker", "Terraform", "Scikit-learn", "GCP", "C++", "CUDA"].map((skill) => (
-                          <span
-                            key={skill}
-                            className="inline-flex items-center rounded-md bg-purple-500/20 hover:bg-purple-500/30 px-3 py-1.5 text-sm font-medium text-purple-700 dark:text-purple-300 transition-colors border border-purple-500/30"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </section>
 
