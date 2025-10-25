@@ -19,11 +19,35 @@ const experiences: Experience[] = [
     description: "Led multidisciplinary data team designing and deploying 500TB+ scalable, secure geospatial mobile-ping analytics solution for global cities",
     technologies: ["AWS Glue", "PySpark", "Python", "Lambda", "EventBridge", "Step Functions", "Claude AI", "Cursor AI"],
     achievements: [
-      "Contributed to $20M project with projected expansion to $30-40M annually by 2026/2027",
-      "Spearheaded global scale-up: 50 cities in 2025, 300+ in 2026, and thousands beyond 2027",
-      "Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) through optimization",
-      "Designed and deployed scalable AWS infrastructure processing 500TB+ monthly using AWS Glue and PySpark",
-      "Leveraged LLMs (Claude Opus 4.1, GPT-5) and code editors for rapid prototyping"
+      "Contributed to a $20M project with projected expansion to $30–40M annually by 2026/2027",
+      "Spearheading global scale-up: 50 cities in 2025, 300+ in 2026, and thousands beyond 2027",
+      "Cloud Architect & Data Engineer (32.5%): Led a multidisciplinary data team in designing and deploying a 500TB+ scalable, secure geospatial mobile-ping analytics solution; built dashboards (Pandas, QuickSight) and AWS Glue–based PySpark pipelines",
+      "FinOps: Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) and Improved processing time by 85% from 6 hours to under 1 hour through resource optimization, parallel processing, reusability, and modularization for AWS Glue code",
+      "Designed and deployed automated and scalable AWS infrastructure processing 500TB+ monthly using AWS Glue and PySpark",
+      "Security: Implemented least-privilege IAM policies, users & roles through AWS CLI and Console, improving security posture and audit readiness for permissions like S3 buckets and other AWS services",
+      "Built serverless event-driven architectures using Lambda functions with python and added zip layers of libraries like Pandas, Step Functions with JSON, and EventBridge for automated Event-driven architecture",
+      "Established infrastructure monitoring and alerting using CloudWatch and cost optimization strategies",
+      "Used advanced prompt engineering and Claude Code CLI for development with latest MCPs",
+      "Used GitHub actions for CI/CD",
+      "Deployed S3 buckets, created S3 Inventory and added lifecycle policies",
+      "AI/LLM: Leveraged state-of-the-art LLMs (Claude Opus 4.1, GPT-5 Thinking, Gemini 2.5 Pro) and code editors (Cursor.AI, WindSurf, Zed, Claude Code CLI) to prototype rapidly accelerating PoC turnaround significantly",
+      "MCP: Sequential Thinking for structured problem-solving, Task Master AI for task management & organization, Brave Search for searching information",
+      "Document & Technical Writer (22.5%): Developed comprehensive technical documentation, including API endpoints, deployment prerequisites, and integration guidelines to align stakeholders on project milestones",
+      "Contributed to technical diagrams, and maintained deliverables, enhancing the project's architecture and deployment planning",
+      "Translated & communicated project specifications to non-technical team members & stakeholders",
+      "Develop & Rapid Prototype (15%): Drove rapid prototyping initiatives—leveraged AI development to accelerate major project delivery from idea to implementation in hours",
+      "Reduced development cycles greatly through intelligent prompt engineering",
+      "Developed many web apps: Geospatial product - visualized citizen movement patterns, built a web-based online tool for managing 100s of GBs of location data",
+      "Integration (10%): Orchestrated platform integrations (Cinchy.com) to expand service capabilities",
+      "Worked with a B2B company, Cinchy to use their product as our centralized data network",
+      "Completed Cinchy University and learned about their product",
+      "Designed & maintained scalable database schemas for 12 cities ensuring real-time data synchronization for our QoL Impact website",
+      "Developed & maintained Cinchy CQL queries, and tested them in the Cinchy Platform",
+      "Scrum & Agile (7.5%): Tracked tasks in daily stand-ups for all team members",
+      "Created biweekly sprints reports and helped with sprint planning",
+      "Created and maintained the financial budget of the project",
+      "Test (7.5%): Implemented GitHub Action workflows with automated testing using Cursor.AI and LLM model, Claude Sonnet 3.7",
+      "Design (5%): Design a wireframe and high fidelity prototype in Figma for my novel Indicator Science idea to showcase the science and process behind Quality of Life Initiative Indicators"
     ]
   },
   {
@@ -35,10 +59,12 @@ const experiences: Experience[] = [
     description: "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts for municipal applications",
     technologies: ["Hyperledger Fabric", "Smart Contracts", "Docker", "Swift", "Node.js", "Go", "YAML", "XML", "Figma"],
     achievements: [
-      "Designed architecture for custom blockchain network using Hyperledger Fabric and Smart Contracts",
-      "Built proof-of-concept implementation using Docker containerization",
-      "Explored consensus mechanisms and developed the iOS app in Xcode using Swift",
-      "Wireframed & designed the iOS app in Figma"
+      "Designed architecture for custom Blockchain network using Hyperledger Fabric architecture and Smart Contracts for municipal applications",
+      "Built proof-of-concept implementation using Docker containerization for Organizations",
+      "Explored consensus mechanisms",
+      "Used Node.js, Go, YAML and XML",
+      "Wireframed & designed the iOS app in Figma",
+      "Developed the iOS app in Xcode using Swift"
     ]
   },
   {

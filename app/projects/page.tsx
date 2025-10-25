@@ -78,6 +78,7 @@ const allProjects: Project[] = [
     technologies: ["Swift", "AI Integration", "macOS Frameworks", "Claude AI"],
     image: "https://images.unsplash.com/photo-1554306274-f23873d9a26c?w=1920&q=80",
     githubUrl: "https://github.com/anmolmanchanda/LifeManager",
+    liveUrl: "/downloads/life-manager",
     featured: true,
     category: "ai",
     date: "May 2025 - Present",
