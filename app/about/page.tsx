@@ -155,6 +155,12 @@ export default function AboutPage() {
 
             <section className="relative z-10 overflow-visible">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Experience</h2>
+              
+              {/* Full Stack Software Engineer - Full Width Section */}
+              <div className="mt-6 sm:mt-8 -mx-4 sm:-mx-6 lg:-mx-8">
+                <FullStackEngineerSection />
+              </div>
+              
               <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8 overflow-visible">
                 {experiences.map((exp) => {
                   const getIcon = () => {
@@ -281,9 +287,6 @@ export default function AboutPage() {
             </section>
           </div>
         </div>
-        
-        {/* Full Stack Software Engineer - Full Width Section */}
-        <FullStackEngineerSection />
         
         {/* Resume container for remaining content */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
