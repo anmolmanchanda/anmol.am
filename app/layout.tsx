@@ -11,6 +11,7 @@ import { PWAInstallPrompt } from "@/components/Phase4Features";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { siteConfig } from "@/lib/config";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -106,6 +107,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
