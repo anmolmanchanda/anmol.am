@@ -78,38 +78,14 @@ export function FullStackEngineerSection() {
     "Deployed S3 buckets, created S3 Inventory and added lifecycle policies"
   ]
 
-  const specialAchievements = [
-    {
-      category: "FinOps",
-      items: [
-        "Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) and Improved processing time by 85% from 6 hours to under 1 hour through resource optimization, parallel processing, reusability, and modularization for AWS Glue code"
-      ]
-    },
-    {
-      category: "Security",
-      items: [
-        "Implemented least-privilege IAM policies, users & roles through AWS CLI and Console, improving security posture and audit readiness for permissions like S3 buckets and other AWS services"
-      ]
-    },
-    {
-      category: "Serverless Architecture",
-      items: [
-        "Built serverless event-driven architectures using Lambda functions with python and added zip layers of libraries like Pandas, Step Functions with JSON, and EventBridge for automated Event-driven architecture",
-        "Established infrastructure monitoring and alerting using CloudWatch and cost optimization strategies"
-      ]
-    },
-    {
-      category: "AI/LLM",
-      items: [
-        "Leveraged state-of-the-art LLMs (Claude Opus 4.1, GPT-5 Thinking, Gemini 2.5 Pro) and code editors (Cursor.AI, WindSurf, Zed, Claude Code CLI) to prototype rapidly accelerating PoC turnaround significantly"
-      ]
-    },
-    {
-      category: "MCP",
-      items: [
-        "Sequential Thinking for structured problem-solving, Task Master AI for task management & organization, Brave Search for searching information"
-      ]
-    }
+  // Additional achievements to include in the key achievements
+  const additionalKeyAchievements = [
+    "Reduced infrastructure costs by 80% ($10 to $2 per indicator/city/day) and Improved processing time by 85% from 6 hours to under 1 hour through resource optimization, parallel processing, reusability, and modularization for AWS Glue code",
+    "Implemented least-privilege IAM policies, users & roles through AWS CLI and Console, improving security posture and audit readiness for permissions like S3 buckets and other AWS services",
+    "Built serverless event-driven architectures using Lambda functions with python and added zip layers of libraries like Pandas, Step Functions with JSON, and EventBridge for automated Event-driven architecture",
+    "Established infrastructure monitoring and alerting using CloudWatch and cost optimization strategies",
+    "Leveraged state-of-the-art LLMs (Claude Opus 4.1, GPT-5 Thinking, Gemini 2.5 Pro) and code editors (Cursor.AI, WindSurf, Zed, Claude Code CLI) to prototype rapidly accelerating PoC turnaround significantly",
+    "Sequential Thinking for structured problem-solving, Task Master AI for task management & organization, Brave Search for searching information"
   ]
 
   const technologies = ["AWS Glue", "PySpark", "Python", "Lambda", "EventBridge", "Step Functions", "Claude AI", "Cursor AI"]
@@ -154,27 +130,13 @@ export function FullStackEngineerSection() {
         <div className="glass-morphism p-8 rounded-xl border backdrop-blur-md mb-8">
           <h4 className="text-2xl font-bold text-primary mb-6">Key Project Achievements</h4>
           <div className="grid md:grid-cols-2 gap-4">
-            {keyAchievements.map((achievement, idx) => (
+            {[...keyAchievements, ...additionalKeyAchievements].map((achievement, idx) => (
               <div key={idx} className="flex items-start">
                 <span className="mr-3 text-primary font-bold text-lg">•</span>
                 <p className="text-base">{achievement}</p>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Special Achievements Grid */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
-          {specialAchievements.map((section) => (
-            <div key={section.category} className="glass-morphism p-6 rounded-xl border backdrop-blur-md">
-              <h4 className="text-xl font-bold text-primary mb-4">{section.category}</h4>
-              <div className="space-y-3">
-                {section.items.map((item, idx) => (
-                  <p key={idx} className="text-sm leading-relaxed">{item}</p>
-                ))}
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Role Distribution */}
