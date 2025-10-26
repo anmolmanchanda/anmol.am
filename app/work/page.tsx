@@ -6,7 +6,6 @@ import { Clock, Code, ExternalLink, Briefcase } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 import { SearchFilter } from "@/components/SearchFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
-import { fetchAllStats } from "@/src/services/external-apis"
 import { useActivityStore } from "@/lib/store"
 import { Loader2, Github, FileText, Trophy, TrendingUp, Calendar, GitCommit, GitPullRequest } from "lucide-react"
 
@@ -20,15 +19,19 @@ export default function WorkPage() {
   const fetchData = useCallback(async () => {
     setLoading(true)
     try {
-      // Fetch all stats
-      const allStats = await fetchAllStats()
-      setStats(allStats.work)
-      
+      // Fetch unified stats from API (combines external APIs + admin tracker data)
+      const response = await fetch('/api/stats')
+      const result = await response.json()
+
+      if (result.success && result.stats) {
+        setStats(result.stats.work)
+      }
+
       // Fetch GitHub activity
       const githubRes = await fetch('https://api.github.com/users/anmolmanchanda/events/public?per_page=20')
       const githubData = await githubRes.json()
-      
-      // Fetch tracker data
+
+      // Fetch tracker data for activity store
       await fetchTrackerData()
       
       // Build timeline with GitHub events and blog posts

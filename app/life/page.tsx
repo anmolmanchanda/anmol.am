@@ -5,7 +5,6 @@ import Image from "next/image"
 import { Heart, Activity, Globe, PenTool, Film, BookOpen, Music, Brain, MapPin, Languages, Utensils, Coffee, ExternalLink, Clock, Loader2, Camera, Headphones, UtensilsCrossed, MapPinned } from "lucide-react"
 import { SearchFilter } from "@/components/SearchFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
-import { fetchAllStats } from "@/src/services/external-apis"
 import { useActivityStore } from "@/lib/store"
 import { formatDate } from "@/lib/utils"
 
@@ -19,12 +18,16 @@ export default function LifePage() {
   const fetchData = useCallback(async () => {
     setLoading(true)
     try {
-      // Fetch all stats
-      const allStats = await fetchAllStats()
-      console.log('Fetched stats:', allStats.life) // Debug log
-      setStats(allStats.life)
-      
-      // Fetch tracker data
+      // Fetch unified stats from API (combines external APIs + admin tracker data)
+      const response = await fetch('/api/stats')
+      const result = await response.json()
+
+      if (result.success && result.stats) {
+        console.log('Fetched stats:', result.stats.life) // Debug log
+        setStats(result.stats.life)
+      }
+
+      // Fetch tracker data for activity store
       await fetchTrackerData()
       
       // Build timeline - ONLY REAL, VERIFIABLE DATA
