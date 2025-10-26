@@ -288,7 +288,7 @@ export default function LifePage() {
               <div className="relative">
                 <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg">
                   <Image
-                    src="/images/life_avatar.jpeg"
+                    src="/images/life_avatar_optimized.jpg"
                     alt="Anmol Manchanda"
                     width={96}
                     height={96}
