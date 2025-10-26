@@ -101,9 +101,13 @@ export function Footer() {
           </div>
 
           <div className="mt-4 sm:mt-6 border-t pt-4 sm:pt-6">
-            <p className="text-center text-sm text-muted-foreground">
-              © {currentYear} All rights reserved.
-            </p>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-sm text-muted-foreground">
+              <p>© {currentYear} All rights reserved.</p>
+              <span className="hidden sm:inline">•</span>
+              <Link href="/privacy" className="hover:text-foreground transition-colors">
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>
