@@ -44,18 +44,51 @@ export default function AdminPage() {
 
   // Keyboard shortcuts
   useEffect(() => {
-    if (!isAuthenticated || activeTab !== 'trackers' || !data) return
+    if (!isAuthenticated) return
 
     const handleKeyPress = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+      const isMod = e.metaKey || e.ctrlKey
+
+      // Save (Cmd+S) - only on trackers tab
+      if (isMod && e.key === 's' && !e.shiftKey && activeTab === 'trackers' && data) {
         e.preventDefault()
-        saveData(data)
+        saveData(data, false)
+      }
+
+      // Save Snapshot (Cmd+Shift+S) - only on trackers tab
+      if (isMod && e.key === 's' && e.shiftKey && activeTab === 'trackers' && data) {
+        e.preventDefault()
+        saveSnapshot(data)
+      }
+
+      // Tab navigation (Cmd+1, Cmd+2, Cmd+3, Cmd+4)
+      if (isMod && e.key >= '1' && e.key <= '4') {
+        e.preventDefault()
+        const tabs: Tab[] = ['analytics', 'trackers', 'redis', 'settings']
+        const tabIndex = parseInt(e.key) - 1
+        const selectedTab = tabs[tabIndex]
+        if (selectedTab) {
+          setActiveTab(selectedTab)
+        }
+      }
+
+      // Refresh analytics (Cmd+R) - only on analytics tab
+      if (isMod && e.key === 'r' && activeTab === 'analytics') {
+        e.preventDefault()
+        loadAnalytics()
+      }
+
+      // Focus search in Redis tab (Cmd+K)
+      if (isMod && e.key === 'k' && activeTab === 'redis') {
+        e.preventDefault()
+        const searchInput = document.querySelector('input[type="text"]') as HTMLInputElement
+        if (searchInput) searchInput.focus()
       }
     }
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [isAuthenticated, activeTab, data, saveData])
+  }, [isAuthenticated, activeTab, data, saveData, loadAnalytics, saveSnapshot])
 
   // Handlers for Redis operations
   const handleDeleteKey = (key: string) => {
