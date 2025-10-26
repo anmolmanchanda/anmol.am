@@ -2,19 +2,18 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/Version-2.0.0-blue)
+![Version](https://img.shields.io/badge/Version-2.1.0-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15.4.1-black)
 ![React](https://img.shields.io/badge/React-19.1.0-61dafb)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-v4-06b6d4)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-**AI-Enhanced Portfolio with Enterprise-Grade Performance**
+**AI-Enhanced Portfolio with Enterprise-Grade Performance & Advanced Admin Dashboard**
 
-[🌐 Live Site](https://anmol.am) | [📖 Documentation](./docs/claude/) | [🚀 Features](#features) | [🧪 Testing Guide](#testing-guide)
+[🌐 Live Site](https://anmol.am) | [📖 Documentation](./docs/claude/) | [🚀 Features](#features) | [🔐 Admin Dashboard](#admin-dashboard)
 
 ![Home Page](./public/home_page_screenshot_for_readme.png)
-
 
 </div>
 
@@ -24,12 +23,13 @@
 - [Overview](#-overview)
 - [Screenshots](#-screenshots)
 - [Features](#-features)
+- [Admin Dashboard](#-admin-dashboard)
 - [Technology Stack](#-technology-stack)
-- [Quick Start](#-quick-start)
-- [Testing Guide](#-testing-guide)
 - [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
 - [API Documentation](#-api-documentation)
 - [Performance](#-performance)
+- [Architecture](#-architecture)
 - [Contributing](#-contributing)
 - [License](#-license)
 
@@ -37,18 +37,20 @@
 
 ## 🎯 Overview
 
-**Version 2.1.0** - Updated September 5, 2025
+**Version 2.1.0** - Updated January 26, 2025
 
-A modern, performant portfolio showcasing expertise in AI-powered development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores. Features real-time data integration with external APIs for life tracking, professional work metrics, and dynamic content updates.
+A modern, performant portfolio showcasing expertise in AI-powered development, enterprise solutions, and cutting-edge web technologies. Built with Next.js 15, React 19, and TypeScript 5, achieving 96/100 Lighthouse scores. Features real-time data integration with external APIs for life tracking, professional work metrics, and a comprehensive admin dashboard for content management.
 
 ### Key Highlights
-- 🤖 **AI-Powered Development**: 50+ MCP servers integrated
+- 🤖 **AI-Powered Development**: 50+ MCP servers integrated with Claude AI
 - 🏢 **Enterprise Experience**: TB-scale data pipelines for UN-Habitat
 - ⚡ **Performance**: Core Web Vitals - LCP < 1.8s, FID < 45ms, CLS < 0.02
+- 🔐 **Admin Dashboard**: JWT-based authentication with Redis management
 - ♿ **Accessibility**: WCAG 2.1 Level AA compliant
 - 🔍 **SEO Optimized**: Structured data, sitemap, RSS feed
 - 📊 **Real-Time Data**: Live integration with Duolingo, Letterboxd, GitHub APIs
 - 🌈 **Aurora Animations**: Dynamic gradient backgrounds with holographic effects
+- 🏗️ **Modular Architecture**: Clean separation of concerns, no file > 500 lines
 
 ---
 
@@ -73,11 +75,14 @@ A modern, performant portfolio showcasing expertise in AI-powered development, e
 ### Core Features (Implemented & Live)
 | Feature | Status | Location | How to Test |
 |---------|--------|----------|-------------|
-| **Reading Progress Indicator** | ✅ Live | All pages | Scroll any page to see top bar & circular indicator |
+| **Admin Dashboard** | ✅ Live | `/admin` | Login with admin password, manage content |
+| **Analytics Dashboard** | ✅ Live | `/admin` (Analytics tab) | View real-time stats and page views |
+| **Redis Management** | ✅ Live | `/admin` (Redis tab) | Browse keys, clear cache, view statistics |
+| **JWT Authentication** | ✅ Live | `/admin` | Persistent 7-day sessions with cookies |
+| **Reading Progress** | ✅ Live | All pages | Scroll any page to see top bar & circular indicator |
 | **RSS Feed** | ✅ Live | `/api/rss` | Visit [/api/rss](https://anmol.am/api/rss) |
 | **Sitemap** | ✅ Live | `/sitemap.xml` | Visit [/sitemap.xml](https://anmol.am/sitemap.xml) |
-| **Robots.txt** | ✅ Live | `/robots.txt` | Visit [/robots.txt](https://anmol.am/robots.txt) |
-| **View Tracking** | ✅ Live | Blog posts | Check view counts on blog cards |
+| **View Tracking** | ✅ Live | Work pages | Check view counts on work cards |
 | **Command Palette** | ✅ Live | All pages | Press `⌘K` or `Ctrl+K` |
 | **Dark/Light Theme** | ✅ Live | Header | Click sun/moon icon |
 | **GitHub Activity** | ✅ Live | Projects page | Scroll to activity section |
@@ -97,23 +102,75 @@ A modern, performant portfolio showcasing expertise in AI-powered development, e
 | **Newsletter** | 📦 Created | `/components/Newsletter.tsx` | Email subscription |
 | **Breadcrumb** | 📦 Created | `/components/Breadcrumb.tsx` | Navigation with schema |
 
-### Accessibility Features (Active)
-| Feature | Implementation | How to Verify |
-|---------|---------------|---------------|
-| **Skip to Main** | ✅ Implemented | Tab on page load, see "Skip to content" |
-| **ARIA Labels** | ✅ Throughout | Inspect elements for aria-labels |
-| **Focus Management** | ✅ Active | Tab through interface |
-| **Reduced Motion** | ✅ Supported | Enable in OS settings |
-| **Semantic HTML** | ✅ Used | View page source |
+---
 
-### SEO Implementation (Active)
-| Feature | Status | Verification |
-|---------|--------|--------------|
-| **Meta Tags** | ✅ Complete | View page source for og: tags |
-| **JSON-LD** | ✅ Active | Check `<script type="application/ld+json">` |
-| **Open Graph** | ✅ Configured | Share on social media |
-| **Twitter Cards** | ✅ Ready | Share on Twitter |
-| **Canonical URLs** | ✅ Set | Check link rel="canonical" |
+## 🔐 Admin Dashboard
+
+A comprehensive, modular admin dashboard for managing portfolio content and monitoring analytics.
+
+### Dashboard Features
+
+#### 1. Authentication
+- **JWT-based sessions** with 7-day expiration
+- **HTTP-only secure cookies** for session storage
+- **Persistent login** - no re-authentication on page refresh
+- **SHA-256 password hashing** for security
+
+#### 2. Analytics Tab
+- **Real-time stats** with auto-refresh every 30 seconds
+- **Total views** across all pages
+- **Pages tracked** with Redis
+- **Redis status** monitoring (active/inactive)
+- **Last keep-alive ping** timestamp
+- **Page view breakdown** sorted by popularity
+- **Manual refresh** button for instant updates
+
+#### 3. Trackers Tab
+- **Life stats management** (books, poems, km run, coffees)
+- **Tech stack tracking** (LLMs, editors, frameworks)
+- **Learning progress** (French, AWS, ML courses)
+- **Custom trackers** (side projects, learning queue)
+- **Keyboard shortcut** (Cmd+S to save)
+- **Toast notifications** for all actions
+
+#### 4. Redis Tab
+- **Key statistics** (total keys, by category, storage size)
+- **Key browser** with pattern search (e.g., `views:*`)
+- **Individual key deletion** with confirmation
+- **Quick actions** for bulk operations:
+  - Clear cooldowns (`view_cooldown:*`)
+  - Clear analytics (`analytics:*`)
+  - Reset view counts (`views:*`)
+- **Key details** (type, size, TTL, preview)
+
+#### 5. Settings Tab
+- **Account information** (session duration, algorithms)
+- **Security details** (SHA-256, HS256 JWT)
+- **Keyboard shortcuts** reference
+
+### Admin Dashboard Architecture
+
+```
+app/admin/
+├── page.tsx                 # Main dashboard (184 lines)
+├── components/
+│   ├── AnalyticsTab.tsx    # Analytics display
+│   ├── TrackersTab.tsx     # Tracker management
+│   ├── RedisTab.tsx        # Redis operations
+│   ├── SettingsTab.tsx     # Settings display
+│   └── LoginForm.tsx       # Authentication form
+├── hooks/
+│   └── useAdminData.ts     # Custom hooks for data fetching
+└── types/
+    └── index.ts            # TypeScript interfaces
+```
+
+**Benefits of Modular Structure:**
+- ✅ No file exceeds 500 lines (main file is 184 lines)
+- ✅ Clear separation of concerns
+- ✅ Reusable hooks and components
+- ✅ Easy to test and maintain
+- ✅ Type-safe with shared interfaces
 
 ---
 
@@ -122,23 +179,83 @@ A modern, performant portfolio showcasing expertise in AI-powered development, e
 ### Frontend
 - **Framework**: Next.js 15.4.1 (App Router)
 - **UI Library**: React 19.1.0
-- **Language**: TypeScript 5
+- **Language**: TypeScript 5 (Strict Mode)
 - **Styling**: Tailwind CSS v4
 - **Animation**: Framer Motion 12.23.6
+- **State Management**: Zustand + React Hooks
+- **Notifications**: React Hot Toast
 
 ### Backend & Infrastructure
 - **Deployment**: Vercel Edge Network
-- **Analytics**: Vercel Analytics + Custom
-- **Database**: Redis (Upstash) for view tracking
+- **Analytics**: Vercel Analytics + Custom Redis Tracking
+- **Database**: Redis (Upstash) for view tracking & caching
+- **Authentication**: JWT with jose library
 - **Email**: Resend API
-- **External APIs**: Duolingo, Letterboxd RSS, GitHub, Goodreads
+- **External APIs**: Duolingo, Letterboxd RSS, GitHub
 - **Real-Time Data**: Live fetching with fallback caching
 
 ### Development Tools
-- **AI Assistance**: Claude AI with 50+ MCP servers
-- **Version Control**: Git with strict branching rules
+- **AI Assistance**: Claude AI with MCP servers
+- **Version Control**: Git with feature branch workflow
 - **Code Quality**: ESLint, Prettier, TypeScript strict mode
 - **Testing**: Lighthouse CI, Web Vitals monitoring
+- **Performance**: Sharp for image optimization
+
+---
+
+## 📁 Project Structure
+
+```
+anmol.am/
+├── app/                      # Next.js App Router
+│   ├── admin/                # Admin dashboard (NEW)
+│   │   ├── components/       # Tab components
+│   │   ├── hooks/            # Custom hooks
+│   │   ├── types/            # TypeScript interfaces
+│   │   └── page.tsx          # Main dashboard (184 lines)
+│   ├── api/                  # API endpoints
+│   │   ├── admin/            # Admin APIs
+│   │   │   ├── auth/         # JWT authentication
+│   │   │   ├── redis/        # Redis management
+│   │   │   └── trackers/     # Tracker data
+│   │   ├── analytics/        # Analytics tracking
+│   │   ├── contact/          # Contact form handler
+│   │   ├── cron/             # Scheduled jobs
+│   │   │   └── keep-alive/   # Redis keep-alive ping
+│   │   ├── rss/              # RSS feed generator
+│   │   ├── stats/            # Statistics API
+│   │   └── views/            # View tracking
+│   ├── about/                # About page
+│   ├── contact/              # Contact page
+│   ├── life/                 # Life timeline & stats
+│   ├── privacy/              # Privacy policy
+│   ├── projects/             # Project showcase
+│   ├── stats/                # Public stats page
+│   └── work/                 # Professional experience
+├── components/               # React components
+│   ├── Hero.tsx              # Homepage hero
+│   ├── CommandPalette.tsx    # ⌘K search
+│   ├── ReadingProgress.tsx   # Progress indicator
+│   ├── ViewTracker.tsx       # View counting
+│   ├── ActivityFeed.tsx      # Life activity feed
+│   └── [other components]    # Various UI components
+├── lib/                      # Utilities
+│   ├── auth.ts               # JWT utilities (NEW)
+│   ├── config.ts             # Site configuration
+│   ├── redis.ts              # Redis client
+│   ├── store.ts              # Zustand state
+│   └── utils.ts              # Helper functions
+├── docs/                     # Documentation
+│   ├── claude/               # Development guidelines
+│   │   ├── GIT_RULES.md      # Git workflow
+│   │   ├── PROJECT_CONTEXT.md # Project overview
+│   │   └── [other docs]      # Various guides
+│   └── setup/                # Setup instructions
+├── public/                   # Static assets
+│   ├── images/               # Optimized images
+│   └── icons/                # Favicons and icons
+└── scripts/                  # Build scripts
+```
 
 ---
 
@@ -166,6 +283,12 @@ cp .env.example .env.local
 
 # Start development
 npm run dev
+
+# Build for production
+npm run build
+
+# Run production build locally
+npm run start
 ```
 
 ### Environment Variables
@@ -175,150 +298,143 @@ RESEND_API_KEY=re_xxxxxxxxxxxxx
 EMAIL_FROM=noreply@yourdomain.com
 EMAIL_TO=your@email.com
 
+# Required for admin authentication
+ADMIN_PASSWORD_HASH=your_sha256_hash
+JWT_SECRET=your_random_secret_key
+
+# Required for Redis (Upstash)
+UPSTASH_REDIS_REST_URL=https://xxxxx.upstash.io
+UPSTASH_REDIS_REST_TOKEN=your_token
+IP_SALT=your_random_salt_for_ip_hashing
+
 # Optional for GitHub integration
 GITHUB_TOKEN=ghp_xxxxxxxxxxxxx
 
-# Redis for view tracking (optional)
-REDIS_URL=redis://xxxxxxxxxxxxx
-REDIS_TOKEN=xxxxxxxxxxxxx
-
-# External API Configuration (optional)
-DUOLINGO_USERNAME=manchandaanmol
-LETTERBOXD_USERNAME=anmolmanchanda
-GOODREADS_USER_ID=83373769
-STRAVA_ATHLETE_ID=131445218
+# Optional external API configuration
+DUOLINGO_USERNAME=your_username
+LETTERBOXD_USERNAME=your_username
+GOODREADS_USER_ID=your_id
+STRAVA_ATHLETE_ID=your_id
 ```
 
----
+### Generating Required Secrets
 
-## 🧪 Testing Guide
-
-### Manual Testing Checklist
-
-#### 1. Performance Testing
 ```bash
-# Run Lighthouse audit
-npm run build
-npm run start
-# Open Chrome DevTools > Lighthouse > Generate report
+# Generate admin password hash
+echo -n 'your_password' | openssl dgst -sha256
 
-# Expected scores:
-# - Performance: > 95
-# - Accessibility: > 98
-# - Best Practices: 100
-# - SEO: 100
-```
+# Generate JWT secret
+openssl rand -base64 32
 
-#### 2. Feature Testing
-- **Reading Progress**: Scroll any page, observe top bar filling
-- **Command Palette**: Press `⌘K`, search for "projects"
-- **Theme Toggle**: Click theme icon, verify persistence
-- **View Tracking**: Visit blog post, refresh, check counter
-- **RSS Feed**: Navigate to `/api/rss`
-- **Contact Form**: Submit test message on contact page
-
-#### 3. Accessibility Testing
-```bash
-# Keyboard navigation
-# 1. Press Tab repeatedly
-# 2. All interactive elements should be reachable
-# 3. Focus indicators should be visible
-
-# Screen reader testing
-# Enable VoiceOver (Mac) or NVDA (Windows)
-# Navigate through site
-```
-
-#### 4. SEO Verification
-```bash
-# Check meta tags
-curl https://anmol.am | grep -E "og:|twitter:"
-
-# Verify sitemap
-curl https://anmol.am/sitemap.xml
-
-# Test robots.txt
-curl https://anmol.am/robots.txt
-```
-
----
-
-## 📁 Project Structure
-
-```
-anmol.am/
-├── app/                      # Next.js App Router
-│   ├── api/                  # API endpoints
-│   │   ├── analytics/        # Analytics tracking
-│   │   ├── contact/          # Contact form handler
-│   │   ├── rss/              # RSS feed generator
-│   │   └── views/            # View tracking
-│   ├── blog/                 # Blog system
-│   │   ├── [slug]/           # Dynamic blog posts
-│   │   └── page.tsx          # Blog listing
-│   ├── projects/             # Project showcase
-│   ├── work/                 # Professional experience
-│   ├── life/                 # Life timeline & stats
-│   ├── about/                # About page
-│   └── contact/              # Contact page
-├── components/               # React components
-│   ├── Hero.tsx              # Homepage hero
-│   ├── CommandPalette.tsx    # ⌘K search
-│   ├── ReadingProgress.tsx   # Progress indicator
-│   ├── ViewTracker.tsx       # View counting
-│   ├── TableOfContents.tsx   # Blog TOC (ready)
-│   ├── RelatedPosts.tsx      # Related posts (ready)
-│   ├── BlogSearch.tsx        # Search (ready)
-│   ├── Newsletter.tsx        # Newsletter (ready)
-│   └── Breadcrumb.tsx        # Breadcrumb (ready)
-├── lib/                      # Utilities
-│   ├── config.ts             # Site configuration
-│   ├── utils.ts              # Helper functions
-│   ├── redis.ts              # Redis client
-│   ├── external-apis.ts      # External API integrations
-│   └── store.ts              # Zustand state management
-├── docs/claude/              # Documentation
-│   ├── GIT_RULES.md          # Git workflow
-│   ├── ROADMAP_VERSIONING.md # Version history
-│   └── [other docs]          # Various guides
-└── public/                   # Static assets
+# Generate IP salt
+openssl rand -base64 32
 ```
 
 ---
 
 ## 📡 API Documentation
 
-### Analytics API
-```http
-GET /api/analytics
+### Admin APIs
 
-Response:
+#### Authentication
+```http
+POST /api/admin/auth
 {
-  "totalVisits": 12345,
-  "uniqueVisitors": 8901,
-  "monthlyVisits": 3456,
-  "onlineNow": 12
+  "password": "your_admin_password"
+}
+Response: Sets HTTP-only cookie, returns { success: true, token: "..." }
+
+GET /api/admin/auth
+Response: { success: true, authenticated: true, session: {...} }
+
+DELETE /api/admin/auth
+Response: Clears cookie, returns { success: true, message: "Logged out" }
+```
+
+#### Redis Management
+```http
+GET /api/admin/redis?action=stats
+Response: {
+  "success": true,
+  "stats": {
+    "totalKeys": 42,
+    "categories": { "views": 15, "cooldowns": 20, ... },
+    "approximateSize": 12345,
+    "sizeFormatted": "12.06 KB"
+  }
+}
+
+GET /api/admin/redis?action=keys&pattern=views:*
+Response: {
+  "success": true,
+  "keys": [{
+    "key": "views:project-slug",
+    "type": "string",
+    "size": 256,
+    "ttl": "No expiration",
+    "preview": "42"
+  }],
+  "total": 15
+}
+
+DELETE /api/admin/redis?key=views:project-slug
+DELETE /api/admin/redis?pattern=view_cooldown:*
+Response: { "success": true, "message": "Deleted 10 keys", "deleted": 10 }
+```
+
+#### Tracker Management
+```http
+GET /api/admin/trackers
+Response: { "success": true, "data": {...} }
+
+POST /api/admin/trackers
+{
+  "booksReadThisYear": 24,
+  "poemsWritten": 37,
+  ...
+}
+Response: { "success": true, "message": "Data saved" }
+```
+
+### Public APIs
+
+#### Stats API
+```http
+GET /api/stats
+Response: {
+  "success": true,
+  "stats": {
+    "totalViews": 1234,
+    "uniquePages": 15,
+    "pages": [{ "slug": "project", "views": 234 }],
+    "keepAliveActive": true,
+    "lastKeepAlive": "2025-01-26T12:00:00.000Z"
+  },
+  "timestamp": "2025-01-26T12:00:00.000Z"
 }
 ```
 
-### View Tracking API
+#### View Tracking API
 ```http
 POST /api/views/track
-{
-  "slug": "blog-post-slug"
-}
+{ "slug": "project-slug" }
+Response: { "views": 42 }
 
 GET /api/views/[slug]
-Response: { "views": 123 }
-
-POST /api/views/batch
-{
-  "slugs": ["slug1", "slug2"]
-}
-Response: { "slug1": 123, "slug2": 456 }
+Response: { "views": 42 }
 ```
 
-### Contact API
+#### Analytics API
+```http
+GET /api/analytics
+Response: {
+  "totalVisits": 1234,
+  "uniquePages": 15,
+  "onlineNow": 1
+}
+```
+
+#### Contact API
 ```http
 POST /api/contact
 {
@@ -327,39 +443,17 @@ POST /api/contact
   "subject": "Inquiry",
   "message": "Your message here"
 }
+Response: { "success": true }
 ```
 
-### RSS Feed
+#### Cron Jobs
 ```http
-GET /api/rss
-Content-Type: application/rss+xml
-```
-
-### External API Integrations
-```http
-GET /api/duolingo?username=manchandaanmol
+GET /api/cron/keep-alive
 Response: {
-  "streak": 1,
-  "totalXP": 3870,
-  "languages": [{
-    "name": "French",
-    "xp": 1182
-  }]
-}
-
-GET /api/letterboxd?username=anmolmanchanda
-Response: {
-  "filmsThisYear": 8,
-  "totalFilms": 156,
-  "avgRating": 4.3,
-  "recentFilms": [...]
-}
-
-GET /api/github-activity?username=anmolmanchanda
-Response: {
-  "publicRepos": 50,
-  "totalStars": 234,
-  "contributions": 1234
+  "success": true,
+  "message": "Redis keep-alive ping successful",
+  "timestamp": "2025-01-26T00:00:00.000Z",
+  "verified": true
 }
 ```
 
@@ -378,12 +472,52 @@ Response: {
 | **Bundle Size** | < 200KB | 152KB | ✅ |
 
 ### Optimization Techniques
-- Image optimization with Sharp
-- Code splitting by route
-- Service worker caching
-- Edge function deployment
-- Critical CSS inlining
-- Font optimization
+- **Image optimization** with Sharp (98% size reduction)
+- **Code splitting** by route
+- **Service worker** caching for PWA
+- **Edge function** deployment on Vercel
+- **Critical CSS** inlining
+- **Font optimization** with display swap
+- **Lazy loading** for images and components
+- **Redis caching** for frequent queries
+
+---
+
+## 🏗️ Architecture
+
+### Code Quality Standards
+- ✅ **No file > 500 lines** - Enforced through modular architecture
+- ✅ **Separation of concerns** - Components, hooks, types, utils
+- ✅ **TypeScript strict mode** - Full type safety
+- ✅ **Custom hooks** - Reusable logic extraction
+- ✅ **Error boundaries** - Graceful error handling
+- ✅ **Toast notifications** - User feedback for all actions
+
+### Modular Design Example: Admin Dashboard
+
+**Before**: 1,058 lines in one file
+**After**: 8 files, largest is 234 lines
+
+```
+admin/page.tsx (184 lines)          # Main orchestrator
+admin/components/                   # UI components
+  ├── AnalyticsTab.tsx (136 lines)
+  ├── TrackersTab.tsx (234 lines)
+  ├── RedisTab.tsx (186 lines)
+  ├── SettingsTab.tsx (58 lines)
+  └── LoginForm.tsx (71 lines)
+admin/hooks/                        # Business logic
+  └── useAdminData.ts (225 lines)
+admin/types/                        # Type definitions
+  └── index.ts (105 lines)
+```
+
+### State Management Strategy
+- **React Hooks** for component state
+- **Zustand** for global state
+- **Custom hooks** for reusable logic
+- **JWT cookies** for authentication state
+- **Redis** for persistent data
 
 ---
 
@@ -412,15 +546,28 @@ git commit -m "Add feature: clear description"
 git push -u origin feature/your-feature
 
 # 5. Create pull request
-gh pr create
+gh pr create --title "Feature: Description" --body "Details"
 ```
 
 ### Code Standards
-- TypeScript strict mode enabled
-- ESLint rules enforced
-- Tailwind CSS conventions
-- Component-based architecture
-- Comprehensive documentation
+- **TypeScript strict mode** enabled
+- **ESLint rules** enforced
+- **No file over 500 lines** - Split into modules
+- **Tailwind CSS** conventions
+- **Component-based** architecture
+- **Comprehensive documentation** in all files
+- **Error handling** with try-catch and toast notifications
+- **Accessibility** (WCAG 2.1 Level AA)
+
+### Testing Checklist
+- [ ] Build succeeds (`npm run build`)
+- [ ] No ESLint errors (`npm run lint`)
+- [ ] All features work in production mode
+- [ ] Lighthouse score > 95
+- [ ] Keyboard navigation works
+- [ ] Screen reader compatible
+- [ ] Mobile responsive
+- [ ] Dark/light mode tested
 
 ---
 
@@ -437,6 +584,8 @@ Built with modern technologies and AI-powered development:
 - [Tailwind CSS](https://tailwindcss.com)
 - [Claude AI](https://claude.ai) & MCP Servers
 - [Framer Motion](https://framer.com/motion)
+- [Upstash Redis](https://upstash.com)
+- [Resend](https://resend.com)
 
 ---
 
