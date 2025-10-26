@@ -1,19 +1,38 @@
 import { NextResponse } from 'next/server'
+import { Redis } from '@upstash/redis'
 
 export async function GET() {
   try {
-    // In a real implementation, this would connect to your analytics service
-    // Examples: Google Analytics, Vercel Analytics, Plausible, etc.
-    
-    // For now, we'll return basic data that would come from localStorage tracking
-    // and potentially some server-side tracking
-    
+    // Check if Redis is configured
+    if (!process.env['UPSTASH_REDIS_REST_URL'] || !process.env['UPSTASH_REDIS_REST_TOKEN']) {
+      // Fallback to basic analytics
+      return NextResponse.json({
+        totalVisits: 0,
+        uniqueVisitors: 0,
+        onlineNow: 1,
+        bounceRate: 0,
+        avgSession: '0:00'
+      })
+    }
+
+    const redis = Redis.fromEnv()
+
+    // Get all view count keys
+    const viewKeys = await redis.keys('views:*')
+
+    // Calculate total views
+    let totalViews = 0
+    for (const key of viewKeys) {
+      const count = await redis.get(key)
+      totalViews += Number(count) || 0
+    }
+
     const analytics = {
-      totalVisits: 0, // This would come from your analytics service
-      uniqueVisitors: 0,
-      onlineNow: 1, // At minimum, the current user
-      bounceRate: 0, // Requires proper analytics tracking
-      avgSession: '0:00'
+      totalVisits: totalViews,
+      uniqueVisitors: viewKeys.length, // Unique pages viewed
+      onlineNow: 1, // Current user
+      bounceRate: 0, // Would need session tracking
+      avgSession: '0:00' // Would need session tracking
     }
 
     return NextResponse.json(analytics)
