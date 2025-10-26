@@ -247,7 +247,7 @@ export default function PrivacyPage() {
                   </li>
                   <li>
                     <span className="font-semibold">Upstash Redis:</span> Database for view counts
-                    (<a href="https://upstash.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a>)
+                    (<a href="https://upstash.com/trust/privacy.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a>)
                   </li>
                   <li>
                     <span className="font-semibold">Resend:</span> Email delivery for contact form
@@ -274,8 +274,8 @@ export default function PrivacyPage() {
                 </ul>
                 <p className="mt-4">
                   To exercise these rights, please contact me at:{" "}
-                  <a href="mailto:anmol@anmol.am" className="text-primary hover:underline">
-                    anmol@anmol.am
+                  <a href="mailto:work@anmol.am" className="text-primary hover:underline">
+                    work@anmol.am
                   </a>
                 </p>
               </div>
@@ -307,7 +307,7 @@ export default function PrivacyPage() {
               </p>
               <div className="ml-4 text-muted-foreground">
                 <p className="font-semibold">Anmol Manchanda</p>
-                <p>Email: <a href="mailto:anmol@anmol.am" className="text-primary hover:underline">anmol@anmol.am</a></p>
+                <p>Email: <a href="mailto:work@anmol.am" className="text-primary hover:underline">work@anmol.am</a></p>
                 <p>Website: <a href="https://anmol.am" className="text-primary hover:underline">https://anmol.am</a></p>
               </div>
             </section>
