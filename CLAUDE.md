@@ -35,6 +35,7 @@ Before any work session:
 3. **User Experience**: Intuitive, accessible, and delightful
 4. **Maintainability**: Clean, documented, testable code
 5. **Security**: Follow best practices, never expose secrets
+6. **Privacy**: Always update privacy policy when data collection changes
 
 ## 🚫 CRITICAL: Code and Commit Standards
 
@@ -110,6 +111,31 @@ claude --list-mcps  # List available MCP servers
 - Local commits are invisible on GitHub
 - Changes won't appear in browser until pushed
 - Always verify push completed successfully
+
+## 🔒 CRITICAL: Privacy Policy Updates
+
+**ALWAYS update `/app/privacy/page.tsx` when making privacy-related changes:**
+
+### When to Update:
+- ✅ Adding new data collection (tracking, analytics, cookies)
+- ✅ Changing what data is stored (new fields, new databases)
+- ✅ Adding third-party services (APIs, SDKs, tracking scripts)
+- ✅ Changing data retention policies (how long data is kept)
+- ✅ Modifying IP hashing or anonymization methods
+- ✅ Adding new cookies or local storage usage
+
+### When NOT to Update:
+- ❌ UI/label changes that don't affect data collection
+- ❌ Bug fixes that don't change privacy behavior
+- ❌ Performance optimizations without new tracking
+- ❌ Visual/styling changes
+
+### Update Checklist:
+1. Update privacy policy content in `/app/privacy/page.tsx`
+2. Update "Last updated" date at the top
+3. Add to "Changes to This Policy" section if major
+4. Review with user before deploying
+5. Consider notifying users via email/banner for major changes
 
 ---
 
