@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
-import { Clock, Code, ExternalLink, Briefcase } from "lucide-react"
+import { Clock, Code, ExternalLink, Briefcase, Globe } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 import { SearchFilter } from "@/components/SearchFilter"
 import { WidgetGrid } from "@/components/CompactWidgets"
@@ -175,19 +175,33 @@ export default function WorkPage() {
       color: "bg-green-600"
     },
     {
-      title: "UN-Habitat",
+      title: stats?.currentRole || "UN-Habitat",
       value: "Current",
-      subtitle: "Software Engineer",
+      subtitle: "Role",
       url: "https://www.qolimpact.com",
       icon: <Briefcase className="w-4 h-4 text-white" />,
       color: "bg-blue-600"
     },
     {
       title: "Experience",
-      value: "4 roles",
-      subtitle: "UN, SWRIL, WFC, AIESEC",
+      value: stats?.yearsExperience ? `${stats.yearsExperience} years` : "8 years",
+      subtitle: `${stats?.projectsCompleted || 50}+ projects`,
       icon: <TrendingUp className="w-4 h-4 text-white" />,
       color: "bg-orange-600"
+    },
+    {
+      title: "Cities Impacted",
+      value: stats?.citiesImpacted || "12",
+      subtitle: "globally",
+      icon: <Globe className="w-4 h-4 text-white" />,
+      color: "bg-purple-600"
+    },
+    {
+      title: "Data Processed",
+      value: stats?.dataProcessed || "3TB",
+      subtitle: "at scale",
+      icon: <FileText className="w-4 h-4 text-white" />,
+      color: "bg-indigo-600"
     },
     {
       title: "GitHub Stars",

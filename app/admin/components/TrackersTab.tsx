@@ -218,6 +218,103 @@ export function TrackersTab({
               className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Countries Visited</label>
+            <input
+              type="number"
+              value={data.countriesVisited}
+              onChange={(e) => setData({...data, countriesVisited: parseInt(e.target.value) || 0})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Languages Spoken</label>
+            <input
+              type="number"
+              value={data.languagesSpoken}
+              onChange={(e) => setData({...data, languagesSpoken: parseInt(e.target.value) || 0})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Cuisines Mastered</label>
+            <input
+              type="number"
+              value={data.cuisinesMastered}
+              onChange={(e) => setData({...data, cuisinesMastered: parseInt(e.target.value) || 0})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Days Meditated</label>
+            <input
+              type="number"
+              value={data.daysMeditated}
+              onChange={(e) => setData({...data, daysMeditated: parseInt(e.target.value) || 0})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Work Stats */}
+      <section className="glass-morphism rounded-xl border backdrop-blur-md p-6">
+        <h2 className="text-xl font-semibold mb-4">Work Stats</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium mb-2">Cities Impacted</label>
+            <input
+              type="number"
+              value={data.citiesImpacted}
+              onChange={(e) => setData({...data, citiesImpacted: parseInt(e.target.value) || 0})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Years Experience</label>
+            <input
+              type="number"
+              value={data.yearsExperience}
+              onChange={(e) => setData({...data, yearsExperience: parseInt(e.target.value) || 0})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Projects Completed</label>
+            <input
+              type="number"
+              value={data.projectsCompleted}
+              onChange={(e) => setData({...data, projectsCompleted: parseInt(e.target.value) || 0})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Data Processed</label>
+            <input
+              type="text"
+              value={data.dataProcessed}
+              onChange={(e) => setData({...data, dataProcessed: e.target.value})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="e.g., 3TB"
+            />
+          </div>
+
+          <div className="col-span-2">
+            <label className="block text-sm font-medium mb-2">Current Role</label>
+            <input
+              type="text"
+              value={data.currentRole}
+              onChange={(e) => setData({...data, currentRole: e.target.value})}
+              className="w-full px-3 py-2 rounded-lg bg-background/50 border focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
         </div>
       </section>
 

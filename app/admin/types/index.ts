@@ -9,6 +9,17 @@ export interface TrackerData {
   poemsWritten: number
   kmRun: number
   coffeesConsumed: number
+  countriesVisited: number
+  languagesSpoken: number
+  cuisinesMastered: number
+  daysMeditated: number
+
+  // Work Stats
+  citiesImpacted: number
+  yearsExperience: number
+  projectsCompleted: number
+  dataProcessed: string
+  currentRole: string
 
   // Tech Stack (Work)
   currentlyUsing: {
@@ -90,6 +101,15 @@ export const DEFAULT_TRACKER_DATA: TrackerData = {
   poemsWritten: 37,
   kmRun: 523,
   coffeesConsumed: 999,
+  countriesVisited: 12,
+  languagesSpoken: 3,
+  cuisinesMastered: 15,
+  daysMeditated: 156,
+  citiesImpacted: 12,
+  yearsExperience: 8,
+  projectsCompleted: 50,
+  dataProcessed: "3TB",
+  currentRole: "Senior Software Engineer",
   currentlyUsing: {
     llms: ["Claude 3.5 Sonnet", "GPT-4"],
     editor: ["Cursor", "VS Code"],

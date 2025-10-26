@@ -103,6 +103,10 @@ export async function GET() {
         poemsWritten: trackerData.poemsWritten,
         kmRun: trackerData.kmRun,
         coffeesConsumed: trackerData.coffeesConsumed,
+        countriesVisited: trackerData.countriesVisited,
+        languagesSpoken: trackerData.languagesSpoken,
+        cuisinesMastered: trackerData.cuisinesMastered,
+        daysMeditated: trackerData.daysMeditated,
         currentlyReading: trackerData.currentSideProject || externalStats?.life?.currentlyReading,
         currentSideProject: trackerData.currentSideProject,
         learningQueue: trackerData.learningQueue,
@@ -117,6 +121,11 @@ export async function GET() {
     const workStats = {
       ...(externalStats?.work || {}),
       ...(trackerData && {
+        citiesImpacted: trackerData.citiesImpacted,
+        yearsExperience: trackerData.yearsExperience,
+        projectsCompleted: trackerData.projectsCompleted,
+        dataProcessed: trackerData.dataProcessed,
+        currentRole: trackerData.currentRole,
         currentlyUsing: trackerData.currentlyUsing,
       })
     }
