@@ -75,7 +75,7 @@ A modern, performant portfolio showcasing expertise in AI-powered development, e
 ### Core Features (Implemented & Live)
 | Feature | Status | Location | How to Test |
 |---------|--------|----------|-------------|
-| **Admin Dashboard** | ✅ Live | `/admin` | Login with admin password, manage content |
+| **Admin Dashboard** | ✅ Live | `/admin` | Secure admin authentication, manage content |
 | **Analytics Dashboard** | ✅ Live | `/admin` (Analytics tab) | View real-time stats and page views |
 | **Redis Management** | ✅ Live | `/admin` (Redis tab) | Browse keys, clear cache, view statistics |
 | **JWT Authentication** | ✅ Live | `/admin` | Persistent 7-day sessions with cookies |
@@ -114,7 +114,7 @@ A comprehensive, modular admin dashboard for managing portfolio content and moni
 - **JWT-based sessions** with 7-day expiration
 - **HTTP-only secure cookies** for session storage
 - **Persistent login** - no re-authentication on page refresh
-- **SHA-256 password hashing** for security
+- **Secure password hashing** with industry-standard algorithms
 
 #### 2. Analytics Tab
 - **Real-time stats** with auto-refresh every 30 seconds
@@ -144,8 +144,8 @@ A comprehensive, modular admin dashboard for managing portfolio content and moni
 - **Key details** (type, size, TTL, preview)
 
 #### 5. Settings Tab
-- **Account information** (session duration, algorithms)
-- **Security details** (SHA-256, HS256 JWT)
+- **Account information** (session duration)
+- **Security details** (encryption algorithms)
 - **Keyboard shortcuts** reference
 
 ### Admin Dashboard Architecture
@@ -320,83 +320,22 @@ STRAVA_ATHLETE_ID=your_id
 ### Generating Required Secrets
 
 ```bash
-# Generate admin password hash
-echo -n 'your_password' | openssl dgst -sha256
-
-# Generate JWT secret
+# Generate JWT secret (32-byte random string)
 openssl rand -base64 32
 
-# Generate IP salt
+# Generate IP salt (32-byte random string)
 openssl rand -base64 32
+
+# For admin password hash, contact the repository owner
 ```
 
 ---
 
 ## 📡 API Documentation
 
-### Admin APIs
-
-#### Authentication
-```http
-POST /api/admin/auth
-{
-  "password": "your_admin_password"
-}
-Response: Sets HTTP-only cookie, returns { success: true, token: "..." }
-
-GET /api/admin/auth
-Response: { success: true, authenticated: true, session: {...} }
-
-DELETE /api/admin/auth
-Response: Clears cookie, returns { success: true, message: "Logged out" }
-```
-
-#### Redis Management
-```http
-GET /api/admin/redis?action=stats
-Response: {
-  "success": true,
-  "stats": {
-    "totalKeys": 42,
-    "categories": { "views": 15, "cooldowns": 20, ... },
-    "approximateSize": 12345,
-    "sizeFormatted": "12.06 KB"
-  }
-}
-
-GET /api/admin/redis?action=keys&pattern=views:*
-Response: {
-  "success": true,
-  "keys": [{
-    "key": "views:project-slug",
-    "type": "string",
-    "size": 256,
-    "ttl": "No expiration",
-    "preview": "42"
-  }],
-  "total": 15
-}
-
-DELETE /api/admin/redis?key=views:project-slug
-DELETE /api/admin/redis?pattern=view_cooldown:*
-Response: { "success": true, "message": "Deleted 10 keys", "deleted": 10 }
-```
-
-#### Tracker Management
-```http
-GET /api/admin/trackers
-Response: { "success": true, "data": {...} }
-
-POST /api/admin/trackers
-{
-  "booksReadThisYear": 24,
-  "poemsWritten": 37,
-  ...
-}
-Response: { "success": true, "message": "Data saved" }
-```
-
 ### Public APIs
+
+**Note:** Admin API documentation is not publicly available for security reasons. Contact the repository owner for access.
 
 #### Stats API
 ```http
