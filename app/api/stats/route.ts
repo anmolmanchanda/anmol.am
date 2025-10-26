@@ -34,6 +34,24 @@ export async function GET() {
     // Get keep-alive status
     const keepAlive = await redis.get('system:keepalive')
 
+    // Parse keep-alive data (Upstash Redis auto-parses JSON, so check type first)
+    let lastKeepAliveTimestamp = null
+    if (keepAlive) {
+      try {
+        // If it's already an object, use it directly
+        if (typeof keepAlive === 'object' && keepAlive !== null) {
+          lastKeepAliveTimestamp = (keepAlive as any).timestamp
+        } else if (typeof keepAlive === 'string') {
+          // If it's a string, parse it
+          const parsed = JSON.parse(keepAlive)
+          lastKeepAliveTimestamp = parsed.timestamp
+        }
+      } catch (e) {
+        // If parsing fails, just use the raw value as timestamp
+        lastKeepAliveTimestamp = keepAlive
+      }
+    }
+
     // Sort by views (descending)
     const sortedPages = Object.entries(viewCounts)
       .sort(([, a], [, b]) => b - a)
@@ -46,7 +64,7 @@ export async function GET() {
         uniquePages: viewKeys.length,
         pages: sortedPages,
         keepAliveActive: !!keepAlive,
-        lastKeepAlive: keepAlive ? JSON.parse(keepAlive as string).timestamp : null
+        lastKeepAlive: lastKeepAliveTimestamp
       },
       timestamp: new Date().toISOString()
     })
