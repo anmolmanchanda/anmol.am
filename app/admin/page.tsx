@@ -5,7 +5,7 @@ import { BarChart, TrendingUp, Database, Server, Activity, LogOut } from "lucide
 import { motion, AnimatePresence } from "framer-motion"
 import { Toaster } from 'react-hot-toast'
 
-import { useAdminAuth, useTrackerData, useAnalytics, useRedis } from './hooks/useAdminData'
+import { useAdminAuth, useTrackerData, useAnalytics, useRedis, useHistoricalData } from './hooks/useAdminData'
 import { LoginForm } from './components/LoginForm'
 import { AnalyticsTab } from './components/AnalyticsTab'
 import { TrackersTab } from './components/TrackersTab'
@@ -18,6 +18,7 @@ export default function AdminPage() {
   const { data, setData, isSaving, saveSuccess, isAutoSaving, lastSaved, loadData, saveData } = useTrackerData(true)
   const { analytics, loading: analyticsLoading, loadAnalytics } = useAnalytics()
   const { stats, keys, loading: redisLoading, loadStats, loadKeys, deleteKey, clearPattern } = useRedis()
+  const { historicalData, loading: historyLoading, loadHistoricalData, saveSnapshot } = useHistoricalData()
 
   const [activeTab, setActiveTab] = useState<Tab>('analytics')
   const [searchPattern, setSearchPattern] = useState('*')
@@ -28,8 +29,9 @@ export default function AdminPage() {
       loadData()
       loadAnalytics()
       loadStats()
+      loadHistoricalData()
     }
-  }, [isAuthenticated, loadData, loadAnalytics, loadStats])
+  }, [isAuthenticated, loadData, loadAnalytics, loadStats, loadHistoricalData])
 
   // Auto-refresh analytics
   useEffect(() => {
@@ -155,6 +157,9 @@ export default function AdminPage() {
                     saveSuccess={saveSuccess}
                     isAutoSaving={isAutoSaving}
                     lastSaved={lastSaved}
+                    historicalData={historicalData}
+                    historyLoading={historyLoading}
+                    onSaveSnapshot={() => saveSnapshot(data)}
                   />
                 )}
 

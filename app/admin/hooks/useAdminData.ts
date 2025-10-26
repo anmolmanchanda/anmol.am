@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import toast from 'react-hot-toast'
-import type { TrackerData, AnalyticsData, RedisStats, RedisKey } from '../types'
+import type { TrackerData, AnalyticsData, RedisStats, RedisKey, HistoricalDataPoint } from '../types'
 
 export function useAdminAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -288,4 +288,51 @@ export function useRedis() {
   }, [loadKeys, loadStats])
 
   return { stats, keys, loading, loadStats, loadKeys, deleteKey, clearPattern }
+}
+
+export function useHistoricalData() {
+  const [historicalData, setHistoricalData] = useState<HistoricalDataPoint[]>([])
+  const [loading, setLoading] = useState(false)
+
+  const loadHistoricalData = useCallback(async () => {
+    try {
+      setLoading(true)
+      const res = await fetch('/api/admin/history')
+      const result = await res.json()
+      if (result.success) {
+        setHistoricalData(result.data)
+      }
+    } catch {
+      toast.error('Failed to load historical data')
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+  const saveSnapshot = useCallback(async (data: TrackerData) => {
+    try {
+      const res = await fetch('/api/admin/history', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          booksReadThisYear: data.booksReadThisYear,
+          poemsWritten: data.poemsWritten,
+          kmRun: data.kmRun,
+          coffeesConsumed: data.coffeesConsumed
+        })
+      })
+      const result = await res.json()
+      if (result.success) {
+        toast.success('Snapshot saved to history')
+        await loadHistoricalData()
+        return true
+      }
+      return false
+    } catch {
+      toast.error('Failed to save snapshot')
+      return false
+    }
+  }, [loadHistoricalData])
+
+  return { historicalData, loading, loadHistoricalData, saveSnapshot }
 }

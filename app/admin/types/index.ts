@@ -68,6 +68,18 @@ export interface RedisKey {
   preview: string
 }
 
+export interface HistoricalDataPoint {
+  timestamp: string
+  booksReadThisYear: number
+  poemsWritten: number
+  kmRun: number
+  coffeesConsumed: number
+}
+
+export interface HistoricalData {
+  dataPoints: HistoricalDataPoint[]
+}
+
 export type Tab = 'analytics' | 'trackers' | 'redis' | 'settings'
 
 export const DEFAULT_TRACKER_DATA: TrackerData = {

@@ -1,5 +1,7 @@
-import { Save, Activity, Check } from 'lucide-react'
-import type { TrackerData } from '../types'
+import { useState } from 'react'
+import { Save, Activity, Check, TrendingUp, Camera } from 'lucide-react'
+import type { TrackerData, HistoricalDataPoint } from '../types'
+import { LifeStatsChart } from './LifeStatsChart'
 
 interface TrackersTabProps {
   data: TrackerData
@@ -9,9 +11,38 @@ interface TrackersTabProps {
   saveSuccess: boolean
   isAutoSaving?: boolean
   lastSaved?: Date | null
+  historicalData: HistoricalDataPoint[]
+  historyLoading: boolean
+  onSaveSnapshot: () => void
 }
 
-export function TrackersTab({ data, setData, onSave, isSaving, saveSuccess, isAutoSaving, lastSaved }: TrackersTabProps) {
+export function TrackersTab({
+  data,
+  setData,
+  onSave,
+  isSaving,
+  saveSuccess,
+  isAutoSaving,
+  lastSaved,
+  historicalData,
+  historyLoading,
+  onSaveSnapshot
+}: TrackersTabProps) {
+  const [selectedMetrics, setSelectedMetrics] = useState<string[]>([
+    'booksReadThisYear',
+    'poemsWritten',
+    'kmRun',
+    'coffeesConsumed'
+  ])
+
+  const toggleMetric = (metric: string) => {
+    setSelectedMetrics(prev =>
+      prev.includes(metric)
+        ? prev.filter(m => m !== metric)
+        : [...prev, metric]
+    )
+  }
+
   return (
     <div className="space-y-6">
       {/* Save Button and Auto-save Status */}
@@ -58,6 +89,55 @@ export function TrackersTab({ data, setData, onSave, isSaving, saveSuccess, isAu
           )}
         </button>
       </div>
+
+      {/* Historical Tracking Chart */}
+      <section className="glass-morphism rounded-xl border backdrop-blur-md p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <TrendingUp className="w-5 h-5" />
+            <h2 className="text-xl font-semibold">Life Stats Trends</h2>
+          </div>
+          <button
+            onClick={onSaveSnapshot}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border hover:bg-secondary transition-all text-sm"
+          >
+            <Camera className="w-4 h-4" />
+            Save Snapshot
+          </button>
+        </div>
+
+        {historyLoading ? (
+          <div className="flex items-center justify-center h-64">
+            <Activity className="w-6 h-6 animate-spin text-primary" />
+          </div>
+        ) : (
+          <>
+            <div className="flex gap-2 mb-4 flex-wrap">
+              {[
+                { key: 'booksReadThisYear', label: 'Books', color: 'bg-blue-500' },
+                { key: 'poemsWritten', label: 'Poems', color: 'bg-green-500' },
+                { key: 'kmRun', label: 'KM Run', color: 'bg-amber-500' },
+                { key: 'coffeesConsumed', label: 'Coffees', color: 'bg-red-500' }
+              ].map(metric => (
+                <button
+                  key={metric.key}
+                  onClick={() => toggleMetric(metric.key)}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-all ${
+                    selectedMetrics.includes(metric.key)
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-secondary hover:bg-secondary/80'
+                  }`}
+                >
+                  <div className={`w-3 h-3 rounded-full ${metric.color}`} />
+                  {metric.label}
+                </button>
+              ))}
+            </div>
+
+            <LifeStatsChart data={historicalData} selectedMetrics={selectedMetrics} />
+          </>
+        )}
+      </section>
 
       {/* Custom Trackers */}
       <section className="glass-morphism rounded-xl border backdrop-blur-md p-6">
