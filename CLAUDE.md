@@ -1,7 +1,7 @@
 # Claude AI Assistant Configuration Hub
 
-**Last Updated**: January 19, 2025  
-**Version**: 3.0 - Modular Architecture
+**Last Updated**: January 26, 2025
+**Version**: 3.1 - Efficiency & Modular Architecture
 
 ## 📁 Quick Navigation
 
@@ -36,6 +36,42 @@ Before any work session:
 4. **Maintainability**: Clean, documented, testable code
 5. **Security**: Follow best practices, never expose secrets
 6. **Privacy**: Always update privacy policy when data collection changes
+7. **Efficiency**: Write new code only when necessary, prefer refactoring/moving existing code
+
+## ⚡ Efficiency Guidelines
+
+**CRITICAL: Maximize efficiency in all operations**
+
+### Code Reuse Principles
+- ✅ **Prefer moving/copying** existing code over writing new code
+- ✅ **Refactor** instead of rewriting when possible
+- ✅ **Extract** common patterns into reusable functions/components
+- ✅ **Use MCP servers** extensively for file operations and data manipulation
+- ✅ **Leverage existing** utilities, hooks, and components
+- ❌ **Don't write new code** when existing code can be adapted
+- ❌ **Don't duplicate logic** - create shared utilities instead
+
+### When to Write New Code
+Only write new code when:
+1. No existing code can be adapted to solve the problem
+2. Creating a new abstraction significantly improves maintainability
+3. The new code adds genuinely new functionality
+4. Refactoring would be more complex than writing fresh code
+
+### File Size Management
+- **No file should exceed 1000 lines** (hard limit)
+- **Target: < 500 lines per file** (recommended)
+- **Split large files** into modular components/hooks/types
+- **Use clear separation** of concerns (UI / Logic / Types)
+
+### MCP Server Usage
+**Always use MCP servers when available:**
+- `filesystem` - File operations (read, write, search)
+- `github` - Repository management, PRs, issues
+- `puppeteer` - Browser automation and testing
+- `memory` - Persistent context across sessions
+- `sequential-thinking` - Complex problem solving
+- `taskmaster-ai` - Task management and planning
 
 ## 🚫 CRITICAL: Code and Commit Standards
 
@@ -83,16 +119,30 @@ claude --list-mcps  # List available MCP servers
 
 ## 📋 Current Project Status
 
-- **Portfolio Version**: 2.0.0 (Released Jan 19, 2025)
+- **Portfolio Version**: 2.1.0 (Updated Jan 26, 2025)
 - **Tech Stack**: Next.js 15.4.1, React 19, TypeScript 5, Tailwind CSS v4
 - **Performance**: 96/100 Lighthouse score
-- **Features**: 
-  - ✅ AI-Powered Development
-  - ✅ TB-scale Data Pipeline
-  - ✅ 50+ MCP Servers Configured
-  - ✅ Real-time Analytics
+- **Admin Dashboard**: JWT auth, Redis management, modular architecture
+- **Features**:
+  - ✅ AI-Powered Development with MCP Servers
+  - ✅ Admin Dashboard (Analytics, Trackers, Redis, Settings)
+  - ✅ Modular Architecture (no file > 500 lines)
+  - ✅ TB-scale Data Pipeline Experience
+  - ✅ Real-time Analytics & View Tracking
   - ✅ PWA Ready
   - ✅ SEO Optimized
+
+## 🤖 Active MCP Servers
+
+Currently configured and ready to use:
+- **filesystem** - Direct file system access for /Users/Shared/anmol.am
+- **github** - Repository operations, PRs, issues management
+- **puppeteer** - Browser automation for testing and screenshots
+- **memory** - Persistent context and knowledge storage
+- **sequential-thinking** - Complex reasoning and problem solving
+- **taskmaster-ai** - Task planning and management
+
+Use these servers extensively for all file operations, testing, and automation tasks.
 
 ## 🔗 Quick Links
 
