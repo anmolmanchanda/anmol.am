@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
+import { DEFAULT_TRACKER_DATA } from '@/app/admin/types'
 
 const TRACKER_KEY = 'tracker:data'
 const LOCAL_STORAGE_PATH = path.join(process.cwd(), 'data', 'tracker-data.json')
@@ -43,10 +44,18 @@ async function getData() {
 export async function GET() {
   try {
     const data = await getData()
-    
+
+    // If no data exists, initialize with default data
+    const trackerData = data || DEFAULT_TRACKER_DATA
+
+    // If this is the first time, save the default data
+    if (!data) {
+      await saveData(trackerData)
+    }
+
     return NextResponse.json({
       success: true,
-      data: data || null
+      data: trackerData
     })
   } catch (error) {
     console.error('Failed to fetch tracker data:', error)
