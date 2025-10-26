@@ -91,6 +91,19 @@ export interface HistoricalData {
   dataPoints: HistoricalDataPoint[]
 }
 
+export interface TimelineEntry {
+  id: string
+  timestamp: string
+  type: 'life' | 'work'
+  changes: Array<{
+    field: string
+    label: string
+    oldValue: any
+    newValue: any
+  }>
+  description: string
+}
+
 export type Tab = 'analytics' | 'trackers' | 'redis' | 'settings'
 
 export const DEFAULT_TRACKER_DATA: TrackerData = {

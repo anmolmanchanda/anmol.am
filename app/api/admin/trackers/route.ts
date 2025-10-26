@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
-import { DEFAULT_TRACKER_DATA } from '@/app/admin/types'
+import { DEFAULT_TRACKER_DATA, type TrackerData, type TimelineEntry } from '@/app/admin/types'
 
 const TRACKER_KEY = 'tracker:data'
+const TIMELINE_KEY = 'tracker:timeline'
 const LOCAL_STORAGE_PATH = path.join(process.cwd(), 'data', 'tracker-data.json')
+const TIMELINE_STORAGE_PATH = path.join(process.cwd(), 'data', 'timeline.json')
+const MAX_TIMELINE_ENTRIES = 100
 
 // Ensure data directory exists
 const ensureDataDir = () => {
@@ -66,6 +69,120 @@ export async function GET() {
   }
 }
 
+// Field labels for timeline descriptions
+const FIELD_LABELS: Record<string, { label: string; type: 'life' | 'work' }> = {
+  booksReadThisYear: { label: 'Books Read', type: 'life' },
+  poemsWritten: { label: 'Poems Written', type: 'life' },
+  kmRun: { label: 'KM Run', type: 'life' },
+  coffeesConsumed: { label: 'Coffees Consumed', type: 'life' },
+  countriesVisited: { label: 'Countries Visited', type: 'life' },
+  languagesSpoken: { label: 'Languages Spoken', type: 'life' },
+  cuisinesMastered: { label: 'Cuisines Mastered', type: 'life' },
+  daysMeditated: { label: 'Days Meditated', type: 'life' },
+  citiesImpacted: { label: 'Cities Impacted', type: 'work' },
+  yearsExperience: { label: 'Years Experience', type: 'work' },
+  projectsCompleted: { label: 'Projects Completed', type: 'work' },
+  dataProcessed: { label: 'Data Processed', type: 'work' },
+  currentRole: { label: 'Current Role', type: 'work' },
+  currentSideProject: { label: 'Side Project', type: 'life' }
+}
+
+// Generate timeline entry from changes
+function generateTimelineEntry(oldData: TrackerData | null, newData: TrackerData): TimelineEntry | null {
+  if (!oldData) return null
+
+  const changes: TimelineEntry['changes'] = []
+
+  // Check for changes in tracked fields
+  Object.entries(FIELD_LABELS).forEach(([field, config]) => {
+    const oldValue = oldData[field as keyof TrackerData]
+    const newValue = newData[field as keyof TrackerData]
+
+    // Skip if values are the same
+    if (oldValue === newValue) return
+
+    // Skip insignificant changes (e.g., adding 1 to a counter)
+    if (typeof oldValue === 'number' && typeof newValue === 'number') {
+      const diff = Math.abs(newValue - oldValue)
+      if (diff < 5) return // Only track changes >= 5
+    }
+
+    changes.push({
+      field,
+      label: config.label,
+      oldValue,
+      newValue
+    })
+  })
+
+  if (changes.length === 0) return null
+
+  // Determine primary type
+  const hasLifeChanges = changes.some(c => FIELD_LABELS[c.field]?.type === 'life')
+  const hasWorkChanges = changes.some(c => FIELD_LABELS[c.field]?.type === 'work')
+  const type = hasLifeChanges && !hasWorkChanges ? 'life' : hasWorkChanges && !hasLifeChanges ? 'work' : 'life'
+
+  // Generate description
+  const description = changes.length === 1 && changes[0]
+    ? `Updated ${changes[0].label}: ${changes[0].oldValue} → ${changes[0].newValue}`
+    : `Updated ${changes.length} stats`
+
+  return {
+    id: `timeline-${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    type,
+    changes,
+    description
+  }
+}
+
+// Save/load timeline
+async function saveTimeline(entries: TimelineEntry[]) {
+  // Keep only recent entries
+  const recentEntries = entries.slice(-MAX_TIMELINE_ENTRIES)
+
+  if (process.env['UPSTASH_REDIS_REST_URL'] && process.env['UPSTASH_REDIS_REST_TOKEN']) {
+    try {
+      const { redis } = await import('@/lib/redis')
+      await redis.set(TIMELINE_KEY, JSON.stringify(recentEntries))
+      return true
+    } catch {
+      // Fall through
+    }
+  }
+
+  try {
+    ensureDataDir()
+    fs.writeFileSync(TIMELINE_STORAGE_PATH, JSON.stringify(recentEntries, null, 2))
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function loadTimeline(): Promise<TimelineEntry[]> {
+  if (process.env['UPSTASH_REDIS_REST_URL'] && process.env['UPSTASH_REDIS_REST_TOKEN']) {
+    try {
+      const { redis } = await import('@/lib/redis')
+      const data = await redis.get(TIMELINE_KEY)
+      if (data) return JSON.parse(data as string)
+    } catch {
+      // Fall through
+    }
+  }
+
+  try {
+    if (fs.existsSync(TIMELINE_STORAGE_PATH)) {
+      const fileData = fs.readFileSync(TIMELINE_STORAGE_PATH, 'utf8')
+      return JSON.parse(fileData)
+    }
+  } catch {
+    // Return empty
+  }
+
+  return []
+}
+
 async function saveData(data: any) {
   // If Redis is configured, use it
   if (process.env['UPSTASH_REDIS_REST_URL'] && process.env['UPSTASH_REDIS_REST_TOKEN']) {
@@ -77,7 +194,7 @@ async function saveData(data: any) {
       console.log('Redis not available, using local storage')
     }
   }
-  
+
   // Fall back to local file storage
   try {
     ensureDataDir()
@@ -91,11 +208,24 @@ async function saveData(data: any) {
 
 export async function POST(request: NextRequest) {
   try {
-    const data = await request.json()
-    
-    // Save data
-    const saved = await saveData(data)
-    
+    const newData = await request.json()
+
+    // Get old data for change detection
+    const oldData = await getData()
+
+    // Generate timeline entry if there are changes
+    if (oldData) {
+      const timelineEntry = generateTimelineEntry(oldData, newData)
+      if (timelineEntry) {
+        const timeline = await loadTimeline()
+        timeline.push(timelineEntry)
+        await saveTimeline(timeline)
+      }
+    }
+
+    // Save new data
+    const saved = await saveData(newData)
+
     if (saved) {
       return NextResponse.json({
         success: true,
