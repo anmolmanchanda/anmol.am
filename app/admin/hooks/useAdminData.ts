@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import toast from 'react-hot-toast'
 import type { TrackerData, AnalyticsData, RedisStats, RedisKey } from '../types'
 
@@ -61,10 +61,15 @@ export function useAdminAuth() {
   return { isAuthenticated, isChecking, login, logout }
 }
 
-export function useTrackerData() {
+export function useTrackerData(autoSaveEnabled: boolean = false) {
   const [data, setData] = useState<TrackerData | null>(null)
   const [isSaving, setIsSaving] = useState(false)
   const [saveSuccess, setSaveSuccess] = useState(false)
+  const [isAutoSaving, setIsAutoSaving] = useState(false)
+  const [lastSaved, setLastSaved] = useState<Date | null>(null)
+
+  const autoSaveTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
+  const initialDataRef = useRef<string | null>(null)
 
   const loadData = useCallback(async () => {
     try {
@@ -72,6 +77,7 @@ export function useTrackerData() {
       const result = await res.json()
       if (result.data) {
         setData(result.data)
+        initialDataRef.current = JSON.stringify(result.data)
       }
     } catch (err) {
       console.error('Failed to load tracker data:', err)
@@ -79,9 +85,13 @@ export function useTrackerData() {
     }
   }, [])
 
-  const saveData = useCallback(async (trackerData: TrackerData) => {
-    setIsSaving(true)
-    setSaveSuccess(false)
+  const saveData = useCallback(async (trackerData: TrackerData, silent: boolean = false) => {
+    if (silent) {
+      setIsAutoSaving(true)
+    } else {
+      setIsSaving(true)
+      setSaveSuccess(false)
+    }
 
     try {
       const res = await fetch('/api/admin/trackers', {
@@ -94,23 +104,79 @@ export function useTrackerData() {
       })
 
       if (res.ok) {
-        setSaveSuccess(true)
-        toast.success('Data saved successfully!')
-        setTimeout(() => setSaveSuccess(false), 3000)
+        setLastSaved(new Date())
+        initialDataRef.current = JSON.stringify(trackerData)
+
+        if (!silent) {
+          setSaveSuccess(true)
+          toast.success('Data saved successfully!')
+          setTimeout(() => setSaveSuccess(false), 3000)
+        }
         return true
       } else {
-        toast.error('Failed to save data')
+        if (!silent) {
+          toast.error('Failed to save data')
+        }
         return false
       }
     } catch {
-      toast.error('Error saving data')
+      if (!silent) {
+        toast.error('Error saving data')
+      }
       return false
     } finally {
-      setIsSaving(false)
+      if (silent) {
+        setIsAutoSaving(false)
+      } else {
+        setIsSaving(false)
+      }
     }
   }, [])
 
-  return { data, setData, isSaving, saveSuccess, loadData, saveData }
+  // Auto-save with debouncing
+  useEffect(() => {
+    if (!autoSaveEnabled || !data || !initialDataRef.current) return
+
+    // Check if data has changed
+    const currentData = JSON.stringify(data)
+    if (currentData === initialDataRef.current) return
+
+    // Clear existing timeout
+    if (autoSaveTimeoutRef.current) {
+      clearTimeout(autoSaveTimeoutRef.current)
+    }
+
+    // Set new timeout for auto-save (30 seconds after last change)
+    autoSaveTimeoutRef.current = setTimeout(() => {
+      saveData(data, true)
+    }, 30000)
+
+    return () => {
+      if (autoSaveTimeoutRef.current) {
+        clearTimeout(autoSaveTimeoutRef.current)
+      }
+    }
+  }, [data, autoSaveEnabled, saveData])
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (autoSaveTimeoutRef.current) {
+        clearTimeout(autoSaveTimeoutRef.current)
+      }
+    }
+  }, [])
+
+  return {
+    data,
+    setData,
+    isSaving,
+    saveSuccess,
+    isAutoSaving,
+    lastSaved,
+    loadData,
+    saveData
+  }
 }
 
 export function useAnalytics() {

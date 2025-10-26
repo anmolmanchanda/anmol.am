@@ -15,7 +15,7 @@ import type { Tab } from './types'
 
 export default function AdminPage() {
   const { isAuthenticated, isChecking, login, logout } = useAdminAuth()
-  const { data, setData, isSaving, saveSuccess, loadData, saveData } = useTrackerData()
+  const { data, setData, isSaving, saveSuccess, isAutoSaving, lastSaved, loadData, saveData } = useTrackerData(true)
   const { analytics, loading: analyticsLoading, loadAnalytics } = useAnalytics()
   const { stats, keys, loading: redisLoading, loadStats, loadKeys, deleteKey, clearPattern } = useRedis()
 
@@ -150,9 +150,11 @@ export default function AdminPage() {
                   <TrackersTab
                     data={data}
                     setData={setData}
-                    onSave={() => saveData(data)}
+                    onSave={() => saveData(data, false)}
                     isSaving={isSaving}
                     saveSuccess={saveSuccess}
+                    isAutoSaving={isAutoSaving}
+                    lastSaved={lastSaved}
                   />
                 )}
 

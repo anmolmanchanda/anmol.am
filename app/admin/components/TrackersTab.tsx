@@ -7,13 +7,33 @@ interface TrackersTabProps {
   onSave: () => void
   isSaving: boolean
   saveSuccess: boolean
+  isAutoSaving?: boolean
+  lastSaved?: Date | null
 }
 
-export function TrackersTab({ data, setData, onSave, isSaving, saveSuccess }: TrackersTabProps) {
+export function TrackersTab({ data, setData, onSave, isSaving, saveSuccess, isAutoSaving, lastSaved }: TrackersTabProps) {
   return (
     <div className="space-y-6">
-      {/* Save Button */}
-      <div className="flex justify-end">
+      {/* Save Button and Auto-save Status */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          {isAutoSaving && (
+            <div className="flex items-center gap-2">
+              <Activity className="w-3 h-3 animate-spin text-blue-500" />
+              <span>Auto-saving...</span>
+            </div>
+          )}
+          {lastSaved && !isAutoSaving && (
+            <div className="flex items-center gap-2">
+              <Check className="w-3 h-3 text-green-500" />
+              <span>Last saved: {lastSaved.toLocaleTimeString()}</span>
+            </div>
+          )}
+          {!isAutoSaving && !lastSaved && (
+            <span>Auto-save enabled (30s after changes)</span>
+          )}
+        </div>
+
         <button
           onClick={onSave}
           disabled={isSaving}
@@ -32,7 +52,7 @@ export function TrackersTab({ data, setData, onSave, isSaving, saveSuccess }: Tr
           ) : (
             <>
               <Save className="w-4 h-4" />
-              Save Changes
+              Save Now
               <span className="text-xs opacity-70 ml-1">(Cmd+S)</span>
             </>
           )}
