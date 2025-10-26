@@ -33,10 +33,33 @@ export default function WorkPage() {
 
       // Fetch tracker data for activity store
       await fetchTrackerData()
-      
+
       // Build timeline with GitHub events and blog posts
       const timelineItems: any[] = []
-      
+
+      // Fetch tracker timeline entries
+      try {
+        const timelineRes = await fetch('/api/timeline?type=work')
+        const timelineData = await timelineRes.json()
+
+        if (timelineData?.success && timelineData.timeline) {
+          timelineData.timeline.forEach((entry: any) => {
+            timelineItems.push({
+              id: entry.id,
+              title: entry.description,
+              description: entry.changes.map((c: any) =>
+                `${c.label}: ${c.oldValue} → ${c.newValue}`
+              ).join(', '),
+              type: 'work-update',
+              timestamp: new Date(entry.timestamp),
+              tags: ['Work Stats', 'Update']
+            })
+          })
+        }
+      } catch (error) {
+        console.log('Could not fetch tracker timeline')
+      }
+
       // Add GitHub events (show more detail)
       githubData.slice(0, 15).forEach((event: any) => {
         const repoName = event.repo.name.replace('anmolmanchanda/', '')
@@ -219,7 +242,7 @@ export default function WorkPage() {
     }
   ]
 
-  const allTags = ['GitHub', 'Code', 'Article', 'AWS', 'AI', 'Data', 'Enterprise', 'Swift', 'macOS', 'Commits', 'Pull Request']
+  const allTags = ['GitHub', 'Code', 'Article', 'AWS', 'AI', 'Data', 'Enterprise', 'Swift', 'macOS', 'Commits', 'Pull Request', 'Work Stats', 'Update']
 
   if (loading) {
     return (
@@ -296,20 +319,23 @@ export default function WorkPage() {
               {filteredTimeline.map((item) => {
                 const isGitHub = item.type === 'github'
                 const isArticle = item.type === 'article'
-                
+                const isWorkUpdate = item.type === 'work-update'
+
                 return (
-                  <div 
-                    key={item.id} 
+                  <div
+                    key={item.id}
                     className={`liquid-glass rounded-lg border backdrop-blur-md p-4 hover:shadow-lg transition-all ${
-                      isArticle ? 'border-blue-500/30 bg-blue-500/5' : 
-                      isGitHub ? 'border-gray-500/30 bg-gray-500/5' : ''
+                      isArticle ? 'border-blue-500/30 bg-blue-500/5' :
+                      isGitHub ? 'border-gray-500/30 bg-gray-500/5' :
+                      isWorkUpdate ? 'border-orange-500/30 bg-orange-500/5' : ''
                     }`}
                   >
                     <div className="flex items-start gap-3">
                       {/* Larger, more prominent icon */}
                       <div className={`p-2 rounded-lg ${
-                        isArticle ? 'bg-blue-500/20' : 
-                        isGitHub ? 'bg-gray-700/40' : 'bg-secondary'
+                        isArticle ? 'bg-blue-500/20' :
+                        isGitHub ? 'bg-gray-700/40' :
+                        isWorkUpdate ? 'bg-orange-500/20' : 'bg-secondary'
                       }`}>
                         {item.type === 'github' && (
                           item.title.includes('Pushed') ? <GitCommit className="w-5 h-5 text-gray-300" /> :
@@ -317,6 +343,7 @@ export default function WorkPage() {
                           <Github className="w-5 h-5 text-gray-300" />
                         )}
                         {item.type === 'article' && <FileText className="w-5 h-5 text-blue-400" />}
+                        {item.type === 'work-update' && <TrendingUp className="w-5 h-5 text-orange-400" />}
                       </div>
                       
                       <div className="flex-1">
@@ -332,11 +359,12 @@ export default function WorkPage() {
                           {item.tags && (
                             <div className="flex gap-1">
                               {item.tags.map((tag: string) => (
-                                <span 
-                                  key={tag} 
+                                <span
+                                  key={tag}
                                   className={`px-2 py-0.5 rounded-full ${
                                     tag === 'Article' ? 'bg-blue-500/20 text-blue-300' :
                                     tag === 'GitHub' ? 'bg-gray-500/20 text-gray-300' :
+                                    tag === 'Work Stats' || tag === 'Update' ? 'bg-orange-500/20 text-orange-300' :
                                     'bg-secondary'
                                   }`}
                                 >

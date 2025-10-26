@@ -73,11 +73,34 @@ export default function LifePage() {
         })
       })
       
+      // Fetch tracker timeline entries
+      try {
+        const timelineRes = await fetch('/api/timeline?type=life')
+        const timelineData = await timelineRes.json()
+
+        if (timelineData?.success && timelineData.timeline) {
+          timelineData.timeline.forEach((entry: any) => {
+            timelineItems.push({
+              id: entry.id,
+              title: entry.description,
+              description: entry.changes.map((c: any) =>
+                `${c.label}: ${c.oldValue} → ${c.newValue}`
+              ).join(', '),
+              type: 'life-update',
+              timestamp: new Date(entry.timestamp),
+              tags: ['Life Stats', 'Update']
+            })
+          })
+        }
+      } catch (error) {
+        console.log('Could not fetch tracker timeline')
+      }
+
       // Letterboxd - fetch from API with real dates
       try {
         const letterboxdRes = await fetch('/api/letterboxd?username=anmolmanchanda')
         const letterboxdData = await letterboxdRes.json()
-        
+
         if (letterboxdData?.recentFilms && letterboxdData.recentFilms.length > 0) {
           letterboxdData.recentFilms.forEach((film: any, index: number) => {
             if (film.date) {

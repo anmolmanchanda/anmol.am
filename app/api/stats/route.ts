@@ -36,58 +36,57 @@ async function getTrackerData() {
 // Real stats from Redis
 export async function GET() {
   try {
-    // Check if Redis is configured
-    if (!process.env['UPSTASH_REDIS_REST_URL'] || !process.env['UPSTASH_REDIS_REST_TOKEN']) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Redis not configured'
-        },
-        { status: 500 }
-      )
-    }
-
-    const redis = Redis.fromEnv()
-
-    // Get all view count keys
-    const viewKeys = await redis.keys('views:*')
-
-    // Get all view counts
-    const viewCounts: Record<string, number> = {}
+    // Analytics data (requires Redis)
     let totalViews = 0
-
-    for (const key of viewKeys) {
-      const count = await redis.get(key)
-      const slug = key.replace('views:', '')
-      viewCounts[slug] = Number(count) || 0
-      totalViews += Number(count) || 0
-    }
-
-    // Get keep-alive status
-    const keepAlive = await redis.get('system:keepalive')
-
-    // Parse keep-alive data (Upstash Redis auto-parses JSON, so check type first)
+    let sortedPages: Array<{ slug: string; views: number }> = []
     let lastKeepAliveTimestamp = null
-    if (keepAlive) {
+
+    // Try to get analytics data from Redis if configured
+    if (process.env['UPSTASH_REDIS_REST_URL'] && process.env['UPSTASH_REDIS_REST_TOKEN']) {
       try {
-        // If it's already an object, use it directly
-        if (typeof keepAlive === 'object' && keepAlive !== null) {
-          lastKeepAliveTimestamp = (keepAlive as any).timestamp
-        } else if (typeof keepAlive === 'string') {
-          // If it's a string, parse it
-          const parsed = JSON.parse(keepAlive)
-          lastKeepAliveTimestamp = parsed.timestamp
+        const redis = Redis.fromEnv()
+
+        // Get all view count keys
+        const viewKeys = await redis.keys('views:*')
+
+        // Get all view counts
+        const viewCounts: Record<string, number> = {}
+
+        for (const key of viewKeys) {
+          const count = await redis.get(key)
+          const slug = key.replace('views:', '')
+          viewCounts[slug] = Number(count) || 0
+          totalViews += Number(count) || 0
         }
-      } catch (e) {
-        // If parsing fails, just use the raw value as timestamp
-        lastKeepAliveTimestamp = keepAlive
+
+        // Get keep-alive status
+        const keepAlive = await redis.get('system:keepalive')
+
+        // Parse keep-alive data (Upstash Redis auto-parses JSON, so check type first)
+        if (keepAlive) {
+          try {
+            // If it's already an object, use it directly
+            if (typeof keepAlive === 'object' && keepAlive !== null) {
+              lastKeepAliveTimestamp = (keepAlive as any).timestamp
+            } else if (typeof keepAlive === 'string') {
+              // If it's a string, parse it
+              const parsed = JSON.parse(keepAlive)
+              lastKeepAliveTimestamp = parsed.timestamp
+            }
+          } catch (e) {
+            // If parsing fails, just use the raw value as timestamp
+            lastKeepAliveTimestamp = keepAlive
+          }
+        }
+
+        // Sort by views (descending)
+        sortedPages = Object.entries(viewCounts)
+          .sort(([, a], [, b]) => b - a)
+          .map(([slug, views]) => ({ slug, views }))
+      } catch {
+        // Redis failed, continue without analytics data
       }
     }
-
-    // Sort by views (descending)
-    const sortedPages = Object.entries(viewCounts)
-      .sort(([, a], [, b]) => b - a)
-      .map(([slug, views]) => ({ slug, views }))
 
     // Fetch external API stats and admin tracker data
     const [externalStats, trackerData] = await Promise.all([
@@ -135,9 +134,9 @@ export async function GET() {
       stats: {
         // View tracking stats
         totalViews,
-        uniquePages: viewKeys.length,
+        uniquePages: sortedPages.length,
         pages: sortedPages,
-        keepAliveActive: !!keepAlive,
+        keepAliveActive: !!lastKeepAliveTimestamp,
         lastKeepAlive: lastKeepAliveTimestamp,
         // Life and work stats
         life: lifeStats,
