@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import toast from 'react-hot-toast'
 import type { TrackerData, AnalyticsData, RedisStats, RedisKey, HistoricalDataPoint } from '../types'
+import { checkAchievements, showAchievement } from '../utils/notifications'
 
 export function useAdminAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -104,6 +105,9 @@ export function useTrackerData(autoSaveEnabled: boolean = false) {
       })
 
       if (res.ok) {
+        // Check for achievements before updating state
+        const newAchievements = checkAchievements(data, trackerData)
+
         setLastSaved(new Date())
         initialDataRef.current = JSON.stringify(trackerData)
 
@@ -111,6 +115,11 @@ export function useTrackerData(autoSaveEnabled: boolean = false) {
           setSaveSuccess(true)
           toast.success('Data saved successfully!')
           setTimeout(() => setSaveSuccess(false), 3000)
+
+          // Show achievement notifications
+          newAchievements.forEach((achievement, index) => {
+            setTimeout(() => showAchievement(achievement), index * 500)
+          })
         }
         return true
       } else {

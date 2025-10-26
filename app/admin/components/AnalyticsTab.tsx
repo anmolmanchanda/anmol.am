@@ -1,13 +1,15 @@
 import { Activity, AlertCircle, Eye, Database, Clock, RefreshCw } from 'lucide-react'
-import type { AnalyticsData } from '../types'
+import type { AnalyticsData, TrackerData } from '../types'
+import { TrackerAnalytics } from './TrackerAnalytics'
 
 interface AnalyticsTabProps {
   analytics: AnalyticsData | null
   loading: boolean
   onRefresh: () => void
+  trackerData?: TrackerData | null
 }
 
-export function AnalyticsTab({ analytics, loading, onRefresh }: AnalyticsTabProps) {
+export function AnalyticsTab({ analytics, loading, onRefresh, trackerData }: AnalyticsTabProps) {
   if (loading) {
     return (
       <div className="glass-morphism rounded-xl border backdrop-blur-md p-12 text-center">
@@ -122,6 +124,14 @@ export function AnalyticsTab({ analytics, loading, onRefresh }: AnalyticsTabProp
           </div>
         )}
       </div>
+
+      {/* Tracker Analytics */}
+      {trackerData && (
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-6">Tracker Analytics</h2>
+          <TrackerAnalytics currentData={trackerData} loading={!trackerData} />
+        </div>
+      )}
     </div>
   )
 }

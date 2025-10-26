@@ -178,6 +178,7 @@ export default function AdminPage() {
                     analytics={analytics}
                     loading={analyticsLoading}
                     onRefresh={loadAnalytics}
+                    trackerData={data}
                   />
                 )}
 

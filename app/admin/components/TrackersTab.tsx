@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Save, Activity, Check, TrendingUp, Camera } from 'lucide-react'
+import { useState, useRef } from 'react'
+import { Save, Activity, Check, TrendingUp, Camera, Download, Upload, FileJson } from 'lucide-react'
 import type { TrackerData, HistoricalDataPoint } from '../types'
 import { LifeStatsChart } from './LifeStatsChart'
 
@@ -43,6 +43,93 @@ export function TrackersTab({
     )
   }
 
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  // Export tracker data as JSON
+  const handleExport = () => {
+    const exportData = {
+      trackerData: data,
+      exportedAt: new Date().toISOString(),
+      version: '1.0'
+    }
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `tracker-data-${new Date().toISOString().split('T')[0]}.json`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
+
+  // Export timeline as CSV
+  const handleExportTimeline = async () => {
+    try {
+      const response = await fetch('/api/timeline')
+      const result = await response.json()
+
+      if (result.success && result.timeline) {
+        // Convert to CSV
+        const headers = ['ID', 'Timestamp', 'Type', 'Description', 'Changes']
+        const rows = result.timeline.map((entry: any) => [
+          entry.id,
+          new Date(entry.timestamp).toLocaleString(),
+          entry.type,
+          entry.description,
+          entry.changes.map((c: any) => `${c.label}: ${c.oldValue} → ${c.newValue}`).join('; ')
+        ])
+
+        const csvContent = [
+          headers.join(','),
+          ...rows.map((row: any[]) => row.map(cell => `"${cell}"`).join(','))
+        ].join('\n')
+
+        const blob = new Blob([csvContent], { type: 'text/csv' })
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = `timeline-${new Date().toISOString().split('T')[0]}.csv`
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        URL.revokeObjectURL(url)
+      }
+    } catch (error) {
+      console.error('Failed to export timeline:', error)
+    }
+  }
+
+  // Import tracker data from JSON
+  const handleImport = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      try {
+        const content = e.target?.result as string
+        const importedData = JSON.parse(content)
+
+        if (importedData.trackerData) {
+          setData(importedData.trackerData)
+          alert('Data imported successfully! Click Save to apply changes.')
+        } else {
+          alert('Invalid file format')
+        }
+      } catch (error) {
+        alert('Failed to import data. Please check the file format.')
+      }
+    }
+    reader.readAsText(file)
+
+    // Reset input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
   return (
     <div className="space-y-6">
       {/* Save Button and Auto-save Status */}
@@ -65,29 +152,69 @@ export function TrackersTab({
           )}
         </div>
 
-        <button
-          onClick={onSave}
-          disabled={isSaving}
-          className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-all font-medium"
-        >
-          {isSaving ? (
-            <>
-              <Activity className="w-4 h-4 animate-spin" />
-              Saving...
-            </>
-          ) : saveSuccess ? (
-            <>
-              <Check className="w-4 h-4" />
-              Saved!
-            </>
-          ) : (
-            <>
-              <Save className="w-4 h-4" />
-              Save Now
-              <span className="text-xs opacity-70 ml-1">(Cmd+S)</span>
-            </>
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Export/Import Buttons */}
+          <div className="flex items-center gap-2 mr-2">
+            <button
+              onClick={handleExport}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-all text-sm"
+              title="Export tracker data"
+            >
+              <Download className="w-4 h-4" />
+              Export
+            </button>
+
+            <button
+              onClick={handleExportTimeline}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-all text-sm"
+              title="Export timeline as CSV"
+            >
+              <FileJson className="w-4 h-4" />
+              Timeline
+            </button>
+
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".json"
+              onChange={handleImport}
+              className="hidden"
+            />
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-all text-sm"
+              title="Import tracker data"
+            >
+              <Upload className="w-4 h-4" />
+              Import
+            </button>
+          </div>
+
+          {/* Save Button */}
+          <button
+            onClick={onSave}
+            disabled={isSaving}
+            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-all font-medium"
+          >
+            {isSaving ? (
+              <>
+                <Activity className="w-4 h-4 animate-spin" />
+                Saving...
+              </>
+            ) : saveSuccess ? (
+              <>
+                <Check className="w-4 h-4" />
+                Saved!
+              </>
+            ) : (
+              <>
+                <Save className="w-4 h-4" />
+                Save Now
+                <span className="text-xs opacity-70 ml-1">(Cmd+S)</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Historical Tracking Chart */}
