@@ -93,7 +93,7 @@ export default function PrivacyPage() {
                 <div>
                   <h3 className="font-semibold text-lg mb-2">4. Local Browser Storage</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    We use your browser's local storage to remember:
+                    We use your browser&apos;s local storage to remember:
                   </p>
                   <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-4">
                     <li>Your theme preference (light/dark mode)</li>
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
             <section>
               <div className="flex items-start gap-3 mb-4">
                 <Lock className="w-6 h-6 text-green-500 mt-1" />
-                <h2 className="text-2xl font-bold">What We DON'T Collect</h2>
+                <h2 className="text-2xl font-bold">What We DON&apos;T Collect</h2>
               </div>
 
               <div className="ml-9">
@@ -204,7 +204,7 @@ export default function PrivacyPage() {
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
                   <li>Theme preference (light/dark mode)</li>
-                  <li>Vercel's essential hosting cookies</li>
+                  <li>Vercel&apos;s essential hosting cookies</li>
                 </ul>
                 <p className="mt-3 font-semibold">
                   We do not use advertising or tracking cookies.
@@ -226,7 +226,7 @@ export default function PrivacyPage() {
                   <li>IP addresses hashed with SHA-256 before storage</li>
                   <li>Secure headers to prevent XSS and clickjacking</li>
                   <li>Regular security audits and updates</li>
-                  <li>Hosted on Vercel's secure infrastructure</li>
+                  <li>Hosted on Vercel&apos;s secure infrastructure</li>
                 </ul>
               </div>
             </section>
@@ -269,7 +269,7 @@ export default function PrivacyPage() {
                 <ul className="list-disc list-inside space-y-1 ml-4">
                   <li>Access any personal data we hold about you</li>
                   <li>Request deletion of your data</li>
-                  <li>Opt-out of analytics (use browser "Do Not Track")</li>
+                  <li>Opt-out of analytics (use browser &quot;Do Not Track&quot;)</li>
                   <li>Clear local storage via your browser settings</li>
                 </ul>
                 <p className="mt-4">
@@ -283,7 +283,7 @@ export default function PrivacyPage() {
 
             {/* Children's Privacy */}
             <section>
-              <h2 className="text-2xl font-bold mb-4">Children's Privacy</h2>
+              <h2 className="text-2xl font-bold mb-4">Children&apos;s Privacy</h2>
               <p className="text-muted-foreground leading-relaxed">
                 This website does not knowingly collect information from children under 13.
                 If you believe we have collected data from a child, please contact me immediately.
