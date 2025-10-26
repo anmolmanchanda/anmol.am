@@ -87,9 +87,9 @@ const FIELD_LABELS: Record<string, { label: string; type: 'life' | 'work' }> = {
   currentSideProject: { label: 'Side Project', type: 'life' }
 }
 
-// Generate timeline entry from changes
-function generateTimelineEntry(oldData: TrackerData | null, newData: TrackerData): TimelineEntry | null {
-  if (!oldData) return null
+// Generate timeline entries from changes (split by type)
+function generateTimelineEntries(oldData: TrackerData | null, newData: TrackerData): TimelineEntry[] {
+  if (!oldData) return []
 
   const changes: TimelineEntry['changes'] = []
 
@@ -115,25 +115,47 @@ function generateTimelineEntry(oldData: TrackerData | null, newData: TrackerData
     })
   })
 
-  if (changes.length === 0) return null
+  if (changes.length === 0) return []
 
-  // Determine primary type
-  const hasLifeChanges = changes.some(c => FIELD_LABELS[c.field]?.type === 'life')
-  const hasWorkChanges = changes.some(c => FIELD_LABELS[c.field]?.type === 'work')
-  const type = hasLifeChanges && !hasWorkChanges ? 'life' : hasWorkChanges && !hasLifeChanges ? 'work' : 'life'
+  // Split changes by type
+  const lifeChanges = changes.filter(c => FIELD_LABELS[c.field]?.type === 'life')
+  const workChanges = changes.filter(c => FIELD_LABELS[c.field]?.type === 'work')
 
-  // Generate description
-  const description = changes.length === 1 && changes[0]
-    ? `Updated ${changes[0].label}: ${changes[0].oldValue} → ${changes[0].newValue}`
-    : `Updated ${changes.length} stats`
+  const entries: TimelineEntry[] = []
+  const timestamp = new Date().toISOString()
+  const baseId = Date.now()
 
-  return {
-    id: `timeline-${Date.now()}`,
-    timestamp: new Date().toISOString(),
-    type,
-    changes,
-    description
+  // Create life entry if there are life changes
+  if (lifeChanges.length > 0) {
+    const description = lifeChanges.length === 1 && lifeChanges[0]
+      ? `Updated ${lifeChanges[0].label}: ${lifeChanges[0].oldValue} → ${lifeChanges[0].newValue}`
+      : `Updated ${lifeChanges.length} life stats`
+
+    entries.push({
+      id: `timeline-life-${baseId}`,
+      timestamp,
+      type: 'life',
+      changes: lifeChanges,
+      description
+    })
   }
+
+  // Create work entry if there are work changes
+  if (workChanges.length > 0) {
+    const description = workChanges.length === 1 && workChanges[0]
+      ? `Updated ${workChanges[0].label}: ${workChanges[0].oldValue} → ${workChanges[0].newValue}`
+      : `Updated ${workChanges.length} work stats`
+
+    entries.push({
+      id: `timeline-work-${baseId}`,
+      timestamp,
+      type: 'work',
+      changes: workChanges,
+      description
+    })
+  }
+
+  return entries
 }
 
 // Save/load timeline
@@ -213,12 +235,12 @@ export async function POST(request: NextRequest) {
     // Get old data for change detection
     const oldData = await getData()
 
-    // Generate timeline entry if there are changes
+    // Generate timeline entries if there are changes (split by type)
     if (oldData) {
-      const timelineEntry = generateTimelineEntry(oldData, newData)
-      if (timelineEntry) {
+      const timelineEntries = generateTimelineEntries(oldData, newData)
+      if (timelineEntries.length > 0) {
         const timeline = await loadTimeline()
-        timeline.push(timelineEntry)
+        timeline.push(...timelineEntries)
         await saveTimeline(timeline)
       }
     }
