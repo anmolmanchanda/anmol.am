@@ -29,7 +29,7 @@ export async function GET() {
 
     const analytics = {
       totalVisits: totalViews,
-      uniqueVisitors: viewKeys.length, // Unique pages viewed
+      uniquePages: viewKeys.length, // Unique pages with views
       onlineNow: 1, // Current user
       bounceRate: 0, // Would need session tracking
       avgSession: '0:00' // Would need session tracking

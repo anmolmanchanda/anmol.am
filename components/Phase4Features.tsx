@@ -74,7 +74,7 @@ export function PWAInstallPrompt() {
 export function VisitorCounter() {
   const [analytics, setAnalytics] = useState({
     totalVisits: 0,
-    uniqueVisitors: 0, 
+    uniquePages: 0,
     onlineNow: 0,
     bounceRate: 0,
     avgSession: '0:00',
@@ -108,7 +108,7 @@ export function VisitorCounter() {
           
           setAnalytics({
             totalVisits: newVisits,
-            uniqueVisitors: Math.floor(newVisits * 0.7), // Estimate
+            uniquePages: 0, // Not tracked in localStorage
             onlineNow: 1, // Current user
             bounceRate: 0, // Can't track without proper analytics
             avgSession: '0:00',
@@ -146,8 +146,8 @@ export function VisitorCounter() {
               <span className="text-sm font-medium">{analytics.totalVisits.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-xs text-muted-foreground">Unique Visitors</span>
-              <span className="text-sm font-medium text-blue-500">{analytics.uniqueVisitors.toLocaleString()}</span>
+              <span className="text-xs text-muted-foreground">Pages Viewed</span>
+              <span className="text-sm font-medium text-blue-500">{analytics.uniquePages?.toLocaleString() || 0}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-xs text-muted-foreground">Online Now</span>
