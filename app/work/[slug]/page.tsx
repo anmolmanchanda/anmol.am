@@ -142,16 +142,16 @@ const blogPostsMetadata: Record<string, Omit<BlogPost, 'content'>> = {
     views: 0,
     featured: true
   },
-  "building-intelligent-chatbot-aws-bedrock": {
+  "sprint-assistant-chatbot-bedrock": {
     id: "10",
-    title: "Building an Intelligent Chatbot with AWS Bedrock",
-    excerpt: "Learn how to build an intelligent Q&A system using AWS Bedrock with RAG architecture, vector embeddings, and PGVector for contextual responses.",
-    date: "2024-10-15",
-    tags: ["AWS", "AI", "Python", "RAG", "Vector Embeddings"],
+    title: "Sprint Report AI Assistant - Amazon Bedrock RAG",
+    excerpt: "Developed Sprint Report AI Assistant using Amazon Bedrock RAG architecture to analyze 11 UN-Habitat QOLI sprint reports, implementing vector embeddings (Titan), semantic search (ChromaDB), and agentic tools - reducing information retrieval time by 80%.",
+    date: "2025-10-20",
+    tags: ["Amazon Bedrock", "Python", "Streamlit", "ChromaDB", "RAG", "Agent Architecture", "Embeddings", "Vector Database", "Retrieval", "Chatbot"],
     readingTime: 8,
-    slug: "building-intelligent-chatbot-aws-bedrock",
+    slug: "sprint-assistant-chatbot-bedrock",
     category: 'technical' as const,
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
+    image: "/images/blog/screenshot-homepage.png",
     gradient: "from-purple-600 via-pink-600 to-indigo-600",
     views: 0,
     featured: true

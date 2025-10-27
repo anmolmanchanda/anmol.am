@@ -107,6 +107,15 @@ export default function WorkPage() {
       const blogPosts = [
         {
           id: 'blog-1',
+          title: 'Sprint Report AI Assistant - Amazon Bedrock RAG',
+          description: 'Reducing information retrieval time by 80% with vector embeddings and semantic search',
+          type: 'article',
+          timestamp: new Date('2025-10-20'),
+          url: '/work/sprint-assistant-chatbot-bedrock',
+          tags: ['Article', 'AI', 'AWS', 'RAG', 'Chatbot']
+        },
+        {
+          id: 'blog-2',
           title: 'Building TB-Scale Infrastructure at UN-Habitat',
           description: 'How we process 10+ TB of urban data monthly for 12 global cities',
           type: 'article',
@@ -115,7 +124,7 @@ export default function WorkPage() {
           tags: ['Article', 'AWS', 'Data', 'Enterprise']
         },
         {
-          id: 'blog-2',
+          id: 'blog-3',
           title: 'AI-Powered macOS Development',
           description: 'Creating a personal life management system with Claude AI',
           type: 'article',
@@ -124,7 +133,7 @@ export default function WorkPage() {
           tags: ['Article', 'AI', 'macOS', 'Swift']
         },
         {
-          id: 'blog-3',
+          id: 'blog-4',
           title: 'Automating Workflows with N8N',
           description: 'Building intelligent automation pipelines for productivity',
           type: 'article',
@@ -133,7 +142,7 @@ export default function WorkPage() {
           tags: ['Article', 'Automation', 'N8N']
         },
         {
-          id: 'blog-4',
+          id: 'blog-5',
           title: 'Enterprise AWS Architecture Patterns',
           description: 'Best practices from UN-Habitat implementation',
           type: 'article',
