@@ -162,9 +162,11 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       <div className="flex flex-1 flex-col p-6">
         <div className="flex-1">
           <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-              {project.title}
-            </h3>
+            <Link href={getBlogUrl()}>
+              <h3 className="text-xl font-semibold group-hover:text-primary transition-colors cursor-pointer hover:underline">
+                {project.title}
+              </h3>
+            </Link>
             {project.featured && (
               <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
                 Featured
