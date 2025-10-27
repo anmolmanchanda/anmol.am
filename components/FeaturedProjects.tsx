@@ -6,17 +6,17 @@ import { ProjectCard } from "@/components/ProjectCard"
 const featuredProjects: Project[] = [
   {
     id: "7",
-    title: "Chatbot & AI Agent using AWS Bedrock",
-    description: "Built intelligent Q&A system using Python, AWS Bedrock with RAG, vector embeddings, and PGVector",
-    technologies: ["Python", "AWS Bedrock", "RAG", "Vector Embeddings", "PGVector"],
-    image: "/images/projects/ai-chatbot.jpg",
-    githubUrl: "https://github.com/anmolmanchanda/chatbot-bedrock",
-    showDisabledLiveDemo: true,
+    title: "Sprint Assistant Chatbot using Bedrock",
+    description: "Developed Sprint Report AI Assistant using Amazon Bedrock RAG architecture to analyze 11 UN-Habitat QOLI sprint reports, implementing vector embeddings (Titan), semantic search (ChromaDB), and agentic tools - reducing information retrieval time by 80%.",
+    technologies: ["Amazon Bedrock", "Python", "Streamlit", "ChromaDB", "RAG", "Agent Architecture", "Embeddings", "Vector Database", "Retrieval", "Chatbot"],
+    image: "/images/blog/screenshot-homepage.png",
+    githubUrl: "https://github.com/anmolmanchanda/sprint-assistant-chatbot-bedrock",
+    liveUrl: "https://sprint-assistant.streamlit.app/",
     featured: true,
     category: "ai",
     date: "2024",
     type: "personal",
-    blogArticle: "/work/building-intelligent-chatbot-aws-bedrock"
+    blogArticle: "/work/sprint-assistant-chatbot-bedrock"
   },
   {
     id: "8",

@@ -8,24 +8,23 @@ import { ProjectCard } from "@/components/ProjectCard"
 const allProjects: Project[] = [
   {
     id: "7",
-    title: "Chatbot & AI Agent using AWS Bedrock",
-    description: "Built intelligent Q&A system using Python, AWS Bedrock with RAG, vector embeddings, and PGVector",
-    longDescription: "Developed an intelligent chatbot and AI agent system leveraging AWS Bedrock for natural language processing. Implemented RAG (Retrieval Augmented Generation) architecture with vector embeddings stored in PGVector for efficient similarity search and contextual responses.",
-    technologies: ["Python", "AWS Bedrock", "RAG", "Vector Embeddings", "PGVector"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80",
-    githubUrl: "https://github.com/anmolmanchanda/ai-chatbot-bedrock",
-    liveUrl: "",
-    showDisabledLiveDemo: true,
+    title: "Sprint Assistant Chatbot using Bedrock",
+    description: "Developed Sprint Report AI Assistant using Amazon Bedrock RAG architecture to analyze 11 UN-Habitat QOLI sprint reports, implementing vector embeddings (Titan), semantic search (ChromaDB), and agentic tools - reducing information retrieval time by 80%.",
+    longDescription: "Built an intelligent Sprint Report AI Assistant for UN-Habitat using Amazon Bedrock's RAG architecture. The system analyzes 11 comprehensive QOLI sprint reports, leveraging Titan embeddings for vector search, ChromaDB for semantic retrieval, and agentic tools for intelligent query processing. Deployed via Streamlit for easy team access.",
+    technologies: ["Amazon Bedrock", "Python", "Streamlit", "ChromaDB", "RAG", "Agent Architecture", "Embeddings", "Vector Database", "Retrieval", "Chatbot"],
+    image: "/images/blog/screenshot-homepage.png",
+    githubUrl: "https://github.com/anmolmanchanda/sprint-assistant-chatbot-bedrock",
+    liveUrl: "https://sprint-assistant.streamlit.app/",
     featured: true,
     category: "ai",
     date: "2024",
     type: "personal",
-    blogArticle: "/work/building-intelligent-chatbot-aws-bedrock",
+    blogArticle: "/work/sprint-assistant-chatbot-bedrock",
     metrics: {
-      responseTime: "<200ms",
-      accuracy: "95%",
-      vectorDimensions: "1536",
-      ragDocuments: "10,000+"
+      timeReduction: "80%",
+      sprintReports: "11 reports",
+      responseTime: "<1s",
+      accuracy: "High precision"
     }
   },
   {

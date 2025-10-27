@@ -110,7 +110,7 @@ export default function WorkPage() {
           title: 'Sprint Report AI Assistant - Amazon Bedrock RAG',
           description: 'Reducing information retrieval time by 80% with vector embeddings and semantic search',
           type: 'article',
-          timestamp: new Date('2025-10-20'),
+          timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
           url: '/work/sprint-assistant-chatbot-bedrock',
           tags: ['Article', 'AI', 'AWS', 'RAG', 'Chatbot']
         },
