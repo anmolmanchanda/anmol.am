@@ -17,14 +17,14 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   }
 
   const getProjectMetrics = () => {
-    if (project.id === "7") return { metric: "AWS Bedrock", label: "RAG & Embeddings" }
+    if (project.id === "7") return { metric: "80%", label: "Time Reduced" }
     if (project.id === "8") return { metric: "17 Users", label: "Real-time Platform" }
     if (project.id === "5") return { metric: "MCP-Driven", label: "AI-Powered Dev" }
     return { metric: "100+", label: "Features Built" }
   }
 
   const getBlogUrl = () => {
-    if (project.id === "7") return "/work/building-intelligent-chatbot-aws-bedrock"
+    if (project.id === "7") return "/work/sprint-assistant-chatbot-bedrock"
     if (project.id === "8") return "/work/enterprise-resource-management-system"
     if (project.id === "5") return "/work/ai-powered-portfolio-development"
     return project.blogArticle || `/projects/${project.id}`
